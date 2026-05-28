@@ -3,335 +3,111 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Owen Chen — UX & HCI</title>
-  <meta name="description" content="Owen Chen designs small, quiet tools. UX & HCI student noticing how people think, click, and decide." />
+  <title>Owen Chen — UX & HCI Designer</title>
+  <meta name="description" content="Owen Chen — UX & HCI design student making quiet, considered interfaces." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- subtle paper noise -->
-  <div class="noise" aria-hidden="true"></div>
+  <!-- floating preview for the work index -->
+  <div class="preview" aria-hidden="true"></div>
 
-  <!-- floating now panel -->
-  <aside class="now" aria-label="Current status">
-    <span class="now__dot" aria-hidden="true"></span>
-    <div class="now__text">
-      <span class="now__line">Now</span>
-      <span class="now__rotator" id="rotator">sketching</span>
-    </div>
-    <span class="now__time" id="clock">—</span>
-  </aside>
-
-  <!-- nav -->
   <header class="nav">
-    <a href="#top" class="nav__mark">
-      <span class="nav__mark-text">Owen Chen</span>
-      <span class="nav__mark-sub">© 2026</span>
-    </a>
+    <a href="#top" class="nav__mark">Owen Chen</a>
     <nav class="nav__links">
-      <a href="#work"><span>01</span> Work</a>
-      <a href="#about"><span>02</span> About</a>
-      <a href="#contact"><span>03</span> Contact</a>
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a href="mailto:owenchisan@gmail.com">Email</a>
     </nav>
   </header>
 
   <main id="top">
     <!-- HERO -->
     <section class="hero">
-      <p class="hero__kicker">Designer · Student · Occasional writer</p>
-
       <h1 class="hero__title">
-        <span class="t-line">Owen <em>Chen</em> makes</span>
-        <span class="t-line"><span class="scramble" data-text="small">small</span> tools for</span>
-        <span class="t-line"><em>quiet</em> human</span>
-        <span class="t-line"><span class="scramble" data-text="attention">attention</span>.</span>
+        UX &amp; HCI designer making
+        <em>quiet</em>, considered <em>interfaces</em>.
       </h1>
-
-      <div class="hero__sub">
-        <p>
-          UX &amp; HCI design student. I'm interested in software that
-          doesn't waste your time — and interfaces that feel obvious
-          only after you've used them.
-        </p>
-        <div class="hero__sub-meta">
-          <span>Based on Earth</span>
-          <span class="dot">·</span>
-          <span>Open to internships</span>
-        </div>
-      </div>
-
-      <!-- stats row -->
-      <ul class="stats" aria-label="At a glance">
-        <li>
-          <span class="stats__num">04</span>
-          <span class="stats__label">Selected<br/>projects</span>
-        </li>
-        <li>
-          <span class="stats__num">2<em>yrs</em></span>
-          <span class="stats__label">Studying<br/>design</span>
-        </li>
-        <li>
-          <span class="stats__num">∞</span>
-          <span class="stats__label">Half-finished<br/>sketches</span>
-        </li>
-        <li>
-          <span class="stats__num">1</span>
-          <span class="stats__label">Cup of coffee<br/>(today)</span>
-        </li>
-      </ul>
+      <p class="hero__note">
+        <span class="status"><span class="status__dot"></span>Open to internships</span>
+        Currently studying UX + HCI Design.
+      </p>
     </section>
 
-    <!-- MARQUEE -->
-    <div class="marquee" aria-hidden="true">
-      <div class="marquee__track">
-        <span>Interaction Design</span><span class="m-dot">✺</span>
-        <span><em>Cognitive</em> Systems</span><span class="m-dot">✺</span>
-        <span>Information Architecture</span><span class="m-dot">✺</span>
-        <span><em>Prototyping</em></span><span class="m-dot">✺</span>
-        <span>Usability Research</span><span class="m-dot">✺</span>
-        <span><em>Visual</em> Systems</span><span class="m-dot">✺</span>
-        <span>Interaction Design</span><span class="m-dot">✺</span>
-        <span><em>Cognitive</em> Systems</span><span class="m-dot">✺</span>
-        <span>Information Architecture</span><span class="m-dot">✺</span>
-        <span><em>Prototyping</em></span><span class="m-dot">✺</span>
-        <span>Usability Research</span><span class="m-dot">✺</span>
-        <span><em>Visual</em> Systems</span><span class="m-dot">✺</span>
-      </div>
-    </div>
-
     <!-- WORK -->
-    <section id="work" class="section">
-      <header class="section__head">
-        <span class="section__num">§01</span>
-        <h2 class="section__title">
-          Selected <em>Work</em>
-          <svg class="squiggle" viewBox="0 0 220 14" aria-hidden="true">
-            <path d="M2 8 Q 20 1, 38 8 T 74 8 T 110 8 T 146 8 T 182 8 T 218 8" />
-          </svg>
-        </h2>
-        <span class="section__meta">2024 — 26</span>
-      </header>
+    <section id="work" class="work">
+      <div class="work__head">
+        <span>Selected Work</span>
+        <span>2024 — 26</span>
+      </div>
 
-      <ol class="bento">
-        <li class="tile tile--lg" style="--tile-bg:#e9ecf2; --tile-ink:#2b4163">
-          <a href="#" class="tile__link">
-            <span class="tile__year" aria-hidden="true">26</span>
-            <div class="tile__art">
-              <svg viewBox="0 0 200 140" preserveAspectRatio="xMidYMid meet">
-                <g fill="none" stroke="currentColor" stroke-width="1">
-                  <rect x="40" y="30" width="120" height="80" rx="6"/>
-                  <line x1="40" y1="55" x2="160" y2="55"/>
-                  <line x1="62" y1="30" x2="62" y2="110"/>
-                  <circle cx="100" cy="82" r="14" fill="currentColor" fill-opacity="0.15"/>
-                  <circle cx="100" cy="82" r="3" fill="currentColor"/>
-                </g>
-              </svg>
-            </div>
-            <div class="tile__foot">
-              <div>
-                <h3 class="tile__title">Quiet Calendar</h3>
-                <p class="tile__tag">Interaction · iOS · Research</p>
-              </div>
-              <span class="tile__arrow" aria-hidden="true">→</span>
-            </div>
+      <ol class="index">
+        <li class="index__item" data-color="#2b4163">
+          <a href="#" class="index__row">
+            <span class="index__num">01</span>
+            <span class="index__title">Quiet Calendar</span>
+            <span class="index__disc">Interaction, iOS</span>
+            <span class="index__year">2026</span>
           </a>
         </li>
-
-        <li class="tile tile--sm" style="--tile-bg:#efe9e1; --tile-ink:#7a4a1e">
-          <a href="#" class="tile__link">
-            <span class="tile__year" aria-hidden="true">25</span>
-            <div class="tile__art">
-              <svg viewBox="0 0 160 160" preserveAspectRatio="xMidYMid meet">
-                <g fill="none" stroke="currentColor" stroke-width="1">
-                  <line x1="30" y1="40"  x2="130" y2="40"/>
-                  <line x1="30" y1="55"  x2="120" y2="55"/>
-                  <line x1="30" y1="70"  x2="130" y2="70"/>
-                  <line x1="30" y1="85"  x2="100" y2="85"/>
-                  <line x1="30" y1="100" x2="125" y2="100"/>
-                  <line x1="30" y1="115" x2="115" y2="115"/>
-                  <path d="M80 55 q -8 12, 4 24 q 12 12, 0 24" stroke-width="1.5"/>
-                </g>
-              </svg>
-            </div>
-            <div class="tile__foot">
-              <div>
-                <h3 class="tile__title">Margin</h3>
-                <p class="tile__tag">UX · Web · Type</p>
-              </div>
-              <span class="tile__arrow" aria-hidden="true">→</span>
-            </div>
+        <li class="index__item" data-color="#7a4a1e">
+          <a href="#" class="index__row">
+            <span class="index__num">02</span>
+            <span class="index__title">Margin</span>
+            <span class="index__disc">UX, Web, Type</span>
+            <span class="index__year">2025</span>
           </a>
         </li>
-
-        <li class="tile tile--wide" style="--tile-bg:#e6eae6; --tile-ink:#2e4a36">
-          <a href="#" class="tile__link">
-            <span class="tile__year" aria-hidden="true">25</span>
-            <div class="tile__art">
-              <svg viewBox="0 0 240 120" preserveAspectRatio="xMidYMid meet">
-                <g fill="currentColor">
-                  <circle cx="20" cy="60" r="1.5"/><circle cx="40" cy="60" r="1.5"/>
-                  <circle cx="60" cy="60" r="1.5"/><circle cx="80" cy="60" r="1.5"/>
-                  <circle cx="100" cy="60" r="1.5"/><circle cx="120" cy="60" r="1.5"/>
-                  <circle cx="140" cy="60" r="1.5"/><circle cx="160" cy="60" r="1.5"/>
-                  <circle cx="180" cy="60" r="1.5"/><circle cx="200" cy="60" r="1.5"/>
-                  <circle cx="220" cy="60" r="1.5"/>
-                </g>
-                <g fill="none" stroke="currentColor" stroke-width="1">
-                  <path d="M20 60 Q 80 20, 140 60 T 220 60"/>
-                  <path d="M20 60 Q 80 100, 140 60 T 220 60" stroke-opacity="0.35"/>
-                </g>
-              </svg>
-            </div>
-            <div class="tile__foot">
-              <div>
-                <h3 class="tile__title">Field Notes</h3>
-                <p class="tile__tag">HCI Research · Writing</p>
-              </div>
-              <span class="tile__arrow" aria-hidden="true">→</span>
-            </div>
+        <li class="index__item" data-color="#2e4a36">
+          <a href="#" class="index__row">
+            <span class="index__num">03</span>
+            <span class="index__title">Field Notes</span>
+            <span class="index__disc">HCI Research</span>
+            <span class="index__year">2025</span>
           </a>
         </li>
-
-        <li class="tile tile--md" style="--tile-bg:#eee6e6; --tile-ink:#7a2e2e">
-          <a href="#" class="tile__link">
-            <span class="tile__year" aria-hidden="true">24</span>
-            <div class="tile__art">
-              <svg viewBox="0 0 160 160" preserveAspectRatio="xMidYMid meet">
-                <g fill="none" stroke="currentColor" stroke-width="1">
-                  <circle cx="80" cy="80" r="50"/>
-                  <circle cx="80" cy="80" r="32"/>
-                  <circle cx="80" cy="80" r="14"/>
-                  <circle cx="80" cy="80" r="4" fill="currentColor"/>
-                </g>
-              </svg>
-            </div>
-            <div class="tile__foot">
-              <div>
-                <h3 class="tile__title">Soft Switch</h3>
-                <p class="tile__tag">Industrial · Prototype</p>
-              </div>
-              <span class="tile__arrow" aria-hidden="true">→</span>
-            </div>
+        <li class="index__item" data-color="#7a2e2e">
+          <a href="#" class="index__row">
+            <span class="index__num">04</span>
+            <span class="index__title">Soft Switch</span>
+            <span class="index__disc">Industrial, Prototype</span>
+            <span class="index__year">2024</span>
           </a>
         </li>
       </ol>
     </section>
 
     <!-- ABOUT -->
-    <section id="about" class="section">
-      <header class="section__head">
-        <span class="section__num">§02</span>
-        <h2 class="section__title">
-          <em>About</em>
-          <svg class="squiggle" viewBox="0 0 100 14" aria-hidden="true">
-            <path d="M2 8 Q 14 1, 26 8 T 50 8 T 74 8 T 98 8" />
-          </svg>
-        </h2>
-        <span class="section__meta">b. 20XX</span>
-      </header>
-
-      <div class="about">
-        <div class="about__lede">
-          <p>
-            I'm a design student working at the intersection of <em>UX</em>
-            and <em>Human–Computer Interaction</em>. I care about software
-            that respects your attention, and interfaces that feel obvious
-            in retrospect.
-          </p>
-          <p class="muted">
-            I keep a notebook of small interface ideas. Most of them don't
-            survive contact with prototyping. The ones that do end up here.
-          </p>
-        </div>
-
-        <dl class="about__list">
-          <div>
-            <dt>Currently</dt>
-            <dd>Studying UX + HCI</dd>
-          </div>
-          <div>
-            <dt>Reading</dt>
-            <dd>The Design of Everyday Things</dd>
-          </div>
-          <div>
-            <dt>Listening</dt>
-            <dd>Brian Eno · Music for Airports</dd>
-          </div>
-          <div>
-            <dt>Tools</dt>
-            <dd>Figma · Framer · Notion · Pen</dd>
-          </div>
-          <div>
-            <dt>Elsewhere</dt>
-            <dd>
-              <a href="#">LinkedIn ↗</a><br/>
-              <a href="#">GitHub ↗</a><br/>
-              <a href="#">Are.na ↗</a>
-            </dd>
-          </div>
-        </dl>
-      </div>
+    <section id="about" class="about">
+      <p class="about__lede">
+        I'm a design student working between <em>UX</em> and
+        <em>Human–Computer Interaction</em> — drawn to software that
+        respects your attention and feels obvious in retrospect.
+      </p>
+      <dl class="about__meta">
+        <div><dt>Focus</dt><dd>Interaction · Research · Systems</dd></div>
+        <div><dt>Tools</dt><dd>Figma · Framer · Notion · Pen</dd></div>
+      </dl>
     </section>
 
     <!-- CONTACT -->
-    <section id="contact" class="section section--contact">
-      <header class="section__head">
-        <span class="section__num">§03</span>
-        <h2 class="section__title">
-          Let's <em>talk</em>
-          <svg class="squiggle" viewBox="0 0 120 14" aria-hidden="true">
-            <path d="M2 8 Q 16 1, 30 8 T 60 8 T 90 8 T 118 8" />
-          </svg>
-        </h2>
-        <span class="section__meta">Open to work</span>
-      </header>
-
-      <div class="contact">
-        <p class="contact__pre">
-          Internships, collaborations, or just want to nerd
-          out about cognitive load — say hi.
-        </p>
-
-        <a class="magnet" href="mailto:owenchisan@gmail.com" data-magnet>
-          <span class="magnet__inner">
-            <span>owenchisan@gmail.com</span>
-            <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
-              <path d="M7 17L17 7M9 7h8v8" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-            </svg>
-          </span>
-        </a>
-
-        <p class="contact__post">
-          Or find me at the usual places —
-          <a href="#">LinkedIn</a>,
-          <a href="#">GitHub</a>,
-          <a href="#">Are.na</a>,
-          <a href="#">Read.cv</a>.
-        </p>
-      </div>
+    <section id="contact" class="contact">
+      <a class="contact__big" href="mailto:owenchisan@gmail.com">
+        owenchisan@gmail.com<em>↗</em>
+      </a>
+      <ul class="contact__links">
+        <li><a href="#">LinkedIn</a></li>
+        <li><a href="#">GitHub</a></li>
+        <li><a href="#">Are.na</a></li>
+      </ul>
     </section>
   </main>
 
-  <!-- footer with handwritten signature -->
   <footer class="foot">
-    <div class="foot__row">
-      <div class="foot__meta">
-        <span>© <span id="year">2026</span></span>
-        <span class="dot">·</span>
-        <span>Designed &amp; built by hand</span>
-        <span class="dot">·</span>
-        <span>v0.1</span>
-      </div>
-
-      <svg class="signature" viewBox="0 0 220 60" aria-label="Owen Chen signature">
-        <path d="M12 36 q 6 -22, 22 -22 q 16 0, 14 18 q -2 16, -18 18 q -10 1, -6 -10 q 6 -14, 22 -14 q 8 0, 6 12 M 60 22 q 6 -8, 14 -6 q 8 2, 4 12 q -4 8, -12 6 q -6 -2, -2 -8 q 4 -6, 14 -4 l 6 8 q -6 4, -10 0 M 102 14 q -2 18, 0 28 q 8 -16, 14 -22 q 4 -2, 4 4 q 0 10, 2 18 M 132 22 q 4 -8, 12 -6 q 6 2, 4 10 q -2 8, -10 8 q -8 0, -4 -8 q 4 -8, 14 -6 q 6 2, 6 8 M 168 8 q -4 26, 0 36 q 8 -18, 16 -22 q 4 -2, 4 6 q 0 10, 2 18"
-              fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-
-      <a href="#top" class="foot__top">Back to top ↑</a>
-    </div>
+    <span>© <span id="year">2026</span> Owen Chen</span>
+    <a href="#top">Top ↑</a>
   </footer>
 
   <script src="script.js"></script>
