@@ -1,8 +1,12 @@
 // Owen Chen — portfolio (minimal, multi-page)
 
+// Footer year
+const year = document.getElementById("year");
+if (year) year.textContent = new Date().getFullYear();
+
 // Reveal on scroll
 const revealTargets = document.querySelectorAll(
-  ".intro__image, .intro__text > *, .work__head, .card, .contact__big, .contact__links, .contact-page > *, .symbols, .foot__label"
+  ".intro__image, .intro__text > *, .work__head, .card, .contact__big, .contact__links, .contact-page > *"
 );
 revealTargets.forEach((el) => el.classList.add("reveal"));
 
