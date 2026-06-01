@@ -4,10 +4,10 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Owen Chen — UX & HCI Designer</title>
-  <meta name="description" content="Owen Chen is a UX & HCI design student exploring interaction, interface, and the space between people and software." />
+  <meta name="description" content="Owen Chen — UX & HCI design student exploring interaction and the future of human–software interfaces." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -15,8 +15,6 @@
     <a href="#top" class="nav__mark">Owen Chen</a>
     <nav class="nav__links">
       <a href="#work">Work</a>
-      <a href="#play">Play</a>
-      <a href="#about">About</a>
       <a href="#contact">Contact</a>
     </nav>
   </header>
@@ -41,205 +39,74 @@
           <span class="hero__value">Interaction · Research · Visual Systems</span>
         </div>
       </div>
-
-      <!-- horizon graphic -->
-      <div class="horizon" aria-hidden="true">
-        <svg viewBox="0 0 1600 240" preserveAspectRatio="none">
-          <defs>
-            <linearGradient id="fade" x1="0" x2="0" y1="0" y2="1">
-              <stop offset="0%" stop-color="#0a0a0a" stop-opacity="0"/>
-              <stop offset="100%" stop-color="#0a0a0a" stop-opacity="0.2"/>
-            </linearGradient>
-            <linearGradient id="hFade" x1="0" x2="1" y1="0" y2="0">
-              <stop offset="0%" stop-color="#0a0a0a" stop-opacity="0"/>
-              <stop offset="50%" stop-color="#0a0a0a" stop-opacity="0.25"/>
-              <stop offset="100%" stop-color="#0a0a0a" stop-opacity="0"/>
-            </linearGradient>
-          </defs>
-          <!-- horizon line -->
-          <line x1="0" y1="0" x2="1600" y2="0" stroke="url(#hFade)" stroke-width="1"/>
-          <!-- perspective lines -->
-          <g stroke="#0a0a0a" stroke-opacity="0.12" stroke-width="0.5" fill="none">
-            <line x1="0"    y1="240" x2="800" y2="0"/>
-            <line x1="200"  y1="240" x2="800" y2="0"/>
-            <line x1="400"  y1="240" x2="800" y2="0"/>
-            <line x1="600"  y1="240" x2="800" y2="0"/>
-            <line x1="800"  y1="240" x2="800" y2="0"/>
-            <line x1="1000" y1="240" x2="800" y2="0"/>
-            <line x1="1200" y1="240" x2="800" y2="0"/>
-            <line x1="1400" y1="240" x2="800" y2="0"/>
-            <line x1="1600" y1="240" x2="800" y2="0"/>
-          </g>
-          <!-- horizontal grid lines -->
-          <g stroke="#0a0a0a" stroke-opacity="0.1" stroke-width="0.5" fill="none">
-            <line x1="0" y1="40"  x2="1600" y2="40"/>
-            <line x1="0" y1="80"  x2="1600" y2="80"/>
-            <line x1="0" y1="130" x2="1600" y2="130"/>
-            <line x1="0" y1="190" x2="1600" y2="190"/>
-          </g>
-        </svg>
-      </div>
     </section>
 
     <!-- WORK -->
     <section id="work" class="work">
-      <div class="row">
-        <div class="row__label"><span>Selected Works</span></div>
-        <div class="row__body">
-          <ol class="grid">
+      <header class="work__head">
+        <span>Selected Works</span>
+        <span>2024 — 26</span>
+      </header>
 
-            <li class="card" style="--card-bg:#e9ecef">
-              <a href="#" class="card__link" aria-label="Open project">
-                <div class="card__visual">
-                  <div class="card__art card__art--1">
-                    <div class="art-grid"></div>
-                    <span class="art-mark">QC</span>
-                  </div>
-                  <span class="card__arrow" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" width="18" height="18">
-                      <path d="M7 17L17 7M9 7h8v8" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-                    </svg>
-                  </span>
-                </div>
-                <div class="card__foot">
-                  <h3 class="card__title">Quiet Calendar</h3>
-                  <p class="card__tag">Interaction, iOS</p>
-                </div>
-              </a>
-            </li>
-
-            <li class="card" style="--card-bg:#eee9e2">
-              <a href="#" class="card__link" aria-label="Open project">
-                <div class="card__visual">
-                  <div class="card__art card__art--2">
-                    <div class="art-lines"></div>
-                    <span class="art-mark">M.</span>
-                  </div>
-                  <span class="card__arrow" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" width="18" height="18">
-                      <path d="M7 17L17 7M9 7h8v8" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-                    </svg>
-                  </span>
-                </div>
-                <div class="card__foot">
-                  <h3 class="card__title">Margin</h3>
-                  <p class="card__tag">UX, Web, Type</p>
-                </div>
-              </a>
-            </li>
-
-            <li class="card" style="--card-bg:#e6e8eb">
-              <a href="#" class="card__link" aria-label="Open project">
-                <div class="card__visual">
-                  <div class="card__art card__art--3">
-                    <div class="art-dots"></div>
-                    <span class="art-mark">FN/</span>
-                  </div>
-                  <span class="card__arrow" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" width="18" height="18">
-                      <path d="M7 17L17 7M9 7h8v8" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-                    </svg>
-                  </span>
-                </div>
-                <div class="card__foot">
-                  <h3 class="card__title">Field Notes</h3>
-                  <p class="card__tag">HCI Research, Writing</p>
-                </div>
-              </a>
-            </li>
-
-            <li class="card" style="--card-bg:#eaeaea">
-              <a href="#" class="card__link" aria-label="Open project">
-                <div class="card__visual">
-                  <div class="card__art card__art--4">
-                    <div class="art-circle"></div>
-                    <span class="art-mark">SS</span>
-                  </div>
-                  <span class="card__arrow" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" width="18" height="18">
-                      <path d="M7 17L17 7M9 7h8v8" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-                    </svg>
-                  </span>
-                </div>
-                <div class="card__foot">
-                  <h3 class="card__title">Soft Switch</h3>
-                  <p class="card__tag">Industrial, Prototype</p>
-                </div>
-              </a>
-            </li>
-
-          </ol>
-        </div>
-      </div>
-    </section>
-
-    <!-- ABOUT -->
-    <section id="about" class="about">
-      <div class="row">
-        <div class="row__label"><span>Hi, I'm Owen</span></div>
-        <div class="row__body row__body--text">
-          <p>
-            I'm a design student focused on <em>UX</em> and <em>Human–Computer Interaction</em>.
-            I'm interested in how people think, click, and decide — and in software that
-            feels quiet and obvious in retrospect.
-          </p>
-          <p>
-            Outside of school I prototype small tools, read about cognitive science,
-            and notice the design of things that aren't supposed to be noticed.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- PLAY -->
-    <section id="play" class="play">
-      <div class="row">
-        <div class="row__label"><span>Play</span></div>
-        <div class="row__body row__body--text">
-          <p>
-            Small experiments, half-finished sketches, things I'm thinking about.
-            <a class="inline-link" href="#">Coming soon →</a>
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONNECT -->
-    <section id="contact" class="contact">
-      <div class="row">
-        <div class="row__label"><span>Let's connect</span></div>
-        <div class="row__body">
-          <a class="contact__big" href="mailto:owenchisan@gmail.com">
-            <span>owenchisan@gmail.com</span>
-            <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
-              <path d="M7 17L17 7M9 7h8v8" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-            </svg>
+      <ol class="grid">
+        <li class="card" style="--card-bg:#e9ecef">
+          <a href="#" class="card__link">
+            <div class="card__panel"></div>
+            <div class="card__foot">
+              <h3 class="card__title">Quiet Calendar</h3>
+              <p class="card__tag">Interaction · iOS · 2026</p>
+            </div>
           </a>
-          <ul class="contact__links">
-            <li><a href="#">LinkedIn</a></li>
-            <li><a href="#">GitHub</a></li>
-            <li><a href="#">Are.na</a></li>
-            <li><a href="#">Read.cv</a></li>
-          </ul>
-        </div>
-      </div>
+        </li>
+        <li class="card" style="--card-bg:#eee9e2">
+          <a href="#" class="card__link">
+            <div class="card__panel"></div>
+            <div class="card__foot">
+              <h3 class="card__title">Margin</h3>
+              <p class="card__tag">UX · Web · 2025</p>
+            </div>
+          </a>
+        </li>
+        <li class="card" style="--card-bg:#e6e8eb">
+          <a href="#" class="card__link">
+            <div class="card__panel"></div>
+            <div class="card__foot">
+              <h3 class="card__title">Field Notes</h3>
+              <p class="card__tag">HCI Research · 2025</p>
+            </div>
+          </a>
+        </li>
+        <li class="card" style="--card-bg:#eaeaea">
+          <a href="#" class="card__link">
+            <div class="card__panel"></div>
+            <div class="card__foot">
+              <h3 class="card__title">Soft Switch</h3>
+              <p class="card__tag">Industrial · 2024</p>
+            </div>
+          </a>
+        </li>
+      </ol>
+    </section>
 
-      <div class="row">
-        <div class="row__label"><span>Education</span></div>
-        <div class="row__body row__body--text">
-          <p>UX + HCI Design, in progress</p>
-          <p class="muted">Class of 20XX</p>
-        </div>
-      </div>
+    <!-- CONTACT -->
+    <section id="contact" class="contact">
+      <a class="contact__big" href="mailto:owenchisan@gmail.com">
+        owenchisan@gmail.com
+        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+          <path d="M7 17L17 7M9 7h8v8" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+        </svg>
+      </a>
+      <ul class="contact__links">
+        <li><a href="#">LinkedIn</a></li>
+        <li><a href="#">GitHub</a></li>
+        <li><a href="#">Are.na</a></li>
+      </ul>
     </section>
   </main>
 
   <footer class="foot">
-    <div class="foot__row">
-      <span>© <span id="year">2026</span> Owen Chen</span>
-      <span class="foot__mid">Designed &amp; built by Owen</span>
-      <a href="#top">Back to top ↑</a>
-    </div>
+    <span>© <span id="year">2026</span> Owen Chen</span>
+    <a href="#top">Back to top ↑</a>
   </footer>
 
   <script src="script.js"></script>
