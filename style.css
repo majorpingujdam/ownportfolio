@@ -85,12 +85,12 @@ em { font-style: italic; }
   align-items: center;
   gap: 1rem;
   position: sticky;
-  top: 7rem;
-  margin-top: 2.5rem;
+  top: 8rem;
+  margin-top: 4.5rem;
 }
 .intro__frame {
   width: 100%;
-  max-width: 260px;
+  max-width: 210px;
   aspect-ratio: 1 / 1;
   border-radius: 50%;
   background:
@@ -101,7 +101,7 @@ em { font-style: italic; }
 }
 .intro__image img {
   width: 100%;
-  max-width: 260px;
+  max-width: 210px;
   aspect-ratio: 1 / 1;
   object-fit: cover;
   border-radius: 50%;
