@@ -12,31 +12,31 @@
 </head>
 <body>
   <header class="nav">
-    <a href="#top" class="nav__mark">Owen Chen</a>
-    <nav class="nav__links">
-      <a href="#work">Work</a>
-      <a href="#contact">Contact</a>
+    <nav class="nav__links" data-spy>
+      <a href="#work">work</a>
+      <a href="#bio">bio</a>
+      <a href="#contact">contact</a>
     </nav>
   </header>
 
   <main id="top">
     <!-- HERO -->
     <section class="hero">
-      <p class="hero__kicker">Owen Chen is a</p>
+      <p class="hero__kicker">owen chen is a</p>
       <h1 class="hero__title">
         UX &amp; HCI design student exploring
-        <span class="accent">Interaction</span> and the future of
-        <span class="accent">human–software interfaces</span>.
+        <span class="accent-g">interaction</span> and the future of
+        <span class="accent-g">human–software interfaces</span>.
       </h1>
 
       <div class="hero__meta">
         <div class="hero__row">
-          <span class="hero__label">Currently</span>
-          <span class="hero__value">Studying UX + HCI Design</span>
+          <span class="hero__label">currently</span>
+          <span class="hero__value">studying UX + HCI design</span>
         </div>
         <div class="hero__row">
-          <span class="hero__label">Focus</span>
-          <span class="hero__value">Interaction · Research · Visual Systems</span>
+          <span class="hero__label">focus</span>
+          <span class="hero__value">interaction · research · visual systems</span>
         </div>
       </div>
     </section>
@@ -44,7 +44,7 @@
     <!-- WORK -->
     <section id="work" class="work">
       <header class="work__head">
-        <span>Selected Works</span>
+        <span>selected works</span>
         <span>2024 — 26</span>
       </header>
 
@@ -53,8 +53,8 @@
           <a href="#" class="card__link">
             <div class="card__panel"></div>
             <div class="card__foot">
-              <h3 class="card__title">Quiet Calendar</h3>
-              <p class="card__tag">Interaction · iOS · 2026</p>
+              <h3 class="card__title">quiet calendar</h3>
+              <p class="card__tag">interaction · iOS · 2026</p>
             </div>
           </a>
         </li>
@@ -62,8 +62,8 @@
           <a href="#" class="card__link">
             <div class="card__panel"></div>
             <div class="card__foot">
-              <h3 class="card__title">Margin</h3>
-              <p class="card__tag">UX · Web · 2025</p>
+              <h3 class="card__title">margin</h3>
+              <p class="card__tag">UX · web · 2025</p>
             </div>
           </a>
         </li>
@@ -71,8 +71,8 @@
           <a href="#" class="card__link">
             <div class="card__panel"></div>
             <div class="card__foot">
-              <h3 class="card__title">Field Notes</h3>
-              <p class="card__tag">HCI Research · 2025</p>
+              <h3 class="card__title">field notes</h3>
+              <p class="card__tag">HCI research · 2025</p>
             </div>
           </a>
         </li>
@@ -80,12 +80,50 @@
           <a href="#" class="card__link">
             <div class="card__panel"></div>
             <div class="card__foot">
-              <h3 class="card__title">Soft Switch</h3>
-              <p class="card__tag">Industrial · 2024</p>
+              <h3 class="card__title">soft switch</h3>
+              <p class="card__tag">industrial · 2024</p>
             </div>
           </a>
         </li>
       </ol>
+    </section>
+
+    <!-- BIO -->
+    <section id="bio" class="bio">
+      <div class="bio__image" aria-hidden="true">
+        <div class="bio__frame"></div>
+      </div>
+
+      <div class="bio__text">
+        <p>
+          <span class="lang">[english]</span>
+          <span class="name">Owen Chen</span> (b. 20XX) is a UX &amp; HCI design student
+          interested in the small space between people and the software they use. His
+          practice moves between interaction design, research, and visual systems —
+          studying how people think, click, and decide, and trying to design tools
+          that respect their attention.
+        </p>
+
+        <!-- squiggle + symbol divider -->
+        <div class="divider" aria-hidden="true">
+          <svg viewBox="0 0 400 16" preserveAspectRatio="none">
+            <path d="M0 8 q 8 -8, 16 0 t 16 0 t 16 0 t 16 0 t 16 0 t 16 0 t 16 0 t 16 0 t 16 0 t 16 0 t 16 0"
+                  fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
+          </svg>
+          <span class="divider__mark">✿</span>
+          <svg viewBox="0 0 400 16" preserveAspectRatio="none">
+            <path d="M0 8 q 8 -8, 16 0 t 16 0 t 16 0 t 16 0 t 16 0 t 16 0 t 16 0 t 16 0 t 16 0 t 16 0 t 16 0"
+                  fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
+          </svg>
+        </div>
+
+        <p>
+          <span class="lang">[notes]</span>
+          Outside of school he prototypes small tools, reads about cognitive science,
+          and notices the design of things that aren't supposed to be noticed. Always
+          half-thinking about a half-finished sketch.
+        </p>
+      </div>
     </section>
 
     <!-- CONTACT -->
@@ -97,16 +135,30 @@
         </svg>
       </a>
       <ul class="contact__links">
-        <li><a href="#">LinkedIn</a></li>
-        <li><a href="#">GitHub</a></li>
-        <li><a href="#">Are.na</a></li>
+        <li><a href="#">linkedin</a></li>
+        <li><a href="#">github</a></li>
+        <li><a href="#">are.na</a></li>
       </ul>
     </section>
   </main>
 
+  <!-- footer with tiny symbol row -->
   <footer class="foot">
-    <span>© <span id="year">2026</span> Owen Chen</span>
-    <a href="#top">Back to top ↑</a>
+    <div class="symbols" aria-hidden="true">
+      <!-- small inline SVG icons separated by little squiggles -->
+      <svg viewBox="0 0 24 8"><path d="M0 4 q 3 -4, 6 0 t 6 0 t 6 0 t 6 0" fill="none" stroke="currentColor" stroke-width="1"/></svg>
+      <svg viewBox="0 0 16 16"><path d="M8 2 q -5 4, 0 12 q 5 -8, 0 -12 z" fill="none" stroke="currentColor" stroke-width="1"/></svg>
+      <svg viewBox="0 0 24 8"><path d="M0 4 q 3 -4, 6 0 t 6 0 t 6 0 t 6 0" fill="none" stroke="currentColor" stroke-width="1"/></svg>
+      <svg viewBox="0 0 16 16"><path d="M8 4 q -4 0, -4 4 q 0 4, 4 4 M8 4 q 4 0, 4 4 q 0 4, -4 4 M8 4 v 8" fill="none" stroke="currentColor" stroke-width="1"/></svg>
+      <svg viewBox="0 0 24 8"><path d="M0 4 q 3 -4, 6 0 t 6 0 t 6 0 t 6 0" fill="none" stroke="currentColor" stroke-width="1"/></svg>
+      <svg viewBox="0 0 16 16"><path d="M8 14 c -4 -2, -6 -5, -4 -8 c 1 -2, 4 -2, 4 1 c 0 -3, 3 -3, 4 -1 c 2 3, 0 6, -4 8 z" fill="none" stroke="currentColor" stroke-width="1"/></svg>
+      <svg viewBox="0 0 24 8"><path d="M0 4 q 3 -4, 6 0 t 6 0 t 6 0 t 6 0" fill="none" stroke="currentColor" stroke-width="1"/></svg>
+      <svg viewBox="0 0 16 16"><path d="M3 9 q 5 -8, 10 0 M8 9 v 5" fill="none" stroke="currentColor" stroke-width="1"/></svg>
+      <svg viewBox="0 0 24 8"><path d="M0 4 q 3 -4, 6 0 t 6 0 t 6 0 t 6 0" fill="none" stroke="currentColor" stroke-width="1"/></svg>
+      <svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="5" fill="none" stroke="currentColor" stroke-width="1"/><circle cx="8" cy="8" r="1.5" fill="currentColor"/></svg>
+      <svg viewBox="0 0 24 8"><path d="M0 4 q 3 -4, 6 0 t 6 0 t 6 0 t 6 0" fill="none" stroke="currentColor" stroke-width="1"/></svg>
+    </div>
+    <span class="foot__label">currently studying</span>
   </footer>
 
   <script src="script.js"></script>
