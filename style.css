@@ -350,6 +350,9 @@ em { font-style: italic; }
   .work { padding-top: 6rem; }
   .grid { grid-template-columns: 1fr; }
 
+  .contact-page { padding-top: 7rem; }
+  .contact-page__list > div { grid-template-columns: 5.5rem 1fr; }
+
   .symbols svg { height: 12px; }
   .symbols svg:nth-child(odd) { height: 6px; }
   .foot { justify-content: flex-start; }
