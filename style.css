@@ -1,5 +1,6 @@
 /* ============================================
    Owen Chen — portfolio
+   Multi-page: home (bio) + work
    Airy · lowercase · quiet personality
    ============================================ */
 
@@ -12,7 +13,6 @@
 
   --green: #6db86d;
   --blue: #5a7af0;
-  --soft: #c9c2b3;
 
   --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
@@ -38,6 +38,7 @@ body {
 
 a { color: inherit; text-decoration: none; }
 img, svg { display: block; max-width: 100%; }
+em { font-style: italic; }
 ::selection { background: var(--ink); color: var(--bg); }
 
 /* ---------- Nav ---------- */
@@ -54,57 +55,130 @@ img, svg { display: block; max-width: 100%; }
   color: var(--ink-3);
 }
 .nav__links a {
-  position: relative;
   transition: color .3s var(--ease);
 }
 .nav__links a:hover { color: var(--ink); }
 .nav__links a.is-active { color: var(--blue); }
 
 /* ---------- Shared container ---------- */
-.hero, .work, .bio, .contact {
+.intro, .work, .contact {
   max-width: var(--maxw);
   margin: 0 auto;
   padding-left: var(--pad);
   padding-right: var(--pad);
 }
 
-/* ---------- Hero ---------- */
-.hero { padding-top: 10rem; padding-bottom: 6rem; }
-.hero__kicker {
-  font-family: var(--mono);
-  font-size: 0.85rem;
-  color: var(--ink-3);
-  margin-bottom: 1.5rem;
-  letter-spacing: 0.02em;
+/* ---------- Intro (home) ---------- */
+.intro {
+  padding-top: 8rem;
+  padding-bottom: 6rem;
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 5rem;
+  align-items: start;
 }
-.hero__title {
-  font-weight: 400;
-  font-size: clamp(1.75rem, 3.4vw, 3rem);
-  line-height: 1.3;
-  letter-spacing: -0.015em;
-  max-width: 28ch;
-  color: var(--ink);
-}
-.hero__title .accent-g { color: var(--green); }
 
-.hero__meta {
-  margin-top: 3.5rem;
+.intro__image {
+  position: relative;
+  aspect-ratio: 4 / 5;
   display: flex;
   flex-direction: column;
-  gap: 0.55rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.85rem;
+}
+.intro__frame {
+  width: 88%;
+  height: 88%;
+  background:
+    linear-gradient(135deg, #d4ddc8 0%, #c8d4b8 50%, #b8c4a8 100%);
+  border-radius: 4px;
+  transform: rotate(-2deg);
+  box-shadow:
+    0 1px 0 rgba(0,0,0,0.04),
+    0 20px 44px -18px rgba(0,0,0,0.18);
+}
+.intro__image img {
+  width: 88%;
+  height: 88%;
+  object-fit: cover;
+  border-radius: 4px;
+  transform: rotate(-2deg);
+  box-shadow:
+    0 1px 0 rgba(0,0,0,0.04),
+    0 20px 44px -18px rgba(0,0,0,0.18);
+}
+.intro__caption {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--ink-3);
+}
+
+.intro__text {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: var(--ink);
+  max-width: 56ch;
+  padding-top: 1rem;
+}
+.intro__text p { color: var(--ink); }
+.intro__text em {
+  font-style: italic;
+  color: var(--ink);
+}
+.lang {
+  color: var(--ink-3);
+  margin-right: 0.35rem;
+  font-family: var(--mono);
+  font-size: 0.85em;
+}
+.name {
+  color: var(--green);
+  font-weight: 500;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--ink-3);
+  padding: 0.4rem 0;
+}
+.divider svg { flex: 1; height: 14px; }
+.divider__mark {
+  font-size: 1rem;
+  color: var(--green);
+  line-height: 1;
+}
+
+.intro__meta {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
   font-size: 0.95rem;
 }
-.hero__row {
-  display: flex;
+.intro__meta > div {
+  display: grid;
+  grid-template-columns: 7rem 1fr;
   gap: 1rem;
-  align-items: baseline;
-  flex-wrap: wrap;
 }
-.hero__label { color: var(--ink-3); min-width: 6.5rem; }
-.hero__value { color: var(--ink); }
+.intro__meta dt { color: var(--ink-3); }
+.intro__meta dd { color: var(--ink); }
+.intro__meta dd a {
+  color: var(--blue);
+  transition: opacity .25s var(--ease);
+}
+.intro__meta dd a:hover { opacity: 0.7; }
 
-/* ---------- Work ---------- */
-.work { padding-top: 4rem; padding-bottom: 8rem; }
+/* ---------- Work page ---------- */
+.work {
+  padding-top: 8rem;
+  padding-bottom: 8rem;
+}
 .work__head {
   display: flex;
   justify-content: space-between;
@@ -138,70 +212,6 @@ img, svg { display: block; max-width: 100%; }
 }
 .card__link:hover .card__title { color: var(--blue); }
 .card__tag { font-size: 0.9rem; color: var(--ink-2); }
-
-/* ---------- Bio ---------- */
-.bio {
-  padding-top: 6rem;
-  padding-bottom: 8rem;
-  display: grid;
-  grid-template-columns: 1fr 1.4fr;
-  gap: 4rem;
-  align-items: start;
-}
-
-.bio__image {
-  position: relative;
-  aspect-ratio: 4 / 5;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.bio__frame {
-  width: 88%;
-  height: 88%;
-  background:
-    linear-gradient(135deg, #d4ddc8 0%, #c8d4b8 50%, #b8c4a8 100%);
-  border-radius: 4px;
-  transform: rotate(-2deg);
-  box-shadow:
-    0 1px 0 rgba(0,0,0,0.04),
-    0 18px 40px -16px rgba(0,0,0,0.15);
-}
-
-.bio__text {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  font-size: 1.0625rem;
-  line-height: 1.65;
-  color: var(--ink);
-  max-width: 56ch;
-}
-.bio__text .lang {
-  color: var(--ink-3);
-  margin-right: 0.35rem;
-}
-.bio__text .name {
-  color: var(--green);
-  font-weight: 500;
-}
-
-.divider {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  color: var(--ink-3);
-  padding: 0.5rem 0;
-}
-.divider svg {
-  flex: 1;
-  height: 14px;
-}
-.divider__mark {
-  font-size: 1rem;
-  color: var(--green);
-  line-height: 1;
-}
 
 /* ---------- Contact ---------- */
 .contact {
@@ -255,10 +265,7 @@ img, svg { display: block; max-width: 100%; }
   gap: 0.35rem;
   color: var(--ink-3);
 }
-.symbols svg {
-  height: 14px;
-  width: auto;
-}
+.symbols svg { height: 14px; width: auto; }
 .symbols svg:nth-child(odd) { height: 8px; opacity: 0.8; }
 .foot__label {
   font-size: 0.8rem;
@@ -275,12 +282,20 @@ img, svg { display: block; max-width: 100%; }
 
 /* ---------- Responsive ---------- */
 @media (max-width: 800px) {
-  .hero { padding-top: 7rem; }
-  .hero__title { max-width: none; }
-  .hero__label { min-width: 5.5rem; }
+  .intro {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    padding-top: 6rem;
+  }
+  .intro__image {
+    aspect-ratio: 4 / 3;
+    max-width: 320px;
+  }
+  .intro__meta > div { grid-template-columns: 5.5rem 1fr; }
+
+  .work { padding-top: 6rem; }
   .grid { grid-template-columns: 1fr; }
-  .bio { grid-template-columns: 1fr; gap: 2.5rem; }
-  .bio__image { aspect-ratio: 4 / 3; max-width: 320px; }
+
   .symbols svg { height: 12px; }
   .symbols svg:nth-child(odd) { height: 6px; }
   .foot { justify-content: flex-start; }
