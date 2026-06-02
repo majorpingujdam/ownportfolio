@@ -452,7 +452,7 @@ em { font-style: italic; }
 .project__meta dd { color: var(--ink); }
 
 .project__hero {
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
   border-radius: 14px;
   overflow: hidden;
   background: #f4f4f2;
@@ -460,6 +460,16 @@ em { font-style: italic; }
 .project__hero img {
   width: 100%;
   height: auto;
+  display: block;
+}
+
+.project__brand {
+  margin-bottom: 3rem;
+  padding: 0.5rem 0;
+}
+.project__brand img {
+  height: 64px;
+  width: auto;
   display: block;
 }
 
