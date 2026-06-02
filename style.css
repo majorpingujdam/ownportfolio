@@ -987,7 +987,7 @@ em { font-style: italic; }
 /* FACTS stat strip */
 .cs__facts {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 0.75rem;
   margin: 2rem 0 0;
   padding: 1.5rem 0;
