@@ -127,6 +127,30 @@ em { font-style: italic; }
   color: var(--ink-3);
 }
 
+.photo-toggle {
+  margin-top: 0.6rem;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--ink-3);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-color: var(--rule);
+  text-underline-offset: 4px;
+  transition: color .25s var(--ease), text-decoration-color .25s var(--ease);
+}
+.photo-toggle:hover {
+  color: var(--ink);
+  text-decoration-color: var(--ink-3);
+}
+
+.intro__image.is-hidden img {
+  display: none;
+}
+.intro__image.is-hidden .intro__caption-year { opacity: 0.4; }
+
 .intro__text {
   display: flex;
   flex-direction: column;
