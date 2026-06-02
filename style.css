@@ -13,6 +13,8 @@
 
   --green: #6db86d;
   --blue: #5a7af0;
+  --red: #d8451d;
+  --bg-soft: #f6f4ee;
 
   --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
@@ -650,6 +652,369 @@ em { font-style: italic; }
 
   .project { padding-top: 6rem; }
   .project__head { flex-direction: column; align-items: flex-start; gap: 1rem; }
+}
+
+/* ============================================
+   Case study (AiWalker · project sub-page)
+   Uses existing tokens; adds .cs__* classes only.
+   ============================================ */
+
+.cs__eyebrow {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--red);
+  margin-bottom: 0.5rem;
+}
+.cs__subtitle {
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  color: var(--ink-3);
+  margin-top: 0.5rem;
+}
+.cs__edition { color: var(--ink-3); }
+.cs__zh {
+  font-family: var(--sans);
+  color: var(--ink-2);
+  letter-spacing: 0;
+}
+
+/* numbered section heading */
+.cs {
+  margin-top: 5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--rule);
+}
+.cs__head {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 2rem;
+}
+.cs__num { color: var(--red); }
+.cs__label { color: var(--ink-3); }
+
+/* big display headline */
+.cs__display {
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  color: var(--ink);
+  max-width: 22ch;
+  margin-bottom: 2rem;
+}
+
+/* prose */
+.cs__prose {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: var(--ink-2);
+  max-width: 64ch;
+}
+.cs__prose strong { color: var(--ink); font-weight: 500; }
+.cs__prose em { font-style: italic; color: var(--ink); }
+
+/* numbered/bulleted list */
+.cs__list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+  max-width: 64ch;
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--ink-2);
+}
+.cs__list li {
+  position: relative;
+  padding-left: 1.25rem;
+}
+.cs__list li::before {
+  content: "—";
+  position: absolute;
+  left: 0;
+  color: var(--ink-3);
+}
+.cs__list strong { color: var(--ink); font-weight: 500; }
+
+/* sub-section (4.1, 4.2…) */
+.cs__sub {
+  margin-top: 2rem;
+  max-width: 64ch;
+}
+.cs__sub h3 {
+  font-family: var(--sans);
+  font-size: 1.05rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  margin-bottom: 0.6rem;
+}
+.cs__sub p {
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--ink-2);
+  margin-top: 0.5rem;
+}
+.cs__sub p strong { color: var(--ink); font-weight: 500; }
+.cs__sub p em { font-style: italic; color: var(--ink); }
+
+/* field-moment block (Mr. Du) */
+.cs__sub--field {
+  background: var(--bg-soft);
+  border-radius: 14px;
+  border-left: 3px solid var(--red);
+  padding: 1.75rem 1.75rem 1.5rem;
+  margin-top: 2.5rem;
+}
+.cs__field-label {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--red);
+  margin: 0 0 0.3rem !important;
+}
+.cs__field-name {
+  font-size: 1.5rem !important;
+  letter-spacing: -0.02em;
+}
+
+/* pull quote */
+.cs__quote {
+  margin: 1.5rem 0 2rem;
+  padding: 0 0 0 1.5rem;
+  border-left: 3px solid var(--red);
+  max-width: 56ch;
+}
+.cs__quote p {
+  font-size: clamp(1.05rem, 1.4vw, 1.25rem);
+  line-height: 1.5;
+  color: var(--ink);
+  font-weight: 400;
+}
+
+/* blueprint legend */
+.cs__legend {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  margin: 1rem 0 1.5rem;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: var(--ink-2);
+  padding: 0;
+}
+.cs__legend li { display: inline-flex; align-items: center; gap: 0.5rem; }
+.cs__sw {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  display: inline-block;
+}
+.cs__sw--blue   { background: var(--blue); }
+.cs__sw--red    { background: var(--red); }
+.cs__sw--green  { background: var(--green); }
+.cs__sw--dashed { background: transparent; border: 1px dashed var(--ink-2); }
+
+/* blueprint phases */
+.cs__bp {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+.cs__phase {
+  position: relative;
+  padding: 1.5rem;
+  border: 1px solid var(--rule);
+  border-radius: 14px;
+  background: var(--bg);
+}
+.cs__phase::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -10px;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--rule);
+}
+.cs__phase-tag {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink-3);
+  display: block;
+  margin-bottom: 0.6rem;
+}
+.cs__phase h3 {
+  font-family: var(--sans);
+  font-size: 1.35rem;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  margin-bottom: 0.5rem;
+  color: var(--ink);
+}
+.cs__phase p {
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--ink-2);
+}
+.cs__phase--hospital::after { background: var(--blue); }
+.cs__phase--home::after     { background: var(--green); }
+.cs__phase--break {
+  background: rgba(216, 69, 29, 0.045);
+  border-color: rgba(216, 69, 29, 0.4);
+}
+.cs__phase--break .cs__phase-tag { color: var(--red); }
+.cs__phase--break::after {
+  background: transparent;
+  height: 0;
+  border-top: 3px dashed var(--red);
+}
+
+/* dashed "design layer" beneath the blueprint */
+.cs__designlayer {
+  margin-top: 1.75rem;
+  border: 1px dashed var(--ink-3);
+  border-radius: 14px;
+  padding: 1.25rem 1.5rem 1.5rem;
+}
+.cs__designlayer-head {
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--red);
+  margin-bottom: 0.9rem;
+}
+.cs__chips {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.6rem;
+  padding: 0;
+}
+.cs__chips li {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding: 0.85rem 1rem;
+  background: var(--bg);
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+.cs__chips li span {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  font-weight: 400;
+  color: var(--ink-3);
+  letter-spacing: 0.06em;
+}
+
+/* intervention detail cards */
+.cs__cards {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+.cs__card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding: 1.5rem;
+  border: 1px solid var(--rule);
+  border-radius: 14px;
+  background: var(--bg);
+}
+.cs__card-num {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: var(--red);
+  letter-spacing: 0.04em;
+}
+.cs__card h3 {
+  font-family: var(--sans);
+  font-size: 1.2rem;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+}
+.cs__card-what {
+  font-size: 0.98rem;
+  line-height: 1.6;
+  color: var(--ink-2);
+}
+.cs__gap {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--ink-2);
+  margin-top: 0.4rem;
+  padding-top: 0.75rem;
+  border-top: 1px dashed var(--rule);
+}
+.cs__gap span {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ink-3);
+  margin-right: 0.4rem;
+}
+
+/* honest-framing note */
+.cs__note {
+  margin: 1.5rem 0;
+  padding: 1rem 1.25rem;
+  background: var(--bg-soft);
+  border-radius: 10px;
+  font-size: 0.94rem;
+  line-height: 1.55;
+  color: var(--ink-2);
+  max-width: 64ch;
+}
+.cs__note em { font-style: italic; color: var(--ink); }
+
+/* company footer */
+.cs__company {
+  margin-top: 5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--rule);
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: var(--ink-3);
+  text-align: center;
+}
+
+/* responsive */
+@media (max-width: 800px) {
+  .cs { margin-top: 3.5rem; padding-top: 1.25rem; }
+  .cs__bp { grid-template-columns: 1fr; gap: 1.25rem; margin-bottom: 0.5rem; }
+  .cs__chips { grid-template-columns: 1fr 1fr; }
+  .cs__cards { grid-template-columns: 1fr; }
+  .cs__phase::after { display: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -3,11 +3,11 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>AiWalker — Owen Chen</title>
-  <meta name="description" content="Owen Chen — AiWalker case study. Product design for AI-robotics healthcare." />
+  <title>AiWalker — Clinic-to-Home Continuity-of-Care Service Design · Owen Chen</title>
+  <meta name="description" content="AiWalker — a clinic-to-home continuity-of-care service blueprint for a lower-limb rehabilitation exoskeleton. Service design case study at Beijing Ai-Robotics by Owen Chen." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../style.css" />
 </head>
 <body data-page="project">
@@ -24,54 +24,399 @@
       <a href="../work.html" class="project__back">← back to work</a>
 
       <header class="project__head">
-        <h1 class="project__title">AiWalker</h1>
+        <div>
+          <p class="cs__eyebrow">Case study</p>
+          <h1 class="project__title">AiWalker</h1>
+          <p class="cs__subtitle">
+            AiWalker — lower-limb rehabilitation exoskeleton
+            <span class="cs__edition">· Beijing 2022 Olympic torch-relay edition</span>
+          </p>
+        </div>
         <dl class="project__meta">
           <div><dt>role</dt><dd>Product Service Design Assistant</dd></div>
+          <div><dt>company</dt><dd>Beijing Ai-Robotics <span class="cs__zh">北京大艾机器人</span></dd></div>
           <div><dt>year</dt><dd>2025</dd></div>
-          <div><dt>type</dt><dd>Product · Healthcare</dd></div>
+          <div><dt>type</dt><dd>Product · Healthcare · Service Design</dd></div>
         </dl>
       </header>
 
+      <!-- HERO IMAGE: replace ../work-2.jpg with the product render when ready -->
       <figure class="project__hero">
-        <img src="../work-2.jpg" alt="AiWalker product image" />
+        <img src="../work-2.jpg" alt="AiWalker lower-limb rehabilitation exoskeleton" />
       </figure>
 
       <div class="project__brand">
-        <img src="../work-2-logo.png" alt="AI-robotics Technology Co., Ltd" />
+        <img src="../work-2-logo.png" alt="Beijing Ai-Robotics" />
       </div>
 
-      <section class="project__body">
-        <p class="project__lede">
-          Product service design for AI-robotics — a rehabilitation device company
-          rethinking how patients regain mobility after injury or surgery.
-        </p>
+      <!-- 01 OVERVIEW -->
+      <section class="cs">
+        <header class="cs__head">
+          <span class="cs__num">01</span>
+          <span class="cs__label">Overview</span>
+        </header>
 
-        <h2>Context</h2>
-        <p>
-          AI-robotics builds robotic walking aids for stroke and post-surgery
-          rehabilitation. The company needed help understanding how their
-          existing product was actually used — and where the experience was
-          quietly breaking down for patients and clinicians.
-        </p>
+        <h2 class="cs__display">
+          Reframing a rehabilitation exoskeleton's core gap —
+          from hardware performance to service continuity.
+        </h2>
 
-        <h2>Approach</h2>
-        <p>
-          Published user-survey questionnaires and collected backend feedback
-          from 103 users across different regions, then synthesized the
-          patterns into a small set of priority frictions. Managed the UI and
-          error reporting for the company's main site — resolving bugs and
-          testing UX logic. In parallel, conducted competitive research on
-          20+ comparable rehabilitation devices and enterprises to position
-          the product against the broader market.
-        </p>
-
-        <h2>Outcome</h2>
-        <p>
-          A clearer picture of how AiWalker is actually used in clinical and
-          home settings, a tightened web experience with fewer error states,
-          and a competitive landscape map the team uses for product planning.
-        </p>
+        <div class="cs__prose">
+          <p>
+            At <strong>Beijing Ai-Robotics Technology Co., Ltd. <span class="cs__zh">(北京大艾机器人)</span></strong>,
+            I worked across user research and service design. By combining a
+            103-user multi-region study, a benchmark of 20+ comparable
+            rehabilitation devices, and the company's own site-error data, I
+            shifted the team's definition of AiWalker's most critical unmet
+            need — away from <em>"which hardware feature to add next"</em>
+            and toward <em>"how to sustain a patient's rehab once they leave
+            the clinic and continue at home."</em>
+          </p>
+          <p>
+            The output: a <strong>clinic-to-home continuity-of-care service
+            blueprint</strong> and four service touchpoints designed to close
+            that gap.
+          </p>
+        </div>
       </section>
+
+      <!-- 02 COMPANY & CONTEXT -->
+      <section class="cs">
+        <header class="cs__head">
+          <span class="cs__num">02</span>
+          <span class="cs__label">Company &amp; Context</span>
+        </header>
+
+        <h2 class="cs__display">
+          A device built for the clinic, increasingly used at home.
+        </h2>
+
+        <div class="cs__prose">
+          <p>
+            <strong>Beijing Ai-Robotics <span class="cs__zh">(北京大艾机器人)</span></strong>
+            develops lower-limb rehabilitation exoskeletons. Its AiWalker
+            line spans the full recovery arc — early in-hospital, medical
+            and dual-foot types, home and walk-assist types, plus a
+            pediatric model — serving patients with spinal-cord injury,
+            stroke, and cerebral palsy. The company has supported more than
+            240,000 patients and supplied the exoskeleton for the 2022
+            Beijing Winter Olympics torch relay.
+          </p>
+          <p>
+            As tiered diagnosis and <strong>home-based rehabilitation</strong>
+            become policy and market trends, these devices are migrating
+            from a professional clinical setting into everyday home life.
+            That migration hides a critical shift: the device's real
+            operator changes from a trained physical therapist to a family
+            member with no medical background. That tension is exactly what
+            this project set out to solve.
+          </p>
+        </div>
+      </section>
+
+      <!-- 03 MY ROLE -->
+      <section class="cs">
+        <header class="cs__head">
+          <span class="cs__num">03</span>
+          <span class="cs__label">My Role</span>
+        </header>
+
+        <h2 class="cs__display">
+          User-side research and service-design output.
+        </h2>
+
+        <div class="cs__prose">
+          <p>
+            I worked in the <strong>Product &amp; User Research Group</strong>
+            as a Product Service Design Assistant, reporting to the Product
+            Lead. My day-to-day fell into three streams — at first separate,
+            but ultimately converging into a single line of inquiry:
+          </p>
+        </div>
+
+        <ul class="cs__list">
+          <li>
+            <strong>User research.</strong> Published survey questionnaires
+            to 103 users across different regions and collected backend
+            feedback, quantifying real experience and drop-off at each
+            stage of the rehabilitation journey.
+          </li>
+          <li>
+            <strong>Product experience &amp; feedback system.</strong> Owned
+            the company's main site UI and error-reporting system —
+            resolving bugs, testing UX logic, and maintaining the
+            error/feedback data.
+          </li>
+          <li>
+            <strong>Competitive &amp; market research.</strong> Benchmarked
+            20+ comparable rehabilitation devices and companies to inform
+            the product's service positioning.
+          </li>
+        </ul>
+      </section>
+
+      <!-- 04 RESEARCH -->
+      <section class="cs">
+        <header class="cs__head">
+          <span class="cs__num">04</span>
+          <span class="cs__label">Research</span>
+        </header>
+
+        <h2 class="cs__display">
+          Three streams of evidence pointed to the same gap.
+        </h2>
+
+        <div class="cs__sub">
+          <h3>4.1 &nbsp; Multi-region user study (103 users)</h3>
+          <p>
+            The cross-region detail matters in China, where rehab access
+            differs sharply between tier-1 hospitals and everywhere else.
+            Split by stage, a counter-intuitive finding emerged: drop-off
+            peaks not during therapist-supervised in-clinic use, but
+            <strong>at the discharge handoff</strong> — when patients go home
+            to continue on their own. The hardware was fine; many households
+            stopped using it within weeks.
+          </p>
+        </div>
+
+        <div class="cs__sub">
+          <h3>4.2 &nbsp; Competitive analysis (20+ devices)</h3>
+          <p>
+            After reviewing 20-plus competitors, a clear white space appeared:
+            nearly everyone competes on hardware specs — torque, weight,
+            motors, gait algorithms — and almost no one competes on the
+            <strong>service wrapper</strong>: handoff training, remote
+            support, caregiver enablement. The industry had pinned its
+            entire competition on hardware, while the service layer that
+            actually determines whether home rehab continues sat unclaimed.
+          </p>
+        </div>
+
+        <div class="cs__sub">
+          <h3>4.3 &nbsp; Site experience &amp; error data</h3>
+          <p>
+            Because I also owned the main site UI and error system, I
+            reframed the error logs as a <strong>behavioral signal</strong>:
+            where users get stuck online and in the workflow often mirrors
+            where they get stuck in the real rehabilitation journey. The
+            site is also the first touchpoint families reach when making a
+            purchase decision or looking for help. Layered onto the user
+            study, this live stream of friction data made the research
+            considerably more credible.
+          </p>
+        </div>
+
+        <div class="cs__sub cs__sub--field">
+          <p class="cs__field-label">4.4 &nbsp; Field moment</p>
+          <h3 class="cs__field-name">Mr. Du</h3>
+          <p>
+            What truly clarified the problem was an elderly patient named
+            <strong>Mr. Du</strong>. In the hospital, with a therapist beside
+            him to set up and operate the device, he could use it fluently.
+            But back home, facing the same interface alone, he could no
+            longer use it at all.
+          </p>
+          <p>
+            The device had not changed — what never transferred was the
+            <em>therapist's operating knowledge</em>. In that moment I
+            realized we were not solving an interface problem; we were
+            solving a <strong>broken-service problem</strong>.
+          </p>
+        </div>
+      </section>
+
+      <!-- 05 INSIGHT -->
+      <section class="cs">
+        <header class="cs__head">
+          <span class="cs__num">05</span>
+          <span class="cs__label">The Insight</span>
+        </header>
+
+        <h2 class="cs__display">
+          Information asymmetry at the handoff.
+        </h2>
+
+        <blockquote class="cs__quote">
+          <p>
+            The therapist holds the device's operating knowledge; the patient
+            and family do not. In the hospital this asymmetry is invisible —
+            the therapist is always present, silently filling the missing
+            knowledge. But once home rehab begins and the therapist steps
+            away, the knowledge gap surfaces immediately, and the device
+            goes unused.
+          </p>
+        </blockquote>
+
+        <div class="cs__prose">
+          <p>
+            So the problem was redefined: AiWalker's core gap is not in the
+            hardware, but in <strong>service continuity</strong> across the
+            clinic-to-home handoff. That became the design entry point for
+            the entire solution.
+          </p>
+        </div>
+      </section>
+
+      <!-- 06 SERVICE BLUEPRINT -->
+      <section class="cs">
+        <header class="cs__head">
+          <span class="cs__num">06</span>
+          <span class="cs__label">Service Blueprint</span>
+        </header>
+
+        <h2 class="cs__display">
+          Re-connecting the journey at the break point.
+        </h2>
+
+        <ul class="cs__legend" aria-label="Legend">
+          <li><span class="cs__sw cs__sw--blue"></span>Hospital</li>
+          <li><span class="cs__sw cs__sw--red"></span>Handoff · break point</li>
+          <li><span class="cs__sw cs__sw--green"></span>Home</li>
+          <li><span class="cs__sw cs__sw--dashed"></span>Design layer</li>
+        </ul>
+
+        <div class="cs__bp">
+          <div class="cs__phase cs__phase--hospital">
+            <span class="cs__phase-tag">Hospital</span>
+            <h3>Therapist-led</h3>
+            <p>Therapist sets up &amp; operates the device. Full guidance on hand.</p>
+          </div>
+          <div class="cs__phase cs__phase--break">
+            <span class="cs__phase-tag">Break point</span>
+            <h3>Handoff</h3>
+            <p>Operating knowledge doesn't transfer with the device. Information gap.</p>
+          </div>
+          <div class="cs__phase cs__phase--home">
+            <span class="cs__phase-tag">Home</span>
+            <h3>Caregiver-led</h3>
+            <p>Family faces the interface alone. No help present.</p>
+          </div>
+        </div>
+
+        <div class="cs__designlayer">
+          <p class="cs__designlayer-head">
+            My service interventions · bridging the handoff
+          </p>
+          <ol class="cs__chips">
+            <li><span>01</span>Caregiver onboarding</li>
+            <li><span>02</span>Simplified home-mode UI</li>
+            <li><span>03</span>Remote tele-rehab check-in</li>
+            <li><span>04</span>Error loop → therapist</li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- 07 INTERVENTIONS -->
+      <section class="cs">
+        <header class="cs__head">
+          <span class="cs__num">07</span>
+          <span class="cs__label">Interventions</span>
+        </header>
+
+        <h2 class="cs__display">
+          Four touchpoints, each closing a specific information gap.
+        </h2>
+
+        <ol class="cs__cards">
+          <li class="cs__card">
+            <span class="cs__card-num">01</span>
+            <h3>Caregiver onboarding</h3>
+            <p class="cs__card-what">
+              A structured discharge handoff session plus a quick-reference
+              card, so the family systematically inherits the operating
+              knowledge the therapist holds.
+            </p>
+            <p class="cs__gap"><span>Info gap closed</span> The knowledge gap between therapist and family.</p>
+          </li>
+          <li class="cs__card">
+            <span class="cs__card-num">02</span>
+            <h3>Simplified home-mode UI</h3>
+            <p class="cs__card-what">
+              A stripped-down interface for unsupervised home use — the
+              direct fix for the "Mr. Du" problem: an interface that worked
+              beside a therapist, made usable by one person alone.
+            </p>
+            <p class="cs__gap"><span>Info gap closed</span> The gap between clinical complexity and caregiver ability.</p>
+          </li>
+          <li class="cs__card">
+            <span class="cs__card-num">03</span>
+            <h3>Remote tele-rehab check-in</h3>
+            <p class="cs__card-what">
+              Scheduled remote follow-ups after discharge keep the therapist
+              in the loop instead of severing the relationship at the
+              hospital door.
+            </p>
+            <p class="cs__gap"><span>Info gap closed</span> The loss of ongoing professional guidance after discharge.</p>
+          </li>
+          <li class="cs__card">
+            <span class="cs__card-num">04</span>
+            <h3>Error-feedback loop → therapist</h3>
+            <p class="cs__card-what">
+              Repurposing the site/error system I owned, so real friction
+              from home use flows back to the clinician instead of dying in
+              a backend log.
+            </p>
+            <p class="cs__gap"><span>Info gap closed</span> The gap that keeps user struggles from reaching the professional.</p>
+          </li>
+        </ol>
+      </section>
+
+      <!-- 08 OUTCOME & REFLECTION -->
+      <section class="cs">
+        <header class="cs__head">
+          <span class="cs__num">08</span>
+          <span class="cs__label">Outcome &amp; Reflection</span>
+        </header>
+
+        <h2 class="cs__display">
+          From "what feature next?" to "how do we keep care continuous?"
+        </h2>
+
+        <div class="cs__prose">
+          <p>
+            I delivered the complete first-hand research (the 103-user
+            multi-region study, the 20+ competitor benchmark, and the site
+            error-data analysis) and, on that basis, produced the
+            clinic-to-home continuity-of-care blueprint and the
+            four-touchpoint proposal. The most direct impact was
+            <strong>reframing the internal conversation</strong> — moving the
+            team's focus from "what hardware feature to add in the next
+            version" to "how to keep care continuous at home," turning a
+            problem treated as hardware into a service-design problem.
+          </p>
+        </div>
+
+        <p class="cs__note">
+          <em>Note:</em> the blueprint and four touchpoints are my design
+          synthesis and proposal based on the research, and can be stated
+          honestly as <em>"research delivered, blueprint proposed."</em>
+        </p>
+
+        <div class="cs__prose">
+          <p>
+            This experience confirmed my direction as a healthcare service
+            designer. I increasingly believe that many problems in healthcare
+            that look like "the product failed" are really
+            <strong>"the service didn't catch the person"</strong>:
+            information asymmetry between roles, amplified at a handoff,
+            landing on the most vulnerable user. The Mr. Du moment and the
+            through-line of my work since — removing information asymmetry
+            between parties — are one and the same.
+          </p>
+          <p>
+            It also echoes my design philosophy: <em>bridge disciplines,
+            embrace cultures, restore dignity</em>. Good service design ends
+            with one outcome — an elderly man, alone at home, able to use
+            the technology meant to help him, with dignity and without
+            depending on anyone else.
+          </p>
+        </div>
+      </section>
+
+      <footer class="cs__company">
+        Beijing Ai-Robotics Technology Co., Ltd.
+        <span class="cs__zh">· 北京大艾机器人科技有限公司</span>
+      </footer>
     </article>
   </main>
 
