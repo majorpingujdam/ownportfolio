@@ -4,27 +4,6 @@
 const year = document.getElementById("year");
 if (year) year.textContent = new Date().getFullYear();
 
-// Profile photo show/hide toggle (bio page)
-(() => {
-  const btn = document.querySelector(".photo-toggle");
-  const imgWrap = document.querySelector(".intro__image");
-  if (!btn || !imgWrap) return;
-
-  const KEY = "owen.photo.hidden";
-  const apply = (hidden) => {
-    imgWrap.classList.toggle("is-hidden", hidden);
-    btn.textContent = hidden ? "show photo" : "hide photo";
-    btn.setAttribute("aria-pressed", String(hidden));
-  };
-
-  apply(localStorage.getItem(KEY) === "1");
-
-  btn.addEventListener("click", () => {
-    const next = !imgWrap.classList.contains("is-hidden");
-    apply(next);
-    try { localStorage.setItem(KEY, next ? "1" : "0"); } catch {}
-  });
-})();
 
 // Reveal on scroll
 const revealTargets = document.querySelectorAll(
