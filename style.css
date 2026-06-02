@@ -501,6 +501,7 @@ em { font-style: italic; }
 .foot__label { color: var(--ink-3); }
 .foot__top {
   color: var(--ink-3);
+  margin-left: auto;
   transition: color .25s var(--ease);
 }
 .foot__top:hover { color: var(--ink); }
