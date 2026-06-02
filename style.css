@@ -500,6 +500,12 @@ em { font-style: italic; }
   color: var(--ink-3);
 }
 .foot__label { color: var(--ink-3); }
+.foot__contact {
+  color: var(--ink-3);
+  transition: color .25s var(--ease);
+}
+.foot__contact:hover { color: var(--ink); }
+.foot__contact.is-active { color: var(--blue); }
 .foot__top {
   color: var(--ink-3);
   margin-left: auto;
