@@ -984,6 +984,195 @@ em { font-style: italic; }
   margin-right: 0.4rem;
 }
 
+/* FACTS stat strip */
+.cs__facts {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.75rem;
+  margin: 2rem 0 0;
+  padding: 1.5rem 0;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+.cs__facts > div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: var(--ink-2);
+}
+.cs__facts > div span {
+  font-size: 2.25rem;
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  color: var(--ink);
+  line-height: 1;
+}
+
+/* Single lede sentence (§01) */
+.cs__lede-single {
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: var(--ink-2);
+  max-width: 60ch;
+  margin-bottom: 1.25rem;
+}
+
+/* Deliverables arrow list (§01) */
+.cs__deliver {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  font-family: var(--mono);
+  font-size: 0.86rem;
+  color: var(--ink-2);
+}
+.cs__deliver li {
+  position: relative;
+  padding-left: 1.2rem;
+}
+.cs__deliver li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: var(--red);
+}
+
+/* Tight bullet list (§02 company) */
+.cs__bullets {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  max-width: 64ch;
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--ink-2);
+}
+.cs__bullets li {
+  position: relative;
+  padding-left: 1.25rem;
+}
+.cs__bullets li::before {
+  content: "—";
+  position: absolute;
+  left: 0;
+  color: var(--ink-3);
+}
+
+/* Role responsibility rows (§03) */
+.cs__role {
+  display: flex;
+  flex-direction: column;
+  margin-top: 0.5rem;
+  max-width: 64ch;
+}
+.cs__role-row {
+  display: grid;
+  grid-template-columns: 10.5rem 1fr;
+  gap: 1.5rem;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid var(--rule);
+  font-size: 0.98rem;
+  line-height: 1.55;
+  color: var(--ink-2);
+  align-items: baseline;
+}
+.cs__role-row:first-child { border-top: 1px solid var(--rule); }
+.cs__role-label {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ink-3);
+}
+
+/* Research finding cards (§04) */
+.cs__finds {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+.cs__find {
+  padding: 1.5rem;
+  border: 1px solid var(--rule);
+  border-radius: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.cs__find-num {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--red);
+}
+.cs__find h3 {
+  font-family: var(--sans);
+  font-size: 1.05rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+.cs__find p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--ink-2);
+}
+
+/* Single line after pull quote (§05) */
+.cs__one-line {
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--ink-2);
+  max-width: 60ch;
+  margin-top: 0.25rem;
+}
+.cs__one-line strong { color: var(--ink); font-weight: 500; }
+
+/* Before → After boxes (§08) */
+.cs__ba {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+.cs__ba-box {
+  padding: 1.5rem;
+  border-radius: 14px;
+  border: 1px solid var(--rule);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.cs__ba-box--before { background: var(--bg-soft); }
+.cs__ba-box--after {
+  background: rgba(109, 184, 109, 0.06);
+  border-color: rgba(109, 184, 109, 0.3);
+}
+.cs__ba-label {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink-3);
+}
+.cs__ba-box--after .cs__ba-label { color: var(--green); }
+.cs__ba-box p {
+  font-size: 1.05rem;
+  font-weight: 500;
+  line-height: 1.45;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+
 /* honest-framing note */
 .cs__note {
   margin: 1.5rem 0;
@@ -1015,6 +1204,10 @@ em { font-style: italic; }
   .cs__chips { grid-template-columns: 1fr 1fr; }
   .cs__cards { grid-template-columns: 1fr; }
   .cs__phase::after { display: none; }
+  .cs__facts { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+  .cs__finds { grid-template-columns: 1fr; }
+  .cs__ba { grid-template-columns: 1fr; }
+  .cs__role-row { grid-template-columns: 1fr; gap: 0.2rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {
