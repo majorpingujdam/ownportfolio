@@ -207,7 +207,8 @@ em { font-style: italic; }
 .card__panel img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
+  object-position: center;
   display: block;
   transition: transform .6s var(--ease);
 }
