@@ -78,7 +78,7 @@
       const H = stage.clientHeight || 600;
       const DPR = Math.min(window.devicePixelRatio || 1, 2);
 
-      const UNIT = Math.min(W, H) / 6;   // base block height
+      const UNIT = Math.min(Math.min(W, H) / 11, 56);   // base block height
 
       // Engine
       const engine = Engine.create();
