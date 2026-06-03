@@ -1228,6 +1228,130 @@ em { font-style: italic; }
   text-align: center;
 }
 
+/* Process loop (IKEA · §04) */
+.cs__loop {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr auto 1fr;
+  gap: 0.75rem;
+  align-items: center;
+  margin-top: 1.5rem;
+}
+.cs__loop-step {
+  padding: 1.5rem;
+  border: 1px solid var(--rule);
+  border-radius: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.cs__loop-num {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--red);
+}
+.cs__loop-step h3 {
+  font-family: var(--sans);
+  font-size: 1.05rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+.cs__loop-step p {
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: var(--ink-2);
+}
+.cs__loop-arrow {
+  font-size: 1.1rem;
+  color: var(--ink-3);
+  text-align: center;
+  padding: 0 0.1rem;
+  flex-shrink: 0;
+}
+.cs__loop-feedback {
+  margin-top: 0.85rem;
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.04em;
+  color: var(--red);
+  text-align: right;
+}
+
+/* Insight toggle (IKEA · §05) */
+.cs__toggle {
+  margin-top: 1.5rem;
+  cursor: pointer;
+  max-width: 64ch;
+  user-select: none;
+}
+.cs__toggle-face {
+  padding: 1.5rem;
+  border: 1px solid var(--rule);
+  border-radius: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  background: var(--bg);
+  transition: background .3s var(--ease), border-color .3s var(--ease);
+}
+.cs__toggle-face--gap {
+  background: rgba(0, 88, 163, 0.05);
+  border-color: rgba(0, 88, 163, 0.22);
+}
+.cs__toggle-label {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--red);
+}
+.cs__toggle-face p {
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--ink-2);
+  font-style: italic;
+}
+.cs__toggle-btn {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: var(--red);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  text-align: left;
+  transition: opacity .2s var(--ease);
+  margin-top: 0.25rem;
+}
+.cs__toggle-btn:hover { opacity: 0.6; }
+
+/* IKEA outcome "after" box */
+.cs__ba-box--ikea {
+  padding: 1.5rem;
+  border-radius: 14px;
+  border: 1px solid rgba(0, 88, 163, 0.25);
+  background: rgba(0, 88, 163, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.cs__ba-label--ikea {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #0058a3;
+}
+.cs__ba-box--ikea p {
+  font-size: 1.05rem;
+  font-weight: 500;
+  line-height: 1.45;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+
 /* responsive */
 @media (max-width: 800px) {
   .cs { margin-top: 3.5rem; padding-top: 1.25rem; }
@@ -1239,6 +1363,8 @@ em { font-style: italic; }
   .cs__finds { grid-template-columns: 1fr; }
   .cs__ba { grid-template-columns: 1fr; }
   .cs__role-row { grid-template-columns: 1fr; gap: 0.2rem; }
+  .cs__loop { grid-template-columns: 1fr; gap: 1rem; }
+  .cs__loop-arrow { display: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {

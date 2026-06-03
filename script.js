@@ -4,6 +4,21 @@
 const year = document.getElementById("year");
 if (year) year.textContent = new Date().getFullYear();
 
+// IKEA insight toggle (project-3)
+const toggle = document.getElementById("insight-toggle");
+if (toggle) {
+  const intent = toggle.querySelector(".cs__toggle-face--intent");
+  const gap    = toggle.querySelector(".cs__toggle-face--gap");
+  const flip = () => {
+    intent.hidden = !intent.hidden;
+    gap.hidden    = !gap.hidden;
+  };
+  toggle.addEventListener("click", flip);
+  toggle.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" || e.key === " ") { e.preventDefault(); flip(); }
+  });
+}
+
 // Work page category filter
 const workFilter = document.getElementById("work-filter");
 if (workFilter) {
