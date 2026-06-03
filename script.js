@@ -1,13 +1,17 @@
 // Owen Chen — portfolio
 
-// ── Custom cursor (blend-mode inversion blob) ───────────────────
-const blob = document.createElement("div");
-blob.className = "cursor-blob";
-document.body.appendChild(blob);
+// ── Custom cursor (thin ring + dot) ────────────────────────────
+const cursorOuter = document.createElement("div");
+cursorOuter.className = "cursor-outer";
+const cursorInner = document.createElement("div");
+cursorInner.className = "cursor-inner";
+document.body.append(cursorOuter, cursorInner);
 
 document.addEventListener("mousemove", e => {
-  blob.style.left = e.clientX + "px";
-  blob.style.top  = e.clientY + "px";
+  cursorOuter.style.left = e.clientX + "px";
+  cursorOuter.style.top  = e.clientY + "px";
+  cursorInner.style.left = e.clientX + "px";
+  cursorInner.style.top  = e.clientY + "px";
   document.body.classList.add("cursor-ready");
 });
 document.addEventListener("mouseleave", () => document.body.classList.remove("cursor-ready"));
@@ -33,7 +37,7 @@ if (filterItems.length) {
       item.classList.add("is-selected");
       const val = item.dataset.val;
       if (filterCurrent) {
-        filterCurrent.textContent = val === "all" ? "all projects" : val;
+        filterCurrent.textContent = val === "all" ? "Key Labels" : val;
       }
       document.querySelectorAll(".grid .card").forEach(card => {
         const match = val === "all" || card.dataset.category === val;
