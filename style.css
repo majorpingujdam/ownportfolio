@@ -311,43 +311,15 @@ body[data-page="landing"] {
 .landing {
   flex: 1;
   display: flex;
-  flex-direction: column;
+  align-items: center;
   justify-content: center;
   padding: 0 clamp(2rem, 6vw, 6rem);
-  gap: 3.5rem;
 }
 .landing__name {
-  font-size: clamp(3.5rem, 9vw, 8rem);
-  font-weight: 500;
-  letter-spacing: -0.045em;
-  line-height: 0.92;
-  color: var(--ink);
-}
-.landing__sub {
+  font-size: 0.85rem;
   font-family: var(--mono);
-  font-size: 0.82rem;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.04em;
   color: var(--ink-3);
-  margin-top: -2.5rem; /* pull up close under the name */
-}
-.landing__nav {
-  display: flex;
-  flex-direction: column;
-}
-.landing__link {
-  display: block;
-  font-size: clamp(1.75rem, 4.5vw, 3.25rem);
-  font-weight: 500;
-  letter-spacing: -0.03em;
-  color: var(--ink-3);
-  padding: 0.55rem 0;
-  border-bottom: 1px solid var(--rule);
-  transition: color .2s var(--ease), padding-left .2s var(--ease);
-}
-.landing__link:first-child { border-top: 1px solid var(--rule); }
-.landing__link:hover {
-  color: var(--ink);
-  padding-left: 0.4rem;
 }
 
 /* ---------- Resume ---------- */
