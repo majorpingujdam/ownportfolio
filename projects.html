@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Projects — Owen Chen</title>
+  <meta name="description" content="Selected projects by Owen Chen, UX & HCI design student." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-page="work">
+  <header class="nav">
+    <nav class="nav__links">
+      <a href="projects.html" class="is-active">projects</a>
+      <a href="bio.html">bio</a>
+      <a href="resume.html">resume</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="work">
+      <header class="work__head">
+        <div class="work__filter">
+          <button class="work__filter-btn" aria-haspopup="listbox">
+            <span class="work__filter-current">Key Labels</span>
+            <span class="work__filter-icon">↓</span>
+          </button>
+          <ul class="work__filter-menu" role="listbox">
+            <li class="work__filter-item is-selected" data-val="all">All</li>
+            <li class="work__filter-item" data-val="internship">Internship</li>
+            <li class="work__filter-item" data-val="product">Product</li>
+          </ul>
+        </div>
+      </header>
+
+      <ol class="grid">
+        <li class="card" data-category="product">
+          <a href="work/project-1.html" class="card__link">
+            <div class="card__panel">
+              <img src="work-1.jpg" alt="Dosage-Pal" />
+            </div>
+            <div class="card__foot">
+              <h3 class="card__title">Dosage-Pal</h3>
+              <p class="card__tag">Product</p>
+            </div>
+          </a>
+        </li>
+        <li class="card" data-category="internship">
+          <a href="work/project-2.html" class="card__link">
+            <div class="card__panel">
+              <img src="work-2.jpg" alt="AiWalker" />
+            </div>
+            <div class="card__foot">
+              <h3 class="card__title">AiWalker</h3>
+              <p class="card__tag">Internship · Healthcare</p>
+            </div>
+          </a>
+        </li>
+        <li class="card" data-category="internship">
+          <a href="work/project-3.html" class="card__link">
+            <div class="card__panel">
+              <img src="work-3.jpg" alt="IKEA Visual Merchandising" />
+            </div>
+            <div class="card__foot">
+              <h3 class="card__title">IKEA Visual Merchandising</h3>
+              <p class="card__tag">Internship · Retail</p>
+            </div>
+          </a>
+        </li>
+      </ol>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <a href="contact.html" class="foot__contact">contact ↗</a>
+    <a href="#top" class="foot__top">top ↑</a>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

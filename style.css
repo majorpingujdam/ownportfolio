@@ -268,13 +268,13 @@ em { font-style: italic; }
 .grid {
   list-style: none;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.25rem;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
 }
 .card__link { display: flex; flex-direction: column; gap: 0.9rem; }
 .card__panel {
   position: relative;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 16 / 8;
   background: var(--card-bg, #f4f4f2);
   border-radius: 14px;
   overflow: hidden;
@@ -301,6 +301,61 @@ em { font-style: italic; }
 }
 .card__link:hover .card__title { color: var(--blue); }
 .card__tag { font-size: 0.9rem; color: var(--ink-2); }
+
+/* ---------- Landing page ---------- */
+.landing {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 0 var(--pad);
+}
+.landing__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+.landing__name {
+  font-size: clamp(3.5rem, 9vw, 8rem);
+  font-weight: 500;
+  letter-spacing: -0.045em;
+  line-height: 0.95;
+  color: var(--ink);
+}
+.landing__role {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  color: var(--ink-3);
+  margin-top: 1rem;
+}
+.landing__nav {
+  display: flex;
+  flex-direction: column;
+}
+.landing__link {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: clamp(1.75rem, 4.5vw, 3.25rem);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  color: var(--ink-3);
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--rule);
+  transition: color .2s var(--ease);
+}
+.landing__link:first-child { border-top: 1px solid var(--rule); }
+.landing__link:hover { color: var(--ink); }
+.landing__arrow {
+  font-size: 0.55em;
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: opacity .2s var(--ease), transform .3s var(--ease);
+}
+.landing__link:hover .landing__arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
 
 /* ---------- Resume ---------- */
 .resume {
@@ -739,7 +794,6 @@ em { font-style: italic; }
 
   .work { padding-top: 6rem; grid-template-columns: 1fr; }
   .work__head { position: static; margin-bottom: 2rem; }
-  .grid { grid-template-columns: 1fr; }
 
   .contact-page { padding-top: 7rem; }
   .contact-page__list > div { grid-template-columns: 5.5rem 1fr; }
