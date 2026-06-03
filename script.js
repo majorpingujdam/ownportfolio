@@ -1,5 +1,26 @@
 // Owen Chen — portfolio
 
+// ── Minimal dot cursor ─────────────────────────────────────────
+const dot = document.createElement("div");
+dot.className = "cursor-dot";
+document.body.appendChild(dot);
+
+document.addEventListener("mousemove", e => {
+  dot.style.left = e.clientX + "px";
+  dot.style.top  = e.clientY + "px";
+  document.body.classList.add("cursor-ready");
+});
+document.addEventListener("mouseleave", () => document.body.classList.remove("cursor-ready"));
+document.addEventListener("mouseenter", () => document.body.classList.add("cursor-ready"));
+
+["a", "button", "[role='button']", ".cs__toggle", ".work__filter-item", ".card__link"].forEach(sel => {
+  document.querySelectorAll(sel).forEach(el => {
+    el.addEventListener("mouseenter", () => document.body.classList.add("cursor-active"));
+    el.addEventListener("mouseleave", () => document.body.classList.remove("cursor-active"));
+  });
+});
+
+
 // ── Projects filter dropdown (hover + 6s stay-open) ─────────────
 const filterItems   = document.querySelectorAll(".work__filter-item");
 const filterCurrent = document.querySelector(".work__filter-current");

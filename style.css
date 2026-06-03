@@ -689,10 +689,29 @@ em { font-style: italic; }
 
 /* ---------- Custom cursor ---------- */
 @media (hover: hover) {
-  * {
-    cursor: url('cursor.svg') 6 6, auto !important;
+  * { cursor: none !important; }
+
+  .cursor-dot {
+    position: fixed;
+    top: 0; left: 0;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--ink);
+    pointer-events: none;
+    z-index: 99999;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity .25s var(--ease), transform .12s var(--ease),
+                background .2s var(--ease);
+    will-change: left, top;
+  }
+  body.cursor-ready .cursor-dot { opacity: 1; }
+  body.cursor-active .cursor-dot {
+    transform: translate(-50%, -50%) scale(1.8);
+    background: var(--blue);
   }
 }
+@media (hover: none) { .cursor-dot { display: none; } }
 
 /* ---------- Reveal ---------- */
 .reveal {
