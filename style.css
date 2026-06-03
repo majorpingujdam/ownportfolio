@@ -226,7 +226,7 @@ em { font-style: italic; }
 .work__filter-menu {
   position: absolute;
   top: calc(100% + 14px);
-  left: -10px;
+  left: -80px;
   list-style: none !important;
   padding: 5px;
   margin: 0;
