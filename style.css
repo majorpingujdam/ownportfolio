@@ -181,6 +181,7 @@ em { font-style: italic; }
 .work {
   padding-top: 8rem;
   padding-bottom: 8rem;
+  padding-left: 0.75rem;
   display: grid;
   grid-template-columns: 130px 1fr;
   gap: 0 3rem;

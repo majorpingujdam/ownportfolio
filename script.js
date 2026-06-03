@@ -45,7 +45,9 @@ if (filterItems.length) {
       item.classList.add("is-selected");
       const val = item.dataset.val;
       if (filterCurrent) {
-        filterCurrent.textContent = val === "all" ? "Key Labels" : val;
+        filterCurrent.textContent = val === "all"
+            ? "Key Labels"
+            : val.charAt(0).toUpperCase() + val.slice(1);
       }
       document.querySelectorAll(".grid .card").forEach(card => {
         const match = val === "all" || card.dataset.category === val;
