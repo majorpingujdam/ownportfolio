@@ -13,6 +13,7 @@
 <body data-page="landing">
 
   <header class="nav">
+    <a href="index.html" class="nav__home is-active">main</a>
     <nav class="nav__links">
       <a href="projects.html">projects</a>
       <a href="bio.html">bio</a>
@@ -45,84 +46,78 @@
     var stage = document.getElementById('physics-stage');
     if (!stage || typeof Matter === 'undefined') return;
 
-    var INK  = '#1a1a1a';
-    var RED  = '#d8451d';
-    var BLUE = '#5a7af0';
-    var BG   = '#edeae2';
+    /* read actual CSS-rendered size */
+    var rect = stage.getBoundingClientRect();
+    var W    = Math.max(Math.round(rect.width),  320);
+    var H    = Math.max(Math.round(rect.height), 280);
+    var UNIT = Math.min(W, H) / 9;
 
-    var BLOCKS = [
-      { t: '2',       c: INK  },
-      { t: '0',       c: INK  },
-      { t: '2',       c: RED  },
-      { t: '6',       c: RED  },
-      { t: 'UX',      c: BLUE },
-      { t: 'HCI',     c: INK  },
-      { t: 'SERVICE', c: INK  },
-      { t: 'DESIGN',  c: INK  },
-    ];
+    var CANVAS_BG = '#2b4acb';   /* deep blue */
+    var WHITE     = '#ffffff';
+    var DARK      = '#1a1a1a';
 
-    var W = 360, H = 320;   /* fixed canvas size — matches CSS */
-    var UNIT = 44;
+    /* individual characters — "2026 DESIGN" */
+    var CHARS = ['2','0','2','6','D','E','S','I','G','N'];
 
-    var Engine = Matter.Engine,
-        Render = Matter.Render,
-        Runner = Matter.Runner,
-        Bodies = Matter.Bodies,
-        Body   = Matter.Body,
-        Composite = Matter.Composite,
-        Events = Matter.Events;
+    var Engine    = Matter.Engine;
+    var Render    = Matter.Render;
+    var Runner    = Matter.Runner;
+    var Bodies    = Matter.Bodies;
+    var Body      = Matter.Body;
+    var Composite = Matter.Composite;
+    var Events    = Matter.Events;
 
-    var engine = Engine.create();
-    engine.gravity.y = 1.2;
+    var engine       = Engine.create();
+    engine.gravity.y = 0.9;
 
     var render = Render.create({
       element: stage,
-      engine: engine,
+      engine:  engine,
       options: {
-        width: W, height: H,
+        width:      W,
+        height:     H,
         wireframes: false,
-        background: BG,
+        background: CANVAS_BG,
       }
     });
 
-    /* size the canvas explicitly in CSS so it matches the container */
-    render.canvas.style.width  = W + 'px';
-    render.canvas.style.height = H + 'px';
+    render.canvas.style.width   = W + 'px';
+    render.canvas.style.height  = H + 'px';
     render.canvas.style.display = 'block';
 
     /* invisible walls */
-    var wo = { isStatic: true, render: { fillStyle: 'transparent' } };
-    var floor = Bodies.rectangle(W/2, H + 30, W + 200, 60, wo);
-    var wallL = Bodies.rectangle(-30,  H/2,   60, H*4,  wo);
-    var wallR = Bodies.rectangle(W+30, H/2,   60, H*4,  wo);
+    var wo    = { isStatic: true, render: { fillStyle: 'transparent' } };
+    var floor = Bodies.rectangle(W/2,   H + 30,  W + 200, 60, wo);
+    var wallL = Bodies.rectangle(-30,   H/2,     60, H*4,  wo);
+    var wallR = Bodies.rectangle(W + 30, H/2,    60, H*4,  wo);
 
-    /* letter bodies — stagger drop positions */
-    var bodies = BLOCKS.map(function(b, i) {
-      var cLen = b.t.length;
-      var bW = UNIT * (0.9 + cLen * 0.2);
-      var bH = UNIT * 0.82;
-      var cols = 4;
-      var col = i % cols;
-      var row = Math.floor(i / cols);
-      var x = W * 0.12 + col * (W * 0.22) + (Math.random() - 0.5) * 20;
-      var y = -bH * 1.5 - row * (bH + 10) - Math.random() * 30;
+    /* letter tiles — 5 columns, 2 rows */
+    var COLS = 5;
+    var bodies = CHARS.map(function(ch, i) {
+      var bW  = UNIT * 1.12;
+      var bH  = UNIT * 0.82;
+      var col = i % COLS;
+      var row = Math.floor(i / COLS);
+      var x   = W * 0.1 + col * (W * 0.8 / (COLS - 1)) + (Math.random() - 0.5) * 16;
+      var y   = -bH * 1.5 - row * (bH + 14) - Math.random() * 50;
 
       var body = Bodies.rectangle(x, y, bW, bH, {
-        restitution: 0.28,
-        friction:    0.45,
-        frictionAir: 0.016,
-        label: b.t,
-        render: { fillStyle: b.c }
+        restitution: 0.22,
+        friction:    0.52,
+        frictionAir: 0.018,
+        label:       ch,
+        render:      { fillStyle: WHITE }
       });
-      body._w = bW;
-      body._h = bH;
-      body._c = b.c;
+      body._w    = bW;
+      body._h    = bH;
+      body._fill = WHITE;
+      body._text = DARK;
       return body;
     });
 
     Composite.add(engine.world, [floor, wallL, wallR].concat(bodies));
 
-    /* hover repulsion — no drag needed */
+    /* hover repulsion */
     var mx = -999, my = -999;
     render.canvas.addEventListener('mousemove', function(e) {
       var r = render.canvas.getBoundingClientRect();
@@ -131,27 +126,27 @@
     });
     render.canvas.addEventListener('mouseleave', function() { mx = -999; my = -999; });
 
-    var REPEL = 85;
+    var REPEL = 95;
     Events.on(engine, 'beforeUpdate', function() {
       bodies.forEach(function(b) {
         var dx = b.position.x - mx;
         var dy = b.position.y - my;
         var d2 = dx*dx + dy*dy;
         if (d2 < REPEL*REPEL && d2 > 1) {
-          var d  = Math.sqrt(d2);
-          var str = ((REPEL - d) / REPEL) * 0.006;
+          var d   = Math.sqrt(d2);
+          var str = ((REPEL - d) / REPEL) * 0.008;
           Body.applyForce(b, b.position, { x: (dx/d)*str, y: (dy/d)*str });
         }
       });
     });
 
-    /* custom render — rounded blocks + white labels */
+    /* custom render — rounded white tiles + dark text */
     Events.on(render, 'afterRender', function() {
       var ctx = render.context;
-      var r = 8;
+      var r   = 10;
       bodies.forEach(function(body) {
-        var x = body.position.x, y = body.position.y;
-        var a = body.angle;
+        var x  = body.position.x, y = body.position.y;
+        var a  = body.angle;
         var bW = body._w, bH = body._h;
 
         ctx.save();
@@ -160,25 +155,27 @@
 
         var x0 = -bW/2, y0 = -bH/2;
         ctx.beginPath();
-        ctx.moveTo(x0+r, y0);
-        ctx.lineTo(x0+bW-r, y0);
-        ctx.quadraticCurveTo(x0+bW, y0, x0+bW, y0+r);
-        ctx.lineTo(x0+bW, y0+bH-r);
+        ctx.moveTo(x0+r,     y0);
+        ctx.lineTo(x0+bW-r,  y0);
+        ctx.quadraticCurveTo(x0+bW, y0,    x0+bW, y0+r);
+        ctx.lineTo(x0+bW,    y0+bH-r);
         ctx.quadraticCurveTo(x0+bW, y0+bH, x0+bW-r, y0+bH);
-        ctx.lineTo(x0+r, y0+bH);
-        ctx.quadraticCurveTo(x0, y0+bH, x0, y0+bH-r);
-        ctx.lineTo(x0, y0+r);
-        ctx.quadraticCurveTo(x0, y0, x0+r, y0);
+        ctx.lineTo(x0+r,     y0+bH);
+        ctx.quadraticCurveTo(x0,    y0+bH, x0,    y0+bH-r);
+        ctx.lineTo(x0,       y0+r);
+        ctx.quadraticCurveTo(x0,    y0,    x0+r,  y0);
         ctx.closePath();
-        ctx.fillStyle = body._c;
+
+        ctx.fillStyle = body._fill;
         ctx.fill();
 
-        var fs = bH * 0.38;
-        ctx.fillStyle = '#ffffff';
-        ctx.font = '600 ' + fs + 'px Inter,-apple-system,sans-serif';
-        ctx.textAlign = 'center';
+        var fs = bH * 0.52;
+        ctx.fillStyle    = body._text;
+        ctx.font         = '700 ' + fs + 'px Inter,-apple-system,sans-serif';
+        ctx.textAlign    = 'center';
         ctx.textBaseline = 'middle';
         ctx.fillText(body.label, 0, 1);
+
         ctx.restore();
       });
     });
