@@ -3,65 +3,73 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Owen Chen — UX & HCI Designer</title>
-  <meta name="description" content="Owen Chen — designer & technologist working between human-centered design and emerging technology." />
+  <title>Projects — Owen Chen</title>
+  <meta name="description" content="Selected projects by Owen Chen, UX & HCI design student." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
-<body data-page="home">
+<body data-page="work">
   <header class="nav">
     <nav class="nav__links">
-      <a href="work.html">work</a>
-      <a href="index.html" class="is-active">bio</a>
+      <a href="index.html" class="is-active">projects</a>
+      <a href="bio.html">bio</a>
       <a href="resume.html">resume</a>
     </nav>
   </header>
 
   <main id="top">
-    <section id="bio" class="intro">
-      <div class="intro__image">
-        <!-- profile photo hidden for now — swap the frame div below for <img src="profile.jpg.jpg" alt="Owen Chen" /> when ready -->
-        <div class="intro__frame"></div>
-        <span class="intro__caption">
-          <span class="intro__caption-name">owen chen</span>
-          <span class="intro__caption-year">· 2026</span>
-        </span>
-      </div>
+    <section class="work">
+      <header class="work__head">
+        <div class="work__filter">
+          <button class="work__filter-btn" aria-haspopup="listbox">
+            <span class="work__filter-current">all projects</span>
+            <span class="work__filter-icon">↓</span>
+          </button>
+          <ul class="work__filter-menu" role="listbox">
+            <li class="work__filter-item is-selected" data-val="all">all</li>
+            <li class="work__filter-item" data-val="internship">internship</li>
+            <li class="work__filter-item" data-val="product">product</li>
+          </ul>
+        </div>
+      </header>
 
-      <div class="intro__text">
-        <p>
-          I'm a designer and technologist who works at the intersection of
-          <em>human-centered design</em> and <em>emerging technology</em>.
-          Having grown up across Japan, China, and the United States, I've
-          always been drawn to the spaces between disciplines and cultures
-          — and to the idea that good design should bridge those gaps rather
-          than widen them. My work tends to start with people: the small
-          frictions, overlooked needs, and moments of disconnect that
-          technology can either deepen or quietly resolve. I care most about
-          creating things that restore a sense of <em>dignity and clarity</em>
-          to the people who use them.
-        </p>
-
-        <p>
-          My curiosity runs across <em>design, finance, artificial intelligence,
-          art, and history</em> — fields that, on the surface, seem unrelated, but
-          that I find deeply intertwined. I'm fascinated by how markets and
-          emerging technologies reshape the way people live and make
-          decisions, and equally by how art and history reveal the human
-          patterns underneath that change. I see these interests less as
-          separate hobbies than as different lenses on the same question:
-          how systems — economic, technological, cultural — shape human
-          experience, and how thoughtful design can make those systems more
-          legible, more humane, and more worth trusting.
-        </p>
-
-        <dl class="intro__meta">
-          <div><dt>currently</dt><dd>Studying in Northwestern EDI</dd></div>
-          <div><dt>focus</dt><dd>UX, Product Design, HCI, Human-Centered Services, Healthcare</dd></div>
-        </dl>
-      </div>
+      <ol class="grid">
+        <li class="card" data-category="product">
+          <a href="work/project-1.html" class="card__link">
+            <div class="card__panel">
+              <img src="work-1.jpg" alt="Dosage-Pal" />
+            </div>
+            <div class="card__foot">
+              <h3 class="card__title">Dosage-Pal</h3>
+              <p class="card__tag">Product</p>
+            </div>
+          </a>
+        </li>
+        <li class="card" data-category="internship">
+          <a href="work/project-2.html" class="card__link">
+            <div class="card__panel">
+              <img src="work-2.jpg" alt="AiWalker" />
+            </div>
+            <div class="card__foot">
+              <h3 class="card__title">AiWalker</h3>
+              <p class="card__tag">Internship · Healthcare</p>
+            </div>
+          </a>
+        </li>
+        <li class="card" data-category="internship">
+          <a href="work/project-3.html" class="card__link">
+            <div class="card__panel">
+              <img src="work-3.jpg" alt="IKEA Visual Merchandising" />
+            </div>
+            <div class="card__foot">
+              <h3 class="card__title">IKEA Visual Merchandising</h3>
+              <p class="card__tag">Internship · Retail</p>
+            </div>
+          </a>
+        </li>
+      </ol>
     </section>
   </main>
 
