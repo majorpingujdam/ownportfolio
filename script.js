@@ -4,6 +4,20 @@
 const year = document.getElementById("year");
 if (year) year.textContent = new Date().getFullYear();
 
+// Work page category filter
+const workFilter = document.getElementById("work-filter");
+if (workFilter) {
+  workFilter.addEventListener("change", () => {
+    const val = workFilter.value;
+    document.querySelectorAll(".grid .card").forEach((card) => {
+      const match = val === "all" || card.dataset.category === val;
+      card.style.opacity = match ? "" : "0";
+      card.style.pointerEvents = match ? "" : "none";
+      card.style.display = match ? "" : "none";
+    });
+  });
+}
+
 
 // Reveal on scroll
 const revealTargets = document.querySelectorAll(

@@ -192,6 +192,37 @@ em { font-style: italic; }
   margin-bottom: 2rem;
 }
 
+.work__filter {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+.work__filter-select {
+  appearance: none;
+  -webkit-appearance: none;
+  background: transparent;
+  border: none;
+  padding: 0 1.25rem 0 0;
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  color: var(--ink-3);
+  cursor: pointer;
+  outline: none;
+  transition: color .25s var(--ease);
+}
+.work__filter-select:focus,
+.work__filter-select:hover { color: var(--ink); }
+.work__filter::after {
+  content: "↓";
+  position: absolute;
+  right: 0;
+  font-size: 0.72rem;
+  color: var(--ink-3);
+  pointer-events: none;
+  transition: color .25s var(--ease);
+}
+.work__filter:hover::after { color: var(--ink); }
+
 .grid {
   list-style: none;
   display: grid;

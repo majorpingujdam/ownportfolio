@@ -22,12 +22,17 @@
   <main id="top">
     <section class="work">
       <header class="work__head">
-        <span>selected works</span>
-        <span>2024 — 26</span>
+        <div class="work__filter">
+          <select id="work-filter" class="work__filter-select">
+            <option value="all">selected works</option>
+            <option value="internship">internship</option>
+            <option value="product">product</option>
+          </select>
+        </div>
       </header>
 
       <ol class="grid">
-        <li class="card">
+        <li class="card" data-category="product">
           <a href="work/project-1.html" class="card__link">
             <div class="card__panel">
               <img src="work-1.jpg" alt="Dosage-Pal" />
@@ -38,34 +43,25 @@
             </div>
           </a>
         </li>
-        <li class="card">
+        <li class="card" data-category="internship">
           <a href="work/project-2.html" class="card__link">
             <div class="card__panel">
               <img src="work-2.jpg" alt="AiWalker" />
             </div>
             <div class="card__foot">
               <h3 class="card__title">AiWalker</h3>
-              <p class="card__tag">Product, Healthcare</p>
+              <p class="card__tag">Internship · Healthcare</p>
             </div>
           </a>
         </li>
-        <li class="card">
+        <li class="card" data-category="internship">
           <a href="work/project-3.html" class="card__link">
             <div class="card__panel">
               <img src="work-3.jpg" alt="IKEA Visual Merchandising" />
             </div>
             <div class="card__foot">
               <h3 class="card__title">IKEA Visual Merchandising</h3>
-              <p class="card__tag">Retail · Service Design</p>
-            </div>
-          </a>
-        </li>
-        <li class="card" style="--card-bg:#eaeaea">
-          <a href="#" class="card__link">
-            <div class="card__panel"></div>
-            <div class="card__foot">
-              <h3 class="card__title">soft switch</h3>
-              <p class="card__tag">industrial · 2024</p>
+              <p class="card__tag">Internship · Retail</p>
             </div>
           </a>
         </li>
