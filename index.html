@@ -25,14 +25,6 @@
     <div class="landing__left">
       <p class="landing__name">Owen Chen</p>
 
-      <div class="landing__arrow">
-        <svg viewBox="0 0 110 110" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M12 12 L88 88 M88 52 L88 88 L52 88"
-                stroke="#1a1a1a" stroke-width="20"
-                stroke-linecap="square" stroke-linejoin="miter"/>
-        </svg>
-      </div>
-
       <div class="landing__tags">
         <div class="landing__tag-row">#UX &nbsp;&nbsp; #HCI</div>
         <div class="landing__tag-row">#Service &nbsp;&nbsp; #Research</div>
@@ -42,7 +34,9 @@
     </div>
 
     <!-- Physics canvas panel -->
-    <div class="landing__right" id="physics-stage"></div>
+    <div class="landing__right">
+      <div id="physics-stage"></div>
+    </div>
 
   </main>
 
@@ -53,13 +47,11 @@
     const stage = document.getElementById('physics-stage');
     if (!stage || typeof Matter === 'undefined') return;
 
-    // ── palette ────────────────────────────────────────────────
     const INK  = '#1a1a1a';
     const RED  = '#d8451d';
     const BLUE = '#5a7af0';
-    const BG   = '#f0ede6';   // right panel background
+    const BG   = '#f0ede6';
 
-    // ── blocks to spawn ────────────────────────────────────────
     const BLOCKS = [
       { t: '2',      c: INK  },
       { t: '0',      c: INK  },
@@ -71,20 +63,17 @@
       { t: 'DESIGN', c: INK  },
     ];
 
-    const { Engine, Render, Runner, Bodies, Composite, Mouse, MouseConstraint, Events } = Matter;
+    const { Engine, Render, Runner, Bodies, Body, Composite, Events } = Matter;
 
-    function init () {
-      const W = stage.clientWidth  || 800;
-      const H = stage.clientHeight || 600;
+    function init() {
+      const W = stage.clientWidth  || 380;
+      const H = stage.clientHeight || 340;
       const DPR = Math.min(window.devicePixelRatio || 1, 2);
+      const UNIT = Math.min(W / 7, H / 6, 46);
 
-      const UNIT = Math.min(Math.min(W, H) / 11, 56);   // base block height
-
-      // Engine
       const engine = Engine.create();
-      engine.gravity.y = 1.4;
+      engine.gravity.y = 1.2;
 
-      // Renderer
       const render = Render.create({
         element: stage,
         engine,
@@ -96,111 +85,116 @@
         }
       });
 
-      // ── walls (invisible) ───────────────────────────────────
-      const wallOpts = { isStatic: true, render: { fillStyle: 'transparent' } };
-      const floor  = Bodies.rectangle(W / 2, H + 40,  W + 200, 80,  wallOpts);
-      const wallL  = Bodies.rectangle(-40,   H / 2,   80, H * 4,    wallOpts);
-      const wallR  = Bodies.rectangle(W + 40, H / 2,  80, H * 4,    wallOpts);
-      const ceil   = Bodies.rectangle(W / 2, -40,     W + 200, 80,  wallOpts);
+      // walls
+      const wo = { isStatic: true, render: { fillStyle: 'transparent' } };
+      const floor = Bodies.rectangle(W/2, H+30, W+200, 60, wo);
+      const wallL = Bodies.rectangle(-30, H/2, 60, H*4, wo);
+      const wallR = Bodies.rectangle(W+30, H/2, 60, H*4, wo);
+      const ceil  = Bodies.rectangle(W/2, -30, W+200, 60, wo);
 
-      // ── letter bodies ───────────────────────────────────────
+      // letter bodies
       const bodies = BLOCKS.map((b, i) => {
-        const charCount = b.t.length;
-        const bW = UNIT * (0.72 + charCount * 0.28);   // wider for longer labels
-        const bH = UNIT * 0.82;
-
-        // drop from random x, staggered heights
-        const x = W * 0.15 + Math.random() * (W * 0.7);
-        const y = -(UNIT * 1.5) - (i * UNIT * 0.6) - Math.random() * UNIT * 0.5;
-
+        const cLen = b.t.length;
+        const bW = UNIT * (0.85 + cLen * 0.22);
+        const bH = UNIT * 0.85;
+        const x = W * 0.1 + Math.random() * W * 0.8;
+        const y = -UNIT * 1.5 - (i * UNIT * 0.55) - Math.random() * UNIT;
         const body = Bodies.rectangle(x, y, bW, bH, {
-          restitution: 0.25,
-          friction:    0.5,
-          frictionAir: 0.015,
-          label:       b.t,
-          render: { fillStyle: b.c },   // Matter draws this; we overdraw in afterRender
+          restitution: 0.3,
+          friction: 0.45,
+          frictionAir: 0.018,
+          label: b.t,
+          render: { fillStyle: b.c },
         });
-        // store size for custom render
         body.__w = bW;
         body.__h = bH;
         body.__c = b.c;
         return body;
       });
 
-      // ── mouse constraint ────────────────────────────────────
-      const mouse = Mouse.create(render.canvas);
-      const mc = MouseConstraint.create(engine, {
-        mouse,
-        constraint: { stiffness: 0.18, damping: 0.12, render: { visible: false } }
+      Composite.add(engine.world, [floor, wallL, wallR, ceil, ...bodies]);
+
+      // ── hover repulsion (no drag, pure force) ─────────────────
+      let mx = -999, my = -999;
+      render.canvas.addEventListener('mousemove', e => {
+        const r = render.canvas.getBoundingClientRect();
+        mx = (e.clientX - r.left) * (W / r.width);
+        my = (e.clientY - r.top)  * (H / r.height);
+      });
+      render.canvas.addEventListener('mouseleave', () => { mx = -999; my = -999; });
+
+      const REPEL_R = 90;
+      Events.on(engine, 'beforeUpdate', () => {
+        bodies.forEach(body => {
+          const dx = body.position.x - mx;
+          const dy = body.position.y - my;
+          const distSq = dx*dx + dy*dy;
+          if (distSq < REPEL_R * REPEL_R && distSq > 1) {
+            const dist = Math.sqrt(distSq);
+            const str  = ((REPEL_R - dist) / REPEL_R) * 0.007;
+            Body.applyForce(body, body.position, {
+              x: (dx / dist) * str,
+              y: (dy / dist) * str,
+            });
+          }
+        });
       });
 
-      Composite.add(engine.world, [floor, wallL, wallR, ceil, ...bodies, mc]);
-
-      // ── custom render (rounded blocks + white labels) ───────
+      // ── custom render ─────────────────────────────────────────
       Events.on(render, 'afterRender', () => {
         const ctx = render.context;
-        const r = 12;   // corner radius
-
+        const r = 9;
         bodies.forEach(body => {
           const { x, y } = body.position;
           const a = body.angle;
-          const bW = body.__w;
-          const bH = body.__h;
+          const bW = body.__w, bH = body.__h;
 
           ctx.save();
           ctx.translate(x, y);
           ctx.rotate(a);
 
-          // rounded rect
           ctx.beginPath();
-          const x0 = -bW / 2, y0 = -bH / 2;
-          ctx.moveTo(x0 + r, y0);
-          ctx.lineTo(x0 + bW - r, y0);
-          ctx.quadraticCurveTo(x0 + bW, y0, x0 + bW, y0 + r);
-          ctx.lineTo(x0 + bW, y0 + bH - r);
-          ctx.quadraticCurveTo(x0 + bW, y0 + bH, x0 + bW - r, y0 + bH);
-          ctx.lineTo(x0 + r, y0 + bH);
-          ctx.quadraticCurveTo(x0, y0 + bH, x0, y0 + bH - r);
-          ctx.lineTo(x0, y0 + r);
-          ctx.quadraticCurveTo(x0, y0, x0 + r, y0);
+          const x0 = -bW/2, y0 = -bH/2;
+          ctx.moveTo(x0+r, y0);
+          ctx.lineTo(x0+bW-r, y0);
+          ctx.quadraticCurveTo(x0+bW, y0, x0+bW, y0+r);
+          ctx.lineTo(x0+bW, y0+bH-r);
+          ctx.quadraticCurveTo(x0+bW, y0+bH, x0+bW-r, y0+bH);
+          ctx.lineTo(x0+r, y0+bH);
+          ctx.quadraticCurveTo(x0, y0+bH, x0, y0+bH-r);
+          ctx.lineTo(x0, y0+r);
+          ctx.quadraticCurveTo(x0, y0, x0+r, y0);
           ctx.closePath();
           ctx.fillStyle = body.__c;
           ctx.fill();
 
-          // label
           const fs = bH * 0.38;
-          ctx.fillStyle = '#ffffff';
-          ctx.font = `600 ${fs}px Inter, -apple-system, sans-serif`;
+          ctx.fillStyle = '#fff';
+          ctx.font = `600 ${fs}px Inter,-apple-system,sans-serif`;
           ctx.textAlign = 'center';
           ctx.textBaseline = 'middle';
           ctx.fillText(body.label, 0, 1);
-
           ctx.restore();
         });
       });
 
-      // ── run ─────────────────────────────────────────────────
       Render.run(render);
       Runner.run(Runner.create(), engine);
 
-      // ── resize ──────────────────────────────────────────────
-      const ro = new ResizeObserver(() => {
-        const nW = stage.clientWidth;
-        const nH = stage.clientHeight;
+      // resize
+      new ResizeObserver(() => {
+        const nW = stage.clientWidth, nH = stage.clientHeight;
         render.canvas.width  = nW * DPR;
         render.canvas.height = nH * DPR;
         render.canvas.style.width  = nW + 'px';
         render.canvas.style.height = nH + 'px';
-        render.options.width  = nW;
+        render.options.width = nW;
         render.options.height = nH;
-        // move floor
-        Matter.Body.setPosition(floor, { x: nW / 2, y: nH + 40 });
-        Matter.Body.setPosition(wallR, { x: nW + 40, y: nH / 2 });
-      });
-      ro.observe(stage);
+        Body.setPosition(floor, { x: nW/2, y: nH+30 });
+        Body.setPosition(wallR, { x: nW+30, y: nH/2 });
+      }).observe(stage);
     }
 
-    // wait one frame so the grid has finished laying out
     requestAnimationFrame(init);
   })();
   </script>
