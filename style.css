@@ -690,7 +690,7 @@ em { font-style: italic; }
 /* ---------- Custom cursor ---------- */
 @media (hover: hover) {
   * {
-    cursor: url('cursor.svg') 5 5, auto !important;
+    cursor: url('cursor.svg') 6 6, auto !important;
   }
 }
 
