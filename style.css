@@ -57,6 +57,8 @@ em { font-style: italic; }
   font-size: 0.95rem;
   color: var(--ink-3);
   transition: color .3s var(--ease);
+  font-family: var(--sans);
+  letter-spacing: 0;
 }
 .nav__home:hover { color: var(--ink); }
 .nav__home.is-active { color: var(--blue); }
@@ -330,16 +332,8 @@ body[data-page="landing"] {
 .landing__left {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   padding: 3rem 2rem 3rem 2.5rem;
-}
-.landing__name {
-  font-family: var(--sans);
-  font-size: clamp(2rem, 3.5vw, 3rem);
-  font-weight: 500;
-  letter-spacing: -0.03em;
-  line-height: 1.05;
-  color: var(--ink);
 }
 .landing__tags {
   display: flex;
