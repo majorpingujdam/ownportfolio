@@ -34,7 +34,7 @@ if (filterWrapper && filterMenu) {
     filterMenu.classList.add("is-open");
   });
   filterWrapper.addEventListener("mouseleave", () => {
-    closeTimer = setTimeout(() => filterMenu.classList.remove("is-open"), 6000);
+    closeTimer = setTimeout(() => filterMenu.classList.remove("is-open"), 3000);
   });
 }
 
