@@ -332,7 +332,7 @@ body[data-page="landing"] {
 .landing__left {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-end;
   padding: 3rem 2rem 3rem 2.5rem;
 }
 .landing__tags {
