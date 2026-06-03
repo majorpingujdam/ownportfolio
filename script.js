@@ -1,26 +1,17 @@
 // Owen Chen — portfolio
 
-// ── Custom cursor ──────────────────────────────────────────────
-const ring = document.createElement("div");
-ring.className = "cursor-ring";
-const dot = document.createElement("div");
-dot.className = "cursor-dot";
-document.body.append(ring, dot);
+// ── Custom cursor (blend-mode inversion blob) ───────────────────
+const blob = document.createElement("div");
+blob.className = "cursor-blob";
+document.body.appendChild(blob);
 
 document.addEventListener("mousemove", e => {
-  ring.style.left = e.clientX + "px";
-  ring.style.top  = e.clientY + "px";
-  dot.style.left  = e.clientX + "px";
-  dot.style.top   = e.clientY + "px";
+  blob.style.left = e.clientX + "px";
+  blob.style.top  = e.clientY + "px";
+  document.body.classList.add("cursor-ready");
 });
-document.addEventListener("mouseleave", () => {
-  ring.style.opacity = "0";
-  dot.style.opacity  = "0";
-});
-document.addEventListener("mouseenter", () => {
-  ring.style.opacity = "";
-  dot.style.opacity  = "";
-});
+document.addEventListener("mouseleave", () => document.body.classList.remove("cursor-ready"));
+document.addEventListener("mouseenter", () => document.body.classList.add("cursor-ready"));
 
 function addCursorHover(selector) {
   document.querySelectorAll(selector).forEach(el => {
