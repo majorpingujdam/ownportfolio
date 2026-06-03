@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="54" viewBox="0 0 48 54" overflow="visible">
+  <!--
+    Artistic NW-arrow cursor
+    Hotspot tip is at (5, 5) — match the CSS url() hotspot coords
+  -->
+  <path
+    d="M 5 5
+       C 20 5, 43 11, 45 18
+       C 47 25, 31 29, 28 32
+       C 25 36, 20 45, 16 50
+       C 11 48, 4 26, 5 5 Z"
+    fill="none"
+    stroke="#1a1a1a"
+    stroke-width="2.8"
+    stroke-linejoin="round"
+    stroke-linecap="round"
+  />
+</svg>

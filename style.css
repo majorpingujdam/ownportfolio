@@ -212,7 +212,6 @@ em { font-style: italic; }
   font-weight: 600;
   letter-spacing: -0.025em;
   color: var(--ink);
-  cursor: none;
 }
 .work__filter-icon {
   font-size: 0.75rem;
@@ -259,7 +258,6 @@ em { font-style: italic; }
   font-size: 0.8rem;
   letter-spacing: 0.02em;
   color: var(--ink-2);
-  cursor: none;
   transition: background .15s, color .15s;
 }
 .work__filter-item:hover { background: var(--bg-soft); color: var(--ink); }
@@ -690,24 +688,11 @@ em { font-style: italic; }
 .foot__top:hover { color: var(--ink); }
 
 /* ---------- Custom cursor ---------- */
-@media (hover: hover) { * { cursor: none !important; } }
-
-.cursor-svg {
-  position: fixed;
-  pointer-events: none;
-  z-index: 99999;
-  top: 0; left: 0;
-  opacity: 0;
-  transition: opacity .3s var(--ease);
-  will-change: left, top;
+@media (hover: hover) {
+  * {
+    cursor: url('cursor.svg') 5 5, auto !important;
+  }
 }
-.cursor-svg path {
-  transition: stroke .3s var(--ease), fill .3s var(--ease);
-}
-body.cursor-ready  .cursor-svg { opacity: 1; }
-body.cursor-active .cursor-svg path { stroke: var(--blue); }
-
-@media (hover: none) { .cursor-svg { display: none; } }
 
 /* ---------- Reveal ---------- */
 .reveal {

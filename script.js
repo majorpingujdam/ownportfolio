@@ -1,38 +1,5 @@
 // Owen Chen — portfolio
 
-// ── Custom SVG cursor ──────────────────────────────────────────
-const cursorEl = document.createElement("div");
-cursorEl.className = "cursor-svg";
-// Artistic NW-arrow cursor — hotspot tip at (8, 7) in SVG space
-cursorEl.innerHTML = `<svg width="56" height="62" viewBox="-3 -3 58 66" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path d="M8 7
-           C 22 11, 50 19, 52 27
-           C 54 35, 40 38, 35 41
-           C 30 46, 22 56, 16 62
-           C 10 59, 7 30, 8 7 Z"
-        fill="white" stroke="#1a1a1a" stroke-width="5.5"
-        stroke-linejoin="round" stroke-linecap="round"/>
-</svg>`;
-document.body.appendChild(cursorEl);
-
-document.addEventListener("mousemove", e => {
-  // offset so the tip (8px, 7px inside SVG) aligns with the actual pointer
-  cursorEl.style.left = (e.clientX - 8) + "px";
-  cursorEl.style.top  = (e.clientY - 7) + "px";
-  document.body.classList.add("cursor-ready");
-});
-document.addEventListener("mouseleave", () => document.body.classList.remove("cursor-ready"));
-document.addEventListener("mouseenter", () => document.body.classList.add("cursor-ready"));
-
-function addCursorHover(selector) {
-  document.querySelectorAll(selector).forEach(el => {
-    el.addEventListener("mouseenter", () => document.body.classList.add("cursor-active"));
-    el.addEventListener("mouseleave", () => document.body.classList.remove("cursor-active"));
-  });
-}
-addCursorHover("a, button, [role='button'], .cs__toggle, .work__filter-item, .card__link");
-
-
 // ── Projects filter dropdown (hover + 6s stay-open) ─────────────
 const filterItems   = document.querySelectorAll(".work__filter-item");
 const filterCurrent = document.querySelector(".work__filter-current");
