@@ -1,17 +1,20 @@
 // Owen Chen — portfolio
 
-// ── Custom cursor (thin ring + dot) ────────────────────────────
-const cursorOuter = document.createElement("div");
-cursorOuter.className = "cursor-outer";
-const cursorInner = document.createElement("div");
-cursorInner.className = "cursor-inner";
-document.body.append(cursorOuter, cursorInner);
+// ── Custom SVG cursor ──────────────────────────────────────────
+const cursorEl = document.createElement("div");
+cursorEl.className = "cursor-svg";
+// Arrow pointer shape — hotspot tip at (5, 3) in SVG space
+cursorEl.innerHTML = `<svg width="34" height="40" viewBox="0 0 34 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M5 3 L5 31 L13 24 L19 36 L24 34 L18 22 L28 22 Z"
+        fill="white" stroke="#1a1a1a" stroke-width="3.2"
+        stroke-linejoin="round" stroke-linecap="round"/>
+</svg>`;
+document.body.appendChild(cursorEl);
 
 document.addEventListener("mousemove", e => {
-  cursorOuter.style.left = e.clientX + "px";
-  cursorOuter.style.top  = e.clientY + "px";
-  cursorInner.style.left = e.clientX + "px";
-  cursorInner.style.top  = e.clientY + "px";
+  // offset so the tip (5px, 3px inside SVG) aligns with the actual pointer
+  cursorEl.style.left = (e.clientX - 5) + "px";
+  cursorEl.style.top  = (e.clientY - 3) + "px";
   document.body.classList.add("cursor-ready");
 });
 document.addEventListener("mouseleave", () => document.body.classList.remove("cursor-ready"));
@@ -26,9 +29,22 @@ function addCursorHover(selector) {
 addCursorHover("a, button, [role='button'], .cs__toggle, .work__filter-item, .card__link");
 
 
-// ── Projects filter dropdown ────────────────────────────────────
+// ── Projects filter dropdown (hover + 6s stay-open) ─────────────
 const filterItems   = document.querySelectorAll(".work__filter-item");
 const filterCurrent = document.querySelector(".work__filter-current");
+const filterWrapper = document.querySelector(".work__filter");
+const filterMenu    = document.querySelector(".work__filter-menu");
+
+if (filterWrapper && filterMenu) {
+  let closeTimer;
+  filterWrapper.addEventListener("mouseenter", () => {
+    clearTimeout(closeTimer);
+    filterMenu.classList.add("is-open");
+  });
+  filterWrapper.addEventListener("mouseleave", () => {
+    closeTimer = setTimeout(() => filterMenu.classList.remove("is-open"), 6000);
+  });
+}
 
 if (filterItems.length) {
   filterItems.forEach(item => {
