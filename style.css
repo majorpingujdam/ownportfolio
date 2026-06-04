@@ -322,7 +322,7 @@ em { font-style: italic; }
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  padding: 0.25rem 0;
+  padding: 2.5rem 0 0.25rem;
   justify-content: flex-start;
 }
 .card__kicker {
