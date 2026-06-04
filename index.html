@@ -56,13 +56,15 @@
 
     var CHARS = ['2','0','2','6','D','E','S','I','G','N'];
 
-    var Engine    = Matter.Engine;
-    var Render    = Matter.Render;
-    var Runner    = Matter.Runner;
-    var Bodies    = Matter.Bodies;
-    var Body      = Matter.Body;
-    var Composite = Matter.Composite;
-    var Events    = Matter.Events;
+    var Engine          = Matter.Engine;
+    var Render          = Matter.Render;
+    var Runner          = Matter.Runner;
+    var Bodies          = Matter.Bodies;
+    var Body            = Matter.Body;
+    var Composite       = Matter.Composite;
+    var Events          = Matter.Events;
+    var Mouse           = Matter.Mouse;
+    var MouseConstraint = Matter.MouseConstraint;
 
     var engine       = Engine.create();
     engine.gravity.y = 0.85;
@@ -94,65 +96,66 @@
     function makeLetterBody(ch, x, y, r) {
       var d = r * 2;
       var base = {
-        restitution: 0.38,
-        friction:    0.25,
-        frictionAir: 0.01,
+        restitution: 0.6,    /* bouncier */
+        friction:    0.12,
+        frictionAir: 0.008,
         label:       ch,
         render:      { fillStyle: CANVAS_BG }
       };
-      /* round glyphs → circle */
       if ('0SG6'.indexOf(ch) !== -1) {
         return Bodies.circle(x, y, r, base);
       }
-      /* I → very narrow serif I-beam rectangle */
       if (ch === 'I') {
         return Bodies.rectangle(x, y, d * 0.28, d * 1.05,
           Object.assign({}, base, { chamfer: { radius: 5 } }));
       }
-      /* D → flat left edge, heavily rounded right (D-curve) */
       if (ch === 'D') {
         return Bodies.rectangle(x, y, d * 0.95, d * 1.05,
           Object.assign({}, base, { chamfer: { radius: [6, r * 0.88, r * 0.88, 6] } }));
       }
-      /* E → wide rectangular block */
       if (ch === 'E') {
         return Bodies.rectangle(x, y, d * 0.85, d * 1.05,
           Object.assign({}, base, { chamfer: { radius: 7 } }));
       }
-      /* N → slightly wide upright rectangle */
       if (ch === 'N') {
         return Bodies.rectangle(x, y, d * 1.05, d * 1.05,
           Object.assign({}, base, { chamfer: { radius: 7 } }));
       }
-      /* 2 → squarish, arched top corners */
       if (ch === '2') {
         return Bodies.rectangle(x, y, d * 0.85, d * 1.0,
           Object.assign({}, base, { chamfer: { radius: [r * 0.45, r * 0.45, 8, 8] } }));
       }
-      /* fallback */
       return Bodies.rectangle(x, y, d * 0.9, d * 1.0,
         Object.assign({}, base, { chamfer: { radius: 8 } }));
     }
 
-    var bodies = CHARS.map(function(ch, i) {
-      var x = W * 0.1 + Math.random() * W * 0.8;
-      var y = -RAD * 2 - i * (RAD * 2.6 + Math.random() * 40) - Math.random() * 80;
+    function spawnLetters() {
+      return CHARS.map(function(ch, i) {
+        var x    = W * 0.1 + Math.random() * W * 0.8;
+        var y    = -RAD * 2 - i * (RAD * 2.6 + Math.random() * 40) - Math.random() * 80;
+        var body = makeLetterBody(ch, x, y, RAD);
+        body._r    = RAD;
+        body._text = WHITE;
+        Body.setAngle(body,           (Math.random() - 0.5) * Math.PI * 2);
+        Body.setVelocity(body,        { x: (Math.random() - 0.5) * 7, y: Math.random() * -3 });
+        Body.setAngularVelocity(body, (Math.random() - 0.5) * 0.28);
+        return body;
+      });
+    }
 
-      var body = makeLetterBody(ch, x, y, RAD);
-      body._r    = RAD;
-      body._text = WHITE;
-
-      /* random tumble on spawn */
-      Body.setAngle(body,    (Math.random() - 0.5) * Math.PI * 2);
-      Body.setVelocity(body, { x: (Math.random() - 0.5) * 5, y: Math.random() * -2 });
-      Body.setAngularVelocity(body, (Math.random() - 0.5) * 0.2);
-
-      return body;
-    });
-
+    var bodies = spawnLetters();
     Composite.add(engine.world, [floor, wallL, wallR].concat(bodies));
 
-    /* hover repulsion */
+    /* ── drag & throw ── */
+    var mouse = Mouse.create(render.canvas);
+    var mc    = MouseConstraint.create(engine, {
+      mouse:      mouse,
+      constraint: { stiffness: 0.15, render: { visible: false } }
+    });
+    Composite.add(engine.world, mc);
+    render.mouse = mouse;
+
+    /* ── hover repulsion (skip grabbed body) ── */
     var mx = -999, my = -999;
     render.canvas.addEventListener('mousemove', function(e) {
       var r = render.canvas.getBoundingClientRect();
@@ -161,34 +164,65 @@
     });
     render.canvas.addEventListener('mouseleave', function() { mx = -999; my = -999; });
 
-    var REPEL = 130;
+    var REPEL = 175;
     Events.on(engine, 'beforeUpdate', function() {
       bodies.forEach(function(b) {
+        if (b === mc.body) return;
         var dx = b.position.x - mx;
         var dy = b.position.y - my;
         var d2 = dx*dx + dy*dy;
         if (d2 < REPEL*REPEL && d2 > 1) {
           var d   = Math.sqrt(d2);
-          var str = ((REPEL - d) / REPEL) * 0.009;
+          var str = ((REPEL - d) / REPEL) * 0.018;
           Body.applyForce(b, b.position, { x: (dx/d)*str, y: (dy/d)*str });
         }
       });
     });
 
-    /* render — bare letters in DM Serif Display */
+    /* ── click to blast ── */
+    render.canvas.addEventListener('click', function(e) {
+      if (mc.body) return;
+      var r  = render.canvas.getBoundingClientRect();
+      var cx = e.clientX - r.left;
+      var cy = e.clientY - r.top;
+      bodies.forEach(function(b) {
+        var dx  = b.position.x - cx;
+        var dy  = b.position.y - cy;
+        var d   = Math.sqrt(dx*dx + dy*dy) || 1;
+        var str = Math.max(0, (380 - d) / 380) * 0.036;
+        Body.applyForce(b, b.position, { x: (dx/d)*str, y: (dy/d)*str });
+        Body.setAngularVelocity(b, b.angularVelocity + (Math.random()-0.5)*0.4);
+      });
+    });
+
+    /* ── double-click to reset (re-drop all) ── */
+    render.canvas.addEventListener('dblclick', function() {
+      bodies.forEach(function(b, i) {
+        var x = W * 0.1 + Math.random() * W * 0.8;
+        var y = -RAD * 2 - i * (RAD * 2.6 + Math.random() * 40) - Math.random() * 80;
+        Body.setPosition(b,        { x: x, y: y });
+        Body.setVelocity(b,        { x: (Math.random()-0.5)*7, y: Math.random()*-3 });
+        Body.setAngle(b,           (Math.random()-0.5)*Math.PI*2);
+        Body.setAngularVelocity(b, (Math.random()-0.5)*0.28);
+      });
+    });
+
+    /* ── render: letters + velocity tint + hint ── */
     Events.on(render, 'afterRender', function() {
       var ctx = render.context;
+
       bodies.forEach(function(body) {
-        var x = body.position.x;
-        var y = body.position.y;
-        var a = body.angle;
+        /* speed-based tint: white at rest → warm yellow when fast */
+        var spd = Math.sqrt(body.velocity.x*body.velocity.x + body.velocity.y*body.velocity.y);
+        var t   = Math.min(spd / 14, 1);
+        var col = 'rgb(255,' + Math.round(255-t*55) + ',' + Math.round(255-t*130) + ')';
 
         ctx.save();
-        ctx.translate(x, y);
-        ctx.rotate(a);
+        ctx.translate(body.position.x, body.position.y);
+        ctx.rotate(body.angle);
 
         var fs = body._r * 1.55;
-        ctx.fillStyle    = body._text;
+        ctx.fillStyle    = col;
         ctx.font         = '400 ' + fs + 'px "DM Serif Display",Georgia,serif';
         ctx.textAlign    = 'center';
         ctx.textBaseline = 'middle';
@@ -196,6 +230,15 @@
 
         ctx.restore();
       });
+
+      /* hint */
+      ctx.save();
+      ctx.fillStyle    = 'rgba(255,255,255,0.25)';
+      ctx.font         = '400 10.5px "JetBrains Mono",monospace';
+      ctx.textAlign    = 'left';
+      ctx.textBaseline = 'bottom';
+      ctx.fillText('drag  ·  click to blast  ·  double-click to reset', 14, H - 12);
+      ctx.restore();
     });
 
     Render.run(render);
