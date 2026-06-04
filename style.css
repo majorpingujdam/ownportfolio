@@ -720,11 +720,24 @@ body[data-page="landing"] {
 .project__body p { color: var(--ink-2); margin-bottom: 1rem; }
 
 /* ---------- Contact page ---------- */
+body[data-page="contact"] {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+body[data-page="contact"] main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  padding-top: 5rem; /* clear fixed nav */
+  padding-bottom: 2rem;
+}
 .contact-page {
-  padding-top: 9rem;
-  padding-bottom: 8rem;
+  width: 100%;
   max-width: 760px;
   margin: 0 auto;
+  padding-left: var(--pad);
+  padding-right: var(--pad);
   display: flex;
   flex-direction: column;
   gap: 2rem;
