@@ -387,6 +387,20 @@ body[data-page="landing"] {
 }
 .landing__tag-row:first-child { border-top: 1px solid rgba(0,0,0,0.1); }
 
+.landing__contact {
+  display: inline-block;
+  align-self: flex-start;
+  margin-top: 1.75rem;
+  margin-left: 1.5rem;
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  color: var(--blue);
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 1px;
+  transition: opacity .25s var(--ease);
+}
+.landing__contact:hover { opacity: 0.65; }
+
 /* right physics panel */
 .landing__right {
   display: flex;
