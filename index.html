@@ -25,10 +25,24 @@
 
     <div class="landing__left">
       <div class="landing__tags">
-        <div class="landing__tag-row">#UX &nbsp;&nbsp; #HCI</div>
-        <div class="landing__tag-row">#Service &nbsp;&nbsp; #Research</div>
-        <div class="landing__tag-row">#Healthcare &nbsp;&nbsp; #Product</div>
-        <div class="landing__tag-row">#Human-Centered</div>
+        <div class="landing__tag-row">
+          <span class="landing__tag" data-letters="U,X">#UX</span>
+          &nbsp;&nbsp;
+          <span class="landing__tag" data-letters="H,C,I">#HCI</span>
+        </div>
+        <div class="landing__tag-row">
+          <span class="landing__tag" data-letters="S,E,R">#Service</span>
+          &nbsp;&nbsp;
+          <span class="landing__tag" data-letters="R,S,C">#Research</span>
+        </div>
+        <div class="landing__tag-row">
+          <span class="landing__tag" data-letters="H,C,R">#Healthcare</span>
+          &nbsp;&nbsp;
+          <span class="landing__tag" data-letters="P,R,D">#Product</span>
+        </div>
+        <div class="landing__tag-row">
+          <span class="landing__tag" data-letters="H,U,M,N">#Human-Centered</span>
+        </div>
       </div>
       <a href="contact.html" class="landing__contact">contact ↗</a>
     </div>
@@ -102,7 +116,7 @@
         label:       ch,
         render:      { fillStyle: CANVAS_BG }
       };
-      if ('0SG6'.indexOf(ch) !== -1) {
+      if ('0SG6OUCQ'.indexOf(ch) !== -1) {
         return Bodies.circle(x, y, r, base);
       }
       if (ch === 'I') {
@@ -231,6 +245,29 @@
         ctx.restore();
       });
 
+    });
+
+    /* ── tag clicks: drop correlated letters ── */
+    document.querySelectorAll('.landing__tag[data-letters]').forEach(function(el) {
+      el.addEventListener('click', function() {
+        /* pop animation feedback */
+        el.classList.add('is-dropping');
+        setTimeout(function() { el.classList.remove('is-dropping'); }, 320);
+
+        var chars = el.dataset.letters.split(',');
+        chars.forEach(function(ch, i) {
+          var bx   = W * 0.15 + Math.random() * W * 0.7;
+          var by   = -RAD * 1.5 - i * (RAD * 2.4 + Math.random() * 30);
+          var body = makeLetterBody(ch.trim(), bx, by, RAD);
+          body._r    = RAD;
+          body._text = WHITE;
+          Body.setAngle(body,           (Math.random()-0.5) * Math.PI * 2);
+          Body.setVelocity(body,        { x: (Math.random()-0.5)*6, y: Math.random()*-2 });
+          Body.setAngularVelocity(body, (Math.random()-0.5) * 0.28);
+          Composite.add(engine.world, body);
+          bodies.push(body); /* joins repulsion + tint system */
+        });
+      });
     });
 
     Render.run(render);

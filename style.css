@@ -388,6 +388,19 @@ body[data-page="landing"] {
 }
 .landing__tag-row:first-child { border-top: 1px solid rgba(0,0,0,0.1); }
 
+.landing__tag {
+  cursor: pointer;
+  display: inline-block;
+  transition: color .2s var(--ease);
+}
+.landing__tag:hover { color: var(--blue); }
+@keyframes tag-pop {
+  0%   { transform: scale(1); }
+  45%  { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+.landing__tag.is-dropping { animation: tag-pop .32s var(--ease); }
+
 .landing__contact {
   position: absolute;
   bottom: 2.5rem;
