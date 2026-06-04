@@ -605,6 +605,18 @@ body[data-page="landing"] {
   color: var(--green);
 }
 
+.resume__cert {
+  margin-top: 1.25rem;
+  max-width: 580px;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid var(--rule);
+}
+.resume__cert img {
+  width: 100%;
+  display: block;
+}
+
 /* ---------- Project sub-page ---------- */
 .project {
   max-width: 880px;
