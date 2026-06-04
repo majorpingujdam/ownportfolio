@@ -28,7 +28,7 @@
 html { scroll-behavior: smooth; }
 
 body {
-  background: var(--bg);
+  background: var(--bg-soft);
   color: var(--ink);
   font-family: var(--sans);
   font-size: 16px;
@@ -54,7 +54,7 @@ em { font-style: italic; }
   justify-content: space-between;
 }
 .nav__home {
-  font-size: 0.95rem;
+  font-size: 1.05rem;
   color: var(--ink-3);
   transition: color .3s var(--ease);
   font-family: var(--sans);
@@ -65,7 +65,7 @@ em { font-style: italic; }
 .nav__links {
   display: flex;
   gap: 1.5rem;
-  font-size: 0.95rem;
+  font-size: 1.05rem;
   color: var(--ink-3);
 }
 .nav__links a {
@@ -338,6 +338,7 @@ body[data-page="landing"] {
 .landing__tags {
   display: flex;
   flex-direction: column;
+  padding-left: 1.5rem;
 }
 .landing__tag-row {
   font-family: var(--mono);
