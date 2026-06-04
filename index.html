@@ -105,12 +105,11 @@
         friction:    0.52,
         frictionAir: 0.018,
         label:       ch,
-        render:      { fillStyle: WHITE }
+        render:      { fillStyle: CANVAS_BG }
       });
       body._w    = bW;
       body._h    = bH;
-      body._fill = WHITE;
-      body._text = DARK;
+      body._text = WHITE;
       return body;
     });
 
@@ -139,36 +138,19 @@
       });
     });
 
-    /* custom render — rounded white tiles + dark text */
+    /* custom render — bare white letters, no box */
     Events.on(render, 'afterRender', function() {
       var ctx = render.context;
-      var r   = 10;
       bodies.forEach(function(body) {
         var x  = body.position.x, y = body.position.y;
         var a  = body.angle;
-        var bW = body._w, bH = body._h;
+        var bH = body._h;
 
         ctx.save();
         ctx.translate(x, y);
         ctx.rotate(a);
 
-        var x0 = -bW/2, y0 = -bH/2;
-        ctx.beginPath();
-        ctx.moveTo(x0+r,     y0);
-        ctx.lineTo(x0+bW-r,  y0);
-        ctx.quadraticCurveTo(x0+bW, y0,    x0+bW, y0+r);
-        ctx.lineTo(x0+bW,    y0+bH-r);
-        ctx.quadraticCurveTo(x0+bW, y0+bH, x0+bW-r, y0+bH);
-        ctx.lineTo(x0+r,     y0+bH);
-        ctx.quadraticCurveTo(x0,    y0+bH, x0,    y0+bH-r);
-        ctx.lineTo(x0,       y0+r);
-        ctx.quadraticCurveTo(x0,    y0,    x0+r,  y0);
-        ctx.closePath();
-
-        ctx.fillStyle = body._fill;
-        ctx.fill();
-
-        var fs = bH * 0.52;
+        var fs = bH * 0.88;
         ctx.fillStyle    = body._text;
         ctx.font         = '700 ' + fs + 'px Inter,-apple-system,sans-serif';
         ctx.textAlign    = 'center';
