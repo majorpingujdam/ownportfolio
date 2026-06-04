@@ -292,7 +292,7 @@ em { font-style: italic; }
 .card__link {
   display: flex;
   flex-direction: row;
-  gap: 2rem;
+  gap: 4rem;
   align-items: flex-start;
 }
 .card__panel {
