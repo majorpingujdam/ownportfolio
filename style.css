@@ -367,7 +367,7 @@ body[data-page="landing"] {
 .landing__left {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: center;
   padding: 3rem 2rem 3rem var(--pad);
 }
 .landing__tags {
@@ -390,7 +390,7 @@ body[data-page="landing"] {
 /* right physics panel */
 .landing__right {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: center;
   padding: 1.5rem 2.5rem;
 }
