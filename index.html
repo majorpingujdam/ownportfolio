@@ -231,14 +231,6 @@
         ctx.restore();
       });
 
-      /* hint */
-      ctx.save();
-      ctx.fillStyle    = 'rgba(255,255,255,0.25)';
-      ctx.font         = '400 10.5px "JetBrains Mono",monospace';
-      ctx.textAlign    = 'left';
-      ctx.textBaseline = 'bottom';
-      ctx.fillText('drag  ·  click to blast  ·  double-click to reset', 14, H - 12);
-      ctx.restore();
     });
 
     Render.run(render);
