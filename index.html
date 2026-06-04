@@ -7,7 +7,7 @@
   <meta name="description" content="Owen Chen — UX & HCI design student." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body data-page="landing">
@@ -45,17 +45,14 @@
     var stage = document.getElementById('physics-stage');
     if (!stage || typeof Matter === 'undefined') return;
 
-    /* read actual CSS-rendered size */
     var rect = stage.getBoundingClientRect();
     var W    = Math.max(Math.round(rect.width),  320);
     var H    = Math.max(Math.round(rect.height), 280);
-    var UNIT = Math.min(W, H) / 9;
+    var UNIT = Math.min(W, H) / 6;
 
-    var CANVAS_BG = '#2b4acb';   /* deep blue */
+    var CANVAS_BG = '#2b4acb';
     var WHITE     = '#ffffff';
-    var DARK      = '#1a1a1a';
 
-    /* individual characters — "2026 DESIGN" */
     var CHARS = ['2','0','2','6','D','E','S','I','G','N'];
 
     var Engine    = Matter.Engine;
@@ -67,7 +64,7 @@
     var Events    = Matter.Events;
 
     var engine       = Engine.create();
-    engine.gravity.y = 0.9;
+    engine.gravity.y = 0.85;
 
     var render = Render.create({
       element: stage,
@@ -84,32 +81,33 @@
     render.canvas.style.height  = H + 'px';
     render.canvas.style.display = 'block';
 
-    /* invisible walls */
+    /* invisible walls + floor */
     var wo    = { isStatic: true, render: { fillStyle: 'transparent' } };
-    var floor = Bodies.rectangle(W/2,   H + 30,  W + 200, 60, wo);
-    var wallL = Bodies.rectangle(-30,   H/2,     60, H*4,  wo);
-    var wallR = Bodies.rectangle(W + 30, H/2,    60, H*4,  wo);
+    var floor = Bodies.rectangle(W/2,    H + 30,  W + 200, 60, wo);
+    var wallL = Bodies.rectangle(-30,    H/2,     60, H*4,  wo);
+    var wallR = Bodies.rectangle(W + 30, H/2,     60, H*4,  wo);
 
-    /* letter tiles — 5 columns, 2 rows */
-    var COLS = 5;
+    /* letter circles — fully random scatter */
+    var RAD = UNIT * 0.5;
     var bodies = CHARS.map(function(ch, i) {
-      var bW  = UNIT * 1.12;
-      var bH  = UNIT * 0.82;
-      var col = i % COLS;
-      var row = Math.floor(i / COLS);
-      var x   = W * 0.1 + col * (W * 0.8 / (COLS - 1)) + (Math.random() - 0.5) * 16;
-      var y   = -bH * 1.5 - row * (bH + 14) - Math.random() * 50;
+      var x = W * 0.1 + Math.random() * W * 0.8;
+      var y = -RAD * 2 - i * (RAD * 2.6 + Math.random() * 40) - Math.random() * 80;
 
-      var body = Bodies.rectangle(x, y, bW, bH, {
-        restitution: 0.22,
-        friction:    0.52,
-        frictionAir: 0.018,
+      var body = Bodies.circle(x, y, RAD, {
+        restitution: 0.38,
+        friction:    0.25,
+        frictionAir: 0.01,
         label:       ch,
         render:      { fillStyle: CANVAS_BG }
       });
-      body._w    = bW;
-      body._h    = bH;
+      body._r    = RAD;
       body._text = WHITE;
+
+      /* random tumble on spawn */
+      Body.setAngle(body,    (Math.random() - 0.5) * Math.PI * 2);
+      Body.setVelocity(body, { x: (Math.random() - 0.5) * 5, y: Math.random() * -2 });
+      Body.setAngularVelocity(body, (Math.random() - 0.5) * 0.2);
+
       return body;
     });
 
@@ -124,7 +122,7 @@
     });
     render.canvas.addEventListener('mouseleave', function() { mx = -999; my = -999; });
 
-    var REPEL = 95;
+    var REPEL = 130;
     Events.on(engine, 'beforeUpdate', function() {
       bodies.forEach(function(b) {
         var dx = b.position.x - mx;
@@ -132,30 +130,30 @@
         var d2 = dx*dx + dy*dy;
         if (d2 < REPEL*REPEL && d2 > 1) {
           var d   = Math.sqrt(d2);
-          var str = ((REPEL - d) / REPEL) * 0.008;
+          var str = ((REPEL - d) / REPEL) * 0.009;
           Body.applyForce(b, b.position, { x: (dx/d)*str, y: (dy/d)*str });
         }
       });
     });
 
-    /* custom render — bare white letters, no box */
+    /* render — bare letters in DM Serif Display */
     Events.on(render, 'afterRender', function() {
       var ctx = render.context;
       bodies.forEach(function(body) {
-        var x  = body.position.x, y = body.position.y;
-        var a  = body.angle;
-        var bH = body._h;
+        var x = body.position.x;
+        var y = body.position.y;
+        var a = body.angle;
 
         ctx.save();
         ctx.translate(x, y);
         ctx.rotate(a);
 
-        var fs = bH * 0.88;
+        var fs = body._r * 1.55;
         ctx.fillStyle    = body._text;
-        ctx.font         = '700 ' + fs + 'px Inter,-apple-system,sans-serif';
+        ctx.font         = '400 ' + fs + 'px "DM Serif Display",Georgia,serif';
         ctx.textAlign    = 'center';
         ctx.textBaseline = 'middle';
-        ctx.fillText(body.label, 0, 1);
+        ctx.fillText(body.label, 0, fs * 0.07);
 
         ctx.restore();
       });
