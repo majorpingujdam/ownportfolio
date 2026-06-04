@@ -297,9 +297,9 @@ em { font-style: italic; }
 }
 .card__panel {
   position: relative;
-  width: 38%;
+  width: 48%;
   flex-shrink: 0;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 3 / 2;
   background: var(--card-bg, #f4f4f2);
   border-radius: 12px;
   overflow: hidden;
