@@ -197,7 +197,7 @@ em { font-style: italic; }
   padding-bottom: 8rem;
   padding-left: 0.75rem;
   display: grid;
-  grid-template-columns: 130px 1fr;
+  grid-template-columns: 220px 1fr;
   gap: 0 3rem;
   align-items: start;
 }
@@ -287,17 +287,17 @@ em { font-style: italic; }
 }
 .card {
   border-bottom: 1px solid var(--rule);
-  padding: 2rem 0;
+  padding: 1.25rem 0;
 }
 .card__link {
   display: flex;
   flex-direction: row;
-  gap: 2.5rem;
+  gap: 2rem;
   align-items: flex-start;
 }
 .card__panel {
   position: relative;
-  width: 48%;
+  width: 38%;
   flex-shrink: 0;
   aspect-ratio: 3 / 2;
   background: var(--card-bg, #f4f4f2);
@@ -321,8 +321,8 @@ em { font-style: italic; }
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
-  padding: 2.5rem 0 0.25rem;
+  gap: 0.35rem;
+  padding: 1.25rem 0 0.25rem;
   justify-content: flex-start;
 }
 .card__kicker {
@@ -333,20 +333,19 @@ em { font-style: italic; }
   color: var(--ink-3);
 }
 .card__title {
-  font-size: 1.35rem;
+  font-size: 1.05rem;
   font-weight: 500;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
   line-height: 1.2;
+  white-space: nowrap;
   transition: color .25s var(--ease);
-  margin-top: 0.1rem;
 }
 .card__link:hover .card__title { color: var(--blue); }
 .card__desc {
-  font-size: 0.95rem;
-  line-height: 1.6;
+  font-size: 0.88rem;
+  line-height: 1.55;
   color: var(--ink-2);
   max-width: 44ch;
-  margin-top: 0.25rem;
 }
 .card__tag { display: none; }
 
