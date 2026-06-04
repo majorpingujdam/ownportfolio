@@ -281,16 +281,27 @@ em { font-style: italic; }
 
 .grid {
   list-style: none;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--rule);
 }
-.card__link { display: flex; flex-direction: column; gap: 0.9rem; }
+.card {
+  border-bottom: 1px solid var(--rule);
+  padding: 2rem 0;
+}
+.card__link {
+  display: flex;
+  flex-direction: row;
+  gap: 2.5rem;
+  align-items: flex-start;
+}
 .card__panel {
   position: relative;
-  aspect-ratio: 16 / 8;
+  width: 38%;
+  flex-shrink: 0;
+  aspect-ratio: 4 / 3;
   background: var(--card-bg, #f4f4f2);
-  border-radius: 14px;
+  border-radius: 12px;
   overflow: hidden;
   transition: transform .5s var(--ease);
 }
@@ -304,17 +315,40 @@ em { font-style: italic; }
   display: block;
   transition: transform .6s var(--ease);
 }
-.card__link:hover .card__panel img { transform: scale(1.03); }
-.card__link:hover .card__panel { transform: translateY(-4px); }
-.card__foot { display: flex; flex-direction: column; gap: 0.2rem; padding: 0 0.15rem; }
+.card__link:hover .card__panel img { transform: scale(1.04); }
+.card__link:hover .card__panel { transform: translateY(-3px); }
+.card__foot {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.25rem 0;
+  justify-content: flex-start;
+}
+.card__kicker {
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--ink-3);
+}
 .card__title {
-  font-size: 1.0625rem;
+  font-size: 1.35rem;
   font-weight: 500;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
   transition: color .25s var(--ease);
+  margin-top: 0.1rem;
 }
 .card__link:hover .card__title { color: var(--blue); }
-.card__tag { font-size: 0.9rem; color: var(--ink-2); }
+.card__desc {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--ink-2);
+  max-width: 44ch;
+  margin-top: 0.25rem;
+}
+.card__tag { display: none; }
 
 /* ---------- Landing page ---------- */
 body[data-page="landing"] {
@@ -827,6 +861,8 @@ body[data-page="landing"] {
 
   .work { padding-top: 6rem; grid-template-columns: 1fr; }
   .work__head { position: static; margin-bottom: 2rem; }
+  .card__link { flex-direction: column; gap: 1rem; }
+  .card__panel { width: 100%; aspect-ratio: 16 / 9; }
 
   .contact-page { padding-top: 7rem; }
   .contact-page__list > div { grid-template-columns: 5.5rem 1fr; }
