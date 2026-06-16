@@ -81,33 +81,128 @@
           <span class="cs__label">Service Blueprint</span>
         </header>
 
-        <div style="display:flex; flex-direction:column;">
+        <div style="margin:1.5rem 0; border-radius:12px; overflow:hidden; border:1px solid var(--rule);">
+          <svg id="mm3" viewBox="0 0 800 460" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;background:#f6f4ee;">
+            <defs>
+              <filter id="mm3-glow" x="-30%" y="-30%" width="160%" height="160%">
+                <feDropShadow dx="0" dy="2" stdDeviation="10" flood-color="#0058a3" flood-opacity="0.2"/>
+              </filter>
+            </defs>
+            <style>
+              #mm3-layout-subs,#mm3-consumer-subs,#mm3-strategy-subs,#mm3-exec-subs,
+              #mm3-layout-lines,#mm3-consumer-lines,#mm3-strategy-lines,#mm3-exec-lines{transition:opacity .28s}
+            </style>
 
-          <div style="display:grid; grid-template-columns:5rem 1fr; gap:2rem; padding:1.75rem 0; border-top:1px solid var(--rule); align-items:start;">
-            <span style="font-family:var(--mono); font-size:2.5rem; font-weight:700; color:var(--rule); line-height:1; letter-spacing:-0.04em;">01</span>
-            <div>
-              <h3 style="font-size:1.05rem; font-weight:500; letter-spacing:-0.01em; margin-bottom:0.5rem;">Build in SketchUp</h3>
-              <p style="font-size:0.94rem; line-height:1.65; color:var(--ink-2);">Test layout, proportion, and composition digitally — before committing to physical construction. Physical vignettes are expensive and slow to change; the model is where risk is removed.</p>
-            </div>
-          </div>
+            <!-- Main curves: center → branch nodes -->
+            <path d="M 400,230 C 310,230 228,158 145,105" stroke="#0058a3" stroke-width="1.5" fill="none" opacity="0.35"/>
+            <path d="M 400,230 C 310,230 228,302 140,355" stroke="#0058a3" stroke-width="1.5" fill="none" opacity="0.35"/>
+            <path d="M 400,230 C 490,230 572,158 655,105" stroke="#0058a3" stroke-width="1.5" fill="none" opacity="0.35"/>
+            <path d="M 400,230 C 490,230 572,302 660,355" stroke="#0058a3" stroke-width="1.5" fill="none" opacity="0.35"/>
 
-          <div style="display:grid; grid-template-columns:5rem 1fr; gap:2rem; padding:1.75rem 0; border-top:1px solid var(--rule); align-items:start;">
-            <span style="font-family:var(--mono); font-size:2.5rem; font-weight:700; color:var(--rule); line-height:1; letter-spacing:-0.04em;">02</span>
-            <div>
-              <h3 style="font-size:1.05rem; font-weight:500; letter-spacing:-0.01em; margin-bottom:0.5rem;">Build the vignette</h3>
-              <p style="font-size:0.94rem; line-height:1.65; color:var(--ink-2);">The digital composition becomes a physical room-set. Furniture, lighting, and props are placed to tell a coherent story of a way of living — Scandinavian in origin, adapted for China.</p>
-            </div>
-          </div>
+            <!-- Sub-lines (hidden until node clicked) -->
+            <g id="mm3-layout-lines" style="opacity:0;">
+              <line x1="145" y1="105" x2="8" y2="63"  stroke="#0058a3" stroke-width="0.8" opacity="0.5"/>
+              <line x1="145" y1="105" x2="8" y2="105" stroke="#0058a3" stroke-width="0.8" opacity="0.5"/>
+              <line x1="145" y1="105" x2="8" y2="147" stroke="#0058a3" stroke-width="0.8" opacity="0.5"/>
+            </g>
+            <g id="mm3-consumer-lines" style="opacity:0;">
+              <line x1="140" y1="355" x2="8" y2="313" stroke="#0058a3" stroke-width="0.8" opacity="0.5"/>
+              <line x1="140" y1="355" x2="8" y2="355" stroke="#0058a3" stroke-width="0.8" opacity="0.5"/>
+              <line x1="140" y1="355" x2="8" y2="397" stroke="#0058a3" stroke-width="0.8" opacity="0.5"/>
+            </g>
+            <g id="mm3-strategy-lines" style="opacity:0;">
+              <line x1="655" y1="105" x2="792" y2="63"  stroke="#0058a3" stroke-width="0.8" opacity="0.5"/>
+              <line x1="655" y1="105" x2="792" y2="105" stroke="#0058a3" stroke-width="0.8" opacity="0.5"/>
+              <line x1="655" y1="105" x2="792" y2="147" stroke="#0058a3" stroke-width="0.8" opacity="0.5"/>
+            </g>
+            <g id="mm3-exec-lines" style="opacity:0;">
+              <line x1="660" y1="355" x2="792" y2="313" stroke="#0058a3" stroke-width="0.8" opacity="0.5"/>
+              <line x1="660" y1="355" x2="792" y2="355" stroke="#0058a3" stroke-width="0.8" opacity="0.5"/>
+              <line x1="660" y1="355" x2="792" y2="397" stroke="#0058a3" stroke-width="0.8" opacity="0.5"/>
+            </g>
 
-          <div style="display:grid; grid-template-columns:5rem 1fr; gap:2rem; padding:1.75rem 0; border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); align-items:start;">
-            <span style="font-family:var(--mono); font-size:2.5rem; font-weight:700; color:var(--rule); line-height:1; letter-spacing:-0.04em;">03</span>
-            <div>
-              <h3 style="font-size:1.05rem; font-weight:500; letter-spacing:-0.01em; margin-bottom:0.5rem;">Floor conversations</h3>
-              <p style="font-size:0.94rem; line-height:1.65; color:var(--ink-2);">Hear how customers actually read, question, and react to the space — then carry that signal back into the next model. The loop closes where the customer is.</p>
-            </div>
-          </div>
+            <!-- Sub-nodes: Layout -->
+            <g id="mm3-layout-subs" style="opacity:0;pointer-events:none;">
+              <text x="12" y="67"  font-family="'JetBrains Mono',monospace" font-size="10" fill="#6b6b6b">15+ SketchUp models</text>
+              <text x="12" y="109" font-family="'JetBrains Mono',monospace" font-size="10" fill="#6b6b6b">Proportion &amp; scale</text>
+              <text x="12" y="151" font-family="'JetBrains Mono',monospace" font-size="10" fill="#6b6b6b">Configuration variants</text>
+            </g>
+            <!-- Sub-nodes: Consumer -->
+            <g id="mm3-consumer-subs" style="opacity:0;pointer-events:none;">
+              <text x="12" y="317" font-family="'JetBrains Mono',monospace" font-size="10" fill="#6b6b6b">Floor conversations</text>
+              <text x="12" y="359" font-family="'JetBrains Mono',monospace" font-size="10" fill="#6b6b6b">40+ customer sessions</text>
+              <text x="12" y="401" font-family="'JetBrains Mono',monospace" font-size="10" fill="#6b6b6b">Aspiration gap mapping</text>
+            </g>
+            <!-- Sub-nodes: Strategy -->
+            <g id="mm3-strategy-subs" style="opacity:0;pointer-events:none;">
+              <text x="788" y="67"  text-anchor="end" font-family="'JetBrains Mono',monospace" font-size="10" fill="#6b6b6b">Scandinavian → China</text>
+              <text x="788" y="109" text-anchor="end" font-family="'JetBrains Mono',monospace" font-size="10" fill="#6b6b6b">Room-set as lifestyle story</text>
+              <text x="788" y="151" text-anchor="end" font-family="'JetBrains Mono',monospace" font-size="10" fill="#6b6b6b">Seasonal display cycles</text>
+            </g>
+            <!-- Sub-nodes: Execution -->
+            <g id="mm3-exec-subs" style="opacity:0;pointer-events:none;">
+              <text x="788" y="317" text-anchor="end" font-family="'JetBrains Mono',monospace" font-size="10" fill="#6b6b6b">120+ material references</text>
+              <text x="788" y="359" text-anchor="end" font-family="'JetBrains Mono',monospace" font-size="10" fill="#6b6b6b">Lighting &amp; prop curation</text>
+              <text x="788" y="401" text-anchor="end" font-family="'JetBrains Mono',monospace" font-size="10" fill="#6b6b6b">Seasonal vignette builds</text>
+            </g>
 
+            <!-- Center circle -->
+            <circle cx="400" cy="230" r="56" fill="#0058a3" filter="url(#mm3-glow)"/>
+            <text x="400" y="224" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="11.5" font-weight="500" fill="white" letter-spacing="1.5">VIGNETTE</text>
+            <text x="400" y="241" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="11.5" font-weight="500" fill="white" letter-spacing="1.5">DESIGN</text>
+
+            <!-- Branch: Layout -->
+            <g id="mm3-btn-layout" style="cursor:pointer;">
+              <rect id="mm3-rect-layout" x="85" y="83" width="120" height="44" rx="6" fill="#f6f4ee" stroke="#0058a3" stroke-width="1.5"/>
+              <text id="mm3-txt-layout" x="145" y="110" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="10.5" font-weight="500" fill="#0058a3" letter-spacing="0.5">LAYOUT</text>
+            </g>
+            <!-- Branch: Consumer Focus -->
+            <g id="mm3-btn-consumer" style="cursor:pointer;">
+              <rect id="mm3-rect-consumer" x="55" y="333" width="170" height="44" rx="6" fill="#f6f4ee" stroke="#0058a3" stroke-width="1.5"/>
+              <text id="mm3-txt-consumer" x="140" y="360" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="10.5" font-weight="500" fill="#0058a3" letter-spacing="0.5">CONSUMER FOCUS</text>
+            </g>
+            <!-- Branch: Strategy -->
+            <g id="mm3-btn-strategy" style="cursor:pointer;">
+              <rect id="mm3-rect-strategy" x="595" y="83" width="120" height="44" rx="6" fill="#f6f4ee" stroke="#0058a3" stroke-width="1.5"/>
+              <text id="mm3-txt-strategy" x="655" y="110" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="10.5" font-weight="500" fill="#0058a3" letter-spacing="0.5">STRATEGY</text>
+            </g>
+            <!-- Branch: Execution -->
+            <g id="mm3-btn-exec" style="cursor:pointer;">
+              <rect id="mm3-rect-exec" x="575" y="333" width="170" height="44" rx="6" fill="#f6f4ee" stroke="#0058a3" stroke-width="1.5"/>
+              <text id="mm3-txt-exec" x="660" y="360" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="10.5" font-weight="500" fill="#0058a3" letter-spacing="0.5">EXECUTION</text>
+            </g>
+
+            <!-- Hint -->
+            <text x="400" y="447" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" fill="#b3b3b3" letter-spacing="0.5">click a node to expand</text>
+          </svg>
         </div>
+
+        <script>
+        (function(){
+          var pairs = [
+            ['mm3-btn-layout',   'mm3-layout-subs',   'mm3-layout-lines',   'mm3-rect-layout',   'mm3-txt-layout'],
+            ['mm3-btn-consumer', 'mm3-consumer-subs', 'mm3-consumer-lines', 'mm3-rect-consumer', 'mm3-txt-consumer'],
+            ['mm3-btn-strategy', 'mm3-strategy-subs', 'mm3-strategy-lines', 'mm3-rect-strategy', 'mm3-txt-strategy'],
+            ['mm3-btn-exec',     'mm3-exec-subs',     'mm3-exec-lines',     'mm3-rect-exec',     'mm3-txt-exec'],
+          ];
+          pairs.forEach(function(p){
+            var btn   = document.getElementById(p[0]);
+            var subs  = document.getElementById(p[1]);
+            var lines = document.getElementById(p[2]);
+            var rect  = document.getElementById(p[3]);
+            var txt   = document.getElementById(p[4]);
+            if(!btn) return;
+            var open = false;
+            btn.addEventListener('click', function(){
+              open = !open;
+              subs.style.opacity  = open ? '1' : '0';
+              lines.style.opacity = open ? '1' : '0';
+              if(rect) rect.setAttribute('fill', open ? '#0058a3' : '#f6f4ee');
+              if(txt)  txt.setAttribute('fill',  open ? '#ffffff'  : '#0058a3');
+            });
+          });
+        })();
+        </script>
 
         <blockquote class="cs__quote" style="margin-top:2rem;">
           <p>
