@@ -971,7 +971,7 @@ body[data-page="contact"] main {
   margin-bottom: 2rem;
 }
 .cs__num { color: var(--red); }
-.cs__label { color: var(--ink-3); }
+.cs__label { color: var(--ink); font-weight: 600; }
 
 /* big display headline */
 .cs__display {
