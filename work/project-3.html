@@ -98,119 +98,151 @@
         </header>
 
         <div style="margin:1.5rem 0; border-radius:12px; overflow:hidden; border:1px solid var(--rule);">
-          <svg id="mm3" viewBox="0 0 900 520" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;background:#f6f4ee;">
+          <svg id="mm3" viewBox="0 0 900 480" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;background:#f6f4ee;">
             <defs>
               <filter id="mm3-glow" x="-30%" y="-30%" width="160%" height="160%">
                 <feDropShadow dx="0" dy="2" stdDeviation="10" flood-color="#0058a3" flood-opacity="0.2"/>
               </filter>
             </defs>
             <style>
-              #mm3-design-subs,#mm3-psych-subs,#mm3-strategy-subs,#mm3-exec-subs,
-              #mm3-design-lines,#mm3-psych-lines,#mm3-strategy-lines,#mm3-exec-lines{transition:opacity .28s}
+              #mm3-design-subs,#mm3-psych-subs,#mm3-biz-subs,
+              #mm3-brand-subs,#mm3-dp-subs,#mm3-exec-subs,
+              #mm3-design-lines,#mm3-psych-lines,#mm3-biz-lines,
+              #mm3-brand-lines,#mm3-dp-lines,#mm3-exec-lines{transition:opacity .28s}
             </style>
 
-            <!-- Main curves: center → branch nodes -->
-            <path d="M 450,260 C 360,260 260,180 160,115" stroke="#0058a3" stroke-width="1.5" fill="none" opacity="0.35"/>
-            <path d="M 450,260 C 360,260 260,340 160,405" stroke="#0058a3" stroke-width="1.5" fill="none" opacity="0.35"/>
-            <path d="M 450,260 C 540,260 640,180 740,115" stroke="#0058a3" stroke-width="1.5" fill="none" opacity="0.35"/>
-            <path d="M 450,260 C 540,260 640,340 740,405" stroke="#0058a3" stroke-width="1.5" fill="none" opacity="0.35"/>
+            <!-- 6 main curves: center (450,240) → branches -->
+            <path d="M 450,240 C 380,240 325,178 285,132" stroke="#0058a3" stroke-width="1.5" fill="none" opacity="0.35"/>
+            <path d="M 450,240 C 370,240 310,240 252,240" stroke="#0058a3" stroke-width="1.5" fill="none" opacity="0.35"/>
+            <path d="M 450,240 C 380,240 325,302 285,348" stroke="#0058a3" stroke-width="1.5" fill="none" opacity="0.35"/>
+            <path d="M 450,240 C 520,240 575,178 615,132" stroke="#0058a3" stroke-width="1.5" fill="none" opacity="0.35"/>
+            <path d="M 450,240 C 530,240 590,240 648,240" stroke="#0058a3" stroke-width="1.5" fill="none" opacity="0.35"/>
+            <path d="M 450,240 C 520,240 575,302 615,348" stroke="#0058a3" stroke-width="1.5" fill="none" opacity="0.35"/>
 
-            <!-- Sub-lines: Spatial Design (top-left) -->
+            <!-- Sub-lines: Spatial Design (top-left, 285,132) -->
             <g id="mm3-design-lines" style="opacity:0;">
-              <line x1="160" y1="115" x2="10" y2="55"  stroke="#0058a3" stroke-width="0.8" opacity="0.5"/>
-              <line x1="160" y1="115" x2="10" y2="100" stroke="#0058a3" stroke-width="0.8" opacity="0.5"/>
-              <line x1="160" y1="115" x2="10" y2="145" stroke="#0058a3" stroke-width="0.8" opacity="0.5"/>
-              <line x1="160" y1="115" x2="10" y2="190" stroke="#0058a3" stroke-width="0.8" opacity="0.5"/>
+              <line x1="285" y1="132" x2="10" y2="88"  stroke="#0058a3" stroke-width="0.8" opacity="0.5"/>
+              <line x1="285" y1="132" x2="10" y2="128" stroke="#0058a3" stroke-width="0.8" opacity="0.5"/>
+              <line x1="285" y1="132" x2="10" y2="168" stroke="#0058a3" stroke-width="0.8" opacity="0.5"/>
             </g>
-            <!-- Sub-lines: Consumer Psychology (bottom-left) -->
+            <!-- Sub-lines: Consumer Psych (left, 252,240) -->
             <g id="mm3-psych-lines" style="opacity:0;">
-              <line x1="160" y1="405" x2="10" y2="330" stroke="#0058a3" stroke-width="0.8" opacity="0.5"/>
-              <line x1="160" y1="405" x2="10" y2="375" stroke="#0058a3" stroke-width="0.8" opacity="0.5"/>
-              <line x1="160" y1="405" x2="10" y2="420" stroke="#0058a3" stroke-width="0.8" opacity="0.5"/>
-              <line x1="160" y1="405" x2="10" y2="465" stroke="#0058a3" stroke-width="0.8" opacity="0.5"/>
+              <line x1="252" y1="240" x2="10" y2="200" stroke="#0058a3" stroke-width="0.8" opacity="0.5"/>
+              <line x1="252" y1="240" x2="10" y2="240" stroke="#0058a3" stroke-width="0.8" opacity="0.5"/>
+              <line x1="252" y1="240" x2="10" y2="280" stroke="#0058a3" stroke-width="0.8" opacity="0.5"/>
             </g>
-            <!-- Sub-lines: Brand Strategy (top-right) -->
-            <g id="mm3-strategy-lines" style="opacity:0;">
-              <line x1="740" y1="115" x2="890" y2="55"  stroke="#0058a3" stroke-width="0.8" opacity="0.5"/>
-              <line x1="740" y1="115" x2="890" y2="100" stroke="#0058a3" stroke-width="0.8" opacity="0.5"/>
-              <line x1="740" y1="115" x2="890" y2="145" stroke="#0058a3" stroke-width="0.8" opacity="0.5"/>
-              <line x1="740" y1="115" x2="890" y2="190" stroke="#0058a3" stroke-width="0.8" opacity="0.5"/>
+            <!-- Sub-lines: Business Impact (bottom-left, 285,348) -->
+            <g id="mm3-biz-lines" style="opacity:0;">
+              <line x1="285" y1="348" x2="10" y2="312" stroke="#0058a3" stroke-width="0.8" opacity="0.5"/>
+              <line x1="285" y1="348" x2="10" y2="352" stroke="#0058a3" stroke-width="0.8" opacity="0.5"/>
+              <line x1="285" y1="348" x2="10" y2="392" stroke="#0058a3" stroke-width="0.8" opacity="0.5"/>
             </g>
-            <!-- Sub-lines: Execution (bottom-right) -->
+            <!-- Sub-lines: Brand Strategy (top-right, 615,132) -->
+            <g id="mm3-brand-lines" style="opacity:0;">
+              <line x1="615" y1="132" x2="890" y2="88"  stroke="#0058a3" stroke-width="0.8" opacity="0.5"/>
+              <line x1="615" y1="132" x2="890" y2="128" stroke="#0058a3" stroke-width="0.8" opacity="0.5"/>
+              <line x1="615" y1="132" x2="890" y2="168" stroke="#0058a3" stroke-width="0.8" opacity="0.5"/>
+            </g>
+            <!-- Sub-lines: Design Process (right, 648,240) -->
+            <g id="mm3-dp-lines" style="opacity:0;">
+              <line x1="648" y1="240" x2="890" y2="200" stroke="#0058a3" stroke-width="0.8" opacity="0.5"/>
+              <line x1="648" y1="240" x2="890" y2="240" stroke="#0058a3" stroke-width="0.8" opacity="0.5"/>
+              <line x1="648" y1="240" x2="890" y2="280" stroke="#0058a3" stroke-width="0.8" opacity="0.5"/>
+            </g>
+            <!-- Sub-lines: Execution (bottom-right, 615,348) -->
             <g id="mm3-exec-lines" style="opacity:0;">
-              <line x1="740" y1="405" x2="890" y2="330" stroke="#0058a3" stroke-width="0.8" opacity="0.5"/>
-              <line x1="740" y1="405" x2="890" y2="375" stroke="#0058a3" stroke-width="0.8" opacity="0.5"/>
-              <line x1="740" y1="405" x2="890" y2="420" stroke="#0058a3" stroke-width="0.8" opacity="0.5"/>
-              <line x1="740" y1="405" x2="890" y2="465" stroke="#0058a3" stroke-width="0.8" opacity="0.5"/>
+              <line x1="615" y1="348" x2="890" y2="312" stroke="#0058a3" stroke-width="0.8" opacity="0.5"/>
+              <line x1="615" y1="348" x2="890" y2="352" stroke="#0058a3" stroke-width="0.8" opacity="0.5"/>
+              <line x1="615" y1="348" x2="890" y2="392" stroke="#0058a3" stroke-width="0.8" opacity="0.5"/>
             </g>
 
             <!-- Sub-nodes: Spatial Design -->
             <g id="mm3-design-subs" style="opacity:0;pointer-events:none;">
-              <text x="14" y="59"  font-family="'JetBrains Mono',monospace" font-size="10" fill="#6b6b6b">15+ SketchUp layouts</text>
-              <text x="14" y="104" font-family="'JetBrains Mono',monospace" font-size="10" fill="#6b6b6b">Proportion &amp; sight lines</text>
-              <text x="14" y="149" font-family="'JetBrains Mono',monospace" font-size="10" fill="#6b6b6b">Traffic flow planning</text>
-              <text x="14" y="194" font-family="'JetBrains Mono',monospace" font-size="10" fill="#6b6b6b">Visual hierarchy mapping</text>
+              <text x="14" y="92"  font-family="'JetBrains Mono',monospace" font-size="10" fill="#6b6b6b">15+ SketchUp layouts</text>
+              <text x="14" y="132" font-family="'JetBrains Mono',monospace" font-size="10" fill="#6b6b6b">Proportion &amp; sight lines</text>
+              <text x="14" y="172" font-family="'JetBrains Mono',monospace" font-size="10" fill="#6b6b6b">Traffic flow analysis</text>
             </g>
-            <!-- Sub-nodes: Consumer Psychology -->
+            <!-- Sub-nodes: Consumer Psych -->
             <g id="mm3-psych-subs" style="opacity:0;pointer-events:none;">
-              <text x="14" y="334" font-family="'JetBrains Mono',monospace" font-size="10" fill="#6b6b6b">Aspiration vs. reality gap</text>
-              <text x="14" y="379" font-family="'JetBrains Mono',monospace" font-size="10" fill="#6b6b6b">Dwell time &amp; attention cues</text>
-              <text x="14" y="424" font-family="'JetBrains Mono',monospace" font-size="10" fill="#6b6b6b">40+ floor conversations</text>
-              <text x="14" y="469" font-family="'JetBrains Mono',monospace" font-size="10" fill="#6b6b6b">Emotional resonance</text>
+              <text x="14" y="204" font-family="'JetBrains Mono',monospace" font-size="10" fill="#6b6b6b">Aspiration vs. reality gap</text>
+              <text x="14" y="244" font-family="'JetBrains Mono',monospace" font-size="10" fill="#6b6b6b">Dwell time &amp; gaze patterns</text>
+              <text x="14" y="284" font-family="'JetBrains Mono',monospace" font-size="10" fill="#6b6b6b">40+ floor conversations</text>
+            </g>
+            <!-- Sub-nodes: Business Impact -->
+            <g id="mm3-biz-subs" style="opacity:0;pointer-events:none;">
+              <text x="14" y="316" font-family="'JetBrains Mono',monospace" font-size="10" fill="#6b6b6b">Seasonal sell-through</text>
+              <text x="14" y="356" font-family="'JetBrains Mono',monospace" font-size="10" fill="#6b6b6b">Category adjacency</text>
+              <text x="14" y="396" font-family="'JetBrains Mono',monospace" font-size="10" fill="#6b6b6b">Space ROI metrics</text>
             </g>
             <!-- Sub-nodes: Brand Strategy -->
-            <g id="mm3-strategy-subs" style="opacity:0;pointer-events:none;">
-              <text x="886" y="59"  text-anchor="end" font-family="'JetBrains Mono',monospace" font-size="10" fill="#6b6b6b">Scandinavian → China</text>
-              <text x="886" y="104" text-anchor="end" font-family="'JetBrains Mono',monospace" font-size="10" fill="#6b6b6b">Democratic design ethos</text>
-              <text x="886" y="149" text-anchor="end" font-family="'JetBrains Mono',monospace" font-size="10" fill="#6b6b6b">Lifestyle storytelling</text>
-              <text x="886" y="194" text-anchor="end" font-family="'JetBrains Mono',monospace" font-size="10" fill="#6b6b6b">Seasonal campaign sync</text>
+            <g id="mm3-brand-subs" style="opacity:0;pointer-events:none;">
+              <text x="886" y="92"  text-anchor="end" font-family="'JetBrains Mono',monospace" font-size="10" fill="#6b6b6b">Scandinavian → China</text>
+              <text x="886" y="132" text-anchor="end" font-family="'JetBrains Mono',monospace" font-size="10" fill="#6b6b6b">Democratic design</text>
+              <text x="886" y="172" text-anchor="end" font-family="'JetBrains Mono',monospace" font-size="10" fill="#6b6b6b">Campaign alignment</text>
+            </g>
+            <!-- Sub-nodes: Design Process -->
+            <g id="mm3-dp-subs" style="opacity:0;pointer-events:none;">
+              <text x="886" y="204" text-anchor="end" font-family="'JetBrains Mono',monospace" font-size="10" fill="#6b6b6b">Model → Stage → Observe</text>
+              <text x="886" y="244" text-anchor="end" font-family="'JetBrains Mono',monospace" font-size="10" fill="#6b6b6b">Iterative curation</text>
+              <text x="886" y="284" text-anchor="end" font-family="'JetBrains Mono',monospace" font-size="10" fill="#6b6b6b">Visual feedback loops</text>
             </g>
             <!-- Sub-nodes: Execution -->
             <g id="mm3-exec-subs" style="opacity:0;pointer-events:none;">
-              <text x="886" y="334" text-anchor="end" font-family="'JetBrains Mono',monospace" font-size="10" fill="#6b6b6b">120+ material references</text>
-              <text x="886" y="379" text-anchor="end" font-family="'JetBrains Mono',monospace" font-size="10" fill="#6b6b6b">Sell-through optimization</text>
-              <text x="886" y="424" text-anchor="end" font-family="'JetBrains Mono',monospace" font-size="10" fill="#6b6b6b">Lighting &amp; prop curation</text>
-              <text x="886" y="469" text-anchor="end" font-family="'JetBrains Mono',monospace" font-size="10" fill="#6b6b6b">Seasonal vignette builds</text>
+              <text x="886" y="316" text-anchor="end" font-family="'JetBrains Mono',monospace" font-size="10" fill="#6b6b6b">120+ material refs</text>
+              <text x="886" y="356" text-anchor="end" font-family="'JetBrains Mono',monospace" font-size="10" fill="#6b6b6b">Lighting &amp; props</text>
+              <text x="886" y="396" text-anchor="end" font-family="'JetBrains Mono',monospace" font-size="10" fill="#6b6b6b">Room-set construction</text>
             </g>
 
             <!-- Center circle -->
-            <circle cx="450" cy="260" r="58" fill="#0058a3" filter="url(#mm3-glow)"/>
-            <text x="450" y="254" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="500" fill="white" letter-spacing="1.5">IKEA</text>
-            <text x="450" y="271" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="500" fill="white" letter-spacing="1.5">VIGNETTE</text>
+            <circle cx="450" cy="240" r="58" fill="#0058a3" filter="url(#mm3-glow)"/>
+            <text x="450" y="234" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="500" fill="white" letter-spacing="1.5">IKEA</text>
+            <text x="450" y="251" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="500" fill="white" letter-spacing="1.5">VIGNETTE</text>
 
             <!-- Branch: Spatial Design (top-left) -->
             <g id="mm3-btn-design" style="cursor:pointer;">
-              <rect id="mm3-rect-design" x="80" y="93" width="160" height="44" rx="6" fill="#f6f4ee" stroke="#0058a3" stroke-width="1.5"/>
-              <text id="mm3-txt-design" x="160" y="120" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="10.5" font-weight="500" fill="#0058a3" letter-spacing="0.5">SPATIAL DESIGN</text>
+              <rect id="mm3-rect-design" x="205" y="112" width="160" height="40" rx="6" fill="#f6f4ee" stroke="#0058a3" stroke-width="1.5"/>
+              <text id="mm3-txt-design" x="285" y="137" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="10" font-weight="500" fill="#0058a3" letter-spacing="0.5">SPATIAL DESIGN</text>
             </g>
-            <!-- Branch: Consumer Psychology (bottom-left) -->
+            <!-- Branch: Consumer Psych (left) -->
             <g id="mm3-btn-psych" style="cursor:pointer;">
-              <rect id="mm3-rect-psych" x="68" y="383" width="184" height="44" rx="6" fill="#f6f4ee" stroke="#0058a3" stroke-width="1.5"/>
-              <text id="mm3-txt-psych" x="160" y="410" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="10.5" font-weight="500" fill="#0058a3" letter-spacing="0.5">CONSUMER PSYCH</text>
+              <rect id="mm3-rect-psych" x="160" y="220" width="184" height="40" rx="6" fill="#f6f4ee" stroke="#0058a3" stroke-width="1.5"/>
+              <text id="mm3-txt-psych" x="252" y="245" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="10" font-weight="500" fill="#0058a3" letter-spacing="0.5">CONSUMER PSYCH</text>
+            </g>
+            <!-- Branch: Business Impact (bottom-left) -->
+            <g id="mm3-btn-biz" style="cursor:pointer;">
+              <rect id="mm3-rect-biz" x="205" y="328" width="160" height="40" rx="6" fill="#f6f4ee" stroke="#0058a3" stroke-width="1.5"/>
+              <text id="mm3-txt-biz" x="285" y="353" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="10" font-weight="500" fill="#0058a3" letter-spacing="0.5">BUSINESS IMPACT</text>
             </g>
             <!-- Branch: Brand Strategy (top-right) -->
-            <g id="mm3-btn-strategy" style="cursor:pointer;">
-              <rect id="mm3-rect-strategy" x="660" y="93" width="160" height="44" rx="6" fill="#f6f4ee" stroke="#0058a3" stroke-width="1.5"/>
-              <text id="mm3-txt-strategy" x="740" y="120" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="10.5" font-weight="500" fill="#0058a3" letter-spacing="0.5">BRAND STRATEGY</text>
+            <g id="mm3-btn-brand" style="cursor:pointer;">
+              <rect id="mm3-rect-brand" x="535" y="112" width="160" height="40" rx="6" fill="#f6f4ee" stroke="#0058a3" stroke-width="1.5"/>
+              <text id="mm3-txt-brand" x="615" y="137" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="10" font-weight="500" fill="#0058a3" letter-spacing="0.5">BRAND STRATEGY</text>
+            </g>
+            <!-- Branch: Design Process (right) -->
+            <g id="mm3-btn-dp" style="cursor:pointer;">
+              <rect id="mm3-rect-dp" x="556" y="220" width="184" height="40" rx="6" fill="#f6f4ee" stroke="#0058a3" stroke-width="1.5"/>
+              <text id="mm3-txt-dp" x="648" y="245" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="10" font-weight="500" fill="#0058a3" letter-spacing="0.5">DESIGN PROCESS</text>
             </g>
             <!-- Branch: Execution (bottom-right) -->
             <g id="mm3-btn-exec" style="cursor:pointer;">
-              <rect id="mm3-rect-exec" x="660" y="383" width="160" height="44" rx="6" fill="#f6f4ee" stroke="#0058a3" stroke-width="1.5"/>
-              <text id="mm3-txt-exec" x="740" y="410" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="10.5" font-weight="500" fill="#0058a3" letter-spacing="0.5">EXECUTION</text>
+              <rect id="mm3-rect-exec" x="535" y="328" width="160" height="40" rx="6" fill="#f6f4ee" stroke="#0058a3" stroke-width="1.5"/>
+              <text id="mm3-txt-exec" x="615" y="353" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="10" font-weight="500" fill="#0058a3" letter-spacing="0.5">EXECUTION</text>
             </g>
 
             <!-- Hint -->
-            <text x="450" y="508" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" fill="#b3b3b3" letter-spacing="0.5">click a node to expand</text>
+            <text x="450" y="468" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" fill="#b3b3b3" letter-spacing="0.5">click a node to expand</text>
           </svg>
         </div>
 
         <script>
         (function(){
           var pairs = [
-            ['mm3-btn-design',   'mm3-design-subs',   'mm3-design-lines',   'mm3-rect-design',   'mm3-txt-design'],
-            ['mm3-btn-psych',    'mm3-psych-subs',    'mm3-psych-lines',    'mm3-rect-psych',    'mm3-txt-psych'],
-            ['mm3-btn-strategy', 'mm3-strategy-subs', 'mm3-strategy-lines', 'mm3-rect-strategy', 'mm3-txt-strategy'],
-            ['mm3-btn-exec',     'mm3-exec-subs',     'mm3-exec-lines',     'mm3-rect-exec',     'mm3-txt-exec'],
+            ['mm3-btn-design', 'mm3-design-subs', 'mm3-design-lines', 'mm3-rect-design', 'mm3-txt-design'],
+            ['mm3-btn-psych',  'mm3-psych-subs',  'mm3-psych-lines',  'mm3-rect-psych',  'mm3-txt-psych'],
+            ['mm3-btn-biz',    'mm3-biz-subs',    'mm3-biz-lines',    'mm3-rect-biz',    'mm3-txt-biz'],
+            ['mm3-btn-brand',  'mm3-brand-subs',  'mm3-brand-lines',  'mm3-rect-brand',  'mm3-txt-brand'],
+            ['mm3-btn-dp',     'mm3-dp-subs',     'mm3-dp-lines',     'mm3-rect-dp',     'mm3-txt-dp'],
+            ['mm3-btn-exec',   'mm3-exec-subs',   'mm3-exec-lines',   'mm3-rect-exec',   'mm3-txt-exec'],
           ];
           pairs.forEach(function(p){
             var btn   = document.getElementById(p[0]);
