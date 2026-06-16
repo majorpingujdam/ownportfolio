@@ -1,10 +1,10 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>AiWalker —Clinic-to-Home Continuity-of-Care Service Design 路 Owen Chen</title>
-  <meta name="description" content="AiWalker —a clinic-to-home continuity-of-care service blueprint for a lower-limb rehabilitation exoskeleton. Service design case study at Beijing Ai-Robotics by Owen Chen." />
+  <title>AiWalker — Owen Chen</title>
+  <meta name="description" content="AiWalker — clinic-to-home rehabilitation service design at Beijing Ai-Robotics. Case study by Owen Chen." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -22,7 +22,7 @@
 
   <main id="top">
     <article class="project">
-      <a href="../projects.html" class="project__back">→back to projects</a>
+      <a href="../projects.html" class="project__back">← back to projects</a>
 
       <header class="project__head">
         <div>
@@ -44,59 +44,33 @@
         <img src="../work-2-logo.png" alt="Beijing Ai-Robotics" />
       </div>
 
-      <!-- FACTS STRIP -->
-      <div class="cs__facts">
-        <div><span>103</span>users surveyed</div>
-        <div><span>20+</span>devices benchmarked</div>
-        <div><span>2025</span>Beijing</div>
-      </div>
-
-      <!-- 01 OVERVIEW -->
+      <!-- 1. COMPANY PROFILE -->
       <section class="cs">
         <header class="cs__head">
-          <span class="cs__num">01</span>
-          <span class="cs__label">Overview</span>
-        </header>
-
-        <div class="cs__prose">
-          <p>
-            At Beijing Ai-Robotics <span class="cs__zh">(北京大艾机器人)</span>, my design team was focused on making the exoskeleton itself better —a natural priority for a hardware company. As I talked to users across the country, a pattern kept surfacing: the device worked well in the hospital, but often went quiet once people got home. What broke wasn't the hardware —it was the support around it the moment the therapist stepped away.
-          </p>
-          <p>
-            That reframed the question for me —from <em>how to improve the device</em> to <em>how to keep rehab going after the patient goes home</em> —and pointed toward designing a clinic-to-home service that holds together across that gap.
-          </p>
-        </div>
-      </section>
-
-      <!-- 02 COMPANY & CONTEXT -->
-      <section class="cs">
-        <header class="cs__head">
-          <span class="cs__num">02</span>
-          <span class="cs__label">Company &amp; Context</span>
+          <span class="cs__label">Company Profile</span>
         </header>
 
         <ul class="cs__bullets">
-          <li>Beijing Ai-Robotics <span class="cs__zh">(北京大艾机器人)</span> —lower-limb rehab exoskeletons for SCI, stroke, and cerebral palsy.</li>
+          <li>Beijing Ai-Robotics <span class="cs__zh">(北京大艾机器人)</span> — lower-limb rehab exoskeletons for SCI, stroke, and cerebral palsy.</li>
           <li>Supplied the exoskeleton for the 2022 Beijing Winter Olympics torch relay.</li>
-          <li>As home rehab becomes policy, the operator shifts from trained therapist to untrained family caregiver —the core tension.</li>
+          <li>As home rehab becomes policy, the operator shifts from trained therapist to untrained family caregiver — the core design tension.</li>
         </ul>
       </section>
 
-      <!-- 03 MY ROLE -->
+      <!-- 2. MY ROLE -->
       <section class="cs">
         <header class="cs__head">
-          <span class="cs__num">03</span>
           <span class="cs__label">My Role</span>
         </header>
 
         <div class="cs__role">
           <div class="cs__role-row">
             <span class="cs__role-label">User Research</span>
-            <span>103-user multi-region survey 路 drop-off quantified at each rehab stage</span>
+            <span>103-user multi-region survey · drop-off quantified at each rehab stage</span>
           </div>
           <div class="cs__role-row">
             <span class="cs__role-label">Product Experience</span>
-            <span>Main site UI &amp; error-reporting system 路 bugs, UX logic, feedback data</span>
+            <span>Main site UI &amp; error-reporting system · bugs, UX logic, feedback data</span>
           </div>
           <div class="cs__role-row">
             <span class="cs__role-label">Market Research</span>
@@ -105,66 +79,15 @@
         </div>
       </section>
 
-      <!-- 04 RESEARCH -->
+      <!-- 3. SERVICE BLUEPRINT -->
       <section class="cs">
         <header class="cs__head">
-          <span class="cs__num">04</span>
-          <span class="cs__label">Research</span>
-        </header>
-
-        <div class="cs__finds">
-          <div class="cs__find">
-            <span class="cs__find-num">4.1 路 User Study</span>
-            <h3>Drop-off at discharge</h3>
-            <p>In-clinic: sustained. Post-discharge home use: collapses within weeks. Hardware fine; handoff wasn't.</p>
-          </div>
-          <div class="cs__find">
-            <span class="cs__find-num">4.2 路 Competitive Analysis</span>
-            <h3>Industry blind spot</h3>
-            <p>20+ competitors on hardware specs. The service wrapper —handoff, remote support, caregiver training —sits unclaimed.</p>
-          </div>
-          <div class="cs__find">
-            <span class="cs__find-num">4.3 路 Site &amp; Error Data</span>
-            <h3>Site friction = real friction</h3>
-            <p>Error logs from the site I owned mirrored where users got stuck in real rehab —live signal layered onto the study.</p>
-          </div>
-        </div>
-
-        <div class="cs__sub cs__sub--field">
-          <p class="cs__field-label">4.4 路 Field moment</p>
-          <h3 class="cs__field-name">Mr. Du</h3>
-          <p>In the clinic, fluent. At home, alone —couldn't operate the device at all. The interface hadn't changed. The therapist had left. Not an interface problem: a broken-service problem.</p>
-        </div>
-      </section>
-
-      <!-- 05 INSIGHT -->
-      <section class="cs">
-        <header class="cs__head">
-          <span class="cs__num">05</span>
-          <span class="cs__label">The Insight</span>
-        </header>
-
-        <blockquote class="cs__quote">
-          <p>
-            The therapist holds the operating knowledge; the family does not. In hospital this is invisible —the therapist silently fills the gap. Once home rehab begins and they step away, the device goes unused.
-          </p>
-        </blockquote>
-
-        <p class="cs__one-line">
-          AiWalker's core gap is not in the hardware —it's in <strong>service continuity</strong> across the clinic-to-home handoff.
-        </p>
-      </section>
-
-      <!-- 06 SERVICE BLUEPRINT -->
-      <section class="cs">
-        <header class="cs__head">
-          <span class="cs__num">06</span>
           <span class="cs__label">Service Blueprint</span>
         </header>
 
         <ul class="cs__legend" aria-label="Legend">
           <li><span class="cs__sw cs__sw--blue"></span>Hospital</li>
-          <li><span class="cs__sw cs__sw--red"></span>Handoff 路 break point</li>
+          <li><span class="cs__sw cs__sw--red"></span>Handoff · break point</li>
           <li><span class="cs__sw cs__sw--green"></span>Home</li>
           <li><span class="cs__sw cs__sw--dashed"></span>Design layer</li>
         </ul>
@@ -189,63 +112,27 @@
 
         <div class="cs__designlayer">
           <p class="cs__designlayer-head">
-            My service interventions 路 bridging the handoff
+            My service interventions · bridging the handoff
           </p>
           <ol class="cs__chips">
             <li><span>01</span>Caregiver onboarding</li>
             <li><span>02</span>Simplified home-mode UI</li>
             <li><span>03</span>Remote tele-rehab check-in</li>
-            <li><span>04</span>Error loop →therapist</li>
+            <li><span>04</span>Error loop → therapist</li>
           </ol>
         </div>
       </section>
 
-      <!-- 07 INTERVENTIONS -->
+      <!-- 4. SUMMARY AND REFLECTIONS -->
       <section class="cs">
         <header class="cs__head">
-          <span class="cs__num">07</span>
-          <span class="cs__label">Interventions</span>
-        </header>
-
-        <ol class="cs__cards">
-          <li class="cs__card">
-            <span class="cs__card-num">01</span>
-            <h3>Caregiver onboarding</h3>
-            <p class="cs__card-what">Discharge handoff session + quick-reference card, so the family systematically inherits the therapist's operating knowledge.</p>
-            <p class="cs__gap"><span>Closes →/span>Knowledge gap between therapist and family.</p>
-          </li>
-          <li class="cs__card">
-            <span class="cs__card-num">02</span>
-            <h3>Simplified home-mode UI</h3>
-            <p class="cs__card-what">Stripped-down interface for unsupervised home use —the direct fix for the Mr. Du problem.</p>
-            <p class="cs__gap"><span>Closes →/span>Gap between clinical complexity and caregiver ability.</p>
-          </li>
-          <li class="cs__card">
-            <span class="cs__card-num">03</span>
-            <h3>Remote tele-rehab check-in</h3>
-            <p class="cs__card-what">Scheduled remote follow-ups after discharge —keeps the therapist in the loop instead of severing the relationship at the hospital door.</p>
-            <p class="cs__gap"><span>Closes →/span>Loss of ongoing professional guidance after discharge.</p>
-          </li>
-          <li class="cs__card">
-            <span class="cs__card-num">04</span>
-            <h3>Error-feedback loop →therapist</h3>
-            <p class="cs__card-what">Repurposed site error system so real friction from home use flows back to the clinician, not a backend log.</p>
-            <p class="cs__gap"><span>Closes →/span>Gap that keeps user struggles from reaching the professional.</p>
-          </li>
-        </ol>
-      </section>
-
-      <!-- 08 OUTCOME & REFLECTION -->
-      <section class="cs">
-        <header class="cs__head">
-          <span class="cs__num">08</span>
-          <span class="cs__label">Outcome &amp; Reflection</span>
+          <span class="cs__label">Summary and Reflections</span>
         </header>
 
         <div class="cs__ba">
           <div class="cs__ba-box cs__ba-box--before">
             <span class="cs__ba-label">Before</span>
-            <p>"Which hardware feature do we add in the next version?"</p>
+            <p>"Which hardware feature do we add next?"</p>
           </div>
           <div class="cs__ba-box cs__ba-box--after">
             <span class="cs__ba-label">After</span>
@@ -255,12 +142,12 @@
 
         <div class="cs__prose">
           <p>
-            "The product failed" is usually "the service didn't catch the person" —asymmetry between roles, amplified at a handoff, landing on the most vulnerable user. The Mr. Du moment is the through-line.
+            "The product failed" is usually "the service didn't catch the person" — asymmetry between roles, amplified at a handoff, landing on the most vulnerable user.
           </p>
         </div>
 
         <p class="cs__note">
-          <em>Note:</em> the blueprint and four touchpoints are my design synthesis and proposal based on the research —honestly stated as <em>"research delivered, blueprint proposed."</em>
+          <em>Note:</em> the blueprint and four touchpoints are my design synthesis based on the research — honestly stated as <em>"research delivered, blueprint proposed."</em>
         </p>
       </section>
 
@@ -268,8 +155,8 @@
   </main>
 
   <footer class="foot">
-    <a href="../contact.html" class="foot__contact">contact ↗/a>
-    <a href="#top" class="foot__top">top ↑/a>
+    <a href="../contact.html" class="foot__contact">contact ↗</a>
+    <a href="#top" class="foot__top">top ↑</a>
   </footer>
 
   <script src="../script.js"></script>
