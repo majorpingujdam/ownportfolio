@@ -1,13 +1,13 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Dosage-Pal 鈥?Owen Chen</title>
-  <meta name="description" content="Owen Chen 鈥?Dosage-Pal case study." />
+  <title>Dosage-Pal — Owen Chen</title>
+  <meta name="description" content="Dosage-Pal — smart prescription pillbox lid for medication adherence. Case study by Owen Chen." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../style.css" />
 </head>
 <body data-page="project">
@@ -21,51 +21,314 @@
   </header>
 
   <main id="top">
-    <article class="project">
-      <a href="../projects.html" class="project__back">鈫?back to projects</a>
+    <article class="project" style="--red: #e07040;">
+      <a href="../projects.html" class="project__back">← back to projects</a>
 
       <header class="project__head">
-        <h1 class="project__title">Dosage-Pal</h1>
+        <div>
+          <p class="cs__eyebrow">smart prescription dispensing system</p>
+          <h1 class="project__title">Dosage-Pal</h1>
+        </div>
         <dl class="project__meta">
-          <div><dt>role</dt><dd>鈥?/dd></div>
-          <div><dt>year</dt><dd>2026</dd></div>
-          <div><dt>type</dt><dd>Product</dd></div>
+          <div><dt>type</dt><dd>Product Design</dd></div>
+          <div><dt>time</dt><dd>2024–2025</dd></div>
+          <div><dt>context</dt><dd>Parsons School of Design</dd></div>
         </dl>
       </header>
 
       <figure class="project__hero">
-        <img src="../work-1.jpg" alt="Dosage-Pal" />
+        <img src="../work-1.jpg" alt="Dosage-Pal smart prescription pillbox lid" />
       </figure>
 
-      <section class="project__body">
-        <p class="project__lede">
-          One-sentence summary of what this project is and who it's for.
-        </p>
+      <!-- 1. OVERVIEW -->
+      <section class="cs">
+        <header class="cs__head">
+          <span class="cs__label">Overview</span>
+        </header>
 
-        <h2>Context</h2>
-        <p>
-          Brief background 鈥?the problem, the constraint, the moment that
-          made this worth working on.
-        </p>
+        <div class="cs__prose">
+          <p>
+            Dosage-Pal is a smart prescription pillbox lid designed to solve medication forgetfulness, repeated dosing, and drug abuse. Rather than redesigning the entire bottle, it shifts focus to the cap — the one universal component across all prescription containers — embedding gravity-triggered dispensing, an app-linked reminder system, and dose-record feedback into a single retrofittable device.
+          </p>
+        </div>
 
-        <h2>Approach</h2>
-        <p>
-          How you thought about it. Research, sketches, the path from
-          question to prototype.
-        </p>
+        <div style="display:flex; gap:0.75rem; margin-top:1.5rem; flex-wrap:wrap;">
+          <span style="font-family:'JetBrains Mono',monospace; font-size:0.78rem; padding:0.3rem 0.7rem; border:1px solid var(--rule); border-radius:4px; color:var(--ink-2);">Prescription Adherence</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:0.78rem; padding:0.3rem 0.7rem; border:1px solid var(--rule); border-radius:4px; color:var(--ink-2);">Safety &amp; Locking Mechanism</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:0.78rem; padding:0.3rem 0.7rem; border:1px solid var(--rule); border-radius:4px; color:var(--ink-2);">Data Synchronization</span>
+        </div>
+      </section>
 
-        <h2>Outcome</h2>
-        <p>
-          What got built and what it changed. Numbers if you have them,
-          stories if you don't.
+      <!-- 2. BACKGROUND -->
+      <section class="cs">
+        <header class="cs__head">
+          <span class="cs__label">Background</span>
+        </header>
+
+        <div class="cs__prose">
+          <p>
+            In the United States, prescription drug use should be a precise, safe, and regulated process — but reality reveals numerous loopholes: low self-discipline in medical adherence, no dose-timing tracking, and an escalating risk of overdose. Traditional medicine bottle designs have remained essentially unchanged for decades.
+          </p>
+        </div>
+
+        <div class="cs__bp" style="margin-top:1.5rem;">
+          <div class="cs__phase cs__phase--break">
+            <span class="cs__phase-tag">Medication Omission</span>
+            <h3>~50%</h3>
+            <p>of patients with chronic conditions do not take medications as prescribed. (NCBI, 2022)</p>
+          </div>
+          <div class="cs__phase cs__phase--break">
+            <span class="cs__phase-tag">No Objective Monitoring</span>
+            <h3>Self-report only</h3>
+            <p>Current prescription bottles do not track dose timing — caregivers rely entirely on patient self-reporting, highly impairing dose adjustment. (FDA Medication Guide)</p>
+          </div>
+          <div class="cs__phase cs__phase--break">
+            <span class="cs__phase-tag">Drug Abuse Mortality Risk</span>
+            <h3>13,026 deaths</h3>
+            <p>caused by prescription opioid overdose in 2023 alone — a 24-year escalating trend. (CDC Wonder)</p>
+          </div>
+        </div>
+
+        <blockquote class="cs__quote" style="margin-top:2rem;">
+          <p>
+            These figures are not cold statistics, but real-life crises that have occurred countless times. Traditional medicine bottle designs have remained unchanged for decades and lack the ability to meet modern complex medication needs.
+          </p>
+        </blockquote>
+      </section>
+
+      <!-- 3. RESEARCH -->
+      <section class="cs">
+        <header class="cs__head">
+          <span class="cs__label">Research</span>
+        </header>
+
+        <p class="cs__subtitle">Questionnaire · 96 participants · ages 25+</p>
+
+        <div class="cs__prose" style="font-size:0.95rem;">
+          <p>
+            I surveyed 96 individuals aged 25 and above who regularly take prescription medications, focusing on what they actually do when they forget a dose — a scenario the healthcare system largely treats as invisible.
+          </p>
+        </div>
+
+        <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:1rem; margin-top:1.5rem;">
+          <div style="background:var(--bg-soft); border-radius:10px; padding:1.25rem;">
+            <p style="font-family:'JetBrains Mono',monospace; font-size:2.2rem; font-weight:500; color:#e07040; margin:0 0 0.3rem; line-height:1;">43%</p>
+            <p style="font-size:0.875rem; color:var(--ink-2); margin:0; line-height:1.5;">of all participants forget to take their medication at some point.</p>
+          </div>
+          <div style="background:var(--bg-soft); border-radius:10px; padding:1.25rem;">
+            <p style="font-family:'JetBrains Mono',monospace; font-size:2.2rem; font-weight:500; color:#e07040; margin:0 0 0.3rem; line-height:1;">46%</p>
+            <p style="font-size:0.875rem; color:var(--ink-2); margin:0; line-height:1.5;">of forgetters simply "let go" — no corrective action at all.</p>
+          </div>
+          <div style="background:var(--bg-soft); border-radius:10px; padding:1.25rem;">
+            <p style="font-family:'JetBrains Mono',monospace; font-size:2.2rem; font-weight:500; color:#e07040; margin:0 0 0.3rem; line-height:1;">18%</p>
+            <p style="font-size:0.875rem; color:var(--ink-2); margin:0; line-height:1.5;">take another dose later without checking time intervals.</p>
+          </div>
+          <div style="background:var(--bg-soft); border-radius:10px; padding:1.25rem;">
+            <p style="font-family:'JetBrains Mono',monospace; font-size:2.2rem; font-weight:500; color:#e07040; margin:0 0 0.3rem; line-height:1;">9%</p>
+            <p style="font-size:0.875rem; color:var(--ink-2); margin:0; line-height:1.5;">self-administer an early extra dose — the highest-risk behavior.</p>
+          </div>
+        </div>
+
+        <!-- User categories -->
+        <div style="margin-top:1.5rem; padding:1.25rem; background:var(--bg-soft); border-radius:10px;">
+          <p style="font-family:'JetBrains Mono',monospace; font-size:0.72rem; letter-spacing:0.06em; color:var(--ink-3); margin:0 0 0.75rem; text-transform:uppercase;">Most Vulnerable User Groups</p>
+          <div style="display:flex; gap:1.5rem; flex-wrap:wrap;">
+            <div style="text-align:center;">
+              <p style="font-size:0.875rem; font-weight:500; color:var(--ink); margin:0 0 0.15rem;">Elderly People</p>
+              <p style="font-size:0.78rem; color:var(--ink-3); margin:0; font-family:'JetBrains Mono',monospace;">By Age Group</p>
+            </div>
+            <div style="text-align:center;">
+              <p style="font-size:0.875rem; font-weight:500; color:var(--ink); margin:0 0 0.15rem;">Chronic Illness Patients</p>
+              <p style="font-size:0.78rem; color:var(--ink-3); margin:0; font-family:'JetBrains Mono',monospace;">By Condition</p>
+            </div>
+            <div style="text-align:center;">
+              <p style="font-size:0.875rem; font-weight:500; color:var(--ink); margin:0 0 0.15rem;">Opioid Medication Takers</p>
+              <p style="font-size:0.78rem; color:var(--ink-3); margin:0; font-family:'JetBrains Mono',monospace;">By Prescription Type</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Personas -->
+        <p class="cs__subtitle" style="margin-top:2rem;">Personas · 4 profiles</p>
+
+        <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:1rem; margin-top:1rem;">
+          <div style="border:1px solid var(--rule); border-radius:10px; padding:1.25rem; display:flex; flex-direction:column; gap:0.4rem;">
+            <p style="font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:#e07040; margin:0; letter-spacing:0.05em; text-transform:uppercase;">Zhong Li · 71 · Architect</p>
+            <p style="font-size:0.875rem; color:var(--ink-2); margin:0; line-height:1.5;">Long work hours and frequent site visits make him forget or delay taking medication.</p>
+          </div>
+          <div style="border:1px solid var(--rule); border-radius:10px; padding:1.25rem; display:flex; flex-direction:column; gap:0.4rem;">
+            <p style="font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:#e07040; margin:0; letter-spacing:0.05em; text-transform:uppercase;">Shi · 65 · Retired Engineer</p>
+            <p style="font-size:0.875rem; color:var(--ink-2); margin:0; line-height:1.5;">Struggles with remembering multiple medications for chronic conditions.</p>
+          </div>
+          <div style="border:1px solid var(--rule); border-radius:10px; padding:1.25rem; display:flex; flex-direction:column; gap:0.4rem;">
+            <p style="font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:#e07040; margin:0; letter-spacing:0.05em; text-transform:uppercase;">Ms. Li · 54 · Office Manager</p>
+            <p style="font-size:0.875rem; color:var(--ink-2); margin:0; line-height:1.5;">Needs to track both her own and her parents' medications simultaneously, which can get confusing.</p>
+          </div>
+          <div style="border:1px solid var(--rule); border-radius:10px; padding:1.25rem; display:flex; flex-direction:column; gap:0.4rem;">
+            <p style="font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:#e07040; margin:0; letter-spacing:0.05em; text-transform:uppercase;">Xue Er · 43 · Freelance Photographer</p>
+            <p style="font-size:0.875rem; color:var(--ink-2); margin:0; line-height:1.5;">Unstable travel routine causes missed doses and irregular adherence.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. METHODOLOGY -->
+      <section class="cs">
+        <header class="cs__head">
+          <span class="cs__label">Methodology</span>
+        </header>
+
+        <div class="cs__prose">
+          <p>
+            The traditional medication loop — hospital prescription → pharmacy → home — has no built-in feedback mechanism. Patients operate in isolation: no reminder, no record, no family or doctor visibility once the bottle leaves the pharmacy.
+          </p>
+        </div>
+
+        <!-- Problems -->
+        <div style="margin-top:1.5rem; background:var(--bg-soft); border-radius:10px; padding:1.25rem 1.5rem;">
+          <p style="font-family:'JetBrains Mono',monospace; font-size:0.72rem; letter-spacing:0.06em; color:#e07040; margin:0 0 0.9rem; text-transform:uppercase;">Six Failure Modes in the Existing Flow</p>
+          <ol style="margin:0; padding:0 0 0 1.25rem; display:flex; flex-direction:column; gap:0.5rem;">
+            <li style="font-size:0.9rem; color:var(--ink-2);">Forgetting to take medication</li>
+            <li style="font-size:0.9rem; color:var(--ink-2);">Repeated / double dosing</li>
+            <li style="font-size:0.9rem; color:var(--ink-2);">Taking the incorrect medication</li>
+            <li style="font-size:0.9rem; color:var(--ink-2);">Improper medicine storage</li>
+            <li style="font-size:0.9rem; color:var(--ink-2);">No dose-record mechanism</li>
+            <li style="font-size:0.9rem; color:var(--ink-2);">Family and doctor unable to monitor remotely</li>
+          </ol>
+        </div>
+
+        <!-- Historical timeline -->
+        <p class="cs__subtitle" style="margin-top:2rem;">Historical context · prescription bottle evolution</p>
+        <div class="cs__bp" style="grid-template-columns:repeat(4,1fr); margin-top:1rem;">
+          <div class="cs__phase cs__phase--hospital">
+            <span class="cs__phase-tag">Pre-1900s</span>
+            <h3>Apothecary Bottle</h3>
+            <p>Glass with cork or wax seal. No standardisation.</p>
+          </div>
+          <div class="cs__phase cs__phase--hospital">
+            <span class="cs__phase-tag">1900s–1950s</span>
+            <h3>Early Standardisation</h3>
+            <p>Amber glass adopted. Paper instructions given separately.</p>
+          </div>
+          <div class="cs__phase cs__phase--break">
+            <span class="cs__phase-tag">1970s–1980s</span>
+            <h3>Child-Resistant Cap</h3>
+            <p>Push-and-turn caps mandated by law. Safety added, usability reduced.</p>
+          </div>
+          <div class="cs__phase cs__phase--home">
+            <span class="cs__phase-tag">2010s–Present</span>
+            <h3>Tech Experiments</h3>
+            <p>Minimal changes despite rapidly evolving user needs and digital infrastructure.</p>
+          </div>
+        </div>
+
+        <!-- New service loop -->
+        <div class="cs__designlayer" style="margin-top:2rem;">
+          <p class="cs__designlayer-head">Dosage-Pal's new connected loop</p>
+          <ol class="cs__chips">
+            <li><span>01</span>APP sync at pharmacy handoff</li>
+            <li><span>02</span>Sound + LED dose reminder</li>
+            <li><span>03</span>Dose confirmed → record uploaded</li>
+            <li><span>04</span>Feedback loop to family + doctor</li>
+          </ol>
+        </div>
+
+        <p class="cs__note" style="margin-top:1.25rem;">
+          <em>Distribution:</em> When dispensing new medications, the pharmacy hands the patient the bottle together with the Dosage-Pal cap. On the first fill, the pharmacist personally explains method of use, precautions, and app setup — keeping the intervention within existing pharmacy infrastructure.
         </p>
       </section>
+
+      <!-- 5. DESIGN PROCESS -->
+      <section class="cs">
+        <header class="cs__head">
+          <span class="cs__label">Design Process</span>
+        </header>
+
+        <p class="cs__subtitle">Three engineering breakthroughs</p>
+
+        <div class="cs__bp" style="margin-top:1rem;">
+          <div class="cs__phase cs__phase--home">
+            <span class="cs__phase-tag">01 · Mechanics</span>
+            <h3>Gravity-Triggered Inverted Structure</h3>
+            <p>Inverting the bottle releases exactly one capsule via gravity — no motor, no external force. Shifts the product story from bottle body to cap, eliminating jamming and unlocking new design possibilities.</p>
+          </div>
+          <div class="cs__phase cs__phase--home">
+            <span class="cs__phase-tag">02 · Form Factor</span>
+            <h3>Self-Adjusting Iris Diaphragm</h3>
+            <p>A camera-inspired iris mechanism adapts from 5.5 cm to 5.0 cm, fitting virtually all standard prescription bottle mouths without any separate adapter or hardware modification.</p>
+          </div>
+          <div class="cs__phase cs__phase--home">
+            <span class="cs__phase-tag">03 · Flow</span>
+            <h3>Anti-Clogging Flat-Chute Funnel</h3>
+            <p>Replacing the round inlet with a flat opening prevents pill stacking, ensuring smooth single-dose dispensing for both capsule and tablet form factors.</p>
+          </div>
+        </div>
+
+        <!-- Dispensing steps -->
+        <p class="cs__subtitle" style="margin-top:2.5rem;">Dispensing process · 7 steps</p>
+        <p style="font-size:0.875rem; color:var(--ink-2); margin:0.5rem 0 1rem;">Works identically for capsule and tablet variants.</p>
+
+        <div style="display:grid; grid-template-columns:repeat(7,1fr); gap:0.5rem;">
+          <div style="background:var(--bg-soft); border-radius:8px; padding:0.85rem 0.5rem; text-align:center; display:flex; flex-direction:column; gap:0.4rem;">
+            <p style="font-family:'JetBrains Mono',monospace; font-size:0.62rem; color:#e07040; margin:0; font-weight:500; letter-spacing:0.5px;">STEP 1</p>
+            <p style="font-size:0.75rem; color:var(--ink-2); margin:0; line-height:1.4;">Capsule falls into funnel channel</p>
+          </div>
+          <div style="background:var(--bg-soft); border-radius:8px; padding:0.85rem 0.5rem; text-align:center; display:flex; flex-direction:column; gap:0.4rem;">
+            <p style="font-family:'JetBrains Mono',monospace; font-size:0.62rem; color:#e07040; margin:0; font-weight:500; letter-spacing:0.5px;">STEP 2</p>
+            <p style="font-size:0.75rem; color:var(--ink-2); margin:0; line-height:1.4;">User presses button</p>
+          </div>
+          <div style="background:var(--bg-soft); border-radius:8px; padding:0.85rem 0.5rem; text-align:center; display:flex; flex-direction:column; gap:0.4rem;">
+            <p style="font-family:'JetBrains Mono',monospace; font-size:0.62rem; color:#e07040; margin:0; font-weight:500; letter-spacing:0.5px;">STEP 3</p>
+            <p style="font-size:0.75rem; color:var(--ink-2); margin:0; line-height:1.4;">Signal received</p>
+          </div>
+          <div style="background:var(--bg-soft); border-radius:8px; padding:0.85rem 0.5rem; text-align:center; display:flex; flex-direction:column; gap:0.4rem;">
+            <p style="font-family:'JetBrains Mono',monospace; font-size:0.62rem; color:#e07040; margin:0; font-weight:500; letter-spacing:0.5px;">STEP 4</p>
+            <p style="font-size:0.75rem; color:var(--ink-2); margin:0; line-height:1.4;">Medication drops into middle compartment</p>
+          </div>
+          <div style="background:var(--bg-soft); border-radius:8px; padding:0.85rem 0.5rem; text-align:center; display:flex; flex-direction:column; gap:0.4rem;">
+            <p style="font-family:'JetBrains Mono',monospace; font-size:0.62rem; color:#e07040; margin:0; font-weight:500; letter-spacing:0.5px;">STEP 5</p>
+            <p style="font-size:0.75rem; color:var(--ink-2); margin:0; line-height:1.4;">Rod pushes medicine down</p>
+          </div>
+          <div style="background:var(--bg-soft); border-radius:8px; padding:0.85rem 0.5rem; text-align:center; display:flex; flex-direction:column; gap:0.4rem;">
+            <p style="font-family:'JetBrains Mono',monospace; font-size:0.62rem; color:#e07040; margin:0; font-weight:500; letter-spacing:0.5px;">STEP 6</p>
+            <p style="font-size:0.75rem; color:var(--ink-2); margin:0; line-height:1.4;">Falls out of dropping hole</p>
+          </div>
+          <div style="background:var(--bg-soft); border-radius:8px; padding:0.85rem 0.5rem; text-align:center; display:flex; flex-direction:column; gap:0.4rem;">
+            <p style="font-family:'JetBrains Mono',monospace; font-size:0.62rem; color:#e07040; margin:0; font-weight:500; letter-spacing:0.5px;">STEP 7</p>
+            <p style="font-size:0.75rem; color:var(--ink-2); margin:0; line-height:1.4;">Medicine in user's hand</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 6. SUMMARY AND REFLECTIONS -->
+      <section class="cs">
+        <header class="cs__head">
+          <span class="cs__label">Summary and Reflections</span>
+        </header>
+
+        <div class="cs__ba">
+          <div class="cs__ba-box cs__ba-box--before">
+            <span class="cs__ba-label">Before</span>
+            <p>"The bottle is the product."</p>
+          </div>
+          <div class="cs__ba-box" style="background:rgba(224,112,64,0.06); border-color:rgba(224,112,64,0.3);">
+            <span class="cs__ba-label" style="color:#e07040;">After</span>
+            <p>"The cap is the intervention — retrofittable, universal, connected to the care loop."</p>
+          </div>
+        </div>
+
+        <div class="cs__prose">
+          <p>
+            The hardest constraint was also the most generative: the cap had to fit every existing bottle without requiring any changes to pharmacy infrastructure. Working within that constraint forced three mechanical breakthroughs — gravity dispensing, the iris diaphragm, and the flat-chute funnel — that wouldn't have emerged from a blank-slate redesign. The prescription bottle isn't a design failure. The missing layer was always the service around it.
+          </p>
+        </div>
+      </section>
+
     </article>
   </main>
 
   <footer class="foot">
-    <a href="../contact.html" class="foot__contact">contact 鈫?/a>
-    <a href="#top" class="foot__top">top 鈫?/a>
+    <a href="../contact.html" class="foot__contact">contact ↗</a>
+    <a href="#top" class="foot__top">top ↑</a>
   </footer>
 
   <script src="../script.js"></script>
