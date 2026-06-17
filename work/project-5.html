@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>BioColor Tag — Owen Chen</title>
-  <meta name="description" content="BioColor Tag — case study by Owen Chen." />
+  <meta name="description" content="BioColor Tag — anthocyanin freshness indicator label. Case study by Owen Chen." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -21,26 +21,258 @@
   </header>
 
   <main id="top">
-    <article class="project">
+    <article class="project" style="--red: #6a3fa0;">
       <a href="../projects.html" class="project__back">← back to projects</a>
 
       <header class="project__head">
         <div>
-          <p class="cs__eyebrow">product design</p>
+          <p class="cs__eyebrow">biosensing · food safety · Fresh Indicator</p>
           <h1 class="project__title">BioColor Tag</h1>
         </div>
         <dl class="project__meta">
-          <div><dt>type</dt><dd>Product</dd></div>
-          <div><dt>status</dt><dd>In progress</dd></div>
+          <div><dt>type</dt><dd>Product Design</dd></div>
+          <div><dt>context</dt><dd>Parsons School of Design</dd></div>
+          <div><dt>material</dt><dd>Anthocyanin (natural dye)</dd></div>
         </dl>
       </header>
 
+      <figure class="project__hero">
+        <img src="../work-5.jpg" alt="BioColor Tag freshness indicator label" />
+      </figure>
+
+      <!-- 1. OVERVIEW -->
       <section class="cs">
         <header class="cs__head">
-          <span class="cs__label">Coming Soon</span>
+          <span class="cs__label">Overview</span>
         </header>
         <div class="cs__prose">
-          <p>Details for this project are being added. Check back soon.</p>
+          <p>
+            BioColor Tag is a freshness-indicator label based on anthocyanin — a natural plant pigment — that reveals food spoilage through visible color change. No electronics, no battery, no app required at the point of contact: the label itself reads the food's state and communicates it instantly through color, making safe-consumption decisions effortless for consumers and retailers alike.
+          </p>
+        </div>
+        <div style="display:flex; gap:0.75rem; margin-top:1.5rem; flex-wrap:wrap;">
+          <span style="font-family:'JetBrains Mono',monospace; font-size:0.78rem; padding:0.3rem 0.7rem; border:1px solid var(--rule); border-radius:4px; color:var(--ink-2);">Nature-Driven Sensing</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:0.78rem; padding:0.3rem 0.7rem; border:1px solid var(--rule); border-radius:4px; color:var(--ink-2);">Food Safety &amp; Sustainability</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:0.78rem; padding:0.3rem 0.7rem; border:1px solid var(--rule); border-radius:4px; color:var(--ink-2);">Design for Visual Interaction</span>
+        </div>
+      </section>
+
+      <!-- 2. BACKGROUND -->
+      <section class="cs">
+        <header class="cs__head">
+          <span class="cs__label">Background</span>
+        </header>
+        <div class="cs__prose">
+          <p>Food waste is one of the largest solvable environmental problems. The root cause isn't overproduction — it's misjudgment at the point of consumption, amplified by tools that were never designed to help.</p>
+        </div>
+
+        <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:1rem; margin-top:1.5rem;">
+          <div style="background:var(--bg-soft); border-radius:10px; padding:1.25rem;">
+            <p style="font-family:'JetBrains Mono',monospace; font-size:2rem; font-weight:500; color:#6a3fa0; margin:0 0 0.3rem; line-height:1;">1.3B tons</p>
+            <p style="font-size:0.875rem; color:var(--ink-2); margin:0; line-height:1.5;">of food wasted globally each year, with perishables the largest share. (FAO)</p>
+          </div>
+          <div style="background:var(--bg-soft); border-radius:10px; padding:1.25rem;">
+            <p style="font-family:'JetBrains Mono',monospace; font-size:2rem; font-weight:500; color:#6a3fa0; margin:0 0 0.3rem; line-height:1;">$940B</p>
+            <p style="font-size:0.875rem; color:var(--ink-2); margin:0; line-height:1.5;">in annual economic loss attributable to food waste worldwide.</p>
+          </div>
+          <div style="background:var(--bg-soft); border-radius:10px; padding:1.25rem;">
+            <p style="font-family:'JetBrains Mono',monospace; font-size:2rem; font-weight:500; color:#6a3fa0; margin:0 0 0.3rem; line-height:1;">&gt;25%</p>
+            <p style="font-size:0.875rem; color:var(--ink-2); margin:0; line-height:1.5;">of perishables spoil due to cold-chain failure and improper temperature control.</p>
+          </div>
+          <div style="background:var(--bg-soft); border-radius:10px; padding:1.25rem;">
+            <p style="font-family:'JetBrains Mono',monospace; font-size:2rem; font-weight:500; color:#6a3fa0; margin:0 0 0.3rem; line-height:1;">91%</p>
+            <p style="font-size:0.875rem; color:var(--ink-2); margin:0; line-height:1.5;">of consumers misunderstand "best before" dates and discard perfectly edible food. (NRDC)</p>
+          </div>
+        </div>
+
+        <div style="margin-top:1rem; background:var(--bg-soft); border-radius:10px; padding:1.25rem;">
+          <p style="font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:#6a3fa0; margin:0 0 0.5rem; text-transform:uppercase; letter-spacing:0.05em;">Management Burden</p>
+          <p style="font-size:0.9rem; color:var(--ink-2); margin:0; line-height:1.55;">Retailers lack intuitive freshness tools. A UK WRAP report attributes ~50% of household food waste to misjudging freshness — especially for meat and dairy, where the stakes are highest.</p>
+        </div>
+      </section>
+
+      <!-- 3. RESEARCH -->
+      <section class="cs">
+        <header class="cs__head">
+          <span class="cs__label">Research</span>
+        </header>
+
+        <p class="cs__subtitle">Pain-point interviews · 4 profiles</p>
+        <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:1rem; margin-top:1rem;">
+          <div style="border:1px solid var(--rule); border-radius:10px; padding:1.25rem; display:flex; flex-direction:column; gap:0.4rem;">
+            <p style="font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:#6a3fa0; margin:0; text-transform:uppercase; letter-spacing:0.05em;">Jenny Wu · Hotel Manager</p>
+            <p style="font-size:0.875rem; color:var(--ink-2); margin:0; line-height:1.5;">Manages freshness for buffet and stored ingredients at scale — needs reliable, visual status at a glance.</p>
+          </div>
+          <div style="border:1px solid var(--rule); border-radius:10px; padding:1.25rem; display:flex; flex-direction:column; gap:0.4rem;">
+            <p style="font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:#6a3fa0; margin:0; text-transform:uppercase; letter-spacing:0.05em;">Feng · Lives Alone</p>
+            <p style="font-size:0.875rem; color:var(--ink-2); margin:0; line-height:1.5;">Frequently forgets what's in the fridge and defaults to throwing everything out when unsure.</p>
+          </div>
+          <div style="border:1px solid var(--rule); border-radius:10px; padding:1.25rem; display:flex; flex-direction:column; gap:0.4rem;">
+            <p style="font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:#6a3fa0; margin:0; text-transform:uppercase; letter-spacing:0.05em;">Jia Qi · Quality-Conscious</p>
+            <p style="font-size:0.875rem; color:var(--ink-2); margin:0; line-height:1.5;">Discards premium food too early out of caution — wasting money because she can't judge safety accurately.</p>
+          </div>
+          <div style="border:1px solid var(--rule); border-radius:10px; padding:1.25rem; display:flex; flex-direction:column; gap:0.4rem;">
+            <p style="font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:#6a3fa0; margin:0; text-transform:uppercase; letter-spacing:0.05em;">Yu Dong · Frequent Traveler</p>
+            <p style="font-size:0.875rem; color:var(--ink-2); margin:0; line-height:1.5;">Often unsure whether meat or dairy is safe after returning from trips. Date labels give no useful context.</p>
+          </div>
+        </div>
+
+        <blockquote class="cs__quote" style="margin-top:2rem;">
+          <p>
+            Existing "time labels" and expensive electronic monitoring fail the low-cost mass market. Consumers can't judge accurately, and retailers lack visual tools that work at the speed of browsing.
+          </p>
+        </blockquote>
+      </section>
+
+      <!-- 4. EXPERIMENTS -->
+      <section class="cs">
+        <header class="cs__head">
+          <span class="cs__label">Experiments</span>
+        </header>
+        <div class="cs__prose">
+          <p>Four experiments established that anthocyanin — extracted from purple cabbage — is the viable sensing medium, and paper is the optimal carrier.</p>
+        </div>
+
+        <div style="margin-top:1.5rem; display:flex; flex-direction:column; gap:0.75rem;">
+          <div style="display:flex; gap:1rem; align-items:flex-start; padding:1rem 1.25rem; background:var(--bg-soft); border-radius:8px;">
+            <span style="font-family:'JetBrains Mono',monospace; font-size:0.8rem; color:#6a3fa0; font-weight:500; min-width:2rem;">01</span>
+            <div>
+              <p style="font-size:0.9rem; font-weight:500; color:var(--ink); margin:0 0 0.2rem;">Color reaction — dry powder</p>
+              <p style="font-size:0.85rem; color:var(--ink-2); margin:0; line-height:1.5;">Anthocyanin and curcumin powders are chemically stable but change color far too slowly to be usable. <em>Not applicable.</em></p>
+            </div>
+          </div>
+          <div style="display:flex; gap:1rem; align-items:flex-start; padding:1rem 1.25rem; background:var(--bg-soft); border-radius:8px;">
+            <span style="font-family:'JetBrains Mono',monospace; font-size:0.8rem; color:#6a3fa0; font-weight:500; min-width:2rem;">02</span>
+            <div>
+              <p style="font-size:0.9rem; font-weight:500; color:var(--ink); margin:0 0 0.2rem;">Liquid extraction</p>
+              <p style="font-size:0.85rem; color:var(--ink-2); margin:0; line-height:1.5;">Purple cabbage → cut → boil → anthocyanin solution. Solution form is reactive and workable.</p>
+            </div>
+          </div>
+          <div style="display:flex; gap:1rem; align-items:flex-start; padding:1rem 1.25rem; background:var(--bg-soft); border-radius:8px;">
+            <span style="font-family:'JetBrains Mono',monospace; font-size:0.8rem; color:#6a3fa0; font-weight:500; min-width:2rem;">03</span>
+            <div>
+              <p style="font-size:0.9rem; font-weight:500; color:var(--ink); margin:0 0 0.2rem;">Material adhesion</p>
+              <p style="font-size:0.85rem; color:var(--ink-2); margin:0; line-height:1.5;">Anthocyanins color both paper and fabric well, but paper-based materials are more advantageous for industrial application. pH tests with acids (white vinegar, lemon water, hair conditioner) and alkalis (shampoo, laundry detergent, baking soda) produced significant color changes within five minutes.</p>
+            </div>
+          </div>
+          <div style="display:flex; gap:1rem; align-items:flex-start; padding:1rem 1.25rem; background:rgba(106,63,160,0.05); border:1px solid rgba(106,63,160,0.2); border-radius:8px;">
+            <span style="font-family:'JetBrains Mono',monospace; font-size:0.8rem; color:#6a3fa0; font-weight:500; min-width:2rem;">04</span>
+            <div>
+              <p style="font-size:0.9rem; font-weight:500; color:var(--ink); margin:0 0 0.2rem;">Meat as test subject — key result</p>
+              <p style="font-size:0.85rem; color:var(--ink-2); margin:0; line-height:1.5;">Test paper placed directly on beef tracked decomposition from Fresh → 1h → 3h → 6h → 9h → 12h → 18h → 24h. Color shift: purple → grey-green. Rotting meat releases volatile compounds (hydrogen sulfide, ammonia); high ammonia concentration drives the visible color change.</p>
+            </div>
+          </div>
+        </div>
+
+        <blockquote class="cs__quote" style="margin-top:2rem;">
+          <p>
+            Key insight: anthocyanins are stable as dry powder but highly reactive in solution. To detect decay gases they must be kept in a moist state — which became the central design constraint.
+          </p>
+        </blockquote>
+      </section>
+
+      <!-- 5. PRODUCT DESIGN -->
+      <section class="cs">
+        <header class="cs__head">
+          <span class="cs__label">Product Design</span>
+        </header>
+
+        <p class="cs__subtitle">Four-layer structure · inspired by diaper technology</p>
+        <div class="cs__bp" style="grid-template-columns:repeat(4,1fr); margin-top:1rem;">
+          <div class="cs__phase cs__phase--home">
+            <span class="cs__phase-tag">Layer 1 · Interface</span>
+            <h3>Observation Layer</h3>
+            <p>Hydrophobic transparent film. The visible window the consumer reads.</p>
+          </div>
+          <div class="cs__phase cs__phase--home">
+            <span class="cs__phase-tag">Layer 2 · Signal</span>
+            <h3>Time-Sensing Layer</h3>
+            <p>pH-responsive pigment (anthocyanin). Changes color in response to decay gases.</p>
+          </div>
+          <div class="cs__phase cs__phase--home">
+            <span class="cs__phase-tag">Layer 3 · Core</span>
+            <h3>Moisture-Retaining Layer</h3>
+            <p>Hydrogels maintain the moist environment that keeps the anthocyanin reactive.</p>
+          </div>
+          <div class="cs__phase cs__phase--home">
+            <span class="cs__phase-tag">Layer 4 · Base</span>
+            <h3>Isolation Layer</h3>
+            <p>PE film provides outer waterproofing and prevents external contamination.</p>
+          </div>
+        </div>
+
+        <p class="cs__subtitle" style="margin-top:2rem;">Full product anatomy</p>
+        <div style="display:flex; gap:0.6rem; flex-wrap:wrap; margin-top:1rem;">
+          <span style="font-size:0.8rem; padding:0.35rem 0.75rem; background:var(--bg-soft); border-radius:4px; color:var(--ink-2); font-family:'JetBrains Mono',monospace;">Visible window</span>
+          <span style="font-size:0.8rem; padding:0.35rem 0.75rem; background:var(--bg-soft); border-radius:4px; color:var(--ink-2); font-family:'JetBrains Mono',monospace;">Anthocyanin absorbent core</span>
+          <span style="font-size:0.8rem; padding:0.35rem 0.75rem; background:var(--bg-soft); border-radius:4px; color:var(--ink-2); font-family:'JetBrains Mono',monospace;">Moisture-lock layer</span>
+          <span style="font-size:0.8rem; padding:0.35rem 0.75rem; background:var(--bg-soft); border-radius:4px; color:var(--ink-2); font-family:'JetBrains Mono',monospace;">Adhesive layer</span>
+          <span style="font-size:0.8rem; padding:0.35rem 0.75rem; background:var(--bg-soft); border-radius:4px; color:var(--ink-2); font-family:'JetBrains Mono',monospace;">Release liner</span>
+          <span style="font-size:0.8rem; padding:0.35rem 0.75rem; background:var(--bg-soft); border-radius:4px; color:var(--ink-2); font-family:'JetBrains Mono',monospace;">QR code</span>
+        </div>
+
+        <div style="margin-top:1.5rem; background:rgba(106,63,160,0.05); border:1px solid rgba(106,63,160,0.2); border-radius:10px; padding:1.25rem;">
+          <p style="font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:#6a3fa0; margin:0 0 0.5rem; text-transform:uppercase; letter-spacing:0.05em;">Freshness color scale · pH 1–13</p>
+          <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+            <div style="text-align:center;">
+              <div style="width:40px; height:40px; border-radius:50%; background:#8b2fc9; margin:0 auto 0.4rem;"></div>
+              <p style="font-size:0.75rem; color:var(--ink-2); margin:0; font-family:'JetBrains Mono',monospace;">Purple<br/>Fresh</p>
+            </div>
+            <div style="text-align:center;">
+              <div style="width:40px; height:40px; border-radius:50%; background:#b87adc; margin:0 auto 0.4rem;"></div>
+              <p style="font-size:0.75rem; color:var(--ink-2); margin:0; font-family:'JetBrains Mono',monospace;">Pale purple<br/>Consume soon</p>
+            </div>
+            <div style="text-align:center;">
+              <div style="width:40px; height:40px; border-radius:50%; background:#7a8c6e; margin:0 auto 0.4rem;"></div>
+              <p style="font-size:0.75rem; color:var(--ink-2); margin:0; font-family:'JetBrains Mono',monospace;">Grey-green<br/>No longer edible</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 6. APP & SCENARIO -->
+      <section class="cs">
+        <header class="cs__head">
+          <span class="cs__label">App &amp; Scenario</span>
+        </header>
+
+        <div class="cs__prose">
+          <p>
+            The companion app lets users scan a product for freshness level, product-information traceability, and purchase history — adding a digital layer to the physical label.
+          </p>
+        </div>
+
+        <blockquote class="cs__quote" style="margin-top:1.5rem;">
+          <p>
+            A boy reaches for strawberries. The label has turned dark grey-green. His mother stops him — the tiny label was quietly protecting his health.
+          </p>
+        </blockquote>
+      </section>
+
+      <!-- 7. SUMMARY -->
+      <section class="cs">
+        <header class="cs__head">
+          <span class="cs__label">Summary and Reflections</span>
+        </header>
+
+        <div class="cs__ba">
+          <div class="cs__ba-box cs__ba-box--before">
+            <span class="cs__ba-label">Before</span>
+            <p>"Best-before dates are guesses printed at the factory."</p>
+          </div>
+          <div class="cs__ba-box" style="background:rgba(106,63,160,0.06); border-color:rgba(106,63,160,0.3);">
+            <span class="cs__ba-label" style="color:#6a3fa0;">After</span>
+            <p>"The label reads the food in real time and tells you the truth."</p>
+          </div>
+        </div>
+
+        <div class="cs__prose">
+          <p>
+            The project demonstrated that natural molecules can do sensing work that electronic systems have failed to make accessible at scale. Through interdisciplinary design — chemistry, material science, industrial manufacturing — BioColor Tag offers a path toward smart packaging that is low-cost, biodegradable, and universally readable without any device.
+          </p>
+          <p>
+            Future directions include using anthocyanin tags to power dynamic supermarket pricing indicators, adjusting price in real-time as freshness declines.
+          </p>
         </div>
       </section>
 

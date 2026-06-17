@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Sky Harvest — Owen Chen</title>
-  <meta name="description" content="Sky Harvest — case study by Owen Chen." />
+  <meta name="description" content="Sky Harvest — rooftop cultivation and drone delivery system. Case study by Owen Chen." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -21,26 +21,300 @@
   </header>
 
   <main id="top">
-    <article class="project">
+    <article class="project" style="--red: #3b8a52;">
       <a href="../projects.html" class="project__back">← back to projects</a>
 
       <header class="project__head">
         <div>
-          <p class="cs__eyebrow">product design</p>
+          <p class="cs__eyebrow">urban food system · VertiFresh</p>
           <h1 class="project__title">Sky Harvest</h1>
         </div>
         <dl class="project__meta">
-          <div><dt>type</dt><dd>Product</dd></div>
-          <div><dt>status</dt><dd>In progress</dd></div>
+          <div><dt>type</dt><dd>Product Design</dd></div>
+          <div><dt>context</dt><dd>Parsons School of Design</dd></div>
+          <div><dt>location</dt><dd>Manhattan pilot</dd></div>
         </dl>
       </header>
 
+      <figure class="project__hero">
+        <img src="../work-4.jpg" alt="Sky Harvest rooftop farm and drone delivery system" />
+      </figure>
+
+      <!-- 1. OVERVIEW -->
       <section class="cs">
         <header class="cs__head">
-          <span class="cs__label">Coming Soon</span>
+          <span class="cs__label">Overview</span>
         </header>
         <div class="cs__prose">
-          <p>Details for this project are being added. Check back soon.</p>
+          <p>
+            Sky Harvest (VertiFresh) is a fruit and vegetable rooftop-cultivation and drone-delivery system that shortens the distance from farm to table. By turning unused Manhattan rooftops into micro-farms and using drones to deliver within a 1 km radius, the system cuts supply-chain steps, reduces carbon emissions, and brings personalized fresh produce to urban residents who currently lack access to it.
+          </p>
+        </div>
+        <div style="display:flex; gap:0.75rem; margin-top:1.5rem; flex-wrap:wrap;">
+          <span style="font-family:'JetBrains Mono',monospace; font-size:0.78rem; padding:0.3rem 0.7rem; border:1px solid var(--rule); border-radius:4px; color:var(--ink-2);">Urban Space Reuse</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:0.78rem; padding:0.3rem 0.7rem; border:1px solid var(--rule); border-radius:4px; color:var(--ink-2);">Agricultural Planting</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:0.78rem; padding:0.3rem 0.7rem; border:1px solid var(--rule); border-radius:4px; color:var(--ink-2);">Drone Delivery</span>
+        </div>
+      </section>
+
+      <!-- 2. BACKGROUND -->
+      <section class="cs">
+        <header class="cs__head">
+          <span class="cs__label">Background</span>
+        </header>
+        <div class="cs__prose">
+          <p>
+            Urban residents face chronic delays and inefficiencies in the fresh-food supply chain. The problem is structural — not just a logistics issue, but a failure of design.
+          </p>
+        </div>
+
+        <div style="margin-top:1.5rem; display:flex; flex-direction:column; gap:0.75rem;">
+          <div style="border-left:3px solid #3b8a52; padding:0.9rem 1.25rem; background:var(--bg-soft); border-radius:0 8px 8px 0;">
+            <p style="font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:#3b8a52; margin:0 0 0.3rem; text-transform:uppercase; letter-spacing:0.05em;">Low Transport Efficiency</p>
+            <p style="font-size:0.9rem; color:var(--ink-2); margin:0; line-height:1.5;">Long delivery cycles reduce freshness, flavor, and nutrient content before the produce reaches consumers.</p>
+          </div>
+          <div style="border-left:3px solid #3b8a52; padding:0.9rem 1.25rem; background:var(--bg-soft); border-radius:0 8px 8px 0;">
+            <p style="font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:#3b8a52; margin:0 0 0.3rem; text-transform:uppercase; letter-spacing:0.05em;">Highly Vulnerable Supply Chain</p>
+            <p style="font-size:0.9rem; color:var(--ink-2); margin:0; line-height:1.5;">Extreme weather, transport strikes, and policy changes quickly impact availability and pricing.</p>
+          </div>
+          <div style="border-left:3px solid #3b8a52; padding:0.9rem 1.25rem; background:var(--bg-soft); border-radius:0 8px 8px 0;">
+            <p style="font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:#3b8a52; margin:0 0 0.3rem; text-transform:uppercase; letter-spacing:0.05em;">Dietary Inequality</p>
+            <p style="font-size:0.9rem; color:var(--ink-2); margin:0; line-height:1.5;">Low-income neighborhoods are dominated by fast food and ultra-processed snacks. Fresh produce is a class privilege.</p>
+          </div>
+          <div style="border-left:3px solid #3b8a52; padding:0.9rem 1.25rem; background:var(--bg-soft); border-radius:0 8px 8px 0;">
+            <p style="font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:#3b8a52; margin:0 0 0.3rem; text-transform:uppercase; letter-spacing:0.05em;">No Personalization</p>
+            <p style="font-size:0.9rem; color:var(--ink-2); margin:0; line-height:1.5;">No existing mechanism for personalized planting or product selection — users can't choose what grows for them.</p>
+          </div>
+        </div>
+
+        <p class="cs__subtitle" style="margin-top:2rem;">Why prior models failed</p>
+        <div class="cs__bp" style="margin-top:1rem;">
+          <div class="cs__phase cs__phase--break">
+            <span class="cs__phase-tag">Amazon Fresh Stations</span>
+            <h3>~45% rent</h3>
+            <p>Rent consumed ~45% of revenue. 32% freshness complaints. Persistent theft problems.</p>
+          </div>
+          <div class="cs__phase cs__phase--break">
+            <span class="cs__phase-tag">Community Bulk Orders</span>
+            <h3>High minimums</h3>
+            <p>High minimum orders drove user loss. Users couldn't commit to quantities they didn't need.</p>
+          </div>
+          <div class="cs__phase cs__phase--break">
+            <span class="cs__phase-tag">Commercial Rooftop Farms</span>
+            <h3>~25% premium</h3>
+            <p>Prices ran ~25% above market. Failed to achieve network effects at scale.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. RESEARCH -->
+      <section class="cs">
+        <header class="cs__head">
+          <span class="cs__label">Research</span>
+        </header>
+
+        <p class="cs__subtitle">Manhattan as test ground</p>
+        <div class="cs__prose">
+          <p>
+            ~70,000 people per square mile creates concentrated demand. High density, diverse cultural preferences, and a fast-paced lifestyle make Manhattan ideal for piloting rooftop farms and drone delivery. The city struggles with fresh-produce access due to long-distance supply chains, limited customized options, and inconvenient traditional retail.
+          </p>
+        </div>
+
+        <p class="cs__subtitle" style="margin-top:2rem;">Personas · 4 profiles</p>
+        <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:1rem; margin-top:1rem;">
+          <div style="border:1px solid var(--rule); border-radius:10px; padding:1.25rem; display:flex; flex-direction:column; gap:0.4rem;">
+            <p style="font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:#3b8a52; margin:0; text-transform:uppercase; letter-spacing:0.05em;">Omaid Mustafa · 28 · UX Designer</p>
+            <p style="font-size:0.875rem; color:var(--ink-2); margin:0; line-height:1.5;">Values fresh ingredients but lacks time for grocery runs. Wants reliable, personalized delivery.</p>
+          </div>
+          <div style="border:1px solid var(--rule); border-radius:10px; padding:1.25rem; display:flex; flex-direction:column; gap:0.4rem;">
+            <p style="font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:#3b8a52; margin:0; text-transform:uppercase; letter-spacing:0.05em;">Lara Bennett · 43 · Landscape Designer</p>
+            <p style="font-size:0.875rem; color:var(--ink-2); margin:0; line-height:1.5;">Passionate about sustainable food systems. Interested in community-grown produce and green urban spaces.</p>
+          </div>
+          <div style="border:1px solid var(--rule); border-radius:10px; padding:1.25rem; display:flex; flex-direction:column; gap:0.4rem;">
+            <p style="font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:#3b8a52; margin:0; text-transform:uppercase; letter-spacing:0.05em;">Gabbi Xue · 29 · NYC Professional</p>
+            <p style="font-size:0.875rem; color:var(--ink-2); margin:0; line-height:1.5;">Busy schedule means relying on convenience food. Wants healthy options that don't require planning.</p>
+          </div>
+          <div style="border:1px solid var(--rule); border-radius:10px; padding:1.25rem; display:flex; flex-direction:column; gap:0.4rem;">
+            <p style="font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:#3b8a52; margin:0; text-transform:uppercase; letter-spacing:0.05em;">Jing Bin · 52 · Senior Designer</p>
+            <p style="font-size:0.875rem; color:var(--ink-2); margin:0; line-height:1.5;">Health-conscious, values quality and provenance. Frustrated by the opacity of industrial food supply chains.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. SYSTEM ARCHITECTURE -->
+      <section class="cs">
+        <header class="cs__head">
+          <span class="cs__label">System Architecture</span>
+        </header>
+        <div class="cs__prose">
+          <p>
+            The VertiFresh system is built around a hexagonal stakeholder model — six nodes orbiting a central CORE: Farm, User, Drone, Backend, Operations, and Product. Each node has defined responsibilities and feedback loops that keep the full system in balance.
+          </p>
+        </div>
+
+        <div class="cs__designlayer" style="margin-top:1.5rem;">
+          <p class="cs__designlayer-head">Six-node system · CORE at centre</p>
+          <ol class="cs__chips">
+            <li><span>Farm</span>Rooftop growing units</li>
+            <li><span>User</span>Residents & subscribers</li>
+            <li><span>Drone</span>Autonomous delivery fleet</li>
+            <li><span>Backend</span>Route & order logic</li>
+            <li><span>Operations</span>Staffing & monitoring</li>
+            <li><span>Product</span>Personalised fruit boxes</li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- 5. FARM & AGRICULTURE -->
+      <section class="cs">
+        <header class="cs__head">
+          <span class="cs__label">Farm &amp; Agriculture</span>
+        </header>
+
+        <div class="cs__bp" style="margin-top:1rem;">
+          <div class="cs__phase cs__phase--home">
+            <span class="cs__phase-tag">Rooftop Feasibility</span>
+            <h3>Low / Mid / High-rise</h3>
+            <p>Building height analyzed against sunlight, wind, and temperature to determine optimal growing conditions per site.</p>
+          </div>
+          <div class="cs__phase cs__phase--home">
+            <span class="cs__phase-tag">Coverage Planner</span>
+            <h3>~19 farms</h3>
+            <p>High-resolution satellite data (Geojson.io) maps potential rooftop sites. ~19 farms cover all of Manhattan within a 1 km drone-delivery radius.</p>
+          </div>
+          <div class="cs__phase cs__phase--home">
+            <span class="cs__phase-tag">Employment Linkage</span>
+            <h3>Mutual aid loop</h3>
+            <p>Unemployed residents linked to subsidized rooftop gardening and drone-safety monitoring roles — earning redeemable eco-points.</p>
+          </div>
+        </div>
+
+        <div style="margin-top:1.5rem; background:var(--bg-soft); border-radius:10px; padding:1.25rem;">
+          <p style="font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:#3b8a52; margin:0 0 0.75rem; text-transform:uppercase; letter-spacing:0.05em;">Facilities</p>
+          <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+            <div style="flex:1; min-width:160px;">
+              <p style="font-size:0.875rem; font-weight:500; color:var(--ink); margin:0 0 0.2rem;">Greenhouse</p>
+              <p style="font-size:0.8rem; color:var(--ink-2); margin:0;">Steel frame + polycarbonate panels for year-round growing.</p>
+            </div>
+            <div style="flex:1; min-width:160px;">
+              <p style="font-size:0.875rem; font-weight:500; color:var(--ink); margin:0 0 0.2rem;">Drone Tower</p>
+              <p style="font-size:0.8rem; color:var(--ink-2); margin:0;">Multi-layer deployment + charging tower with stacked DJI Dock modules.</p>
+            </div>
+            <div style="flex:1; min-width:160px;">
+              <p style="font-size:0.875rem; font-weight:500; color:var(--ink); margin:0 0 0.2rem;">Dispatch Hub</p>
+              <p style="font-size:0.8rem; color:var(--ink-2); margin:0;">Dome-shaped central management and dispatch facility.</p>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:1.25rem; background:var(--bg-soft); border-radius:10px; padding:1.25rem;">
+          <p style="font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:#3b8a52; margin:0 0 0.75rem; text-transform:uppercase; letter-spacing:0.05em;">Personalised Fruit Boxes · Biodegradable Packaging</p>
+          <div style="display:flex; gap:0.6rem; flex-wrap:wrap;">
+            <span style="font-size:0.8rem; padding:0.3rem 0.7rem; background:white; border:1px solid var(--rule); border-radius:20px; color:var(--ink-2);">Anthocyanin Energy</span>
+            <span style="font-size:0.8rem; padding:0.3rem 0.7rem; background:white; border:1px solid var(--rule); border-radius:20px; color:var(--ink-2);">Vitamin C Defense</span>
+            <span style="font-size:0.8rem; padding:0.3rem 0.7rem; background:white; border:1px solid var(--rule); border-radius:20px; color:var(--ink-2);">Folic Acid Vitality</span>
+            <span style="font-size:0.8rem; padding:0.3rem 0.7rem; background:white; border:1px solid var(--rule); border-radius:20px; color:var(--ink-2);">Dietary Fiber Balance</span>
+            <span style="font-size:0.8rem; padding:0.3rem 0.7rem; background:white; border:1px solid var(--rule); border-radius:20px; color:var(--ink-2);">Omega-3 Smart</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 6. DRONE DELIVERY -->
+      <section class="cs">
+        <header class="cs__head">
+          <span class="cs__label">Drone Delivery System</span>
+        </header>
+
+        <div class="cs__bp" style="margin-top:1rem;">
+          <div class="cs__phase cs__phase--hospital">
+            <span class="cs__phase-tag">Hardware</span>
+            <h3>DJI Matrice 3D</h3>
+            <p>GPS-guided, obstacle avoidance, custom box mount. DJI Airport 3 dock with 20-min fast-charge and weather monitoring.</p>
+          </div>
+          <div class="cs__phase cs__phase--hospital">
+            <span class="cs__phase-tag">Efficiency</span>
+            <h3>~40% faster charging</h3>
+            <p>Rotating charging station increases turnaround efficiency. Window/balcony receiving platforms for last-meter delivery.</p>
+          </div>
+          <div class="cs__phase cs__phase--home">
+            <span class="cs__phase-tag">Safety</span>
+            <h3>Full compliance</h3>
+            <p>Drone law / no-fly zone compliance · DJI O3 live feed · sensor dashboard · geofencing · one-click emergency takeover · dedicated safety monitor.</p>
+          </div>
+        </div>
+
+        <p class="cs__subtitle" style="margin-top:2rem;">Methodology · A* Shortest Delivery Route</p>
+        <div class="cs__prose" style="font-size:0.95rem;">
+          <p>
+            A Python A* pathfinding model on a 10×10 grid — using <code style="font-family:'JetBrains Mono',monospace; font-size:0.85em; background:var(--bg-soft); padding:0.1em 0.4em; border-radius:3px;">heapq</code> and <code style="font-family:'JetBrains Mono',monospace; font-size:0.85em; background:var(--bg-soft); padding:0.1em 0.4em; border-radius:3px;">math</code> for Euclidean distance, <code style="font-family:'JetBrains Mono',monospace; font-size:0.85em; background:var(--bg-soft); padding:0.1em 0.4em; border-radius:3px;">matplotlib</code> / <code style="font-family:'JetBrains Mono',monospace; font-size:0.85em; background:var(--bg-soft); padding:0.1em 0.4em; border-radius:3px;">numpy</code> for visualization — computes the shortest delivery route while avoiding building obstacles. First and final route visualizations confirm optimal pathing.
+          </p>
+        </div>
+      </section>
+
+      <!-- 7. APP & ROADMAP -->
+      <section class="cs">
+        <header class="cs__head">
+          <span class="cs__label">App &amp; Roadmap</span>
+        </header>
+
+        <p class="cs__subtitle">VertiFresh app · Eco-Points</p>
+        <div class="cs__prose" style="font-size:0.95rem;">
+          <p>
+            The app handles fresh-box selection, ordering (e.g., buy-one-get-one), and eco-point redemption. Eco-points reward both staff (planting, monitoring) and users (returning boxes, recycling) — making high-value customers feel treated specially while reinforcing a closed sustainability loop.
+          </p>
+        </div>
+
+        <p class="cs__subtitle" style="margin-top:2rem;">Expansion roadmap</p>
+        <div class="cs__bp" style="grid-template-columns:repeat(5,1fr); margin-top:1rem;">
+          <div class="cs__phase cs__phase--hospital">
+            <span class="cs__phase-tag">2025</span>
+            <h3>NYC Pilot</h3>
+            <p>Manhattan test deployment.</p>
+          </div>
+          <div class="cs__phase cs__phase--hospital">
+            <span class="cs__phase-tag">2028</span>
+            <h3>Citywide</h3>
+            <p>All 5 NYC boroughs.</p>
+          </div>
+          <div class="cs__phase cs__phase--break">
+            <span class="cs__phase-tag">2032</span>
+            <h3>Intercity</h3>
+            <p>10 major US metros.</p>
+          </div>
+          <div class="cs__phase cs__phase--home">
+            <span class="cs__phase-tag">2038</span>
+            <h3>Global</h3>
+            <p>50+ cities worldwide.</p>
+          </div>
+          <div class="cs__phase cs__phase--home">
+            <span class="cs__phase-tag">2045</span>
+            <h3>Autonomous</h3>
+            <p>Fully autonomous urban agriculture.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 8. SUMMARY -->
+      <section class="cs">
+        <header class="cs__head">
+          <span class="cs__label">Summary and Reflections</span>
+        </header>
+
+        <div class="cs__ba">
+          <div class="cs__ba-box cs__ba-box--before">
+            <span class="cs__ba-label">Before</span>
+            <p>"The farm is somewhere far away."</p>
+          </div>
+          <div class="cs__ba-box" style="background:rgba(59,138,82,0.06); border-color:rgba(59,138,82,0.3);">
+            <span class="cs__ba-label" style="color:#3b8a52;">After</span>
+            <p>"The farm is on your roof, and lunch arrives by air in under 20 minutes."</p>
+          </div>
+        </div>
+
+        <div class="cs__prose">
+          <p>
+            The key realization was that the food-supply problem isn't primarily a delivery problem — it's a distance problem. Prior models failed because they tried to optimize the wrong variable. Sky Harvest collapses the distance entirely, making freshness a structural guarantee rather than a logistical hope.
+          </p>
         </div>
       </section>
 

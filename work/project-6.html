@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Scan-Verse — Owen Chen</title>
-  <meta name="description" content="Scan-Verse — case study by Owen Chen." />
+  <meta name="description" content="Scan-Verse — 3D scanning platform for interactive AR memory. Case study by Owen Chen." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -21,26 +21,215 @@
   </header>
 
   <main id="top">
-    <article class="project">
+    <article class="project" style="--red: #4058b5;">
       <a href="../projects.html" class="project__back">← back to projects</a>
 
       <header class="project__head">
         <div>
-          <p class="cs__eyebrow">product design</p>
+          <p class="cs__eyebrow">3D scanning · AR memory · ScanVerse</p>
           <h1 class="project__title">Scan-Verse</h1>
         </div>
         <dl class="project__meta">
-          <div><dt>type</dt><dd>Product</dd></div>
-          <div><dt>status</dt><dd>In progress</dd></div>
+          <div><dt>type</dt><dd>Product Design</dd></div>
+          <div><dt>context</dt><dd>Parsons School of Design</dd></div>
+          <div><dt>tech</dt><dd>3D Scan · AR · Gesture ML</dd></div>
         </dl>
       </header>
 
+      <figure class="project__hero">
+        <img src="../work-6.jpg" alt="Scan-Verse 3D scanning and AR memory platform" />
+      </figure>
+
+      <!-- 1. OVERVIEW -->
       <section class="cs">
         <header class="cs__head">
-          <span class="cs__label">Coming Soon</span>
+          <span class="cs__label">Overview</span>
         </header>
         <div class="cs__prose">
-          <p>Details for this project are being added. Check back soon.</p>
+          <p>
+            Scan-Verse is a new-generation content-recording platform that generates realistic 3D models from everyday objects and restores memories in 360°. It solves not just the problem of "how to preserve" an object, but the deeper human need to make memories tangible, shareable, and interactive — turning a scanned teacup into a living story you can gesture open.
+          </p>
+        </div>
+        <div style="display:flex; gap:0.75rem; margin-top:1.5rem; flex-wrap:wrap;">
+          <span style="font-family:'JetBrains Mono',monospace; font-size:0.78rem; padding:0.3rem 0.7rem; border:1px solid var(--rule); border-radius:4px; color:var(--ink-2);">3D Scanning</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:0.78rem; padding:0.3rem 0.7rem; border:1px solid var(--rule); border-radius:4px; color:var(--ink-2);">Object Digital Preservation</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:0.78rem; padding:0.3rem 0.7rem; border:1px solid var(--rule); border-radius:4px; color:var(--ink-2);">Gesture Interaction</span>
+        </div>
+      </section>
+
+      <!-- 2. BACKGROUND -->
+      <section class="cs">
+        <header class="cs__head">
+          <span class="cs__label">Background</span>
+        </header>
+        <div class="cs__prose">
+          <p>
+            Three converging trends show that users want to own and interact with their memories digitally — but existing tools create friction that stops them before they start.
+          </p>
+        </div>
+
+        <div class="cs__bp" style="margin-top:1.5rem;">
+          <div class="cs__phase cs__phase--break">
+            <span class="cs__phase-tag">Rise of Digital Collecting</span>
+            <h3>67% vs 13%</h3>
+            <p>&gt;67% of Gen Z and Millennials have recorded important memories digitally, yet only 13% have tried 3D scanning — blocked by high tool barriers and unclear use cases. (Statista 2023)</p>
+          </div>
+          <div class="cs__phase cs__phase--break">
+            <span class="cs__phase-tag">Personalized Digital Spaces</span>
+            <h3>&gt;72% want more</h3>
+            <p>Over 72% want to personalize their digital spaces — avatars, virtual rooms, collection walls. Demand for "self-curation" and "interactive memory" is rising fast. (Adobe 2022)</p>
+          </div>
+          <div class="cs__phase cs__phase--break">
+            <span class="cs__phase-tag">AR/VR Interaction Preference</span>
+            <h3>57% find it more immersive</h3>
+            <p>57% of AR users find interacting with objects more immersive than viewing displays. Gesture-based input is one of the most natural methods for personalized emotional experiences. (XR Association 2023)</p>
+          </div>
+        </div>
+
+        <p class="cs__subtitle" style="margin-top:2rem;">Personas · 2 core users</p>
+        <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:1rem; margin-top:1rem;">
+          <div style="border:1px solid var(--rule); border-radius:10px; padding:1.25rem; display:flex; flex-direction:column; gap:0.5rem;">
+            <p style="font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:#4058b5; margin:0; text-transform:uppercase; letter-spacing:0.05em;">Lily</p>
+            <p style="font-size:0.95rem; font-style:italic; color:var(--ink); margin:0; line-height:1.45;">"I don't just want to look at memories. I want to interact with my 3D objects."</p>
+          </div>
+          <div style="border:1px solid var(--rule); border-radius:10px; padding:1.25rem; display:flex; flex-direction:column; gap:0.5rem;">
+            <p style="font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:#4058b5; margin:0; text-transform:uppercase; letter-spacing:0.05em;">Yu</p>
+            <p style="font-size:0.95rem; font-style:italic; color:var(--ink); margin:0; line-height:1.45;">Gesturing at scanned models that respond feels like bringing childhood inventions back to life.</p>
+          </div>
+        </div>
+
+        <blockquote class="cs__quote" style="margin-top:2rem;">
+          <p>
+            A platform is needed that both stores personal items and enables AR interaction — solving not just "how to preserve" but the deeper need to make memories tangible and interactive.
+          </p>
+        </blockquote>
+      </section>
+
+      <!-- 3. CAPTURE & SCAN -->
+      <section class="cs">
+        <header class="cs__head">
+          <span class="cs__label">Capture &amp; Scan Process</span>
+        </header>
+
+        <div class="cs__prose">
+          <p>
+            The capture process uses mobile photos or videos. The user sets the central axis; a rotating guide sphere captures the object from all angles — video keeps ambient sound, photo is silent.
+          </p>
+        </div>
+
+        <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:0.75rem; margin-top:1.5rem;">
+          <div style="background:var(--bg-soft); border-radius:8px; padding:1rem; text-align:center; display:flex; flex-direction:column; gap:0.5rem;">
+            <p style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:#4058b5; margin:0; font-weight:500; letter-spacing:0.5px;">STEP 1</p>
+            <p style="font-size:0.875rem; font-weight:500; color:var(--ink); margin:0;">Find a valuable object</p>
+            <p style="font-size:0.78rem; color:var(--ink-2); margin:0; line-height:1.4;">Something meaningful — an heirloom, a childhood toy, a gift.</p>
+          </div>
+          <div style="background:var(--bg-soft); border-radius:8px; padding:1rem; text-align:center; display:flex; flex-direction:column; gap:0.5rem;">
+            <p style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:#4058b5; margin:0; font-weight:500; letter-spacing:0.5px;">STEP 2</p>
+            <p style="font-size:0.875rem; font-weight:500; color:var(--ink); margin:0;">Capture it</p>
+            <p style="font-size:0.78rem; color:var(--ink-2); margin:0; line-height:1.4;">Photo or video using the rotating guide sphere for complete coverage.</p>
+          </div>
+          <div style="background:var(--bg-soft); border-radius:8px; padding:1rem; text-align:center; display:flex; flex-direction:column; gap:0.5rem;">
+            <p style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:#4058b5; margin:0; font-weight:500; letter-spacing:0.5px;">STEP 3</p>
+            <p style="font-size:0.875rem; font-weight:500; color:var(--ink); margin:0;">Generate the model</p>
+            <p style="font-size:0.78rem; color:var(--ink-2); margin:0; line-height:1.4;">System identifies the object, generates a clean 3D mesh, and stores it in the app.</p>
+          </div>
+          <div style="background:rgba(64,88,181,0.07); border:1px solid rgba(64,88,181,0.2); border-radius:8px; padding:1rem; text-align:center; display:flex; flex-direction:column; gap:0.5rem;">
+            <p style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:#4058b5; margin:0; font-weight:500; letter-spacing:0.5px;">STEP 4</p>
+            <p style="font-size:0.875rem; font-weight:500; color:var(--ink); margin:0;">Interact in the album</p>
+            <p style="font-size:0.78rem; color:var(--ink-2); margin:0; line-height:1.4;">View, rotate, gesture, and share scanned items from the 3D gallery.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. GESTURE INTERACTION -->
+      <section class="cs">
+        <header class="cs__head">
+          <span class="cs__label">Gesture Interaction</span>
+        </header>
+
+        <div class="cs__prose">
+          <p>
+            Gesture responses are customizable per model type. Humanoid/character models (e.g., a sculpture) and object models (e.g., a teacup or chair) each respond to different gesture vocabularies — making the interaction feel tailored to the object's nature.
+          </p>
+        </div>
+
+        <div class="cs__bp" style="margin-top:1.5rem;">
+          <div class="cs__phase cs__phase--hospital">
+            <span class="cs__phase-tag">Interaction Flow</span>
+            <h3>Tap → Zoom → Rotate → Effect</h3>
+            <p>Basic model view → tap object → zoom in/out → finger rotate → trying effects. Plus a customization phase and tutorial.</p>
+          </div>
+          <div class="cs__phase cs__phase--hospital">
+            <span class="cs__phase-tag">Gesture Recognition</span>
+            <h3>Thumbs-up / Yeah / OK</h3>
+            <p>Custom gestures recognized for selecting object effects and visual filters. Models trained via Teachable Machine — image samples → classes → exported model + JavaScript integration.</p>
+          </div>
+          <div class="cs__phase cs__phase--home">
+            <span class="cs__phase-tag">Real Example</span>
+            <h3>The Teacup Memory</h3>
+            <p>A user scans his grandfather's old teacup with Polycam. Gesture interaction opens the lid, raises steam, and triggers a recorded voice and story — bringing back the memory of sitting together over tea.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. PLATFORM -->
+      <section class="cs">
+        <header class="cs__head">
+          <span class="cs__label">Platform Experience</span>
+        </header>
+
+        <div class="cs__bp" style="margin-top:1rem;">
+          <div class="cs__phase cs__phase--hospital">
+            <span class="cs__phase-tag">3D Immersive Museum</span>
+            <h3>Explorable space</h3>
+            <p>Scanned objects displayed in an immersive, walkable virtual museum — curated by the user.</p>
+          </div>
+          <div class="cs__phase cs__phase--hospital">
+            <span class="cs__phase-tag">Device Interface</span>
+            <h3>App + tablet</h3>
+            <p>Welcome → get started → upload photos → generate model → gallery → settings. Designed for both phone and tablet.</p>
+          </div>
+          <div class="cs__phase cs__phase--home">
+            <span class="cs__phase-tag">QR Sharing</span>
+            <h3>Physical + digital</h3>
+            <p>Generate a QR code → export (photo album / share link / print as offline exhibition entry) → others access the memory space via personal page or family sharing.</p>
+          </div>
+        </div>
+
+        <div class="cs__designlayer" style="margin-top:2rem;">
+          <p class="cs__designlayer-head">App flow · six screens</p>
+          <ol class="cs__chips">
+            <li><span>01</span>Welcome</li>
+            <li><span>02</span>Get started</li>
+            <li><span>03</span>Upload photos</li>
+            <li><span>04</span>Generate model</li>
+            <li><span>05</span>Gallery</li>
+            <li><span>06</span>Settings</li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- 6. SUMMARY -->
+      <section class="cs">
+        <header class="cs__head">
+          <span class="cs__label">Summary and Reflections</span>
+        </header>
+
+        <div class="cs__ba">
+          <div class="cs__ba-box cs__ba-box--before">
+            <span class="cs__ba-label">Before</span>
+            <p>"Memories sit in flat photo albums you rarely open."</p>
+          </div>
+          <div class="cs__ba-box" style="background:rgba(64,88,181,0.06); border-color:rgba(64,88,181,0.3);">
+            <span class="cs__ba-label" style="color:#4058b5;">After</span>
+            <p>"Memories become 3D objects you can rotate, gesture, and share — things you can almost touch."</p>
+          </div>
+        </div>
+
+        <div class="cs__prose">
+          <p>
+            The project revealed that preservation and interaction are two different problems — and most tools only solve the first. The key design insight was making the 3D model the starting point, not the end point: once it exists, gesture interaction, family sharing, and the 3D museum become natural extensions. Scan-Verse is an interactive AR digital-memory platform that lets users collect, share, and interact with personal memories in an immersive way — turning preserved objects into living, shareable experiences.
+          </p>
         </div>
       </section>
 
