@@ -21,7 +21,7 @@ document.addEventListener("mouseenter", () => document.body.classList.add("curso
 });
 
 
-// ── Projects filter dropdown (hover + 6s stay-open) ─────────────
+// ── Projects filter dropdown (hover + 3s stay-open) ─────────────
 const filterItems   = document.querySelectorAll(".work__filter-item");
 const filterCurrent = document.querySelector(".work__filter-current");
 const filterWrapper = document.querySelector(".work__filter");
@@ -49,9 +49,22 @@ if (filterItems.length) {
             ? "Key Labels"
             : val.charAt(0).toUpperCase() + val.slice(1);
       }
-      document.querySelectorAll(".grid .card").forEach(card => {
-        const match = val === "all" || card.dataset.category === val;
-        card.style.display = match ? "" : "none";
+
+      const cards = [...document.querySelectorAll(".grid .card")];
+      const matching    = cards.filter(c => val === "all" || c.dataset.category === val);
+      const nonMatching = cards.filter(c => !(val === "all" || c.dataset.category === val));
+
+      // fade out cards that don't match, then hide them
+      nonMatching.forEach(c => {
+        c.classList.remove("is-visible");
+        setTimeout(() => { c.style.display = "none"; }, 350);
+      });
+
+      // fade in matching cards with stagger
+      matching.forEach((c, i) => {
+        c.style.display = "";
+        c.classList.remove("is-visible");
+        setTimeout(() => c.classList.add("is-visible"), 60 + i * 80);
       });
     });
   });
@@ -75,6 +88,8 @@ if (toggle) {
 
 
 // ── Reveal on scroll ───────────────────────────────────────────
+const isWorkPage = document.body.dataset.page === "work";
+
 const revealTargets = document.querySelectorAll(
   ".intro__image, .intro__text > *, .work__head, .card, .contact__big, .contact__links, .contact-page > *, .resume__head, .resume__section"
 );
@@ -91,4 +106,19 @@ const io = new IntersectionObserver(
   },
   { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
 );
-revealTargets.forEach(el => io.observe(el));
+
+revealTargets.forEach(el => {
+  // cards on the work page are handled by the stagger below — skip IO for them
+  if (isWorkPage && el.classList.contains("card")) return;
+  io.observe(el);
+});
+
+// work page: stagger all cards in on load
+if (isWorkPage) {
+  const workCards = [...document.querySelectorAll(".grid .card")];
+  setTimeout(() => {
+    workCards.forEach((c, i) => {
+      setTimeout(() => c.classList.add("is-visible"), i * 80);
+    });
+  }, 80);
+}
