@@ -896,6 +896,10 @@ body[data-page="contact"] main {
 }
 .reveal.is-visible { opacity: 1; transform: none; }
 
+[data-page="work"] .card.reveal {
+  transition: opacity 5s var(--ease), transform 5s var(--ease);
+}
+
 /* ---------- Responsive ---------- */
 @media (max-width: 800px) {
   .intro {
