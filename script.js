@@ -50,22 +50,17 @@ if (filterItems.length) {
             : val.charAt(0).toUpperCase() + val.slice(1);
       }
 
-      const cards = [...document.querySelectorAll(".grid .card")];
-      const matching    = cards.filter(c => val === "all" || c.dataset.category === val);
-      const nonMatching = cards.filter(c => !(val === "all" || c.dataset.category === val));
+      if (filterMenu) filterMenu.classList.remove("is-open");
 
-      // fade out cards that don't match, then hide them
-      nonMatching.forEach(c => {
-        c.classList.remove("is-visible");
-        setTimeout(() => { c.style.display = "none"; }, 350);
-      });
-
-      // fade in matching cards with stagger
-      matching.forEach((c, i) => {
-        c.style.display = "";
-        c.classList.remove("is-visible");
-        setTimeout(() => c.classList.add("is-visible"), 60 + i * 80);
-      });
+      if (val === "all") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      } else {
+        const target = document.querySelector(`.grid .card[data-category="${val}"]`);
+        if (target) {
+          const y = target.getBoundingClientRect().top + window.scrollY - 80;
+          window.scrollTo({ top: y, behavior: "smooth" });
+        }
+      }
     });
   });
 }

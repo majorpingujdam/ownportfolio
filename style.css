@@ -900,6 +900,10 @@ body[data-page="contact"] main {
   transition: opacity 5s var(--ease), transform 5s var(--ease);
 }
 
+.card--section-start {
+  margin-top: 6rem;
+}
+
 /* ---------- Responsive ---------- */
 @media (max-width: 800px) {
   .intro {
