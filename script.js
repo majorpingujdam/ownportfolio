@@ -47,7 +47,7 @@ if (filterItems.length) {
       if (filterCurrent) {
         filterCurrent.textContent = val === "all"
             ? "Key Labels"
-            : val.charAt(0).toUpperCase() + val.slice(1);
+            : item.textContent.trim();
       }
 
       if (filterMenu) filterMenu.classList.remove("is-open");
