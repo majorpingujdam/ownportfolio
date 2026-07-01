@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DialogueGuardian — Owen Chen</title>
+  <meta name="description" content="DialogueGuardian — NLP sentiment analyzer for ethical android police communication. By Owen Chen." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body data-page="project">
+  <header class="nav">
+    <a href="../index.html" class="nav__home">main</a>
+    <nav class="nav__links">
+      <a href="../projects.html" class="is-active">projects</a>
+      <a href="../bio.html">bio</a>
+      <a href="../resume.html">resume</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <article class="project" style="--red: #1e3a5f;">
+      <a href="../projects.html" class="project__back">← back to projects</a>
+
+      <header class="project__head">
+        <div>
+          <p class="cs__eyebrow">NLP · sentiment analysis · Android Police · Jupyter Notebook</p>
+          <h1 class="project__title">DialogueGuardian</h1>
+        </div>
+        <dl class="project__meta">
+          <div><dt>type</dt><dd>AI / Machine Learning</dd></div>
+          <div><dt>tool</dt><dd>Python · NLTK · Jupyter Notebook</dd></div>
+          <div><dt>focus</dt><dd>Ethical Law Enforcement</dd></div>
+        </dl>
+      </header>
+
+      <!-- 1. OVERVIEW -->
+      <section class="cs">
+        <header class="cs__head">
+          <span class="cs__label">Overview</span>
+        </header>
+        <div class="cs__prose">
+          <p>
+            DialogueGuardian is a back-end application module designed to be integrated into future android police units. Using Natural Language Processing and sentiment analysis in Jupyter Notebook, it analyzes real-time conversations between android officers and civilians — then guides officers toward ethical, de-escalating communication. The goal: remain professional under pressure, protect civilian rights, and minimize tension before it becomes force.
+          </p>
+        </div>
+        <div style="display:flex; gap:0.75rem; margin-top:1.5rem; flex-wrap:wrap;">
+          <span style="font-family:'JetBrains Mono',monospace; font-size:0.78rem; padding:0.3rem 0.7rem; border:1px solid var(--rule); border-radius:4px; color:var(--ink-2);">Natural Language Processing</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:0.78rem; padding:0.3rem 0.7rem; border:1px solid var(--rule); border-radius:4px; color:var(--ink-2);">Sentiment Analysis</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:0.78rem; padding:0.3rem 0.7rem; border:1px solid var(--rule); border-radius:4px; color:var(--ink-2);">NLTK · VADER</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:0.78rem; padding:0.3rem 0.7rem; border:1px solid var(--rule); border-radius:4px; color:var(--ink-2);">Ethical AI</span>
+        </div>
+      </section>
+
+      <!-- 2. BACKGROUND -->
+      <section class="cs">
+        <header class="cs__head">
+          <span class="cs__label">Background</span>
+        </header>
+
+        <div class="cs__bp" style="margin-top:1rem;">
+          <div class="cs__phase cs__phase--break">
+            <span class="cs__phase-tag">Civilian Injuries</span>
+            <h3>250,000 / year</h3>
+            <p>An estimated 250,000 civilian injuries are caused by law enforcement officers annually in the U.S.</p>
+          </div>
+          <div class="cs__phase cs__phase--break">
+            <span class="cs__phase-tag">Force Encounters</span>
+            <h3>15% injured</h3>
+            <p>Of civilians who experience police threats or use of force during legal interventions, 15% are injured.</p>
+          </div>
+          <div class="cs__phase cs__phase--break">
+            <span class="cs__phase-tag">Fatal Outcomes</span>
+            <h3>600+ killed</h3>
+            <p>More than 600 people are killed by law enforcement in the U.S. each year — many incidents beginning as verbal confrontations.</p>
+          </div>
+        </div>
+
+        <blockquote class="cs__quote" style="margin-top:2rem;">
+          <p>"Our lives could change a lot just by a single conversation."</p>
+        </blockquote>
+      </section>
+
+      <!-- 3. INSPIRATION -->
+      <section class="cs">
+        <header class="cs__head">
+          <span class="cs__label">Inspiration</span>
+        </header>
+        <div class="cs__prose">
+          <p>
+            As a reader of O. Henry's novels, Owen found that "The Cop and the Anthem" carries a deeper social truth: a single conversation with a person holding a badge can redirect the entire course of someone's life. As a student in NYC, Owen regularly witnessed police-civilian clashes — arguments, physical confrontations, and the power asymmetry underneath. With AI and robotics advancing toward android officers, the question became urgent: how should a machine talk to a human under pressure, while respecting rights and minimizing harm?
+          </p>
+        </div>
+      </section>
+
+      <!-- 4. DATASET -->
+      <section class="cs">
+        <header class="cs__head">
+          <span class="cs__label">Creating the Dataset</span>
+        </header>
+        <div class="cs__prose">
+          <p>
+            Owen collected ~105 real sentences and responses from police body-camera recordings sourced from YouTube channels <em>PoliceActivity</em> and <em>Law &amp; Crime</em>. These were split into two template sets:
+          </p>
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-top:1.5rem;">
+          <div style="border:1px solid var(--rule); border-radius:10px; padding:1.25rem;">
+            <p style="font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:#1e3a5f; margin:0 0 0.5rem; text-transform:uppercase; letter-spacing:0.05em;">Template Set 1 — Officer</p>
+            <p style="font-size:0.9rem; color:var(--ink); margin:0; line-height:1.5;">How officers typically communicate — drawn from real body-cam footage to capture authentic language patterns and escalation triggers.</p>
+          </div>
+          <div style="border:1px solid var(--rule); border-radius:10px; padding:1.25rem;">
+            <p style="font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:#1e3a5f; margin:0 0 0.5rem; text-transform:uppercase; letter-spacing:0.05em;">Template Set 2 — Citizen Profiles</p>
+            <p style="font-size:0.9rem; color:var(--ink); margin:0; line-height:1.5;">Responses classified by profession — so the analyzer can tailor officer replies to each civilian context.</p>
+          </div>
+        </div>
+
+        <p class="cs__subtitle" style="margin-top:2rem;">Civilian profiles modeled</p>
+        <div style="display:flex; gap:0.6rem; flex-wrap:wrap; margin-top:0.75rem;">
+          <span style="font-family:'JetBrains Mono',monospace; font-size:0.78rem; padding:0.3rem 0.8rem; background:var(--bg-soft); border-radius:20px; color:var(--ink);">Senator</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:0.78rem; padding:0.3rem 0.8rem; background:var(--bg-soft); border-radius:20px; color:var(--ink);">Teacher</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:0.78rem; padding:0.3rem 0.8rem; background:var(--bg-soft); border-radius:20px; color:var(--ink);">Lawyer</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:0.78rem; padding:0.3rem 0.8rem; background:var(--bg-soft); border-radius:20px; color:var(--ink);">Doctor</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:0.78rem; padding:0.3rem 0.8rem; background:var(--bg-soft); border-radius:20px; color:var(--ink);">Gangster</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:0.78rem; padding:0.3rem 0.8rem; background:var(--bg-soft); border-radius:20px; color:var(--ink);">Bodega Owner</span>
+        </div>
+      </section>
+
+      <!-- 5. PROCESS -->
+      <section class="cs">
+        <header class="cs__head">
+          <span class="cs__label">Sentiment Analysis Process</span>
+        </header>
+
+        <div class="cs__designlayer" style="margin-top:1rem;">
+          <p class="cs__designlayer-head">Pipeline · six steps</p>
+          <ol class="cs__chips">
+            <li><span>01</span>Collect 105 real sentences from body-cam footage</li>
+            <li><span>02</span>Build profession-based citizen response templates</li>
+            <li><span>03</span>Use Random module to generate 4-sentence conversations</li>
+            <li><span>04</span>Load NLTK + pull VADER lexicon for sentiment scoring</li>
+            <li><span>05</span>Analyze overall conversation sentiment (positive / neutral / negative)</li>
+            <li><span>06</span>Output guidance directive to the android officer</li>
+          </ol>
+        </div>
+
+        <div class="cs__prose" style="margin-top:1.5rem;">
+          <p>
+            Owen chose NLTK over spaCy for its modularity and educational depth — using the <code style="font-family:'JetBrains Mono',monospace; font-size:0.85em; background:var(--bg-soft); padding:0.1em 0.4em; border-radius:4px;">vader_lexicon</code> specifically for its strength in social/conversational text. The Random module generates variation across conversation runs, producing different outcomes each time the cell is executed.
+          </p>
+        </div>
+      </section>
+
+      <!-- 6. OUTPUT -->
+      <section class="cs">
+        <header class="cs__head">
+          <span class="cs__label">Conversation Output &amp; Results</span>
+        </header>
+
+        <div class="cs__bp" style="margin-top:1rem;">
+          <div class="cs__phase cs__phase--home">
+            <span class="cs__phase-tag">Positive Sentiment</span>
+            <h3>Keep the trend</h3>
+            <p>Officer is directed to maintain the current communication approach — the conversation is going well and trust is building.</p>
+          </div>
+          <div class="cs__phase cs__phase--hospital">
+            <span class="cs__phase-tag">Neutral Sentiment</span>
+            <h3>Monitor closely</h3>
+            <p>Situation is stable but not warm — officer is flagged to watch for shifts and stay measured in tone.</p>
+          </div>
+          <div class="cs__phase cs__phase--break">
+            <span class="cs__phase-tag">Negative Sentiment</span>
+            <h3>Re-direct conversation</h3>
+            <p>Officer is prompted to de-escalate immediately, with profession-specific language suggested to rebuild trust.</p>
+          </div>
+        </div>
+
+        <div class="cs__note" style="margin-top:1.5rem;">
+          <strong>Example — Lawyer profile:</strong> "As professionals, I believe we can find a resolution that respects everyone's rights and ensures a safe outcome. Can we find common ground and agree on steps we can take to mitigate the tension?"
+        </div>
+      </section>
+
+      <!-- 7. SUMMARY -->
+      <section class="cs">
+        <header class="cs__head">
+          <span class="cs__label">Summary &amp; What's Next</span>
+        </header>
+
+        <div class="cs__ba">
+          <div class="cs__ba-box cs__ba-box--before">
+            <span class="cs__ba-label">Before</span>
+            <p>"Android officers have no way to assess conversation tone or adjust communication in real time — every interaction is a black box."</p>
+          </div>
+          <div class="cs__ba-box" style="background:rgba(30,58,95,0.06); border-color:rgba(30,58,95,0.3);">
+            <span class="cs__ba-label" style="color:#1e3a5f;">After</span>
+            <p>"DialogueGuardian reads the room — positive, neutral, or negative — and guides the android toward responses that respect rights and reduce tension."</p>
+          </div>
+        </div>
+
+        <div class="cs__prose" style="margin-top:2rem;">
+          <p>
+            Next steps include embedding DialogueGuardian into an interactive web interface, expanding de-escalation templates per profession, and training on a larger, more diverse dataset. The core insight — that profession context should shape how authority speaks to people — is both the project's strength and its most promising direction for growth.
+          </p>
+        </div>
+      </section>
+
+    </article>
+  </main>
+
+  <footer class="foot">
+    <a href="../contact.html" class="foot__contact">contact ↗</a>
+    <a href="#top" class="foot__top">top ↑</a>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+</html>
