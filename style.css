@@ -870,7 +870,7 @@ body[data-page="contact"] main {
     position: fixed;
     top: 0; left: 0;
     width: 20px; height: 20px;
-    color: var(--ink);
+    color: #f5a86a;
     pointer-events: none;
     z-index: 99999;
     opacity: 0;
@@ -883,7 +883,7 @@ body[data-page="contact"] main {
   body.cursor-ready .cursor-star { opacity: 1; }
   body.cursor-active .cursor-star {
     width: 32px; height: 32px;
-    color: var(--blue);
+    color: #ef8c3f;
   }
 
   .cursor-blob {
