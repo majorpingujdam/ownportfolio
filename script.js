@@ -30,6 +30,8 @@ document.addEventListener("mouseenter", () => document.body.classList.add("curso
 
 if (window.matchMedia("(hover: hover)").matches) {
   const noMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let lastSplash = 0;
+
   (function cursorLoop() {
     // asterisk sticks to the pointer; spins with idle drift + velocity boost
     const speed = Math.hypot(curX - prevX, curY - prevY);
@@ -45,6 +47,24 @@ if (window.matchMedia("(hover: hover)").matches) {
     blobY += (curY - blobY) * 0.13;
     blob.style.left = blobX + "px";
     blob.style.top  = blobY + "px";
+
+    // leave water splash traces while moving
+    const now = performance.now();
+    if (!noMotion && speed > 3 && now - lastSplash > 34 &&
+        document.body.classList.contains("cursor-ready")) {
+      lastSplash = now;
+      const s = document.createElement("div");
+      s.className = "cursor-splash";
+      const size = 7 + Math.random() * 12 + Math.min(speed, 40) * 0.35;
+      s.style.width  = size + "px";
+      s.style.height = size + "px";
+      s.style.left = (curX + (Math.random() - 0.5) * 18) + "px";
+      s.style.top  = (curY + (Math.random() - 0.5) * 18) + "px";
+      const r = () => 42 + Math.random() * 24;
+      s.style.borderRadius = `${r()}% ${r()}% ${r()}% ${r()}% / ${r()}% ${r()}% ${r()}% ${r()}%`;
+      document.body.appendChild(s);
+      setTimeout(() => s.remove(), 800);
+    }
 
     requestAnimationFrame(cursorLoop);
   })();

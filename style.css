@@ -890,7 +890,7 @@ body[data-page="contact"] main {
     position: fixed;
     top: 0; left: 0;
     width: 44px; height: 44px;
-    background: rgba(196, 196, 192, 0.42);
+    background: rgba(147, 196, 240, 0.42);
     border-radius: 58% 42% 63% 37% / 46% 59% 41% 54%;
     animation: blob-morph 5s ease-in-out infinite;
     pointer-events: none;
@@ -906,7 +906,7 @@ body[data-page="contact"] main {
   .cursor-blob::after {
     content: "";
     position: absolute;
-    background: rgba(196, 196, 192, 0.38);
+    background: rgba(147, 196, 240, 0.38);
     border-radius: 50%;
   }
   .cursor-blob::before {
@@ -936,8 +936,24 @@ body[data-page="contact"] main {
     0%, 100% { transform: translate(0, 0)   scale(1); }
     50%      { transform: translate(-4px, 4px) scale(0.75); }
   }
+
+  /* water splash traces left behind while the cursor moves */
+  .cursor-splash {
+    position: fixed;
+    top: 0; left: 0;
+    background: rgba(147, 196, 240, 0.35);
+    pointer-events: none;
+    z-index: 99997;
+    transform: translate(-50%, -50%);
+    animation: splash-fade .75s ease-out forwards;
+  }
+  @keyframes splash-fade {
+    0%   { opacity: .85; transform: translate(-50%, -50%) scale(0.35); }
+    60%  { opacity: .4; }
+    100% { opacity: 0;   transform: translate(-50%, -50%) scale(1.7); }
+  }
 }
-@media (hover: none) { .cursor-star, .cursor-blob { display: none; } }
+@media (hover: none) { .cursor-star, .cursor-blob, .cursor-splash { display: none; } }
 
 /* ---------- Reveal ---------- */
 .reveal {
