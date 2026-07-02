@@ -305,7 +305,8 @@ em { font-style: italic; }
   overflow: hidden;
   transition: transform .5s var(--ease);
 }
-.card__panel img {
+.card__panel img,
+.card__panel video {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -315,7 +316,8 @@ em { font-style: italic; }
   display: block;
   transition: transform .6s var(--ease);
 }
-.card__link:hover .card__panel img { transform: scale(1.04); }
+.card__link:hover .card__panel img,
+.card__link:hover .card__panel video { transform: scale(1.04); }
 .card__link:hover .card__panel { transform: translateY(-3px); }
 .card__foot {
   flex: 1;
