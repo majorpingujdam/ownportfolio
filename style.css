@@ -889,10 +889,10 @@ body[data-page="contact"] main {
   .cursor-blob {
     position: fixed;
     top: 0; left: 0;
-    width: 38px; height: 38px;
-    border-radius: 50%;
-    background: #fff;
-    mix-blend-mode: difference;
+    width: 44px; height: 44px;
+    background: rgba(196, 196, 192, 0.42);
+    border-radius: 58% 42% 63% 37% / 46% 59% 41% 54%;
+    animation: blob-morph 5s ease-in-out infinite;
     pointer-events: none;
     z-index: 99998;
     transform: translate(-50%, -50%);
@@ -901,8 +901,41 @@ body[data-page="contact"] main {
                 width .35s var(--ease), height .35s var(--ease);
     will-change: left, top;
   }
+  /* splash droplets */
+  .cursor-blob::before,
+  .cursor-blob::after {
+    content: "";
+    position: absolute;
+    background: rgba(196, 196, 192, 0.38);
+    border-radius: 50%;
+  }
+  .cursor-blob::before {
+    width: 9px; height: 9px;
+    top: -7px; right: -3px;
+    animation: droplet-a 5s ease-in-out infinite;
+  }
+  .cursor-blob::after {
+    width: 6px; height: 6px;
+    bottom: -6px; left: -1px;
+    animation: droplet-b 5s ease-in-out infinite;
+  }
   body.cursor-ready .cursor-blob { opacity: 1; }
-  body.cursor-active .cursor-blob { width: 62px; height: 62px; }
+  body.cursor-active .cursor-blob { width: 66px; height: 66px; }
+
+  @keyframes blob-morph {
+    0%, 100% { border-radius: 58% 42% 63% 37% / 46% 59% 41% 54%; }
+    25%      { border-radius: 41% 59% 46% 54% / 61% 39% 62% 38%; }
+    50%      { border-radius: 63% 37% 51% 49% / 39% 63% 43% 57%; }
+    75%      { border-radius: 46% 54% 61% 39% / 56% 44% 58% 42%; }
+  }
+  @keyframes droplet-a {
+    0%, 100% { transform: translate(0, 0)   scale(1); }
+    50%      { transform: translate(4px, -5px) scale(1.25); }
+  }
+  @keyframes droplet-b {
+    0%, 100% { transform: translate(0, 0)   scale(1); }
+    50%      { transform: translate(-4px, 4px) scale(0.75); }
+  }
 }
 @media (hover: none) { .cursor-star, .cursor-blob { display: none; } }
 
