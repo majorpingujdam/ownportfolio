@@ -704,6 +704,22 @@ body[data-page="landing"] {
   overflow: hidden;
   background: #000;
 }
+
+.project__playlink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+  padding: 0.85rem 1.6rem;
+  border-radius: 10px;
+  background: var(--red);
+  color: #fff;
+  font-family: var(--mono);
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
+  transition: transform .3s var(--ease), opacity .3s var(--ease);
+}
+.project__playlink:hover { transform: translateY(-2px); opacity: 0.9; }
 .project__video iframe {
   position: absolute;
   inset: 0;
