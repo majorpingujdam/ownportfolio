@@ -1,17 +1,54 @@
 // Owen Chen — portfolio
 
-// ── Minimal dot cursor ─────────────────────────────────────────
-const dot = document.createElement("div");
-dot.className = "cursor-dot";
-document.body.appendChild(dot);
+// ── Artistic cursor: spinning asterisk + inverting blob ────────
+const star = document.createElement("div");
+star.className = "cursor-star";
+star.innerHTML =
+  '<svg viewBox="0 0 24 24" fill="none"><g stroke="currentColor" stroke-width="2.4" stroke-linecap="round">' +
+  '<line x1="12" y1="2.2" x2="12" y2="21.8"/>' +
+  '<line x1="3.5" y1="7.1" x2="20.5" y2="16.9"/>' +
+  '<line x1="3.5" y1="16.9" x2="20.5" y2="7.1"/>' +
+  "</g></svg>";
+document.body.appendChild(star);
+
+const blob = document.createElement("div");
+blob.className = "cursor-blob";
+document.body.appendChild(blob);
+
+let curX = -100, curY = -100;      // real mouse position
+let blobX = -100, blobY = -100;    // lagging blob position
+let prevX = -100, prevY = -100;    // for velocity
+let spin = 0;
 
 document.addEventListener("mousemove", e => {
-  dot.style.left = e.clientX + "px";
-  dot.style.top  = e.clientY + "px";
+  curX = e.clientX;
+  curY = e.clientY;
   document.body.classList.add("cursor-ready");
 });
 document.addEventListener("mouseleave", () => document.body.classList.remove("cursor-ready"));
 document.addEventListener("mouseenter", () => document.body.classList.add("cursor-ready"));
+
+if (window.matchMedia("(hover: hover)").matches) {
+  const noMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  (function cursorLoop() {
+    // asterisk sticks to the pointer; spins with idle drift + velocity boost
+    const speed = Math.hypot(curX - prevX, curY - prevY);
+    prevX = curX; prevY = curY;
+    if (!noMotion) spin += 0.6 + Math.min(speed, 40) * 0.45;
+
+    star.style.left = curX + "px";
+    star.style.top  = curY + "px";
+    star.style.transform = `translate(-50%, -50%) rotate(${spin}deg)`;
+
+    // blob glides behind with easing
+    blobX += (curX - blobX) * 0.13;
+    blobY += (curY - blobY) * 0.13;
+    blob.style.left = blobX + "px";
+    blob.style.top  = blobY + "px";
+
+    requestAnimationFrame(cursorLoop);
+  })();
+}
 
 ["a", "button", "[role='button']", ".cs__toggle", ".work__filter-item", ".card__link"].forEach(sel => {
   document.querySelectorAll(sel).forEach(el => {
@@ -141,27 +178,6 @@ window.addEventListener("scroll", () => {
     progressTick = false;
   });
 }, { passive: true });
-
-
-// ── Trailing cursor ring ───────────────────────────────────────
-if (window.matchMedia("(hover: hover)").matches) {
-  const ring = document.createElement("div");
-  ring.className = "cursor-ring";
-  document.body.appendChild(ring);
-
-  let ringX = -100, ringY = -100, targetX = -100, targetY = -100;
-  document.addEventListener("mousemove", e => {
-    targetX = e.clientX;
-    targetY = e.clientY;
-  });
-  (function trail() {
-    ringX += (targetX - ringX) * 0.16;
-    ringY += (targetY - ringY) * 0.16;
-    ring.style.left = ringX + "px";
-    ring.style.top  = ringY + "px";
-    requestAnimationFrame(trail);
-  })();
-}
 
 
 // ── Animated stat counters (case-study pages) ──────────────────
