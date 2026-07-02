@@ -862,34 +862,14 @@ body[data-page="contact"] main {
 }
 .foot__top:hover { color: var(--ink); }
 
-/* ---------- Custom cursor: spinning asterisk + inverting blob ---------- */
+/* ---------- Custom cursor: inverting dot ---------- */
 @media (hover: hover) {
   * { cursor: none !important; }
-
-  .cursor-star {
-    position: fixed;
-    top: 0; left: 0;
-    width: 20px; height: 20px;
-    color: #f5a86a;
-    pointer-events: none;
-    z-index: 99999;
-    opacity: 0;
-    transition: opacity .25s var(--ease),
-                width .3s var(--ease), height .3s var(--ease),
-                color .25s var(--ease);
-    will-change: transform;
-  }
-  .cursor-star svg { width: 100%; height: 100%; display: block; }
-  body.cursor-ready .cursor-star { opacity: 1; }
-  body.cursor-active .cursor-star {
-    width: 32px; height: 32px;
-    color: #ef8c3f;
-  }
 
   .cursor-blob {
     position: fixed;
     top: 0; left: 0;
-    width: 38px; height: 38px;
+    width: 14px; height: 14px;
     border-radius: 50%;
     background: #fff;
     mix-blend-mode: difference;
@@ -902,9 +882,9 @@ body[data-page="contact"] main {
     will-change: left, top;
   }
   body.cursor-ready .cursor-blob { opacity: 1; }
-  body.cursor-active .cursor-blob { width: 62px; height: 62px; }
+  body.cursor-active .cursor-blob { width: 28px; height: 28px; }
 }
-@media (hover: none) { .cursor-star, .cursor-blob { display: none; } }
+@media (hover: none) { .cursor-blob { display: none; } }
 
 /* ---------- Reveal ---------- */
 .reveal {
