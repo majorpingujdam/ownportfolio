@@ -133,6 +133,57 @@ if (isWorkPage) {
 }
 
 
+// ── Landing greeting: cycles Hello / 你好 / こんにちは ──────────
+const greeting = document.getElementById("greeting");
+if (greeting) {
+  const GREETINGS = ["Hello", "你好", "こんにちは"];
+  const STAGGER = 60;   // per-character delay
+  const HOLD    = 1500; // pause while fully shown
+  const wait    = ms => new Promise(res => setTimeout(res, ms));
+  const reduce  = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  const renderWord = word => {
+    greeting.textContent = "";
+    greeting.setAttribute("aria-label", word);
+    return Array.from(word).map(ch => {
+      const s = document.createElement("span");
+      s.className = "landing__gchar";
+      s.textContent = ch;
+      greeting.appendChild(s);
+      return s;
+    });
+  };
+
+  if (reduce) {
+    let gi = 0;
+    renderWord(GREETINGS[0]).forEach(c => c.classList.add("is-in"));
+    setInterval(() => {
+      gi = (gi + 1) % GREETINGS.length;
+      renderWord(GREETINGS[gi]).forEach(c => c.classList.add("is-in"));
+    }, 2800);
+  } else {
+    (async function loop() {
+      let gi = 0;
+      let chars = renderWord(GREETINGS[0]);
+      while (true) {
+        // reveal left → right
+        chars.forEach((c, i) => setTimeout(() => c.classList.add("is-in"), i * STAGGER));
+        await wait((chars.length - 1) * STAGGER + 420 + HOLD);
+
+        // clear right → left
+        const n = chars.length;
+        chars.forEach((c, i) => setTimeout(() => c.classList.add("is-out"), (n - 1 - i) * STAGGER));
+        await wait((n - 1) * STAGGER + 420);
+
+        gi = (gi + 1) % GREETINGS.length;
+        chars = renderWord(GREETINGS[gi]);
+        await wait(60);
+      }
+    })();
+  }
+}
+
+
 // ── Reading progress bar ───────────────────────────────────────
 const progressBar = document.createElement("div");
 progressBar.className = "scroll-progress";
