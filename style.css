@@ -402,7 +402,7 @@ body[data-page="landing"] {
   opacity: 0;
   transform: translateX(0.35em);
 }
-.landing__hello-rest { color: var(--ink); }
+.landing__hello-rest { display: block; color: var(--ink); }
 
 .landing__contact {
   position: absolute;
