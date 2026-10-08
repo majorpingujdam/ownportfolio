@@ -7,7 +7,7 @@
   <meta name="description" content="Selected projects by Owen Chen, UX & HCI design student." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body data-page="work">
@@ -21,192 +21,8 @@
   </header>
 
   <main id="top">
-    <section class="work">
-      <header class="work__head">
-        <div class="work__filter">
-          <button class="work__filter-btn" aria-haspopup="listbox">
-            <span class="work__filter-current">Key Labels</span>
-            <span class="work__filter-icon">↓</span>
-          </button>
-          <ul class="work__filter-menu" role="listbox">
-            <li class="work__filter-item is-selected" data-val="all">All</li>
-            <li class="work__filter-item" data-val="internship">Internship</li>
-            <li class="work__filter-item" data-val="product">Product</li>
-            <li class="work__filter-item" data-val="ai">AI / ML / NLP</li>
-            <li class="work__filter-item" data-val="generative">Generative Art</li>
-            <li class="work__filter-item" data-val="gaming">Gaming</li>
-          </ul>
-        </div>
-      </header>
-
-      <ol class="grid">
-        <li class="card" data-category="internship">
-          <a href="work/project-2.html" class="card__link">
-            <div class="card__panel">
-              <img src="work-2.jpg" alt="AiWalker" />
-            </div>
-            <div class="card__foot">
-              <h3 class="card__title">AiWalker</h3>
-              <p class="card__desc">Clinic-to-home rehab service design.</p>
-            </div>
-          </a>
-        </li>
-        <li class="card" data-category="internship">
-          <a href="work/project-3.html" class="card__link">
-            <div class="card__panel">
-              <img src="work-3.jpg" alt="IKEA Visual Merchandising" />
-            </div>
-            <div class="card__foot">
-              <h3 class="card__title">Vignette</h3>
-              <p class="card__desc">Kitchen room-set design at IKEA China.</p>
-            </div>
-          </a>
-        </li>
-        <li class="card card--section-start" data-category="product">
-          <a href="work/project-1.html" class="card__link">
-            <div class="card__panel">
-              <img src="work-1.jpg" alt="Dosage-Pal" />
-            </div>
-            <div class="card__foot">
-              <h3 class="card__title">Dosage-Pal</h3>
-              <p class="card__desc">Elder care medication management app.</p>
-            </div>
-          </a>
-        </li>
-        <li class="card" data-category="product">
-          <a href="work/project-4.html" class="card__link">
-            <div class="card__panel">
-              <img src="work-4.jpg" alt="Sky Harvest" />
-            </div>
-            <div class="card__foot">
-              <h3 class="card__title">Sky Harvest</h3>
-              <p class="card__desc">Rooftop farm + drone delivery shortening farm to table.</p>
-            </div>
-          </a>
-        </li>
-        <li class="card" data-category="product">
-          <a href="work/project-5.html" class="card__link">
-            <div class="card__panel">
-              <img src="work-5.jpg" alt="BioColor Tag" />
-            </div>
-            <div class="card__foot">
-              <h3 class="card__title">BioColor Tag</h3>
-              <p class="card__desc">Anthocyanin label that detects food spoilage through color change.</p>
-            </div>
-          </a>
-        </li>
-        <li class="card" data-category="product">
-          <a href="work/project-6.html" class="card__link">
-            <div class="card__panel">
-              <img src="work-6.jpg" alt="Scan-Verse" />
-            </div>
-            <div class="card__foot">
-              <h3 class="card__title">Scan-Verse</h3>
-              <p class="card__desc">3D scanning platform turning objects into interactive AR memories.</p>
-            </div>
-          </a>
-        </li>
-        <li class="card card--section-start" data-category="ai">
-          <a href="work/project-9.html" class="card__link">
-            <div class="card__panel">
-              <img src="Photos/AI%20ML/Bio%20fracta%20Stamp/Profile.png" alt="Bio-Fracta Stamp" />
-            </div>
-            <div class="card__foot">
-              <h3 class="card__title">Bio-Fracta Stamp</h3>
-              <p class="card__desc">GAN-generated fractal transdermal patch for pediatric drug delivery.</p>
-            </div>
-          </a>
-        </li>
-        <li class="card" data-category="ai">
-          <a href="work/project-12.html" class="card__link">
-            <div class="card__panel">
-              <img src="Photos/AI%20ML/Dialogue%20Guardian/Profile.png" alt="Dialogue Guardian" />
-            </div>
-            <div class="card__foot">
-              <h3 class="card__title">Dialogue Guardian</h3>
-              <p class="card__desc">NLP sentiment analyzer for ethical android police communication.</p>
-            </div>
-          </a>
-        </li>
-        <li class="card card--section-start" data-category="generative">
-          <a href="work/project-7.html" class="card__link">
-            <div class="card__panel">
-              <img src="Photos/GenArt/p5.js%20series/front%20page.gif" alt="P5.js Series" />
-            </div>
-            <div class="card__foot">
-              <h3 class="card__title">P5.js Series</h3>
-              <p class="card__desc">Creative coding experiments built with P5.js.</p>
-            </div>
-          </a>
-        </li>
-        <li class="card" data-category="generative">
-          <a href="work/project-10.html" class="card__link">
-            <div class="card__panel">
-              <img src="Photos/GenArt/consent%20camera/Consent%20Camera%20-%20front%20page.gif" alt="Identity Consent Camera" />
-            </div>
-            <div class="card__foot">
-              <h3 class="card__title">Identity Consent Camera</h3>
-              <p class="card__desc">Exploring identity and consent through generative visuals.</p>
-            </div>
-          </a>
-        </li>
-        <li class="card" data-category="generative">
-          <a href="work/project-11.html" class="card__link">
-            <div class="card__panel">
-              <img src="Photos/GenArt/Deterministic%20Chaos/chaos.gif" alt="Deterministic Chaos" style="object-fit:contain; object-position:center;" />
-            </div>
-            <div class="card__foot">
-              <h3 class="card__title">Deterministic Chaos</h3>
-              <p class="card__desc">Exploring order and chaos through generative systems.</p>
-            </div>
-          </a>
-        </li>
-        <li class="card card--section-start" data-category="gaming">
-          <a href="work/project-15.html" class="card__link">
-            <div class="card__panel">
-              <video src="Photos/Games/Netsphere/Profile-web.mp4" autoplay muted loop playsinline aria-label="Netsphere gameplay preview"></video>
-            </div>
-            <div class="card__foot">
-              <h3 class="card__title">Netsphere</h3>
-              <p class="card__desc">Cyberpunk terminal narrative game — infiltrate the system as KAEL.</p>
-            </div>
-          </a>
-        </li>
-        <li class="card" data-category="gaming">
-          <a href="work/project-8.html" class="card__link">
-            <div class="card__panel">
-              <img src="Photos/Games/Rube%20Goldberg%20Machine/Profile.png" alt="Rube Goldberg Machine" />
-            </div>
-            <div class="card__foot">
-              <h3 class="card__title">Rube Goldberg Machine</h3>
-              <p class="card__desc">A chain-reaction contraption built for delightful over-engineering.</p>
-            </div>
-          </a>
-        </li>
-        <li class="card" data-category="gaming">
-          <a href="work/project-13.html" class="card__link">
-            <div class="card__panel">
-              <img src="Photos/Games/Oliver/Profile.gif" alt="Oliver!" />
-            </div>
-            <div class="card__foot">
-              <h3 class="card__title">Oliver!</h3>
-              <p class="card__desc">Game design and development project.</p>
-            </div>
-          </a>
-        </li>
-        <li class="card" data-category="gaming">
-          <a href="work/project-14.html" class="card__link">
-            <div class="card__panel">
-              <img src="Photos/Games/Where%20Is%20My%20Data/Profile.gif" alt="Where Is My Data" style="object-fit:contain; object-position:center;" />
-            </div>
-            <div class="card__foot">
-              <h3 class="card__title">Where Is My Data</h3>
-              <p class="card__desc">Game design and development project.</p>
-            </div>
-          </a>
-        </li>
-      </ol>
-    </section>
+    <!-- grid + filter are rendered from work-grid.js (shared with index.html) -->
+    <section class="work" data-work></section>
   </main>
 
   <footer class="foot">
@@ -214,6 +30,7 @@
     <a href="#top" class="foot__top">top ↑</a>
   </footer>
 
+  <script src="work-grid.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
