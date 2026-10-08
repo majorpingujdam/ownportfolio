@@ -35,6 +35,32 @@ if (window.matchMedia("(hover: hover)").matches) {
 });
 
 
+// ── Nav clock: live Chicago time, e.g. "2:00:02 pm" ─────────────
+const navEl = document.querySelector(".nav");
+if (navEl) {
+  const clock = document.createElement("span");
+  clock.className = "nav__clock";
+  clock.setAttribute("aria-label", "Local time in Chicago");
+  clock.innerHTML = '<span class="nav__clock-city">chicago</span> <time class="nav__clock-time"></time>';
+  navEl.insertBefore(clock, navEl.querySelector(".nav__links"));
+
+  const timeEl = clock.querySelector("time");
+  const fmt = new Intl.DateTimeFormat("en-US", {
+    timeZone: "America/Chicago",
+    hour: "numeric", minute: "2-digit", second: "2-digit", hour12: true,
+  });
+  const tick = () => {
+    const now = new Date();
+    const p = Object.fromEntries(fmt.formatToParts(now).map(x => [x.type, x.value]));
+    timeEl.textContent = `${p.hour}:${p.minute}:${p.second} ${p.dayPeriod.toLowerCase()}`;
+    timeEl.dateTime = now.toISOString();
+    // re-align to the next whole second so the display never skips
+    setTimeout(tick, 1000 - (now.getTime() % 1000));
+  };
+  tick();
+}
+
+
 // ── Projects filter dropdown (hover + 3s stay-open) ─────────────
 const filterItems   = document.querySelectorAll(".work__filter-item");
 const filterCurrent = document.querySelector(".work__filter-current");
@@ -66,14 +92,16 @@ if (filterItems.length) {
 
       if (filterMenu) filterMenu.classList.remove("is-open");
 
-      if (val === "all") {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      } else {
-        const target = document.querySelector(`.grid .card[data-category="${val}"]`);
-        if (target) {
-          const y = target.getBoundingClientRect().top + window.scrollY - 80;
-          window.scrollTo({ top: y, behavior: "smooth" });
-        }
+      // masonry has no per-category sections to scroll to, so filter in place
+      document.querySelectorAll(".grid .card").forEach(card => {
+        card.hidden = val !== "all" && card.dataset.category !== val;
+      });
+
+      // if the grid top has scrolled away, bring it back into view
+      const grid = document.querySelector(".grid");
+      if (grid && grid.getBoundingClientRect().top < 0) {
+        const y = grid.getBoundingClientRect().top + window.scrollY - 90;
+        window.scrollTo({ top: y, behavior: "smooth" });
       }
     });
   });
@@ -96,40 +124,43 @@ if (toggle) {
 }
 
 
-// ── Reveal on scroll ───────────────────────────────────────────
-const isWorkPage = document.body.dataset.page === "work";
+// ── Reveal on scroll (fade-in as elements enter the viewport) ──
+// Reduced motion: skip the effect entirely so content is simply there.
+const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-const revealTargets = document.querySelectorAll(
-  ".intro__image, .intro__text > *, .work__head, .card, .contact__big, .contact__links, .contact-page > *, .resume__head, .resume__section, .project__head, .project__hero, .cs"
-);
-revealTargets.forEach(el => el.classList.add("reveal"));
+if (!prefersReducedMotion && "IntersectionObserver" in window) {
+  const revealTargets = document.querySelectorAll(
+    ".intro__image, .intro__text > *, .home-intro, .work__head, .card, .contact__big, .contact__links, .contact-page > *, .resume__head, .resume__section, .project__head, .project__hero, .cs"
+  );
+  revealTargets.forEach(el => el.classList.add("reveal"));
 
-const io = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry, i) => {
-      if (entry.isIntersecting) {
-        setTimeout(() => entry.target.classList.add("is-visible"), i * 40);
+  const io = new IntersectionObserver(
+    (entries) => {
+      // stagger only the elements that arrive together in one batch
+      entries.filter(e => e.isIntersecting).forEach((entry, i) => {
+        setTimeout(() => entry.target.classList.add("is-visible"), i * 70);
         io.unobserve(entry.target);
+      });
+    },
+    { threshold: 0.05, rootMargin: "0px 0px -6% 0px" }
+  );
+  revealTargets.forEach(el => io.observe(el));
+}
+
+
+// ── Card videos: play only while on screen ─────────────────────
+const cardVideos = document.querySelectorAll(".card__panel video");
+if (cardVideos.length && "IntersectionObserver" in window) {
+  const videoIO = new IntersectionObserver(entries => {
+    entries.forEach(({ target, isIntersecting }) => {
+      if (isIntersecting && !prefersReducedMotion) {
+        target.play().catch(() => {}); // autoplay can be refused; ignore
+      } else {
+        target.pause();
       }
     });
-  },
-  { threshold: 0.05, rootMargin: "0px 0px -8% 0px" }
-);
-
-revealTargets.forEach(el => {
-  // cards on the work page are handled by the stagger below — skip IO for them
-  if (isWorkPage && el.classList.contains("card")) return;
-  io.observe(el);
-});
-
-// work page: stagger all cards in on load
-if (isWorkPage) {
-  const workCards = [...document.querySelectorAll(".grid .card")];
-  setTimeout(() => {
-    workCards.forEach((c, i) => {
-      setTimeout(() => c.classList.add("is-visible"), i * 80);
-    });
-  }, 80);
+  }, { threshold: 0.2 });
+  cardVideos.forEach(v => videoIO.observe(v));
 }
 
 
