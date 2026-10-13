@@ -17,7 +17,7 @@ const WORK_FILTERS = [
 const WORK_PROJECTS = [
   { href: "work/project-2.html",  category: "internship", title: "AiWalker",
     desc: "Clinic-to-home rehab service design.",
-    video: "Photos/Ai-robotics/ai-walker.mp4", label: "AiWalker exoskeleton rendering", w: 800, h: 550 },
+    video: "Photos/Ai-robotics/ai-new.mp4", label: "AiWalker exoskeleton rendering", w: 800, h: 550 },
   { href: "work/project-3.html",  category: "internship", title: "Vignette",
     desc: "Kitchen room-set design at IKEA China.",
     img: "work-3.jpg", alt: "IKEA Visual Merchandising", w: 1440, h: 1080 },
