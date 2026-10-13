@@ -45,7 +45,7 @@ em { font-style: italic; }
 
 /* ---------- Nav ---------- */
 .nav {
-  position: fixed;
+  position: absolute;
   top: 0; left: 0; right: 0;
   z-index: 50;
   padding: 1.25rem var(--pad);
