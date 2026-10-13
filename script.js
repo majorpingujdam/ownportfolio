@@ -67,19 +67,6 @@ const filterCurrent = document.querySelector(".work__filter-current");
 const filterWrapper = document.querySelector(".work__filter");
 const filterMenu    = document.querySelector(".work__filter-menu");
 
-// live project count shown in the work header (e.g. "15 / 15")
-const workCountEl = document.querySelector("[data-work-count]");
-const updateWorkCount = () => {
-  if (!workCountEl) return;
-  const cards = document.querySelectorAll(".grid .card");
-  const total = cards.length;
-  const shown = [...cards].filter(c => !c.hidden).length;
-  workCountEl.textContent = shown === total
-    ? `${total} ${total === 1 ? "project" : "projects"}`
-    : `${shown} / ${total}`;
-};
-updateWorkCount();
-
 if (filterWrapper && filterMenu) {
   let closeTimer;
   filterWrapper.addEventListener("mouseenter", () => {
@@ -109,7 +96,6 @@ if (filterItems.length) {
       document.querySelectorAll(".grid .card").forEach(card => {
         card.hidden = val !== "all" && card.dataset.category !== val;
       });
-      updateWorkCount();
 
       // if the grid top has scrolled away, bring it back into view
       const grid = document.querySelector(".grid");

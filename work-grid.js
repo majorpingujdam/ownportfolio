@@ -92,7 +92,6 @@ const WORK_PROJECTS = [
           ).join("")}
         </ul>
       </div>
-      <span class="work__count" data-work-count aria-live="polite"></span>
     </header>`;
 
   const gridHtml = `
