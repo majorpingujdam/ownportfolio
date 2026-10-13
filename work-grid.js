@@ -76,6 +76,9 @@ const WORK_PROJECTS = [
     ? `<video src="${esc(p.video)}" width="${p.w}" height="${p.h}"${reduceMotion ? ' preload="metadata"' : " autoplay"} muted loop playsinline aria-label="${esc(p.label)}"></video>`
     : `<img src="${esc(p.img)}" alt="${esc(p.alt)}" width="${p.w}" height="${p.h}" loading="lazy" decoding="async" />`;
 
+  // category value → human label, for the per-card kicker
+  const CAT_LABEL = Object.fromEntries(WORK_FILTERS.map(f => [f.val, f.label]));
+
   const filterHtml = `
     <header class="work__head">
       <div class="work__filter">
@@ -89,15 +92,20 @@ const WORK_PROJECTS = [
           ).join("")}
         </ul>
       </div>
+      <span class="work__count" data-work-count aria-live="polite"></span>
     </header>`;
 
   const gridHtml = `
     <ol class="grid">
-      ${WORK_PROJECTS.map(p => `
+      ${WORK_PROJECTS.map((p, i) => `
         <li class="card" data-category="${p.category}">
           <a href="${esc(p.href)}" class="card__link">
             <div class="card__panel">${media(p)}</div>
             <div class="card__foot">
+              <div class="card__meta">
+                <span class="card__kicker">${esc(CAT_LABEL[p.category] || p.category)}</span>
+                <span class="card__id">${String(i + 1).padStart(2, "0")}</span>
+              </div>
               <h3 class="card__title">${esc(p.title)}</h3>
               <p class="card__desc">${esc(p.desc)}</p>
             </div>
