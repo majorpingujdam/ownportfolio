@@ -224,7 +224,7 @@ body[data-page="work"] .work { padding-top: 9.5rem; }
   align-items: flex-end;
   justify-content: space-between;
   gap: 1.5rem;
-  padding: 0 var(--gap) 1.1rem;
+  padding: 0 var(--pad) 1.1rem;
   margin-bottom: 0.9rem;
   border-bottom: 1px solid var(--rule);
 }
@@ -316,7 +316,7 @@ body[data-page="work"] .work { padding-top: 9.5rem; }
   list-style: none;
   columns: 3;
   column-gap: var(--gap);
-  padding: 0 var(--gap);
+  padding: 0 var(--pad);
 }
 @media (max-width: 1024px) { .grid { columns: 2; } }
 @media (max-width: 640px)  { .grid { columns: 1; } }
