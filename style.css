@@ -338,6 +338,8 @@ body[data-page="work"] .work { padding-top: 9.5rem; }
 }
 .card__link:hover .card__panel img,
 .card__link:hover .card__panel video { transform: scale(1.03); }
+/* hover-switch clips: poster + video fill the square tile cleanly */
+.card__hovervid { object-fit: cover; }
 
 /* hover reveal: caption hidden until hover / keyboard focus */
 .card__foot {

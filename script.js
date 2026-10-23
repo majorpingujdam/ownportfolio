@@ -148,8 +148,12 @@ if (!prefersReducedMotion && "IntersectionObserver" in window) {
 }
 
 
-// ── Card videos: play only while on screen ─────────────────────
+// ── Card videos ────────────────────────────────────────────────
+// Normal clips autoplay while on screen. "Hover" clips (.card__hovervid)
+// show their poster image and only play the video on hover, switching back
+// to the picture on mouse-leave. Touch devices (no hover) just autoplay.
 const cardVideos = document.querySelectorAll(".card__panel video");
+const supportsHover = window.matchMedia("(hover: hover)").matches;
 if (cardVideos.length && "IntersectionObserver" in window) {
   const videoIO = new IntersectionObserver(entries => {
     entries.forEach(({ target, isIntersecting }) => {
@@ -160,7 +164,17 @@ if (cardVideos.length && "IntersectionObserver" in window) {
       }
     });
   }, { threshold: 0.2 });
-  cardVideos.forEach(v => videoIO.observe(v));
+
+  cardVideos.forEach(v => {
+    const hoverSwitch = v.classList.contains("card__hovervid") && supportsHover && !prefersReducedMotion;
+    if (hoverSwitch) {
+      const card = v.closest(".card__link") || v.closest(".card");
+      card.addEventListener("mouseenter", () => { v.play().catch(() => {}); });
+      card.addEventListener("mouseleave", () => { v.pause(); v.load(); }); // load() restores the poster
+    } else {
+      videoIO.observe(v); // autoplay while on screen (normal clips + touch)
+    }
+  });
 }
 
 

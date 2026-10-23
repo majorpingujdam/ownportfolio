@@ -32,7 +32,8 @@ const WORK_PROJECTS = [
     img: "work-5.jpg", alt: "BioColor Tag", w: 1440, h: 1080 },
   { href: "work/project-16.html", category: "product", title: "Glossy Island",
     desc: "Interactive light installation — fluorescent acrylic that reveals itself as you approach.",
-    img: "Photos/Glossy%20Island/front.jpg", alt: "Glossy Island interactive acrylic installation", w: 763, h: 772 },
+    video: "Photos/Glossy%20Island/glossy.mp4", poster: "Photos/Glossy%20Island/front.jpg",
+    label: "Glossy Island installation reacting to a viewer", w: 544, h: 544 },
   { href: "work/project-6.html",  category: "product", title: "Scan-Verse",
     desc: "3D scanning platform turning objects into interactive AR memories.",
     img: "work-6.jpg", alt: "Scan-Verse", w: 1440, h: 1080 },
@@ -75,9 +76,15 @@ const WORK_PROJECTS = [
   // reduced motion: render videos paused (first frame) instead of autoplaying
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  const media = p => p.video
-    ? `<video src="${esc(p.video)}" width="${p.w}" height="${p.h}"${reduceMotion ? ' preload="metadata"' : " autoplay"} muted loop playsinline aria-label="${esc(p.label)}"></video>`
-    : `<img src="${esc(p.img)}" alt="${esc(p.alt)}" width="${p.w}" height="${p.h}" loading="lazy" decoding="async" />`;
+  const media = p => {
+    // picture by default, plays the video on hover (switches back on leave)
+    if (p.video && p.poster) {
+      return `<video class="card__hovervid" src="${esc(p.video)}" poster="${esc(p.poster)}" width="${p.w}" height="${p.h}" muted loop playsinline preload="none" aria-label="${esc(p.label || p.title)}"></video>`;
+    }
+    return p.video
+      ? `<video src="${esc(p.video)}" width="${p.w}" height="${p.h}"${reduceMotion ? ' preload="metadata"' : " autoplay"} muted loop playsinline aria-label="${esc(p.label)}"></video>`
+      : `<img src="${esc(p.img)}" alt="${esc(p.alt)}" width="${p.w}" height="${p.h}" loading="lazy" decoding="async" />`;
+  };
 
   // category value → human label, for the per-card kicker
   const CAT_LABEL = Object.fromEntries(WORK_FILTERS.map(f => [f.val, f.label]));
