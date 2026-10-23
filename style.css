@@ -344,18 +344,18 @@ body[data-page="work"] .work { padding-top: 9.5rem; }
 .card__panel .card__hovervid {
   position: absolute;
   left: 50%;
-  bottom: 9%;
-  width: 46%;
+  top: 50%;
+  width: 64%;
   height: auto;
   aspect-ratio: 1 / 1;
-  transform: translateX(-50%);
+  transform: translate(-50%, -50%);
   object-fit: cover;
   border-radius: 8px;
   box-shadow: 0 14px 36px -12px rgba(0,0,0,0.5);
   opacity: 0;
   transition: opacity .55s var(--ease);
 }
-.card__link:hover .card__panel .card__hovervid { opacity: 1; transform: translateX(-50%); }
+.card__link:hover .card__panel .card__hovervid { opacity: 1; transform: translate(-50%, -50%); }
 @media (hover: none) {
   /* touch: show the clip full-tile instead of as a hover inset */
   .card__panel .card__hovervid {
