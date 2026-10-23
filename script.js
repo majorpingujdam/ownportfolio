@@ -149,11 +149,10 @@ if (!prefersReducedMotion && "IntersectionObserver" in window) {
 
 
 // ── Card videos ────────────────────────────────────────────────
-// Normal clips autoplay while on screen. "Hover" clips (.card__hovervid)
-// show their poster image and only play the video on hover, switching back
-// to the picture on mouse-leave. Touch devices (no hover) just autoplay.
+// Normal clips autoplay while on screen. ".card__hovervid" clips show their
+// still photo and auto-cycle: the clip fades in and plays for a few seconds,
+// then fades back to the photo, on a loop, while the card is on screen.
 const cardVideos = document.querySelectorAll(".card__panel video");
-const supportsHover = window.matchMedia("(hover: hover)").matches;
 if (cardVideos.length && "IntersectionObserver" in window) {
   const videoIO = new IntersectionObserver(entries => {
     entries.forEach(({ target, isIntersecting }) => {
@@ -166,13 +165,35 @@ if (cardVideos.length && "IntersectionObserver" in window) {
   }, { threshold: 0.2 });
 
   cardVideos.forEach(v => {
-    const hoverSwitch = v.classList.contains("card__hovervid") && supportsHover && !prefersReducedMotion;
-    if (hoverSwitch) {
-      const card = v.closest(".card__link") || v.closest(".card");
-      card.addEventListener("mouseenter", () => { v.play().catch(() => {}); });
-      card.addEventListener("mouseleave", () => { v.pause(); v.currentTime = 0; }); // clip fades out (CSS); poster layer shows
+    const autoCycle = v.classList.contains("card__hovervid") && !prefersReducedMotion;
+    if (autoCycle) {
+      // auto-cycle: clip visible & playing a few seconds, then just the photo,
+      // then again — looping, but only while the card is on screen.
+      const SHOW_MS = 4000, HIDE_MS = 3000;
+      let timer = null, onScreen = false;
+      const show = () => {
+        v.classList.add("is-playing");
+        v.play().catch(() => {});
+        timer = setTimeout(hide, SHOW_MS);
+      };
+      const hide = () => {
+        v.classList.remove("is-playing");
+        v.pause();
+        v.currentTime = 0; // reset while paused (safe) so next cycle starts fresh
+        timer = setTimeout(() => { timer = null; if (onScreen) show(); }, HIDE_MS);
+      };
+      const stop = () => {
+        clearTimeout(timer); timer = null;
+        v.classList.remove("is-playing"); v.pause();
+      };
+      new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          onScreen = e.isIntersecting;
+          if (onScreen) { if (!timer) show(); } else { stop(); }
+        });
+      }, { threshold: 0.3 }).observe(v);
     } else {
-      videoIO.observe(v); // autoplay while on screen (normal clips + touch)
+      videoIO.observe(v); // autoplay while on screen (normal clips)
     }
   });
 }
