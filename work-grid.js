@@ -33,7 +33,7 @@ const WORK_PROJECTS = [
   { href: "work/project-16.html", category: "product", title: "Glossy Island",
     desc: "Interactive light installation — fluorescent acrylic that reveals itself as you approach.",
     video: "Photos/Glossy%20Island/glossy.mp4", poster: "Photos/Glossy%20Island/front.jpg",
-    label: "Glossy Island installation reacting to a viewer", w: 544, h: 544 },
+    label: "Glossy Island installation reacting to a viewer", w: 763, h: 772 },
   { href: "work/project-6.html",  category: "product", title: "Scan-Verse",
     desc: "3D scanning platform turning objects into interactive AR memories.",
     img: "work-6.jpg", alt: "Scan-Verse", w: 1440, h: 1080 },
@@ -77,9 +77,11 @@ const WORK_PROJECTS = [
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   const media = p => {
-    // picture by default, plays the video on hover (switches back on leave)
+    // picture by default; a smaller clip crossfades in over the lower
+    // part of the tile on hover and fades back out on leave
     if (p.video && p.poster) {
-      return `<video class="card__hovervid" src="${esc(p.video)}" poster="${esc(p.poster)}" width="${p.w}" height="${p.h}" muted loop playsinline preload="none" aria-label="${esc(p.label || p.title)}"></video>`;
+      return `<img src="${esc(p.poster)}" alt="${esc(p.alt || p.title)}" width="${p.w}" height="${p.h}" loading="lazy" decoding="async" />`
+           + `<video class="card__hovervid" src="${esc(p.video)}" muted loop playsinline preload="metadata" aria-label="${esc(p.label || p.title)}"></video>`;
     }
     return p.video
       ? `<video src="${esc(p.video)}" width="${p.w}" height="${p.h}"${reduceMotion ? ' preload="metadata"' : " autoplay"} muted loop playsinline aria-label="${esc(p.label)}"></video>`

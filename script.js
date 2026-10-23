@@ -170,7 +170,7 @@ if (cardVideos.length && "IntersectionObserver" in window) {
     if (hoverSwitch) {
       const card = v.closest(".card__link") || v.closest(".card");
       card.addEventListener("mouseenter", () => { v.play().catch(() => {}); });
-      card.addEventListener("mouseleave", () => { v.pause(); v.load(); }); // load() restores the poster
+      card.addEventListener("mouseleave", () => { v.pause(); v.currentTime = 0; }); // clip fades out (CSS); poster layer shows
     } else {
       videoIO.observe(v); // autoplay while on screen (normal clips + touch)
     }
