@@ -341,6 +341,61 @@ if (heroImgs.length && window.matchMedia("(prefers-reduced-motion: no-preference
 }
 
 
+// ── Section index (table of contents) for case-study pages ────
+if (document.body.dataset.page === "project") {
+  const article = document.querySelector("article.project");
+  const sections = article
+    ? [...article.querySelectorAll(".cs")].filter(s => s.querySelector(".cs__label"))
+    : [];
+
+  if (article && sections.length >= 2) {
+    const used = new Set();
+    const slug = text => {
+      const base = text.toLowerCase().replace(/&/g, " and ")
+        .replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "") || "section";
+      let s = base, i = 2;
+      while (used.has(s)) s = `${base}-${i++}`;
+      used.add(s);
+      return s;
+    };
+
+    const toc = document.createElement("nav");
+    toc.className = "toc";
+    toc.setAttribute("aria-label", "Sections");
+    const ol = document.createElement("ol");
+
+    const links = sections.map(sec => {
+      const label = sec.querySelector(".cs__label").textContent.trim();
+      if (!sec.id) sec.id = slug(label);
+      const li = document.createElement("li");
+      const a = document.createElement("a");
+      a.href = "#" + sec.id;
+      a.textContent = label;
+      li.appendChild(a);
+      ol.appendChild(li);
+      return { sec, a };
+    });
+
+    toc.appendChild(ol);
+    article.appendChild(toc); // inside .project so it inherits the accent (--red)
+
+    const setActive = id =>
+      links.forEach(({ sec, a }) => a.classList.toggle("is-active", sec.id === id));
+
+    if ("IntersectionObserver" in window) {
+      const spy = new IntersectionObserver(entries => {
+        const vis = entries.filter(e => e.isIntersecting);
+        if (vis.length) {
+          setActive(vis.sort((a, b) => a.target.offsetTop - b.target.offsetTop)[0].target.id);
+        }
+      }, { rootMargin: "-45% 0px -50% 0px", threshold: 0 });
+      links.forEach(({ sec }) => spy.observe(sec));
+    }
+    setActive(links[0].sec.id);
+  }
+}
+
+
 // ── Page fade transitions (internal links) ─────────────────────
 document.addEventListener("click", e => {
   const a = e.target.closest("a[href]");
