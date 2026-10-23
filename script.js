@@ -148,11 +148,11 @@ if (!prefersReducedMotion && "IntersectionObserver" in window) {
 }
 
 
-// ── Card videos ────────────────────────────────────────────────
-// Normal clips autoplay while on screen. ".card__hovervid" clips show a still
-// photo and auto-cycle the clip in/out on a loop; hovering the card stops the
-// clip and holds on the photo.
-const cardVideos = document.querySelectorAll(".card__panel video");
+// ── Card & hero videos ─────────────────────────────────────────
+// Clips play while on screen and pause off (reduced-motion shows the poster).
+// ".card__hovervid" clips instead show a still photo and auto-cycle the clip
+// in/out on a loop; hovering the card stops the clip and holds on the photo.
+const cardVideos = document.querySelectorAll(".card__panel video, .project__hero video");
 if (cardVideos.length && "IntersectionObserver" in window) {
   const videoIO = new IntersectionObserver(entries => {
     entries.forEach(({ target, isIntersecting }) => {

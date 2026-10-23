@@ -831,7 +831,8 @@ body[data-page="work"] .work { padding-top: 9.5rem; }
   .gi-process img { aspect-ratio: 16 / 10; }
 }
 
-.project__hero img {
+.project__hero img,
+.project__hero video {
   width: 100%;
   height: auto;
   display: block;
