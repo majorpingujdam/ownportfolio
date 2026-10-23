@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Glossy Island — Owen Chen</title>
-  <meta name="description" content="Glossy Island — an interactive installation where fluorescent acrylic reveals itself as you approach. By Owen Chen." />
+  <meta name="description" content="Glossy Island — a proximity-driven kinetic light installation where fluorescent acrylic reveals itself as you approach. By Owen Chen." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -30,7 +30,7 @@
           <h1 class="project__title">Glossy Island</h1>
         </div>
         <dl class="project__meta">
-          <div><dt>type</dt><dd>Interactive Installation</dd></div>
+          <div><dt>role</dt><dd>Product &amp; Interaction Design, Fabrication</dd></div>
           <div><dt>time</dt><dd>Sep 2026</dd></div>
           <div><dt>stack</dt><dd>Acrylic · Servos · RP2040</dd></div>
         </dl>
@@ -47,183 +47,200 @@
         </header>
         <div class="cs__prose">
           <p>
-            <em>Glossy Island</em> is an interactive installation exploring how proximity changes the way a material reveals itself. Translucent fluorescent acrylic — driven by servo motors and ultrasonic proximity sensing — shifts its angle so that light passes through, reflects from, and overlaps across the colored surfaces differently as you move. You don't simply look at the piece; your position becomes part of its behavior.
+            Glossy Island is a proximity-driven kinetic light installation. Fluorescent acrylic forms, carried on servo-driven armatures and governed by ultrasonic sensing, change how they catch and throw light as a viewer approaches — turning the audience's <em>distance</em> into the instrument that plays the piece. From across the room it reads as a still composition; step toward it and the shapes begin to turn, overlapping color and sliding shadow across the surfaces until the object feels alive.
+          </p>
+          <p>
+            The experience is written as one line of behavior: <strong>from a distance, the island waits; your presence begins the movement; and the closer you come, the more of its color you see.</strong>
           </p>
         </div>
 
         <blockquote class="cs__quote" style="margin-top:1.5rem;">
-          <p>"The closer you get to me, the more of my colorful experiences you see."</p>
+          <p>"If you come closer to me, you will see my colorful experiences."</p>
         </blockquote>
 
         <div style="display:flex; gap:0.75rem; margin-top:1.5rem; flex-wrap:wrap;">
+          <span style="font-family:'JetBrains Mono',monospace; font-size:0.78rem; padding:0.3rem 0.7rem; border:1px solid var(--rule); border-radius:4px; color:var(--ink-2);">Interaction Design</span>
           <span style="font-family:'JetBrains Mono',monospace; font-size:0.78rem; padding:0.3rem 0.7rem; border:1px solid var(--rule); border-radius:4px; color:var(--ink-2);">Physical Computing</span>
           <span style="font-family:'JetBrains Mono',monospace; font-size:0.78rem; padding:0.3rem 0.7rem; border:1px solid var(--rule); border-radius:4px; color:var(--ink-2);">Material &amp; Light</span>
-          <span style="font-family:'JetBrains Mono',monospace; font-size:0.78rem; padding:0.3rem 0.7rem; border:1px solid var(--rule); border-radius:4px; color:var(--ink-2);">Proximity Sensing</span>
-          <span style="font-family:'JetBrains Mono',monospace; font-size:0.78rem; padding:0.3rem 0.7rem; border:1px solid var(--rule); border-radius:4px; color:var(--ink-2);">Servo Motion</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:0.78rem; padding:0.3rem 0.7rem; border:1px solid var(--rule); border-radius:4px; color:var(--ink-2);">Fabrication</span>
         </div>
       </section>
 
-      <!-- 2. THE SYSTEM -->
+      <!-- 2. DESIGN CHALLENGE -->
       <section class="cs">
         <header class="cs__head">
-          <span class="cs__label">The System</span>
+          <span class="cs__label">Design Challenge</span>
         </header>
         <div class="cs__prose">
           <p>
-            The installation reads as four connected layers. The technology is intentionally secondary — the real interface is the space between the viewer and the object.
+            The brief was deceptively open — <em>make a material respond to people.</em> Moving a piece of acrylic with a motor is trivial; the actual design problem was <strong>translation</strong>: turning a crude, noisy distance reading into motion that reads as <em>alive and intentional</em> rather than mechanical and twitchy. Four tensions defined the work.
           </p>
         </div>
 
-        <div class="cs__designlayer" style="margin-top:1.5rem;">
-          <p class="cs__designlayer-head">Signal chain · four layers</p>
-          <ol class="cs__chips">
-            <li><span>01</span>Sensing — an ultrasonic sensor observes the viewer's proximity</li>
-            <li><span>02</span>Computation — a Raspberry Pi Pico filters the data and maps distance to behavior</li>
-            <li><span>03</span>Motion — micro servos rotate the acrylic, with speed following closeness</li>
-            <li><span>04</span>Optics — fluorescent acrylic turns that motion into color, reflection, overlap &amp; shadow</li>
-          </ol>
+        <div class="cs__bp" style="margin-top:1.5rem;">
+          <div class="cs__phase cs__phase--break">
+            <span class="cs__phase-tag">Legibility</span>
+            <h3>Noise vs. intent</h3>
+            <p>Ultrasonic distance jitters several centimetres even when nobody moves. The piece had to respond to <em>human presence</em>, not to measurement error.</p>
+          </div>
+          <div class="cs__phase cs__phase--break">
+            <span class="cs__phase-tag">Feel</span>
+            <h3>Spatial vs. robotic</h3>
+            <p>Direct distance-to-angle mapping felt like a machine arm. The motion needed a curve that read as breathing and acceleration, not stepping.</p>
+          </div>
+          <div class="cs__phase cs__phase--break">
+            <span class="cs__phase-tag">Restraint</span>
+            <h3>Visible vs. invisible tech</h3>
+            <p>The subject is color, light and material — so the servos, wiring and controller had to recede and let the acrylic do the talking.</p>
+          </div>
+          <div class="cs__phase cs__phase--break">
+            <span class="cs__phase-tag">Scale</span>
+            <h3>One vs. many</h3>
+            <p>A single module was easy; a field of them introduced power, repeatability and maintenance problems that a one-off prototype never surfaces.</p>
+          </div>
         </div>
       </section>
 
-      <!-- 3. CONCEPT & MATERIAL -->
+      <!-- 3. THE INTERACTION MODEL -->
       <section class="cs">
         <header class="cs__head">
-          <span class="cs__label">Concept &amp; Material</span>
+          <span class="cs__label">The Interaction Model</span>
         </header>
         <div class="cs__prose">
           <p>
-            The project began as a wall-mounted light installation — roughly twenty translucent fluorescent shards on hidden servos, calm when nobody was near and awakening as a viewer approached. <strong>Triangles</strong> became the core geometry: three strong edges, a silhouette that changes dramatically when rotated, and clear overlapping color relationships. The acrylic was specified as 3&nbsp;mm translucent fluorescent sheet in pink, yellow, orange, cyan, green, and purple.
-          </p>
-          <p>
-            Rather than building twenty unique mechanical objects, the guiding principle became <strong>mechanical repetition + visual variation</strong> — one consistent module, with variety coming from acrylic shape, color, scale, orientation, and programmed movement.
-          </p>
-        </div>
-      </section>
-
-      <!-- 4. MECHANICAL -->
-      <section class="cs">
-        <header class="cs__head">
-          <span class="cs__label">Mechanical Development</span>
-        </header>
-        <div class="cs__prose">
-          <p>
-            The first physical question was how to attach a 3&nbsp;mm acrylic triangle to a tiny 9&nbsp;g servo without cracking it. Mounting directly to the shaft concentrated stress at a single point, so the connection evolved into a modular chain:
-          </p>
-        </div>
-
-        <div class="cs__designlayer" style="margin-top:1.25rem;">
-          <p class="cs__designlayer-head">Mounting chain</p>
-          <ol class="cs__chips">
-            <li><span>01</span>Servo spline</li>
-            <li><span>02</span>Servo horn</li>
-            <li><span>03</span>Adapter plate</li>
-            <li><span>04</span>Acrylic (two holes, M3 + nylon washers)</li>
-          </ol>
-        </div>
-
-        <div class="cs__prose" style="margin-top:1.5rem;">
-          <p>
-            This became a standardized, 3D-printed servo module: the same mechanical unit repeats while the visible acrylic changes, and a failed servo never means rebuilding the whole piece. SG90 servos were used for prototyping; the metal-gear <strong>MG90S</strong> was chosen for the durable final build, with a bearing-supported axle considered for longer exhibition runs.
-          </p>
-        </div>
-      </section>
-
-      <!-- 5. ELECTRONICS & PROTOTYPE -->
-      <section class="cs">
-        <header class="cs__head">
-          <span class="cs__label">Electronics &amp; First Prototype</span>
-        </header>
-        <div class="cs__prose">
-          <p>
-            A 20-servo Arduino diagram was useful as a systems study, but the project was deliberately reduced to the smallest functional prototype — <strong>one Raspberry Pi Pico&nbsp;H, one HC-SR04 sensor, one servo, one acrylic element</strong> — so the core interaction could be tested before scaling.
+            Rather than map distance to position, I mapped it to <strong>speed</strong> along a nonlinear closeness curve — gentle change far away, sharp speed-up up close — and split the field into three zones. The result is a clear cause-and-effect the body understands without instruction: approach and the piece quickens; retreat and it calms; cross the threshold and it rests.
           </p>
         </div>
 
         <div class="cs__bp" style="margin-top:1.5rem;">
           <div class="cs__phase cs__phase--home">
-            <span class="cs__phase-tag">Pin Map</span>
-            <h3>GP0 · GP2 · GP3</h3>
-            <p>GP0 → servo signal, GP2 → HC-SR04 TRIG, GP3 → ECHO, behind a 1&nbsp;kΩ / 2&nbsp;kΩ divider stepping the 5&nbsp;V echo down to the Pico's 3.3&nbsp;V logic.</p>
+            <span class="cs__phase-tag">Max Zone</span>
+            <h3>&lt; 30 cm</h3>
+            <p>Capped at ~40°/s. Close enough that extra speed would feel frantic — so motion is held at its expressive ceiling.</p>
+          </div>
+          <div class="cs__phase cs__phase--hospital">
+            <span class="cs__phase-tag">Ramp Zone</span>
+            <h3>30 – 220 cm</h3>
+            <p>Closer = faster, on a curve. Speed climbs from a near-still drift to the ceiling as the viewer closes the gap.</p>
           </div>
           <div class="cs__phase cs__phase--break">
-            <span class="cs__phase-tag">Debug</span>
-            <h3>It was CircuitPython</h3>
-            <p>An <code style="font-family:'JetBrains Mono',monospace; font-size:0.85em;">ImportError: no module named machine</code> and a CIRCUITPY drive revealed the board ran CircuitPython — rewritten with board, pwmio and adafruit_hcsr04.</p>
+            <span class="cs__phase-tag">Stop Zone</span>
+            <h3>&gt; 220 cm</h3>
+            <p>The piece rests. A deliberate hard cut from ~3°/s to 0 — a decisive "off", not a lingering fade.</p>
           </div>
         </div>
-      </section>
 
-      <!-- 6. INTERACTION & TUNING -->
-      <section class="cs">
-        <header class="cs__head">
-          <span class="cs__label">Interaction &amp; Tuning</span>
-        </header>
-        <div class="cs__prose">
-          <p>
-            Raw ultrasonic data is noisy — a stationary viewer reads 38–41&nbsp;cm and the acrylic twitches. Median sampling, exponential smoothing, angle deadbands, and NO-ECHO tolerance made the piece react to <strong>meaningful human movement, not measurement noise</strong>. The key decision was mapping distance to oscillation <em>speed</em> rather than position, along a nonlinear closeness curve that accelerates as you approach.
-          </p>
-        </div>
-
-        <p class="cs__subtitle" style="margin-top:2rem;">Distance → movement</p>
+        <p class="cs__subtitle" style="margin-top:2rem;">Speed by distance</p>
         <div style="display:grid; grid-template-columns:repeat(5,1fr); gap:0.6rem; margin-top:1rem;">
-          <div style="border:1px solid var(--rule); border-radius:8px; padding:0.85rem;">
-            <p style="font-family:'JetBrains Mono',monospace; font-size:0.9rem; font-weight:600; color:var(--ink); margin:0;">2.2&nbsp;m+</p>
-            <p style="font-size:0.75rem; color:var(--ink-2); margin:0.3rem 0 0;">stationary</p>
-          </div>
-          <div style="border:1px solid var(--rule); border-radius:8px; padding:0.85rem;">
-            <p style="font-family:'JetBrains Mono',monospace; font-size:0.9rem; font-weight:600; color:var(--ink); margin:0;">~1.5&nbsp;m</p>
-            <p style="font-size:0.75rem; color:var(--ink-2); margin:0.3rem 0 0;">subtle</p>
-          </div>
-          <div style="border:1px solid var(--rule); border-radius:8px; padding:0.85rem;">
-            <p style="font-family:'JetBrains Mono',monospace; font-size:0.9rem; font-weight:600; color:var(--ink); margin:0;">~1.0&nbsp;m</p>
-            <p style="font-size:0.75rem; color:var(--ink-2); margin:0.3rem 0 0;">moderate</p>
-          </div>
-          <div style="border:1px solid var(--rule); border-radius:8px; padding:0.85rem;">
-            <p style="font-family:'JetBrains Mono',monospace; font-size:0.9rem; font-weight:600; color:var(--ink); margin:0;">~0.5&nbsp;m</p>
-            <p style="font-size:0.75rem; color:var(--ink-2); margin:0.3rem 0 0;">faster</p>
-          </div>
           <div style="border:1px solid rgba(229,39,126,0.25); background:rgba(229,39,126,0.06); border-radius:8px; padding:0.85rem;">
-            <p style="font-family:'JetBrains Mono',monospace; font-size:0.9rem; font-weight:600; color:var(--ink); margin:0;">~0.3&nbsp;m</p>
-            <p style="font-size:0.75rem; color:var(--ink-2); margin:0.3rem 0 0;">maximum</p>
+            <p style="font-family:'JetBrains Mono',monospace; font-size:0.9rem; font-weight:600; color:var(--ink); margin:0;">30&nbsp;cm</p>
+            <p style="font-size:0.75rem; color:var(--ink-2); margin:0.3rem 0 0;">40&nbsp;°/s</p>
+          </div>
+          <div style="border:1px solid var(--rule); border-radius:8px; padding:0.85rem;">
+            <p style="font-family:'JetBrains Mono',monospace; font-size:0.9rem; font-weight:600; color:var(--ink); margin:0;">70&nbsp;cm</p>
+            <p style="font-size:0.75rem; color:var(--ink-2); margin:0.3rem 0 0;">30.6&nbsp;°/s</p>
+          </div>
+          <div style="border:1px solid var(--rule); border-radius:8px; padding:0.85rem;">
+            <p style="font-family:'JetBrains Mono',monospace; font-size:0.9rem; font-weight:600; color:var(--ink); margin:0;">100&nbsp;cm</p>
+            <p style="font-size:0.75rem; color:var(--ink-2); margin:0.3rem 0 0;">19.9&nbsp;°/s</p>
+          </div>
+          <div style="border:1px solid var(--rule); border-radius:8px; padding:0.85rem;">
+            <p style="font-family:'JetBrains Mono',monospace; font-size:0.9rem; font-weight:600; color:var(--ink); margin:0;">150&nbsp;cm</p>
+            <p style="font-size:0.75rem; color:var(--ink-2); margin:0.3rem 0 0;">9.8&nbsp;°/s</p>
+          </div>
+          <div style="border:1px solid var(--rule); border-radius:8px; padding:0.85rem;">
+            <p style="font-family:'JetBrains Mono',monospace; font-size:0.9rem; font-weight:600; color:var(--ink); margin:0;">200&nbsp;cm</p>
+            <p style="font-size:0.75rem; color:var(--ink-2); margin:0.3rem 0 0;">3.8&nbsp;°/s</p>
           </div>
         </div>
 
         <div class="cs__note" style="margin-top:1.5rem;">
-          <strong>Less is more:</strong> motion was clamped to roughly 5°–175° to avoid servo buzz and stall, and the maximum speed was later reduced substantially — very fast movement made the piece feel mechanical rather than spatial. Because transparent acrylic redirects light with only a small angular change, large optical shifts never needed large rotations.
+          <strong>Felt time, not just angle.</strong> One full sweep (5°→175°) takes ~4.3&nbsp;s when you're within 0.3&nbsp;m, ~8.5&nbsp;s at 1&nbsp;m, ~17&nbsp;s at 1.5&nbsp;m and ~45&nbsp;s at 2&nbsp;m — so the same gesture reads as urgent up close and almost meditative from across the room. Motion was clamped to 5°–175° to avoid servo buzz, and the top speed was pulled back on purpose: fast looked mechanical.
         </div>
       </section>
 
-      <!-- 7. SCALING & POWER -->
+      <!-- 4. PROCESS -->
       <section class="cs">
         <header class="cs__head">
-          <span class="cs__label">Scaling &amp; Power</span>
+          <span class="cs__label">Process</span>
         </header>
         <div class="cs__prose">
           <p>
-            Moving from one servo to five exposed a system-level constraint: several servos drawing current at startup, direction changes, or stall destabilized the USB-powered breadboard. The fix reshaped the architecture — the <strong>Pico handles logic and PWM only</strong>, while a dedicated regulated 5&nbsp;V supply powers the servos through its own distribution rail, with a shared common ground. That shift moved the project from an electronics demo toward a system that could realistically scale.
+            The piece came together as three parallel builds — a <strong>circuit</strong>, a <strong>structure</strong>, and a <strong>material</strong> — each prototyped on its own before they met.
           </p>
+        </div>
+
+        <div class="gi-process">
+          <figure>
+            <img loading="lazy" decoding="async" src="../Photos/Glossy%20Island/process-1.jpg" alt="Raspberry Pi Pico, ultrasonic sensor and micro-servos wired on a board" />
+            <figcaption><span>01 · Electronics</span> One ultrasonic read on a Raspberry Pi Pico, driving a bank of micro-servos — the behavior proven before scaling.</figcaption>
+          </figure>
+          <figure>
+            <img loading="lazy" decoding="async" src="../Photos/Glossy%20Island/process-2.jpg" alt="Layered organic plywood profiles forming the island base, with 3D-printed servo mounts" />
+            <figcaption><span>02 · Structure</span> Layered plywood profiles cut into a floating-topography base, with 3D-printed mounts to hide the mechanism.</figcaption>
+          </figure>
+          <figure>
+            <img loading="lazy" decoding="async" src="../Photos/Glossy%20Island/process-3.jpg" alt="Laser-cut fluorescent acrylic shapes laid out in the wood shop" />
+            <figcaption><span>03 · Material</span> Laser-cutting the visual language — fluorescent acrylic triangles and discs, the vocabulary each island is built from.</figcaption>
+          </figure>
         </div>
       </section>
 
-      <!-- 8. FROM WALL TO ISLAND -->
+      <!-- 5. SYSTEM & BUILD -->
+      <section class="cs">
+        <header class="cs__head">
+          <span class="cs__label">System &amp; Build</span>
+        </header>
+        <div class="cs__prose">
+          <p>
+            Under the color sits a deliberately quiet four-layer chain. Each layer was de-risked on a single module before the field was assembled.
+          </p>
+        </div>
+
+        <div class="cs__designlayer" style="margin-top:1.5rem;">
+          <p class="cs__designlayer-head">Signal chain</p>
+          <ol class="cs__chips">
+            <li><span>01</span>Sensing — an ultrasonic sensor reads the viewer's proximity</li>
+            <li><span>02</span>Computation — a Raspberry Pi Pico filters the data and maps distance to speed</li>
+            <li><span>03</span>Motion — micro-servos rotate the acrylic, pace following closeness</li>
+            <li><span>04</span>Optics — fluorescent acrylic turns motion into color, reflection &amp; shadow</li>
+          </ol>
+        </div>
+
+        <div class="cs__bp" style="margin-top:1.5rem;">
+          <div class="cs__phase cs__phase--home">
+            <span class="cs__phase-tag">Mechanism</span>
+            <h3>Modular, not fragile</h3>
+            <p>Acrylic mounts through a servo&nbsp;→&nbsp;horn&nbsp;→&nbsp;adapter chain (two fixing points, not one) so a 3&nbsp;mm sheet never cracks, and a failed servo swaps out without rebuilding the piece. MG90S metal-gear for the final build.</p>
+          </div>
+          <div class="cs__phase cs__phase--break">
+            <span class="cs__phase-tag">Signal &amp; Power</span>
+            <h3>Logic ≠ power</h3>
+            <p>A 1&nbsp;kΩ/2&nbsp;kΩ divider drops the 5&nbsp;V echo to the Pico's 3.3&nbsp;V logic; and when one servo became five, motor current moved off the board onto a dedicated regulated 5&nbsp;V rail with a shared ground.</p>
+          </div>
+        </div>
+
+        <div class="cs__note" style="margin-top:1.5rem;">
+          <strong>Debug worth keeping:</strong> the controller shipped running CircuitPython, not MicroPython — surfaced as an <code style="font-family:'JetBrains Mono',monospace; font-size:0.85em;">ImportError: no module named machine</code> and a CIRCUITPY drive. Rewriting against <code style="font-family:'JetBrains Mono',monospace; font-size:0.85em;">board</code>, <code style="font-family:'JetBrains Mono',monospace; font-size:0.85em;">pwmio</code> and <code style="font-family:'JetBrains Mono',monospace; font-size:0.85em;">adafruit_hcsr04</code> got clean distance reads.
+        </div>
+      </section>
+
+      <!-- 6. FORM EVOLUTION -->
       <section class="cs">
         <header class="cs__head">
           <span class="cs__label">From Wall to Island</span>
         </header>
         <div class="cs__prose">
           <p>
-            Midway, the installation changed form entirely. Instead of a wall of ~20 independent triangles, it became a <strong>freestanding tabletop landscape of five vertical "trees,"</strong> each carrying three to four acrylic elements, on a layered ~27&nbsp;×&nbsp;17&nbsp;inch wooden base whose descending profiles create an inverted, floating-island topography. The geometry opened up from pure triangles toward mixed angular and organic silhouettes — and that shift named the piece.
-          </p>
-          <p>
-            The final build combined five fabrication processes: <strong>woodworking</strong> for the island, <strong>laser cutting</strong> for the fluorescent acrylic, <strong>3D printing</strong> for servo mounts, <strong>physical computing</strong> on the Pico, and <strong>servo programming</strong> for responsive motion. A later NeoPixel lighting test used a quiet warm-gold fade — illumination that complements the acrylic rather than overpowering it, echoing the whole project's principle: the technology stays quiet while amplifying the material.
+            The concept started as a ~20-shard interactive <em>wall</em>. Prototyping pushed it somewhere better: a freestanding, layered wooden base — a floating topography — carrying vertical clusters of acrylic. One island became a small <strong>archipelago</strong> of sculptures, each a different arrangement of forms, wired back to a shared sensing hub. The mechanism recedes into the base; what you read is an organic landscape that happens to breathe when you approach. That shift is what named the piece.
           </p>
         </div>
       </section>
 
-      <!-- 9. SUMMARY -->
+      <!-- 7. REFLECTION -->
       <section class="cs">
         <header class="cs__head">
-          <span class="cs__label">Summary &amp; Reflection</span>
+          <span class="cs__label">Reflection</span>
         </header>
 
         <div class="cs__ba">
@@ -233,13 +250,13 @@
           </div>
           <div class="cs__ba-box" style="background:rgba(229,39,126,0.06); border-color:rgba(229,39,126,0.3);">
             <span class="cs__ba-label" style="color:#e5277e;">After</span>
-            <p>"The problem is how movement should feel — and how the technology can disappear into the material it serves."</p>
+            <p>"The problem is how movement should <em>feel</em> — and how the technology can disappear into the material it serves."</p>
           </div>
         </div>
 
         <div class="cs__prose" style="margin-top:2rem;">
           <p>
-            Glossy Island became an exercise in translating an abstract emotional idea into a physical feedback system, moving repeatedly between composition, mechanics, electronics, programming, and fabrication. Each prototype removed uncertainty from one layer — how distance becomes motion, how much movement is enough, how to read noisy sensing, how mechanisms can vanish into an artwork. The final experience is intentionally simple: <strong>from a distance, you see the island; as you approach, the island begins to reveal itself.</strong>
+            Glossy Island was an exercise in translating an emotional idea into a physical feedback system, moving continuously between composition, mechanics, electronics and fabrication. The decisions that mattered weren't the obvious ones — they were the smoothing curve, the capped top speed, the hard stop, the mounts that vanish. The final experience is intentionally simple: <strong>from a distance, you see the island; as you approach, the island begins to reveal itself.</strong>
           </p>
         </div>
       </section>

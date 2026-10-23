@@ -795,6 +795,42 @@ body[data-page="work"] .work { padding-top: 9.5rem; }
   transition: transform .3s var(--ease), opacity .3s var(--ease);
 }
 .project__pdf-fallback a:hover { transform: translateY(-2px); opacity: 0.9; }
+
+/* process photo strip (3-up, captioned) */
+.gi-process {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+.gi-process figure { margin: 0; }
+.gi-process img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: 10px;
+  display: block;
+}
+.gi-process figcaption {
+  margin-top: 0.65rem;
+  font-size: 0.82rem;
+  line-height: 1.45;
+  color: var(--ink-2);
+}
+.gi-process figcaption span {
+  display: block;
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--red);
+  margin-bottom: 0.3rem;
+}
+@media (max-width: 720px) {
+  .gi-process { grid-template-columns: 1fr; gap: 1.5rem; }
+  .gi-process img { aspect-ratio: 16 / 10; }
+}
+
 .project__hero img {
   width: 100%;
   height: auto;
