@@ -149,9 +149,9 @@ if (!prefersReducedMotion && "IntersectionObserver" in window) {
 
 
 // ── Card videos ────────────────────────────────────────────────
-// Card clips play while on screen and pause when off. The ".card__hovervid"
-// ghost clip plays continuously too, but CSS renders it at low opacity so the
-// still photo shows through.
+// Normal clips autoplay while on screen. ".card__hovervid" clips show a still
+// photo and auto-cycle the clip in/out on a loop; hovering the card stops the
+// clip and holds on the photo.
 const cardVideos = document.querySelectorAll(".card__panel video");
 if (cardVideos.length && "IntersectionObserver" in window) {
   const videoIO = new IntersectionObserver(entries => {
@@ -164,8 +164,42 @@ if (cardVideos.length && "IntersectionObserver" in window) {
     });
   }, { threshold: 0.2 });
 
-  // every card video (incl. the low-opacity ghost clip) plays while on screen
-  cardVideos.forEach(v => videoIO.observe(v));
+  cardVideos.forEach(v => {
+    const autoCycle = v.classList.contains("card__hovervid") && !prefersReducedMotion;
+    if (autoCycle) {
+      // auto-cycle: clip visible & playing a few seconds, then just the photo,
+      // then again — while on screen. Hovering the card stops it (shows photo).
+      const SHOW_MS = 4000, HIDE_MS = 3000;
+      let timer = null, onScreen = false, hovering = false;
+      const show = () => {
+        if (hovering) return;
+        v.classList.add("is-playing");
+        v.play().catch(() => {});
+        timer = setTimeout(hide, SHOW_MS);
+      };
+      const hide = () => {
+        v.classList.remove("is-playing");
+        v.pause();
+        v.currentTime = 0;
+        timer = setTimeout(() => { timer = null; if (onScreen && !hovering) show(); }, HIDE_MS);
+      };
+      const stop = () => {
+        clearTimeout(timer); timer = null;
+        v.classList.remove("is-playing"); v.pause(); v.currentTime = 0;
+      };
+      const card = v.closest(".card__link") || v.closest(".card");
+      card.addEventListener("mouseenter", () => { hovering = true; stop(); });       // hover → stop the clip
+      card.addEventListener("mouseleave", () => { hovering = false; if (onScreen && !timer) show(); });
+      new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          onScreen = e.isIntersecting;
+          if (onScreen) { if (!timer && !hovering) show(); } else { stop(); }
+        });
+      }, { threshold: 0.3 }).observe(v);
+    } else {
+      videoIO.observe(v); // normal clips: autoplay while on screen
+    }
+  });
 }
 
 
