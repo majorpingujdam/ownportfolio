@@ -47,10 +47,7 @@
         </header>
         <div class="cs__prose">
           <p>
-            Glossy Island is a proximity-driven kinetic light installation. Fluorescent acrylic forms, carried on servo-driven armatures and governed by ultrasonic sensing, change how they catch and throw light as a viewer approaches — turning the audience's <em>distance</em> into the instrument that plays the piece. From across the room it reads as a still composition; step toward it and the shapes begin to turn, overlapping color and sliding shadow across the surfaces until the object feels alive.
-          </p>
-          <p>
-            The experience is written as one line of behavior: <strong>from a distance, the island waits; your presence begins the movement; and the closer you come, the more of its color you see.</strong>
+            A proximity-driven kinetic light installation. Fluorescent acrylic turns on servo armatures as you approach — your <em>distance</em> is the instrument that plays it. <strong>From a distance the island waits; your presence begins the movement; the closer you come, the more of its color you see.</strong>
           </p>
         </div>
 
@@ -72,9 +69,7 @@
           <span class="cs__label">Design Challenge</span>
         </header>
         <div class="cs__prose">
-          <p>
-            The brief was deceptively open — <em>make a material respond to people.</em> Moving a piece of acrylic with a motor is trivial; the actual design problem was <strong>translation</strong>: turning a crude, noisy distance reading into motion that reads as <em>alive and intentional</em> rather than mechanical and twitchy. Four tensions defined the work.
-          </p>
+          <p>The brief was open: <em>make a material respond to people.</em> The real problem wasn't moving acrylic — it was <strong>translation</strong>: turning noisy distance data into motion that feels alive, not mechanical. Four tensions defined the work.</p>
         </div>
 
         <div class="cs__bp" style="margin-top:1.5rem;">
@@ -107,9 +102,29 @@
           <span class="cs__label">The Interaction Model</span>
         </header>
         <div class="cs__prose">
-          <p>
-            Rather than map distance to position, I mapped it to <strong>speed</strong> along a nonlinear closeness curve — gentle change far away, sharp speed-up up close — and split the field into three zones. The result is a clear cause-and-effect the body understands without instruction: approach and the piece quickens; retreat and it calms; cross the threshold and it rests.
-          </p>
+          <p>Distance drives <strong>speed</strong>, not position — gentle far away, sharp up close. <em>Move your cursor toward the shapes.</em></p>
+        </div>
+
+        <!-- interactive proximity demo -->
+        <div class="gi-demo" id="gi-demo" role="img" aria-label="Interactive demo: the closer your cursor, the faster the shapes turn">
+          <svg class="gi-demo__art" viewBox="0 0 200 260" xmlns="http://www.w3.org/2000/svg">
+            <rect x="96" y="18" width="8" height="222" rx="3" fill="#2a2a33"/>
+            <g data-spin data-cx="100" data-cy="66">
+              <circle cx="100" cy="66" r="33" fill="#e8ff1a" opacity="0.82"/>
+            </g>
+            <g data-spin data-cx="100" data-cy="150">
+              <polygon points="100,120 134,180 66,180" fill="#ff2d9b" opacity="0.82"/>
+            </g>
+            <g data-spin data-cx="100" data-cy="210">
+              <polygon points="72,188 128,188 100,236" fill="#17d7ff" opacity="0.82"/>
+            </g>
+          </svg>
+          <div class="gi-demo__readout">
+            <div><span>distance</span><b id="gi-dist">300 cm</b></div>
+            <div><span>speed</span><b id="gi-speed">0.0 °/s</b></div>
+            <div><span>zone</span><b id="gi-zone">Stop</b></div>
+          </div>
+          <p class="gi-demo__hint">↳ move toward the center</p>
         </div>
 
         <div class="cs__bp" style="margin-top:1.5rem;">
@@ -155,7 +170,7 @@
         </div>
 
         <div class="cs__note" style="margin-top:1.5rem;">
-          <strong>Felt time, not just angle.</strong> One full sweep (5°→175°) takes ~4.3&nbsp;s when you're within 0.3&nbsp;m, ~8.5&nbsp;s at 1&nbsp;m, ~17&nbsp;s at 1.5&nbsp;m and ~45&nbsp;s at 2&nbsp;m — so the same gesture reads as urgent up close and almost meditative from across the room. Motion was clamped to 5°–175° to avoid servo buzz, and the top speed was pulled back on purpose: fast looked mechanical.
+          <strong>Felt time:</strong> one full sweep takes ~4.3&nbsp;s up close but ~45&nbsp;s at 2&nbsp;m — urgent near, meditative far. Top speed was capped on purpose; fast read as mechanical.
         </div>
       </section>
 
@@ -192,9 +207,7 @@
           <span class="cs__label">System &amp; Build</span>
         </header>
         <div class="cs__prose">
-          <p>
-            Under the color sits a deliberately quiet four-layer chain. Each layer was de-risked on a single module before the field was assembled.
-          </p>
+          <p>A deliberately quiet four-layer chain, each layer de-risked on one module before scaling.</p>
         </div>
 
         <div class="cs__designlayer" style="margin-top:1.5rem;">
@@ -231,9 +244,7 @@
           <span class="cs__label">From Wall to Island</span>
         </header>
         <div class="cs__prose">
-          <p>
-            The concept started as a ~20-shard interactive <em>wall</em>. Prototyping pushed it somewhere better: a freestanding, layered wooden base — a floating topography — carrying vertical clusters of acrylic. One island became a small <strong>archipelago</strong> of sculptures, each a different arrangement of forms, wired back to a shared sensing hub. The mechanism recedes into the base; what you read is an organic landscape that happens to breathe when you approach. That shift is what named the piece.
-          </p>
+          <p>It began as a ~20-shard interactive <em>wall</em>. Prototyping pushed it somewhere better: a layered wooden base — a floating topography — carrying clusters of acrylic with the mechanism hidden below. One island became a small <strong>archipelago</strong> wired to a shared sensing hub. That shift named the piece.</p>
         </div>
       </section>
 
@@ -255,9 +266,7 @@
         </div>
 
         <div class="cs__prose" style="margin-top:2rem;">
-          <p>
-            Glossy Island was an exercise in translating an emotional idea into a physical feedback system, moving continuously between composition, mechanics, electronics and fabrication. The decisions that mattered weren't the obvious ones — they were the smoothing curve, the capped top speed, the hard stop, the mounts that vanish. The final experience is intentionally simple: <strong>from a distance, you see the island; as you approach, the island begins to reveal itself.</strong>
-          </p>
+          <p>The decisions that mattered weren't the obvious ones — the smoothing curve, the capped top speed, the hard stop, the mounts that vanish. The result is simple: <strong>from a distance you see the island; as you approach, it reveals itself.</strong></p>
         </div>
       </section>
 
@@ -270,5 +279,53 @@
   </footer>
 
   <script src="../script.js"></script>
+  <script>
+  // Interactive proximity demo: cursor distance from the shapes drives speed,
+  // mirroring the installation's Max / Ramp / Stop model.
+  (function () {
+    const demo = document.getElementById("gi-demo");
+    if (!demo) return;
+    const shapes  = demo.querySelectorAll("[data-spin]");
+    const distEl  = document.getElementById("gi-dist");
+    const speedEl = document.getElementById("gi-speed");
+    const zoneEl  = document.getElementById("gi-zone");
+    const reduce  = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    const speedOf = d => d >= 220 ? 0 : d <= 30 ? 40 : 40 * Math.pow((220 - d) / 190, 1.5);
+    const zoneOf  = d => d >= 220 ? "Stop" : d <= 30 ? "Max" : "Ramp";
+
+    let curDist = 300, target = 0, speed = 0, angle = 0, last = performance.now();
+
+    const update = () => {
+      target = speedOf(curDist);
+      distEl.textContent  = Math.round(curDist) + " cm";
+      speedEl.textContent = target.toFixed(1) + " °/s";
+      const z = zoneOf(curDist);
+      zoneEl.textContent = z;
+      zoneEl.style.color = z === "Max" ? "#ff5aa0" : z === "Ramp" ? "#6cc7ff" : "rgba(255,255,255,0.75)";
+      if (reduce) shapes.forEach(s => s.setAttribute("transform", `rotate(${(target * 4).toFixed(0)} ${s.dataset.cx} ${s.dataset.cy})`));
+    };
+    const fromX = clientX => {
+      const r = demo.getBoundingClientRect();
+      curDist = Math.min(300, Math.abs(clientX - (r.left + r.width / 2)) / (r.width / 2) * 300);
+      update();
+    };
+
+    demo.addEventListener("mousemove", e => fromX(e.clientX));
+    demo.addEventListener("mouseleave", () => { curDist = 300; update(); });
+    demo.addEventListener("touchstart", e => { if (e.touches[0]) fromX(e.touches[0].clientX); }, { passive: true });
+    demo.addEventListener("touchmove",  e => { if (e.touches[0]) fromX(e.touches[0].clientX); }, { passive: true });
+    update();
+
+    if (!reduce) (function loop(now) {
+      const dt = Math.min((now - last) / 1000, 0.05); last = now;
+      speed += (target - speed) * Math.min(dt * 6, 1);
+      angle = (angle + speed * dt) % 360;
+      shapes.forEach((s, i) => s.setAttribute("transform",
+        `rotate(${(angle * (1 + i * 0.14)).toFixed(2)} ${s.dataset.cx} ${s.dataset.cy})`));
+      requestAnimationFrame(loop);
+    })(last);
+  })();
+  </script>
 </body>
 </html>
