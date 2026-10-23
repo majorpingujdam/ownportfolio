@@ -344,8 +344,8 @@ body[data-page="work"] .work { padding-top: 9.5rem; }
 .card__panel .card__hovervid {
   position: absolute;
   left: 50%;
-  bottom: 7%;
-  width: 66%;
+  bottom: 9%;
+  width: 46%;
   height: auto;
   aspect-ratio: 1 / 1;
   transform: translateX(-50%);
