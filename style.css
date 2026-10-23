@@ -339,8 +339,8 @@ body[data-page="work"] .work { padding-top: 9.5rem; }
 }
 .card__link:hover .card__panel img,
 .card__link:hover .card__panel video { transform: scale(1.03); }
-/* auto-cycle clip: a smaller centered clip crossfades in over the still
-   photo on its own (JS toggles .is-playing), then fades back out, on a loop */
+/* ghosted clip: a smaller centered clip plays continuously over the still
+   photo at low opacity so the photo shows through */
 .card__panel .card__hovervid {
   position: absolute;
   left: 50%;
@@ -352,10 +352,8 @@ body[data-page="work"] .work { padding-top: 9.5rem; }
   object-fit: cover;
   border-radius: 8px;
   box-shadow: 0 14px 36px -12px rgba(0,0,0,0.5);
-  opacity: 0;
-  transition: opacity .55s var(--ease);
+  opacity: 0.45;
 }
-.card__panel .card__hovervid.is-playing { opacity: 1; }
 /* keep it centered; ignore the generic hover zoom that targets .card__panel video */
 .card__link:hover .card__panel .card__hovervid { transform: translate(-50%, -50%); }
 

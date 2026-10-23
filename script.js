@@ -149,9 +149,9 @@ if (!prefersReducedMotion && "IntersectionObserver" in window) {
 
 
 // ── Card videos ────────────────────────────────────────────────
-// Normal clips autoplay while on screen. ".card__hovervid" clips show their
-// still photo and auto-cycle: the clip fades in and plays for a few seconds,
-// then fades back to the photo, on a loop, while the card is on screen.
+// Card clips play while on screen and pause when off. The ".card__hovervid"
+// ghost clip plays continuously too, but CSS renders it at low opacity so the
+// still photo shows through.
 const cardVideos = document.querySelectorAll(".card__panel video");
 if (cardVideos.length && "IntersectionObserver" in window) {
   const videoIO = new IntersectionObserver(entries => {
@@ -164,38 +164,8 @@ if (cardVideos.length && "IntersectionObserver" in window) {
     });
   }, { threshold: 0.2 });
 
-  cardVideos.forEach(v => {
-    const autoCycle = v.classList.contains("card__hovervid") && !prefersReducedMotion;
-    if (autoCycle) {
-      // auto-cycle: clip visible & playing a few seconds, then just the photo,
-      // then again — looping, but only while the card is on screen.
-      const SHOW_MS = 4000, HIDE_MS = 3000;
-      let timer = null, onScreen = false;
-      const show = () => {
-        v.classList.add("is-playing");
-        v.play().catch(() => {});
-        timer = setTimeout(hide, SHOW_MS);
-      };
-      const hide = () => {
-        v.classList.remove("is-playing");
-        v.pause();
-        v.currentTime = 0; // reset while paused (safe) so next cycle starts fresh
-        timer = setTimeout(() => { timer = null; if (onScreen) show(); }, HIDE_MS);
-      };
-      const stop = () => {
-        clearTimeout(timer); timer = null;
-        v.classList.remove("is-playing"); v.pause();
-      };
-      new IntersectionObserver(entries => {
-        entries.forEach(e => {
-          onScreen = e.isIntersecting;
-          if (onScreen) { if (!timer) show(); } else { stop(); }
-        });
-      }, { threshold: 0.3 }).observe(v);
-    } else {
-      videoIO.observe(v); // autoplay while on screen (normal clips)
-    }
-  });
+  // every card video (incl. the low-opacity ghost clip) plays while on screen
+  cardVideos.forEach(v => videoIO.observe(v));
 }
 
 
