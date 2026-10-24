@@ -351,7 +351,7 @@ if (document.body.dataset.page === "project") {
 const logoAnim = document.querySelector(".hero__logoanim");
 if (logoAnim) {
   const frames = [...logoAnim.querySelectorAll(".hero__frame")];
-  const STEP_DIST = 320; // px of cursor travel per frame change
+  const STEP_DIST = 700; // px of cursor travel per frame change
   let idx = 0, travel = 0, lastX = null, lastY = null;
   window.addEventListener("mousemove", e => {
     if (lastX !== null) travel += Math.hypot(e.clientX - lastX, e.clientY - lastY);
