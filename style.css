@@ -1,21 +1,24 @@
 /* ============================================
    Owen Chen — portfolio
-   Multi-page: home (bio) + work
+   Single page · serif display + mono body
    Airy · lowercase · quiet personality
    ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
 
 :root {
   --bg: #ffffff;
   --ink: #1a1a1a;
   --ink-2: #6b6b6b;
   --ink-3: #b3b3b3;
-  --rule: #ececec;
+  --rule: #e6e6e3;
 
-  --green: #6db86d;
+  --green: #1b6e2e;
   --blue: #5a7af0;
   --red: #d8451d;
-  --bg-soft: #f6f4ee;
+  --bg-soft: #fafaf8;
 
+  --serif: "Libre Baskerville", Georgia, "Times New Roman", serif;
   --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
 
@@ -48,27 +51,25 @@ em { font-style: italic; }
   position: absolute;
   top: 0; left: 0; right: 0;
   z-index: 50;
-  padding: 1.25rem var(--pad);
+  padding: 1.1rem var(--pad);
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 1.5rem;
-  font-family: var(--mono);
-  /* solid-ish bar so the full-bleed grid can scroll underneath legibly */
-  background: rgba(246, 244, 238, 0.86);
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
+  font-family: var(--serif);
+  background: var(--bg-soft);
+  border-bottom: 1px solid var(--rule);
 }
 .nav__home {
-  font-size: 0.9rem;
-  font-weight: 500;
+  font-family: var(--serif);
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
   color: var(--ink);
   transition: color .3s var(--ease);
-  font-family: var(--mono);
-  letter-spacing: -0.01em;
 }
 .nav__home:hover { color: var(--ink); }
-.nav__home.is-active { color: var(--blue); }
+.nav__home.is-active { color: var(--ink); }
 .nav__clock {
   font-size: 0.9rem;
   color: var(--ink-2);
@@ -76,25 +77,28 @@ em { font-style: italic; }
   white-space: nowrap;
 }
 .nav__clock-city { color: var(--ink-3); }
+@media (max-width: 760px) {
+  .nav__clock { display: none; }
+}
 @media (max-width: 640px) {
-  .nav { gap: 0.9rem; }
-  .nav__clock-city { display: none; }
-  .nav__home, .nav__clock, .nav__links { font-size: 0.78rem; }
-  .nav__links { gap: 0.85rem; }
+  .nav { gap: 0.9rem; padding: 0.9rem var(--pad); }
+  .nav__home { font-size: 1.15rem; }
+  .nav__links { gap: 1.1rem; font-size: 0.92rem; }
 }
 .nav__links {
   display: flex;
-  gap: 1.5rem;
-  font-size: 0.9rem;
-  font-weight: 500;
-  letter-spacing: -0.01em;
+  gap: 2.4rem;
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 0;
   color: var(--ink);
 }
 .nav__links a {
   transition: color .3s var(--ease);
 }
-.nav__links a:hover { color: var(--ink); }
-.nav__links a.is-active { color: var(--blue); }
+.nav__links a:hover { color: var(--green); }
+.nav__links a.is-active { color: var(--green); }
 
 /* ---------- Shared container ---------- */
 .intro, .contact, .contact-page, .resume {
@@ -127,10 +131,10 @@ em { font-style: italic; }
   max-width: 40ch;
 }
 .hero__intro .hi { display: block; margin-bottom: 0.25rem; }
-.hero__intro em { color: var(--ink); font-style: normal; border-bottom: 2px solid var(--blue); }
+.hero__intro em { color: var(--ink); font-style: normal; border-bottom: 2px solid var(--green); }
 .hero__intro--sub { margin-top: 1.75rem; color: var(--ink-2); }
 .hero__intro--sub a {
-  color: var(--blue);
+  color: var(--green);
   text-decoration: underline;
   text-underline-offset: 3px;
   text-decoration-thickness: 1px;
@@ -139,23 +143,39 @@ em { font-style: italic; }
 .hero__media {
   position: relative;
   justify-self: center;
-  width: min(100%, 420px);
+  width: min(100%, 360px);
+  aspect-ratio: 1 / 1;
 }
 .hero__block {
   position: absolute;
   inset: 0;
-  transform: translate(14px, 14px);
+  transform: translate(16px, 16px);
   background: var(--green);
   border-radius: 3px;
   z-index: 0;
 }
-.hero__media img {
+.hero__media img,
+.hero__logo {
   position: relative;
   z-index: 1;
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: contain;
+  background: var(--bg);
   border: 1.5px solid var(--ink);
   border-radius: 3px;
+}
+/* placeholder shown until the logo image is added */
+.hero__logo {
+  display: grid;
+  place-items: center;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  padding: 2rem;
+  text-align: center;
 }
 @media (max-width: 760px) {
   .hero {
@@ -164,7 +184,7 @@ em { font-style: italic; }
     gap: 2.5rem;
     padding-top: 6.5rem;
   }
-  .hero__media { order: -1; width: min(100%, 300px); justify-self: start; }
+  .hero__media { order: -1; width: min(100%, 260px); justify-self: start; }
 }
 
 /* ---------- Section band (editorial section header: title left, note right) ---------- */
@@ -179,10 +199,10 @@ em { font-style: italic; }
   border-bottom: 1px solid var(--rule);
 }
 .page-band__title {
-  font-family: var(--sans);
-  font-weight: 600;
-  font-size: 1.15rem;
-  letter-spacing: -0.02em;
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 1.5rem;
+  letter-spacing: 0;
   color: var(--ink);
 }
 .page-band__desc {
@@ -1229,7 +1249,7 @@ body.is-exiting { opacity: 0; transition: opacity .22s ease; }
   position: absolute;
   left: 0; bottom: -5px;
   width: 100%; height: 2px;
-  background: var(--blue);
+  background: var(--green);
   border-radius: 2px;
   transform: scaleX(0);
   transform-origin: 100% 50%;
