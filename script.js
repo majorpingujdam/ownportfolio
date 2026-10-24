@@ -345,6 +345,23 @@ if (document.body.dataset.page === "project") {
 }
 
 
+// ── Hero logo: scrub the hand-drawn frames as the mouse moves ──
+const logoAnim = document.querySelector(".hero__logoanim");
+if (logoAnim) {
+  const frames = [...logoAnim.querySelectorAll(".hero__frame")];
+  let idx = 0, last = 0;
+  const STEP_MS = 90; // min gap between frame changes while moving
+  window.addEventListener("mousemove", () => {
+    const now = performance.now();
+    if (now - last < STEP_MS) return;
+    last = now;
+    frames[idx].classList.remove("is-shown");
+    idx = (idx + 1) % frames.length;
+    frames[idx].classList.add("is-shown");
+  }, { passive: true });
+}
+
+
 // ── Nav scroll-spy (single page: light up the current section) ──
 const spySections = document.querySelectorAll("main > section[id]");
 const spyLinks = new Map(
