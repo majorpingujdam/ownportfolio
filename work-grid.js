@@ -89,20 +89,21 @@ const WORK_PROJECTS = [
   // offset "paper" block colors, cycled per card
   const PALETTE = ["#a7b53f", "#4b63e0", "#b79cf0", "#ff9d7e", "#2fb6a0", "#6cc24a", "#f2b134", "#5d6cf0"];
 
+  // clickable category labels (friendly words → WORK_PROJECTS categories)
+  const CATS = [
+    { val: "internship", label: "internships" },
+    { val: "product",    label: "products" },
+    { val: "ai",         label: "ai" },
+    { val: "generative", label: "art" },
+    { val: "gaming",     label: "games" },
+  ];
   const filterHtml = `
     <header class="work__head">
-      <div class="work__filter">
-        <button class="work__filter-btn" aria-haspopup="listbox">
-          <span class="work__filter-current">Key Labels</span>
-          <span class="work__filter-icon">↓</span>
-        </button>
-        <ul class="work__filter-menu" role="listbox">
-          ${WORK_FILTERS.map((f, i) =>
-            `<li class="work__filter-item${i === 0 ? " is-selected" : ""}" data-val="${f.val}">${esc(f.label)}</li>`
-          ).join("")}
-        </ul>
+      <button type="button" class="work__head-title is-active" data-val="all" aria-label="Show all work">work</button>
+      <div class="work__cats" role="group" aria-label="Filter work by type">
+        ${CATS.map(c => `<button type="button" class="work__cat" data-val="${c.val}">${esc(c.label)}</button>`)
+              .join('<span class="work__cat-sep" aria-hidden="true">·</span>')}
       </div>
-      <span class="work__head-desc">internships · products · ai · art · games</span>
     </header>`;
 
   const gridHtml = `

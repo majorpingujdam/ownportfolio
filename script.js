@@ -61,51 +61,37 @@ if (navEl) {
 }
 
 
-// ── Projects filter dropdown (hover + 3s stay-open) ─────────────
-const filterItems   = document.querySelectorAll(".work__filter-item");
-const filterCurrent = document.querySelector(".work__filter-current");
-const filterWrapper = document.querySelector(".work__filter");
-const filterMenu    = document.querySelector(".work__filter-menu");
-
-if (filterWrapper && filterMenu) {
-  let closeTimer;
-  filterWrapper.addEventListener("mouseenter", () => {
-    clearTimeout(closeTimer);
-    filterMenu.classList.add("is-open");
+// ── Work filter: clickable category labels ─────────────────────
+// "work" shows everything; each label filters to its category (click the
+// active one again to clear). Matching cards reflow to the top of the grid
+// and the work section scrolls up under the fixed nav.
+let currentFilter = "all";
+const applyFilter = val => {
+  document.querySelectorAll(".grid .card").forEach(card => {
+    card.hidden = val !== "all" && card.dataset.category !== val;
   });
-  filterWrapper.addEventListener("mouseleave", () => {
-    closeTimer = setTimeout(() => filterMenu.classList.remove("is-open"), 3000);
-  });
-}
+  document.querySelectorAll(".work__cat").forEach(b =>
+    b.classList.toggle("is-active", b.dataset.val === val));
+  document.querySelector(".work__head-title")
+    ?.classList.toggle("is-active", val === "all");
+};
 
-if (filterItems.length) {
-  filterItems.forEach(item => {
-    item.addEventListener("click", () => {
-      filterItems.forEach(i => i.classList.remove("is-selected"));
-      item.classList.add("is-selected");
-      const val = item.dataset.val;
-      if (filterCurrent) {
-        filterCurrent.textContent = val === "all"
-            ? "Key Labels"
-            : item.textContent.trim();
-      }
+document.addEventListener("click", e => {
+  const btn = e.target.closest(".work__cat, .work__head-title");
+  if (!btn) return;
+  const val = btn.dataset.val;
+  // clicking the active category again clears back to all
+  currentFilter = (val !== "all" && val === currentFilter) ? "all" : val;
+  applyFilter(currentFilter);
 
-      if (filterMenu) filterMenu.classList.remove("is-open");
-
-      // masonry has no per-category sections to scroll to, so filter in place
-      document.querySelectorAll(".grid .card").forEach(card => {
-        card.hidden = val !== "all" && card.dataset.category !== val;
-      });
-
-      // if the grid top has scrolled away, bring it back into view
-      const grid = document.querySelector(".grid");
-      if (grid && grid.getBoundingClientRect().top < 0) {
-        const y = grid.getBoundingClientRect().top + window.scrollY - 90;
-        window.scrollTo({ top: y, behavior: "smooth" });
-      }
-    });
-  });
-}
+  // bring the work section to the top, just under the fixed nav
+  const work = document.getElementById("work");
+  if (work) {
+    const navH = (document.querySelector(".nav")?.offsetHeight || 0) + 8;
+    const y = work.getBoundingClientRect().top + window.scrollY - navH;
+    window.scrollTo({ top: y, behavior: "smooth" });
+  }
+});
 
 
 // ── IKEA insight toggle ─────────────────────────────────────────
