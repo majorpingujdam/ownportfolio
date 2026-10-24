@@ -318,7 +318,7 @@ em { font-style: italic; }
   margin: 0 auto;
   padding-bottom: 6rem;
 }
-body[data-page="home"] .work { margin-top: clamp(5rem, 12vw, 11rem); }
+body[data-page="home"] .work { margin-top: clamp(3rem, 8vw, 7rem); }
 body[data-page="work"] .work { padding-top: 9.5rem; }
 .work__head {
   display: flex;
