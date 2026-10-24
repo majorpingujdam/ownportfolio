@@ -116,12 +116,12 @@ em { font-style: italic; }
 .hero {
   max-width: var(--maxw);
   margin: 0 auto;
-  padding: clamp(7rem, 12vw, 10rem) var(--pad) clamp(2.5rem, 6vw, 5rem);
+  padding: clamp(5rem, 9vh, 7rem) var(--pad);
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;
   gap: clamp(2rem, 6vw, 6rem);
   align-items: center;
-  min-height: 72vh;
+  min-height: 100svh;   /* fill the first screen → logo centered on load */
 }
 .hero__intro {
   font-family: var(--mono);
@@ -310,7 +310,7 @@ em { font-style: italic; }
   margin: 0 auto;
   padding-bottom: 6rem;
 }
-body[data-page="home"] .work { margin-top: clamp(3rem, 8vw, 7rem); }
+body[data-page="home"] .work { margin-top: clamp(5rem, 12vw, 11rem); }
 body[data-page="work"] .work { padding-top: 9.5rem; }
 .work__head {
   display: flex;
