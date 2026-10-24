@@ -440,8 +440,47 @@ body[data-page="work"] .work { padding-top: 9.5rem; }
   object-fit: cover;
   transition: transform .6s var(--ease);
 }
-.card__link:hover .card__panel img,
-.card__link:hover .card__panel video { transform: scale(1.04); }
+.card__link:not(.is-locked):hover .card__panel img,
+.card__link:not(.is-locked):hover .card__panel video { transform: scale(1.04); }
+
+/* locked cards: not clickable, show a lock badge + "coming soon" on hover */
+.card__link.is-locked { cursor: not-allowed; }
+.card__lock {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.6rem;
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.28rem 0.5rem;
+  background: var(--ink);
+  color: #fff;
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: 999px;
+}
+.card__lock svg { display: block; }
+.card__soon {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(26, 26, 26, 0.55);
+  color: #fff;
+  font-family: var(--mono);
+  font-size: 0.95rem;
+  letter-spacing: 0.06em;
+  opacity: 0;
+  transition: opacity .3s var(--ease);
+}
+.card__link.is-locked:hover .card__soon { opacity: 1; }
+/* no "open" arrow on locked cards */
+.card__link.is-locked .card__title::after { content: none; }
 .card__title {
   padding: 0.55rem 0.85rem 0.65rem;
   font-family: var(--sans);

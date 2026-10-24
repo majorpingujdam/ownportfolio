@@ -106,19 +106,27 @@ const WORK_PROJECTS = [
       </div>
     </header>`;
 
+  // projects aren't public yet — lock the cards so clicks don't open them
+  const LOCKED = true;
+  const lockBadge = `<span class="card__lock" aria-hidden="true">`
+    + `<svg viewBox="0 0 24 24" width="13" height="13"><path d="M7 10V7a5 5 0 0 1 10 0v3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><rect x="4.5" y="10" width="15" height="10" rx="2" fill="currentColor"/></svg>`
+    + `locked</span>`;
+
   const gridHtml = `
     <ol class="grid">
       ${WORK_PROJECTS.map((p, i) => `
         <li class="card" data-category="${p.category}" style="--card-accent:${PALETTE[i % PALETTE.length]}">
-          <a href="${esc(p.href)}" class="card__link">
+          ${LOCKED
+            ? `<div class="card__link is-locked" role="link" aria-disabled="true" aria-label="${esc(p.title)} — coming soon">`
+            : `<a href="${esc(p.href)}" class="card__link">`}
             <span class="card__shadow" aria-hidden="true"></span>
             <div class="card__inner">
               <div class="card__date">${esc(CAT_LABEL[p.category] || p.category)}</div>
               <h3 class="card__title">${esc(p.title)}</h3>
-              <div class="card__panel">${media(p)}</div>
+              <div class="card__panel">${media(p)}${LOCKED ? lockBadge + `<span class="card__soon">coming soon</span>` : ""}</div>
               <div class="card__foot">${esc(p.desc)}</div>
             </div>
-          </a>
+          ${LOCKED ? `</div>` : `</a>`}
         </li>`).join("")}
     </ol>`;
 
