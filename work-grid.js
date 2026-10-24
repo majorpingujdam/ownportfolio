@@ -77,19 +77,17 @@ const WORK_PROJECTS = [
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   const media = p => {
-    // picture by default; a smaller clip crossfades in over the lower
-    // part of the tile on hover and fades back out on leave
-    if (p.video && p.poster) {
-      return `<img src="${esc(p.poster)}" alt="${esc(p.alt || p.title)}" width="${p.w}" height="${p.h}" loading="lazy" decoding="async" />`
-           + `<video class="card__hovervid" src="${esc(p.video)}" muted loop playsinline preload="metadata" aria-label="${esc(p.label || p.title)}"></video>`;
+    if (p.video) {
+      const poster = p.poster ? ` poster="${esc(p.poster)}"` : "";
+      return `<video src="${esc(p.video)}"${poster} width="${p.w}" height="${p.h}"${reduceMotion ? ' preload="metadata"' : " autoplay"} muted loop playsinline aria-label="${esc(p.label || p.title)}"></video>`;
     }
-    return p.video
-      ? `<video src="${esc(p.video)}" width="${p.w}" height="${p.h}"${reduceMotion ? ' preload="metadata"' : " autoplay"} muted loop playsinline aria-label="${esc(p.label)}"></video>`
-      : `<img src="${esc(p.img)}" alt="${esc(p.alt)}" width="${p.w}" height="${p.h}" loading="lazy" decoding="async" />`;
+    return `<img src="${esc(p.img)}" alt="${esc(p.alt)}" width="${p.w}" height="${p.h}" loading="lazy" decoding="async" />`;
   };
 
-  // category value → human label, for the per-card kicker
+  // category value → human label, shown on each card's top row
   const CAT_LABEL = Object.fromEntries(WORK_FILTERS.map(f => [f.val, f.label]));
+  // offset "paper" block colors, cycled per card
+  const PALETTE = ["#a7b53f", "#4b63e0", "#b79cf0", "#ff9d7e", "#2fb6a0", "#6cc24a", "#f2b134", "#5d6cf0"];
 
   const filterHtml = `
     <header class="work__head">
@@ -110,16 +108,14 @@ const WORK_PROJECTS = [
   const gridHtml = `
     <ol class="grid">
       ${WORK_PROJECTS.map((p, i) => `
-        <li class="card" data-category="${p.category}">
+        <li class="card" data-category="${p.category}" style="--card-accent:${PALETTE[i % PALETTE.length]}">
           <a href="${esc(p.href)}" class="card__link">
-            <div class="card__panel">${media(p)}</div>
-            <div class="card__foot">
-              <div class="card__meta">
-                <span class="card__kicker">${esc(CAT_LABEL[p.category] || p.category)}</span>
-                <span class="card__id">${String(i + 1).padStart(2, "0")}</span>
-              </div>
+            <span class="card__shadow" aria-hidden="true"></span>
+            <div class="card__inner">
+              <div class="card__date">${esc(CAT_LABEL[p.category] || p.category)}</div>
               <h3 class="card__title">${esc(p.title)}</h3>
-              <p class="card__desc">${esc(p.desc)}</p>
+              <div class="card__panel">${media(p)}</div>
+              <div class="card__foot">${esc(p.desc)}</div>
             </div>
           </a>
         </li>`).join("")}
