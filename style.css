@@ -133,6 +133,7 @@ em { font-style: italic; }
 .hero__hello {
   font-family: var(--mono);
   font-size: clamp(1.25rem, 2.1vw, 1.8rem);
+  font-weight: 700;
   line-height: 1;
   color: #3d5afe;
   margin-bottom: 1.25rem;
