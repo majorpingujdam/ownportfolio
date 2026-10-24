@@ -104,9 +104,39 @@ em { font-style: italic; }
   padding-right: var(--pad);
 }
 
+/* ---------- Section band (editorial section header: title left, note right) ---------- */
+.page-band {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin: 5.5rem 0 3rem;
+  padding: 1.05rem var(--pad);
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+.page-band__title {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 1.15rem;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+.page-band__desc {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.02em;
+  color: var(--ink-3);
+  text-align: right;
+}
+@media (max-width: 640px) {
+  .page-band { flex-direction: column; align-items: flex-start; gap: 0.25rem; margin: 4.5rem 0 2rem; }
+  .page-band__desc { text-align: left; }
+}
+
 /* ---------- Intro (home) ---------- */
 .intro {
-  padding-top: 8rem;
+  padding-top: 2.5rem;
   padding-bottom: 6rem;
   display: grid;
   grid-template-columns: 0.75fr 1.25fr;
@@ -221,13 +251,22 @@ em { font-style: italic; }
 body[data-page="work"] .work { padding-top: 9.5rem; }
 .work__head {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: space-between;
   gap: 1.5rem;
-  padding: 0 var(--pad) 1.1rem;
-  margin-bottom: 0.9rem;
+  padding: 1.05rem var(--pad);
+  margin-bottom: 2rem;
+  border-top: 1px solid var(--rule);
   border-bottom: 1px solid var(--rule);
 }
+.work__head-desc {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.02em;
+  color: var(--ink-3);
+  text-align: right;
+}
+@media (max-width: 640px) { .work__head-desc { display: none; } }
 
 /* ── custom dropdown ── */
 .work__filter {
@@ -484,7 +523,7 @@ body[data-page="work"] .work { padding-top: 9.5rem; }
 
 /* ---------- Resume ---------- */
 .resume {
-  padding-top: 8rem;
+  padding-top: 2.5rem;
   padding-bottom: 8rem;
   max-width: 960px;
   margin: 0 auto;
@@ -1210,7 +1249,7 @@ body.is-exiting { opacity: 0; transition: opacity .22s ease; }
   .intro {
     grid-template-columns: 1fr;
     gap: 2.5rem;
-    padding-top: 6rem;
+    padding-top: 1.5rem;
   }
   .intro__image {
     position: static;
@@ -1222,7 +1261,7 @@ body.is-exiting { opacity: 0; transition: opacity .22s ease; }
   .contact-page { padding-top: 7rem; }
   .contact-page__list > div { grid-template-columns: 5.5rem 1fr; }
 
-  .resume { padding-top: 7rem; }
+  .resume { padding-top: 1.5rem; }
   .resume__section { grid-template-columns: 1fr; gap: 0.75rem; }
   .resume__label { padding-top: 0; }
   .resume__skillrow { grid-template-columns: 1fr; gap: 0.2rem; }

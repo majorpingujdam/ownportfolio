@@ -104,6 +104,7 @@ const WORK_PROJECTS = [
           ).join("")}
         </ul>
       </div>
+      <span class="work__head-desc">internships · products · ai · art · games</span>
     </header>`;
 
   const gridHtml = `
