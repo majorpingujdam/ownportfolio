@@ -132,9 +132,9 @@ em { font-style: italic; }
 }
 .hero__hello {
   font-family: var(--mono);
-  font-size: clamp(1.5rem, 2.6vw, 2.2rem);
+  font-size: clamp(1.25rem, 2.1vw, 1.8rem);
   line-height: 1;
-  color: var(--green);
+  color: #3d5afe;
   margin-bottom: 1.25rem;
 }
 .hero__intro .hi { display: block; margin-bottom: 0.25rem; }
@@ -483,7 +483,7 @@ body[data-page="work"] .work { padding-top: 9.5rem; }
 }
 .landing__greeting {
   display: inline-block;
-  color: var(--green);
+  color: #3d5afe;
   white-space: pre;
 }
 .landing__gchar {
