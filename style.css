@@ -143,39 +143,14 @@ em { font-style: italic; }
 .hero__media {
   position: relative;
   justify-self: center;
-  width: min(100%, 360px);
+  width: min(100%, 400px);
   aspect-ratio: 1 / 1;
 }
-.hero__block {
-  position: absolute;
-  inset: 0;
-  transform: translate(16px, 16px);
-  background: var(--green);
-  border-radius: 3px;
-  z-index: 0;
-}
-.hero__media img,
-.hero__logo {
-  position: relative;
-  z-index: 1;
+/* animated line-art logo — transparent, no frame */
+.hero__logoimg {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  background: var(--bg);
-  border: 1.5px solid var(--ink);
-  border-radius: 3px;
-}
-/* placeholder shown until the logo image is added */
-.hero__logo {
-  display: grid;
-  place-items: center;
-  font-family: var(--mono);
-  font-size: 0.8rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--ink-3);
-  padding: 2rem;
-  text-align: center;
 }
 @media (max-width: 760px) {
   .hero {
