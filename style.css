@@ -130,6 +130,13 @@ em { font-style: italic; }
   color: var(--ink);
   max-width: 40ch;
 }
+.hero__hello {
+  font-family: var(--mono);
+  font-size: clamp(1.5rem, 2.6vw, 2.2rem);
+  line-height: 1;
+  color: var(--green);
+  margin-bottom: 1.25rem;
+}
 .hero__intro .hi { display: block; margin-bottom: 0.25rem; }
 .hero__intro em { color: var(--ink); font-style: normal; border-bottom: 2px solid var(--green); }
 .hero__intro--sub { margin-top: 1.75rem; color: var(--ink-2); }
@@ -476,7 +483,7 @@ body[data-page="work"] .work { padding-top: 9.5rem; }
 }
 .landing__greeting {
   display: inline-block;
-  color: var(--blue);
+  color: var(--green);
   white-space: pre;
 }
 .landing__gchar {
