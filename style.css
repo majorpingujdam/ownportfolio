@@ -311,6 +311,52 @@ em { font-style: italic; }
 }
 .intro__meta dd a:hover { opacity: 0.7; }
 
+/* ---------- Skills: left label + bordered tag cluster ---------- */
+.skills {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 1.5rem var(--pad) 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2.5rem, 5vw, 4.5rem);
+}
+.skills__group {
+  display: grid;
+  grid-template-columns: minmax(7rem, 11rem) 1fr;
+  gap: 1.5rem clamp(1.5rem, 4vw, 3.5rem);
+  align-items: center;
+}
+.skills__label {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: clamp(1.15rem, 1.6vw, 1.45rem);
+  color: var(--ink);
+}
+.skills__tags {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.7rem 0.85rem;
+}
+.skills__tags li {
+  padding: 0.5rem 0.85rem;
+  font-family: var(--mono);
+  font-size: 0.9rem;
+  line-height: 1;
+  color: var(--ink);
+  background: var(--bg);
+  border: 1.5px solid var(--ink);
+  border-radius: 2px;
+  box-shadow: 2px 2px 0 rgba(26, 26, 26, 0.12);
+}
+@media (max-width: 680px) {
+  .skills__group { grid-template-columns: 1fr; gap: 0.9rem; }
+  .skills__tags { justify-content: flex-start; }
+}
+
 /* ---------- Work grid (shared: home + projects, rendered by work-grid.js) ---------- */
 .work {
   --gap: 10px;
