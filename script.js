@@ -345,16 +345,19 @@ if (document.body.dataset.page === "project") {
 }
 
 
-// ── Hero logo: scrub the hand-drawn frames as the mouse moves ──
+// ── Hero logo: scrub the hand-drawn frames by cursor travel distance ──
+// advance one frame only after the mouse has moved a good distance, so it
+// takes a long drag across the screen to cycle through the drawing.
 const logoAnim = document.querySelector(".hero__logoanim");
 if (logoAnim) {
   const frames = [...logoAnim.querySelectorAll(".hero__frame")];
-  let idx = 0, last = 0;
-  const STEP_MS = 90; // min gap between frame changes while moving
-  window.addEventListener("mousemove", () => {
-    const now = performance.now();
-    if (now - last < STEP_MS) return;
-    last = now;
+  const STEP_DIST = 320; // px of cursor travel per frame change
+  let idx = 0, travel = 0, lastX = null, lastY = null;
+  window.addEventListener("mousemove", e => {
+    if (lastX !== null) travel += Math.hypot(e.clientX - lastX, e.clientY - lastY);
+    lastX = e.clientX; lastY = e.clientY;
+    if (travel < STEP_DIST) return;
+    travel = 0;
     frames[idx].classList.remove("is-shown");
     idx = (idx + 1) % frames.length;
     frames[idx].classList.add("is-shown");
