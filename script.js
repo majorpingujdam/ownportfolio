@@ -359,6 +359,25 @@ if (document.body.dataset.page === "project") {
 }
 
 
+// ── Nav scroll-spy (single page: light up the current section) ──
+const spySections = document.querySelectorAll("main > section[id]");
+const spyLinks = new Map(
+  [...document.querySelectorAll('.nav__links a[href^="#"]')]
+    .map(a => [a.getAttribute("href").slice(1), a])
+);
+if (spySections.length && spyLinks.size && "IntersectionObserver" in window) {
+  const spy = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      spyLinks.forEach(a => a.classList.remove("is-active"));
+      const link = spyLinks.get(e.target.id);
+      if (link) link.classList.add("is-active");
+    });
+  }, { rootMargin: "-45% 0px -50% 0px" });
+  spySections.forEach(s => spy.observe(s));
+}
+
+
 // ── Page fade transitions (internal links) ─────────────────────
 document.addEventListener("click", e => {
   const a = e.target.closest("a[href]");

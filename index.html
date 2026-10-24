@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Owen Chen</title>
-  <meta name="description" content="Owen Chen — UX & HCI design student." />
+  <meta name="description" content="Owen Chen — designer, technologist & researcher. UX, product design, and HCI." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -13,23 +13,320 @@
 <body data-page="home">
 
   <header class="nav">
-    <a href="index.html" class="nav__home is-active">main</a>
+    <a href="#top" class="nav__home">owen chen</a>
     <nav class="nav__links">
-      <a href="projects.html">projects</a>
-      <a href="bio.html">bio</a>
-      <a href="resume.html">resume</a>
+      <a href="#work">work</a>
+      <a href="#skills">skills</a>
+      <a href="#about">about</a>
+      <a href="#resume">resume</a>
     </nav>
   </header>
 
   <main id="top">
-    <section class="home-intro">
-      <h1 class="landing__hello">
-        <span class="landing__greeting" id="greeting" aria-label="Hello">Hello</span><span class="landing__hello-rest">I am Owen 陈</span>
-      </h1>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero">
+      <div class="hero__text">
+        <p class="hero__intro">
+          <span class="hi">i'm owen—</span>
+          a designer, technologist, and researcher working between
+          <em>human-centered design</em> and <em>emerging technology</em>,
+          and an incoming MS student in Engineering Design Innovation
+          at Northwestern.
+        </p>
+        <p class="hero__intro hero__intro--sub">
+          currently exploring UX, product design, and HCI — across
+          healthcare and human-centered services.
+          <br /><a href="#work">see my work ↓</a>
+        </p>
+      </div>
+      <div class="hero__media">
+        <span class="hero__block" aria-hidden="true"></span>
+        <img src="edi-headshot.jpg" alt="Owen Chen" width="420" height="500"
+             loading="eager" decoding="async" />
+      </div>
     </section>
 
-    <!-- grid + filter are rendered from work-grid.js (shared with projects.html) -->
-    <section class="work" data-work></section>
+    <!-- ===== WORK ===== -->
+    <!-- grid + filter are rendered from work-grid.js -->
+    <section class="work" id="work" data-work></section>
+
+    <!-- ===== SKILLS ===== -->
+    <section id="skills" class="page-section">
+      <div class="page-band">
+        <span class="page-band__title">skills</span>
+        <span class="page-band__desc">tools · languages · code</span>
+      </div>
+      <div class="resume">
+        <div class="resume__body">
+          <div class="resume__skillrow"><span class="resume__sublabel">languages</span><span>Chinese · Japanese · English</span></div>
+          <div class="resume__skillrow"><span class="resume__sublabel">gen AI / vibe coding</span><span>ChatGPT, Claude Code, Google Colab, Midjourney, Cursor, Prompt-engineering</span></div>
+          <div class="resume__skillrow"><span class="resume__sublabel">adobe</span><span>Photoshop, Premiere Pro, Illustrator, After Effects, Aero</span></div>
+          <div class="resume__skillrow"><span class="resume__sublabel">3D modelling</span><span>Unity, Blender, Rhino, SketchUp, Nomad, Shapr3D, Maya</span></div>
+          <div class="resume__skillrow"><span class="resume__sublabel">programming</span><span>JavaScript, Python, HTML / CSS, GitHub</span></div>
+          <div class="resume__skillrow"><span class="resume__sublabel">interactive arts</span><span>P5.js, TouchDesigner, Newartcity</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== ABOUT ===== -->
+    <section id="about" class="page-section">
+      <div class="page-band">
+        <span class="page-band__title">about</span>
+        <span class="page-band__desc">a little more about me</span>
+      </div>
+      <section class="intro">
+        <div class="intro__image">
+          <div class="intro__frame">
+            <img loading="lazy" decoding="async" src="edi-headshot.jpg" alt="Owen Chen" style="width:100%; height:100%; object-fit:cover; object-position:center top;" />
+          </div>
+          <span class="intro__caption">
+            <span class="intro__caption-name">owen chen</span>
+            <span class="intro__caption-year">· 2026</span>
+          </span>
+        </div>
+
+        <div class="intro__text">
+          <p>
+            I'm a designer and technologist who works at the intersection of
+            <em>human-centered design</em> and <em>emerging technology</em>.
+            Having grown up across Japan, China, and the United States, I've
+            always been drawn to the spaces between disciplines and cultures
+            — and to the idea that good design should bridge those gaps rather
+            than widen them. My work tends to start with people: the small
+            frictions, overlooked needs, and moments of disconnect that
+            technology can either deepen or quietly resolve. I care most about
+            creating things that restore a sense of <em>dignity and clarity</em>
+            to the people who use them.
+          </p>
+
+          <p>
+            My curiosity runs across <em>design, finance, artificial intelligence,
+            art, and history</em> — fields that, on the surface, seem unrelated, but
+            that I find deeply intertwined. I'm fascinated by how markets and
+            emerging technologies reshape the way people live and make
+            decisions, and equally by how art and history reveal the human
+            patterns underneath that change. I see these interests less as
+            separate hobbies than as different lenses on the same question:
+            how systems — economic, technological, cultural — shape human
+            experience, and how thoughtful design can make those systems more
+            legible, more humane, and more worth trusting.
+          </p>
+
+          <dl class="intro__meta">
+            <div><dt>currently</dt><dd>Studying in Northwestern EDI</dd></div>
+            <div><dt>focus</dt><dd>UX, Product Design, HCI, Human-Centered Services, Healthcare</dd></div>
+          </dl>
+        </div>
+      </section>
+    </section>
+
+    <!-- ===== RESUME ===== -->
+    <section id="resume" class="page-section">
+      <div class="page-band">
+        <span class="page-band__title">resume</span>
+        <span class="page-band__desc">experience · education</span>
+      </div>
+      <section class="resume">
+        <header class="resume__head">
+          <div class="resume__head-main">
+            <h2 class="resume__name"><span class="name">Shoucheng (Owen) Chen</span></h2>
+            <p class="resume__role">Designer &amp; technologist · Northwestern EDI</p>
+            <p class="resume__contact">
+              <a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=owenchisan@gmail.com" target="_blank" rel="noopener">owenchisan@gmail.com</a>
+              &nbsp;·&nbsp; +1 929-620-4511
+            </p>
+          </div>
+        </header>
+
+        <!-- EDUCATION -->
+        <div class="resume__section">
+          <span class="resume__label">education</span>
+          <div class="resume__body">
+
+            <div class="resume__entry">
+              <div class="resume__entry-head">
+                <h3>Northwestern University · McCormick School of Engineering</h3>
+                <span class="resume__when">Sep 2026 — Sep 2028</span>
+              </div>
+              <p class="resume__where">MS, Engineering Design Innovation · Chicago, IL · <em>Enrolling</em></p>
+            </div>
+
+            <div class="resume__entry">
+              <div class="resume__entry-head">
+                <h3>Parsons School of Design</h3>
+                <span class="resume__when">Aug 2022 — May 2026</span>
+              </div>
+              <p class="resume__where">BFA, Design &amp; Technology · New York, NY · GPA 3.93</p>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- WORK EXPERIENCE -->
+        <div class="resume__section">
+          <span class="resume__label">work experience</span>
+          <div class="resume__body">
+
+            <div class="resume__entry">
+              <div class="resume__entry-head">
+                <h3>BYD Auto Co., Ltd.</h3>
+                <span class="resume__when">Jun 2026 — Aug 2026</span>
+              </div>
+              <p class="resume__where">Product &amp; Customer Experience Intern</p>
+              <ul class="resume__bullets">
+                <li>Managed customer experience across the Ocean, Denza, Yangwang, and Fangchengbao brands throughout the pre-sales, delivery, and after-sales stages.</li>
+                <li>Conducted 50+ customer interviews and surveys, producing 3 research reports to support product improvements.</li>
+                <li>Identified delivery pain points, driving service optimization and supporting product refinement and regional marketing.</li>
+              </ul>
+            </div>
+
+            <div class="resume__entry">
+              <div class="resume__entry-head">
+                <h3>AI-robotics Technology Co., Ltd</h3>
+                <span class="resume__when">Jun 2025 — Aug 2025</span>
+              </div>
+              <p class="resume__where">Product Service Design Assistant · Beijing, China</p>
+              <ul class="resume__bullets">
+                <li>Published user survey questionnaires and collected backend feedback from 103 users across different regions.</li>
+                <li>Managed the UI and error reporting for the company's main site — resolving bugs and testing UX logic.</li>
+                <li>Conducted competitive research on 20+ comparable rehabilitation devices and enterprises while promoting client products.</li>
+              </ul>
+            </div>
+
+            <div class="resume__entry">
+              <div class="resume__entry-head">
+                <h3>IKEA China</h3>
+                <span class="resume__when">Jun 2024 — Jul 2024</span>
+              </div>
+              <p class="resume__where">Visual Merchandising Team Intern</p>
+              <ul class="resume__bullets">
+                <li>Supported the Visual Merchandising Team by collecting and organizing 120+ pieces of materials and reference data for vignette exhibitions.</li>
+                <li>Built 15+ detailed 3D Nordic-style kitchen furniture layout models in SketchUp.</li>
+                <li>Provided face-to-face seasonal informational support to 40+ customers about area discounts and promotions.</li>
+              </ul>
+            </div>
+
+            <div class="resume__entry">
+              <div class="resume__entry-head">
+                <h3>XAUAT · Robotic &amp; CNC Fabrication Laboratory</h3>
+                <span class="resume__when">Sep 2023 — Sep 2024</span>
+              </div>
+              <p class="resume__where">3D Parametric Product Design Intern · Xi'an, China</p>
+              <ul class="resume__bullets">
+                <li>Collaborated with faculty and students to design (Rhinoceros) and print 20+ cat shelters for stray cats in the city.</li>
+                <li>Participated in long-term market research exploring the commercial potential of large-scale parametric spatial installations.</li>
+                <li>Co-developed user-centered 3D-printed spatial installations using industrial robotic arms; optimized spatial experience and structural integrity.</li>
+              </ul>
+            </div>
+
+            <div class="resume__entry">
+              <div class="resume__entry-head">
+                <h3>Brokencigs</h3>
+                <span class="resume__when">Sep 2023 — Mar 2024</span>
+              </div>
+              <p class="resume__where">Game Design Intern · New York, NY</p>
+              <ul class="resume__bullets">
+                <li>Designed 3–5 level storylines for the game's virtual environment, providing creative continuity.</li>
+                <li>Conducted 10+ beta tests to ensure smooth UI functionality and seamless progression.</li>
+              </ul>
+            </div>
+
+            <div class="resume__entry">
+              <div class="resume__entry-head">
+                <h3>Shanghai E-pub 360</h3>
+                <span class="resume__when">May 2023 — Aug 2023</span>
+              </div>
+              <p class="resume__where">HTML-5 / Midjourney User Experience Design</p>
+              <ul class="resume__bullets">
+                <li>Generated multiple mainstream-related interactive media short videos using Midjourney via WeChat Mini Programs.</li>
+                <li>Designed a series of wedding-attire change templates themed around traditional Chinese festivals — Spring Festival, Mid-Autumn, and Dragon Boat Festival.</li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- RELEVANT PROJECTS -->
+        <div class="resume__section">
+          <span class="resume__label">relevant projects</span>
+          <div class="resume__body">
+
+            <div class="resume__entry">
+              <div class="resume__entry-head">
+                <h3>Behavioral Design on Global Consumer Goods — Procter &amp; Gamble</h3>
+                <span class="resume__when">Present</span>
+              </div>
+              <ul class="resume__bullets">
+                <li>Designing a product concept and behavioral strategy to shift a household air-care product from reactive to proactive use.</li>
+                <li>Leading user research and usage-journey mapping to identify behavioral triggers and barriers, translating insights into concept prototypes.</li>
+              </ul>
+            </div>
+
+            <div class="resume__entry">
+              <div class="resume__entry-head">
+                <h3>Clean AI Energy Deployment Strategy — Guzman Energy</h3>
+                <span class="resume__when">Present</span>
+              </div>
+              <ul class="resume__bullets">
+                <li>Designing strategies to accelerate clean energy asset deployment and remove real-world barriers to decarbonization.</li>
+                <li>Applying human-centered design methods alongside MBA and engineering peers to shape business strategy.</li>
+              </ul>
+            </div>
+
+            <div class="resume__entry">
+              <div class="resume__entry-head">
+                <h3>Kellogg Abrams Climate Academy</h3>
+                <span class="resume__when">Jul 2026 — Present</span>
+              </div>
+              <p class="resume__where">Research Fellow</p>
+              <ul class="resume__bullets">
+                <li>Selected for the competitive Abrams Climate Academy Fellowship, working with local US enterprises such as Guzman Energy.</li>
+                <li>Collaborating with Kellogg, McCormick, and industry mentors to translate climate innovation into practical business and sustainability strategies.</li>
+              </ul>
+            </div>
+
+            <div class="resume__entry">
+              <div class="resume__entry-head">
+                <h3>Royal College of Art (RCA) — "Immersive Acts" Symposium</h3>
+                <span class="resume__when">Dec 2025 — Feb 2026</span>
+              </div>
+              <p class="resume__where">Keynote Speaker · London</p>
+              <ul class="resume__bullets">
+                <li>Designed core 3D environments for "Insight Realm," an XR prototype peer-reviewed and selected for the RCA symposium.</li>
+                <li>Externalized psychological states like perceptual bias into navigable spatial environments ("Perceptual Self Box"), built with Team Echo Studio.</li>
+              </ul>
+            </div>
+
+            <div class="resume__entry">
+              <div class="resume__entry-head">
+                <h3>MIT Reality Hack 2025</h3>
+                <span class="resume__when">Jan 2025</span>
+              </div>
+              <p class="resume__where">Volunteer</p>
+              <ul class="resume__bullets">
+                <li>Managed distribution and guidance on Apple Vision Pro headsets; offered technical support for Unity, Maya, and Unreal.</li>
+                <li>Coordinated event logistics — scheduling, meeting setups, and operational matters — and provided support to participants.</li>
+              </ul>
+            </div>
+
+            <div class="resume__entry">
+              <div class="resume__entry-head">
+                <h3>Korea – Japan Youth Conference</h3>
+                <span class="resume__when">Jul 2021 — Aug 2022</span>
+              </div>
+              <p class="resume__where">Organizer · Tokyo</p>
+              <ul class="resume__bullets">
+                <li>Fostered thought-evoking dialogues between ~100 young people from Korea, China, and Japan, addressing contemporary issues stemming from historical conflicts.</li>
+                <li>Organized and facilitated online and in-person events in Tokyo.</li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+      </section>
+    </section>
+
   </main>
 
   <footer class="foot">
