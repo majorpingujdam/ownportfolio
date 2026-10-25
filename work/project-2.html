@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>AiWalker — Owen Chen</title>
-  <meta name="description" content="AiWalker — clinic-to-home rehabilitation service design at Beijing Ai-Robotics. Case study by Owen Chen." />
+  <meta name="description" content="AiWalker — a full-cycle healthcare service carrying rehabilitation from hospital to home, at Beijing Ai-Robotics. Case study by Owen Chen." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -26,7 +26,7 @@
 
       <header class="project__head">
         <div>
-          <p class="cs__eyebrow">lower-limb rehabilitation exoskeleton</p>
+          <p class="cs__eyebrow">full-cycle rehabilitation service · clinic to home</p>
           <h1 class="project__title">AiWalker</h1>
         </div>
         <dl class="project__meta">
@@ -44,44 +44,125 @@
         <img loading="lazy" decoding="async" src="../work-2-logo.png" alt="Beijing Ai-Robotics" />
       </div>
 
-      <!-- 1. COMPANY PROFILE -->
+      <!-- BACKGROUND -->
       <section class="cs">
-        <header class="cs__head">
-          <span class="cs__label">Company Profile</span>
-        </header>
-
+        <p class="cs__eyebrow">background</p>
+        <h2 class="cs__display">What is AiWalker?</h2>
         <div class="cs__prose">
           <p>
-            Beijing Ai-Robotics <span class="cs__zh">(北京大艾机器人)</span> develops lower-limb rehabilitation exoskeletons for SCI, stroke, and cerebral palsy patients — gaining national recognition at the 2022 Beijing Winter Olympics torch relay. As China pushes rehabilitation into the home, the challenge shifts from hardware to the handoff: the operator changes from a trained therapist to an untrained family caregiver, and the service around the device must change with it.
+            AiWalker is a lower-limb rehabilitation exoskeleton by Beijing Ai-Robotics <span class="cs__zh">(北京大艾机器人)</span> — the device that carried a torch at the 2022 Beijing Winter Olympics — built for SCI, stroke, and cerebral-palsy patients relearning to walk.
+          </p>
+          <p>
+            This project reframes it as a <strong>full-cycle healthcare service</strong>: not a device you buy, but one continuous experience that carries a patient from supervised therapy in the hospital, through the fragile handoff, to independent recovery at home. As China pushes rehabilitation into the home, the hard problem stops being the hardware and becomes the <em>continuity of care</em> around it.
           </p>
         </div>
       </section>
 
-        <figure class="project__hero" style="margin-top:2rem; transform: translateX(0%) scale(0.88); transform-origin: left center;">
-          <img loading="lazy" decoding="async" src="../Photos/Ai-robotics/002.png" alt="Beijing Ai-Robotics exoskeleton" />
-        </figure>
+      <figure class="project__hero" style="margin-top:2rem; transform: scale(0.88); transform-origin: left center;">
+        <img loading="lazy" decoding="async" src="../Photos/Ai-robotics/002.png" alt="Beijing Ai-Robotics exoskeleton" />
+      </figure>
 
-      <!-- 2. MY ROLE -->
-      <section class="cs" style="margin-top:1.5rem;">
-        <header class="cs__head">
-          <span class="cs__label">My Role</span>
-        </header>
+      <!-- THE PROBLEM -->
+      <section class="cs">
+        <p class="cs__eyebrow">identifying the problem</p>
+        <h2 class="cs__display">Where the full cycle breaks</h2>
+        <div class="cs__cols">
+          <div class="cs__col">
+            <span class="cs__col-num">01</span>
+            <h3>The Handoff Gap</h3>
+            <p>Operating knowledge lives in the clinic. It doesn't travel home with the device — a manual can't replace a therapist standing beside you.</p>
+          </div>
+          <div class="cs__col">
+            <span class="cs__col-num">02</span>
+            <h3>Untrained Operators</h3>
+            <p>Overnight, the daily operator changes from a trained therapist to a family caregiver who has never set up a medical device in their life.</p>
+          </div>
+          <div class="cs__col">
+            <span class="cs__col-num">03</span>
+            <h3>Care Goes Dark</h3>
+            <p>Once home, no one sees progress or setbacks until the next clinic visit — if there even is one. Recovery happens unobserved.</p>
+          </div>
+        </div>
+      </section>
 
-        <p class="cs__subtitle">Product Service Design Assistant</p>
-
-        <div class="cs__prose" style="font-size:0.95rem;">
+      <!-- THE USER -->
+      <section class="cs">
+        <p class="cs__eyebrow">the user</p>
+        <h2 class="cs__display">Who is the user?</h2>
+        <div class="cs__prose">
           <p>
-            <strong>User Research.</strong> Led a 103-user multi-region survey to pinpoint where patients dropped off — turning scattered frustration into a pattern the team could act on.
+            One device, two very different people, at two very different moments. A <strong>recovering patient</strong> who was never meant to operate medical hardware — and a <strong>family caregiver</strong> who inherits that job the day they leave the hospital, with a therapist watching from a distance, if at all.
           </p>
           <p>
-            <strong>Product Experience.</strong> Managed the main site UI and error-reporting pipeline, diagnosing bugs and converting live friction data into actionable design signals.
+            To ground the service I ran a <strong>103-user multi-region survey</strong>, mapping where people actually dropped off. The pain wasn't the walking — it was everything around it once the professionals were gone.
+          </p>
+        </div>
+      </section>
+
+      <!-- USER PERSONAS -->
+      <section class="cs">
+        <p class="cs__eyebrow">user personas</p>
+        <h2 class="cs__display">Who are the users?</h2>
+        <div class="cs__cols">
+          <div class="cs__col">
+            <span class="cs__col-tag">the patient</span>
+            <h3>Recovering, Alone</h3>
+            <p><em>"In the hospital a therapist was always there. At home I'm scared I'll use it wrong and set my recovery back."</em></p>
+          </div>
+          <div class="cs__col">
+            <span class="cs__col-tag">the caregiver</span>
+            <h3>Suddenly Responsible</h3>
+            <p><em>"I'm not trained, but I'm the one strapping it on every morning. It has to be impossible to get wrong."</em></p>
+          </div>
+          <div class="cs__col">
+            <span class="cs__col-tag">the therapist</span>
+            <h3>Out of Sight</h3>
+            <p><em>"Once they go home I lose visibility. I need to see progress and step in before a small problem becomes a setback."</em></p>
+          </div>
+        </div>
+      </section>
+
+      <!-- COMPETITIVE ANALYSIS -->
+      <section class="cs">
+        <p class="cs__eyebrow">competitive analysis</p>
+        <h2 class="cs__display">How does the market solve it?</h2>
+        <div class="cs__prose">
+          <p>
+            I benchmarked <strong>20+ competing rehabilitation devices and companies</strong>. Almost every one competes on the same axis: more motors, finer sensors, smarter gait algorithms. The race is a hardware race.
+          </p>
+          <p>
+            Almost no one designs the <strong>service</strong> around the device once it leaves the clinic — onboarding, home-mode simplicity, remote check-ins, a way back to a professional when something goes wrong. That absence is the opportunity: the gap isn't another hardware spec, it's the <em>service wrapper nobody had built</em>.
+          </p>
+        </div>
+        <div class="cs__ba">
+          <div class="cs__ba-box cs__ba-box--before">
+            <span class="cs__ba-label">The market</span>
+            <p>Hardware-first — competing on specs.</p>
+          </div>
+          <div class="cs__ba-box cs__ba-box--after">
+            <span class="cs__ba-label">The opening</span>
+            <p>Service-first — competing on continuity of care.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- MY ROLE -->
+      <section class="cs">
+        <p class="cs__eyebrow">my role</p>
+        <h2 class="cs__display">Product Service Design Assistant</h2>
+        <div class="cs__prose" style="font-size:0.95rem;">
+          <p>
+            <strong>User Research.</strong> Led the 103-user multi-region survey to pinpoint where patients dropped off — turning scattered frustration into a pattern the team could act on.
+          </p>
+          <p>
+            <strong>Product Experience.</strong> Managed the main-site UI and error-reporting pipeline, diagnosing bugs and converting live friction data into actionable design signals.
           </p>
           <p>
             <strong>Market Research.</strong> Benchmarked 20+ competing devices — finding the gap wasn't in hardware, but in the service wrapper nobody had built.
           </p>
         </div>
 
-        <div style="display:flex; gap:1.5rem; margin-top:2rem; transform:translateX(-3%);">
+        <div style="display:flex; gap:1.5rem; margin-top:2rem;">
           <figure style="flex:1; margin:0; border-radius:12px; overflow:hidden;">
             <img loading="lazy" decoding="async" src="../Photos/Ai-robotics/Ai-robotics-1.jpg" alt="Ai-Robotics field photo 1" style="width:100%; height:100%; object-fit:cover; display:block;" />
           </figure>
@@ -94,11 +175,10 @@
         </div>
       </section>
 
-      <!-- 3. SERVICE BLUEPRINT -->
+      <!-- THE SERVICE / BLUEPRINT -->
       <section class="cs">
-        <header class="cs__head">
-          <span class="cs__label">Service Blueprint</span>
-        </header>
+        <p class="cs__eyebrow">service blueprint</p>
+        <h2 class="cs__display">How care stays continuous</h2>
 
         <ul class="cs__legend" aria-label="Legend">
           <li><span class="cs__sw cs__sw--blue"></span>Hospital</li>
@@ -142,11 +222,10 @@
         </figure>
       </section>
 
-      <!-- 4. SUMMARY AND REFLECTIONS -->
+      <!-- REFLECTIONS -->
       <section class="cs">
-        <header class="cs__head">
-          <span class="cs__label">Summary and Reflections</span>
-        </header>
+        <p class="cs__eyebrow">reflections</p>
+        <h2 class="cs__display">What the project changed</h2>
 
         <div class="cs__ba">
           <div class="cs__ba-box cs__ba-box--before">
@@ -166,7 +245,7 @@
         </div>
 
         <p class="cs__note">
-          <em>Note:</em> the blueprint and four touchpoints are my design synthesis based on the research — honestly stated as <em>"research delivered, blueprint proposed."</em>
+          <em>Note:</em> the blueprint, personas, and four touchpoints are my design synthesis based on the research — honestly stated as <em>"research delivered, service proposed."</em>
         </p>
       </section>
 

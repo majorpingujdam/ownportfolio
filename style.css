@@ -1450,6 +1450,50 @@ body.is-exiting { opacity: 0; transition: opacity .35s var(--ease); }
   margin-bottom: 2rem;
 }
 
+/* three-up columns: numbered problems & personas (Athleats-style form) */
+.cs__cols {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+  margin-top: 2.5rem;
+}
+@media (max-width: 720px) { .cs__cols { grid-template-columns: 1fr; gap: 2rem; } }
+.cs__col { margin: 0; }
+.cs__col-num {
+  display: block;
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 2.4rem;
+  line-height: 1;
+  color: var(--red);
+  opacity: 0.4;
+  margin-bottom: 0.5rem;
+}
+.cs__col-tag {
+  display: block;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--red);
+  margin-bottom: 0.5rem;
+}
+.cs__col h3 {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 1.2rem;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  color: var(--ink);
+  margin-bottom: 0.6rem;
+}
+.cs__col p {
+  font-size: 0.98rem;
+  line-height: 1.6;
+  color: var(--ink-2);
+}
+.cs__col p em { font-style: italic; color: var(--ink); }
+
 /* prose */
 .cs__prose {
   display: flex;

@@ -16,7 +16,7 @@ const WORK_FILTERS = [
 // images don't shift the masonry layout while loading.
 const WORK_PROJECTS = [
   { href: "work/project-2.html",  category: "internship", title: "AiWalker",
-    desc: "Clinic-to-home rehab service design.",
+    desc: "Full-cycle healthcare service — hospital to home rehab.",
     video: "Photos/Ai-robotics/ai-new.mp4", label: "AiWalker exoskeleton rendering", w: 800, h: 550 },
   { href: "work/project-3.html",  category: "internship", title: "Vignette",
     desc: "Kitchen room-set design at IKEA China.",

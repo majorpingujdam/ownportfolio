@@ -308,8 +308,9 @@ if (heroImgs.length && window.matchMedia("(prefers-reduced-motion: no-preference
 // ── Section index (table of contents) for case-study pages ────
 if (document.body.dataset.page === "project") {
   const article = document.querySelector("article.project");
+  const labelOf = s => s.querySelector(".cs__label, .cs__eyebrow, .cs__display");
   const sections = article
-    ? [...article.querySelectorAll(".cs")].filter(s => s.querySelector(".cs__label"))
+    ? [...article.querySelectorAll(".cs")].filter(labelOf)
     : [];
 
   if (article && sections.length >= 2) {
@@ -329,7 +330,7 @@ if (document.body.dataset.page === "project") {
     const ol = document.createElement("ol");
 
     const links = sections.map(sec => {
-      const label = sec.querySelector(".cs__label").textContent.trim();
+      const label = labelOf(sec).textContent.trim();
       if (!sec.id) sec.id = slug(label);
       const li = document.createElement("li");
       const a = document.createElement("a");
