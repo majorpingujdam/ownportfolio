@@ -1253,17 +1253,50 @@ body[data-page="contact"] main {
 /* ---------- Reveal ---------- */
 .reveal {
   opacity: 0;
-  transform: translateY(14px);
-  transition: opacity .8s var(--ease), transform .8s var(--ease);
+  transform: translateY(22px);
+  filter: blur(6px);
+  transition: opacity .9s var(--ease), transform .9s var(--ease), filter .9s var(--ease);
+  will-change: opacity, transform;
 }
-.reveal.is-visible { opacity: 1; transform: none; }
+.reveal.is-visible { opacity: 1; transform: none; filter: none; }
 
 /* ---------- Interactive polish ---------- */
 
 /* page enter / exit fade */
 body { animation: page-in .5s var(--ease); }
 @keyframes page-in { from { opacity: 0; } }
-body.is-exiting { opacity: 0; transition: opacity .22s ease; }
+body.is-exiting { opacity: 0; transition: opacity .35s var(--ease); }
+
+/* nav: solid at the top, translucent frosted glass once scrolled */
+.nav {
+  transition: background .5s var(--ease), box-shadow .5s var(--ease),
+              border-color .5s var(--ease), backdrop-filter .5s var(--ease);
+}
+.nav.is-scrolled {
+  background: rgba(250, 250, 248, 0.68);
+  -webkit-backdrop-filter: saturate(180%) blur(18px);
+  backdrop-filter: saturate(180%) blur(18px);
+  border-bottom-color: transparent;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.04), 0 10px 34px -16px rgba(0, 0, 0, 0.16);
+}
+
+/* the staggered hero entrance is driven by the JS reveal system
+   (.hero__media, .hero__hello, .hero__intro) so content is never
+   stuck hidden if animations can't run */
+
+/* cards: smooth lift + depth on hover */
+.card__inner { transition: transform .5s var(--ease), box-shadow .5s var(--ease); }
+.card__link:hover .card__inner {
+  transform: translateY(-4px);
+  box-shadow: 0 22px 48px -22px rgba(26, 26, 26, 0.35);
+}
+
+/* skill chips: gentle lift on hover */
+.skills__tags li { transition: transform .3s var(--ease), box-shadow .3s var(--ease); }
+.skills__tags li:hover {
+  transform: translateY(-2px);
+  box-shadow: 4px 4px 0 rgba(26, 26, 26, 0.16);
+}
 
 /* reading progress bar (accent-aware, set via JS on project pages) */
 .scroll-progress {

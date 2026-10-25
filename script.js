@@ -110,13 +110,28 @@ if (toggle) {
 }
 
 
+// ── Nav: translucent blur + lift once the page is scrolled ─────
+const navScrollEl = document.querySelector(".nav");
+if (navScrollEl) {
+  let ticking = false;
+  const update = () => {
+    navScrollEl.classList.toggle("is-scrolled", window.scrollY > 8);
+    ticking = false;
+  };
+  update();
+  window.addEventListener("scroll", () => {
+    if (!ticking) { requestAnimationFrame(update); ticking = true; }
+  }, { passive: true });
+}
+
+
 // ── Reveal on scroll (fade-in as elements enter the viewport) ──
 // Reduced motion: skip the effect entirely so content is simply there.
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 if (!prefersReducedMotion && "IntersectionObserver" in window) {
   const revealTargets = document.querySelectorAll(
-    ".intro__image, .intro__text > *, .home-intro, .work__head, .card, .contact__big, .contact__links, .contact-page > *, .resume__head, .resume__section, .project__head, .project__hero, .cs"
+    ".hero__media, .hero__hello, .hero__intro, .page-band, .intro__image, .intro__text > *, .home-intro, .work__head, .card, .skills__group, .contact__big, .contact__links, .contact-page > *, .resume__head, .resume__section, .project__head, .project__hero, .cs"
   );
   revealTargets.forEach(el => el.classList.add("reveal"));
 
