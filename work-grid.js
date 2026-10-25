@@ -23,7 +23,7 @@ const WORK_PROJECTS = [
     img: "work-3.jpg", alt: "IKEA Visual Merchandising", w: 1440, h: 1080 },
   { href: "work/project-1.html",  category: "product", title: "Dosage-Pal",
     desc: "Elder care medication management app.",
-    img: "work-1.jpg", alt: "Dosage-Pal", w: 2304, h: 1728 },
+    img: "work-1.jpg", alt: "Dosage-Pal", w: 2304, h: 1728, pos: "35% 50%" },
   { href: "work/project-4.html",  category: "product", title: "Sky Harvest",
     desc: "Rooftop farm + drone delivery shortening farm to table.",
     img: "work-4.jpg", alt: "Sky Harvest", w: 1440, h: 1080 },
@@ -81,7 +81,8 @@ const WORK_PROJECTS = [
       const poster = p.poster ? ` poster="${esc(p.poster)}"` : "";
       return `<video src="${esc(p.video)}"${poster} width="${p.w}" height="${p.h}"${reduceMotion ? ' preload="metadata"' : " autoplay"} muted loop playsinline aria-label="${esc(p.label || p.title)}"></video>`;
     }
-    return `<img src="${esc(p.img)}" alt="${esc(p.alt)}" width="${p.w}" height="${p.h}" loading="lazy" decoding="async" />`;
+    const pos = p.pos ? ` style="object-position:${esc(p.pos)}"` : "";
+    return `<img src="${esc(p.img)}" alt="${esc(p.alt)}" width="${p.w}" height="${p.h}"${pos} loading="lazy" decoding="async" />`;
   };
 
   // category value → human label, shown on each card's top row
