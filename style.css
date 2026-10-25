@@ -322,7 +322,7 @@ em { font-style: italic; }
 }
 .skills__group {
   display: grid;
-  grid-template-columns: minmax(7rem, 11rem) 1fr;
+  grid-template-columns: minmax(8rem, 13rem) 1fr;
   gap: 1.5rem clamp(1.5rem, 4vw, 3.5rem);
   align-items: center;
 }
