@@ -6,10 +6,10 @@ Plain HTML/CSS/JS. No build step. Open `index.html` in a browser, or host on Git
 
 ## Built with
 
-Designed and directed by Owen Chen, with OpenAI Codex as a coding partner for implementation, debugging, and iteration. Owen leads the creative direction and reviews the work.
+Designed and directed by Owen Chen, with Claude Code and OpenAI Codex as coding partners for implementation, debugging, and iteration. Owen leads the creative direction and reviews the work.
 
 - Design and creative direction: Owen Chen
-- AI coding assistant: OpenAI Codex
+- AI coding assistants: Claude Code and OpenAI Codex
 - Built with: HTML, CSS, and JavaScript
 
 ## Edit checklist
