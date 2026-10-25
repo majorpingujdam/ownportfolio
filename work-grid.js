@@ -108,7 +108,7 @@ const WORK_PROJECTS = [
     </header>`;
 
   // projects aren't public yet — lock the cards so clicks don't open them
-  const LOCKED = true;
+  const LOCKED = false;
   const lockBadge = `<span class="card__lock" aria-hidden="true">`
     + `<svg viewBox="0 0 24 24" width="13" height="13"><path d="M7 10V7a5 5 0 0 1 10 0v3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><rect x="4.5" y="10" width="15" height="10" rx="2" fill="currentColor"/></svg>`
     + `in progress</span>`;
