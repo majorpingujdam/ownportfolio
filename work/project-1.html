@@ -114,23 +114,60 @@
           </p>
         </div>
 
-        <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:1rem; margin-top:1.5rem;">
-          <div style="background:var(--bg-soft); border-radius:10px; padding:1.25rem;">
-            <p style="font-family:'JetBrains Mono',monospace; font-size:2.2rem; font-weight:500; color:#e07040; margin:0 0 0.3rem; line-height:1;">43%</p>
-            <p style="font-size:0.875rem; color:var(--ink-2); margin:0; line-height:1.5;">of all participants forget to take their medication at some point.</p>
+        <div class="dp-bars" id="dp-bars">
+          <div class="dp-bars__head">
+            <p class="dp-bars__lede">
+              <strong>43%</strong> of all 96 participants forget a dose at some point
+              &mdash; about 41 people. What those 41 do next is the actual design problem.
+            </p>
+            <div class="dp-bars__toggle" role="group" aria-label="Choose what the percentage is out of">
+              <button type="button" class="is-on" data-base="forget">of forgetters</button>
+              <button type="button" data-base="all">of all 96</button>
+            </div>
           </div>
-          <div style="background:var(--bg-soft); border-radius:10px; padding:1.25rem;">
-            <p style="font-family:'JetBrains Mono',monospace; font-size:2.2rem; font-weight:500; color:#e07040; margin:0 0 0.3rem; line-height:1;">46%</p>
-            <p style="font-size:0.875rem; color:var(--ink-2); margin:0; line-height:1.5;">of forgetters simply "let go" — no corrective action at all.</p>
-          </div>
-          <div style="background:var(--bg-soft); border-radius:10px; padding:1.25rem;">
-            <p style="font-family:'JetBrains Mono',monospace; font-size:2.2rem; font-weight:500; color:#e07040; margin:0 0 0.3rem; line-height:1;">18%</p>
-            <p style="font-size:0.875rem; color:var(--ink-2); margin:0; line-height:1.5;">take another dose later without checking time intervals.</p>
-          </div>
-          <div style="background:var(--bg-soft); border-radius:10px; padding:1.25rem;">
-            <p style="font-family:'JetBrains Mono',monospace; font-size:2.2rem; font-weight:500; color:#e07040; margin:0 0 0.3rem; line-height:1;">9%</p>
-            <p style="font-size:0.875rem; color:var(--ink-2); margin:0; line-height:1.5;">self-administer an early extra dose — the highest-risk behavior.</p>
-          </div>
+
+          <ol class="dp-bars__list">
+            <li class="dp-bar" data-forget="46" data-all="19.8" data-n="19">
+              <button type="button" class="dp-bar__row" aria-expanded="false">
+                <span class="dp-bar__label">Let it go <em>no correction</em></span>
+                <span class="dp-bar__track"><span class="dp-bar__fill"></span></span>
+                <span class="dp-bar__val">46%</span>
+              </button>
+              <div class="dp-bar__detail">
+                <p>Roughly 19 of the 96 take no corrective action at all &mdash; the missed dose simply disappears.</p>
+                <p class="dp-bar__design"><span>design response</span> The cap logs the miss, so a skipped dose stops being invisible to the patient and the caregiver.</p>
+              </div>
+            </li>
+
+            <li class="dp-bar" data-forget="18" data-all="7.7" data-n="7">
+              <button type="button" class="dp-bar__row" aria-expanded="false">
+                <span class="dp-bar__label">Another dose, later <em>interval unknown</em></span>
+                <span class="dp-bar__track"><span class="dp-bar__fill"></span></span>
+                <span class="dp-bar__val">18%</span>
+              </button>
+              <div class="dp-bar__detail">
+                <p>About 7 people take a replacement dose without checking how long it has been since the last one.</p>
+                <p class="dp-bar__design"><span>design response</span> Timing is the thing nobody has. The cap records when a dose actually left the bottle, not when someone remembers taking it.</p>
+              </div>
+            </li>
+
+            <li class="dp-bar" data-forget="9" data-all="3.9" data-n="4">
+              <button type="button" class="dp-bar__row" aria-expanded="false">
+                <span class="dp-bar__label">An early extra dose <em>highest risk</em></span>
+                <span class="dp-bar__track"><span class="dp-bar__fill"></span></span>
+                <span class="dp-bar__val">9%</span>
+              </button>
+              <div class="dp-bar__detail">
+                <p>About 4 people self-administer an extra dose ahead of schedule &mdash; the behaviour with real overdose consequences.</p>
+                <p class="dp-bar__design"><span>design response</span> Dispensing is gated by the cap rather than by memory, so the next dose is not simply available early.</p>
+              </div>
+            </li>
+          </ol>
+
+          <p class="dp-bars__note">
+            Self-reported responses among the forgetters; the three do not total 100%.
+            Counts are rounded from a 96-person questionnaire.
+          </p>
         </div>
 
         <!-- User categories -->
@@ -460,6 +497,44 @@
         timer = setInterval(() => go(i + 1), 1100);
       });
       go(0);
+    })();
+
+    // research bars
+    (function () {
+      const root = document.getElementById("dp-bars");
+      if (!root) return;
+      const bars = [...root.querySelectorAll(".dp-bar")];
+      const btns = [...root.querySelectorAll(".dp-bars__toggle button")];
+      let base = "forget", shown = false;
+
+      function paint() {
+        bars.forEach(b => {
+          const v = parseFloat(b.dataset[base === "forget" ? "forget" : "all"]);
+          b.querySelector(".dp-bar__val").textContent =
+            (base === "forget" ? v : v.toFixed(1)) + "%";
+          b.querySelector(".dp-bar__fill").style.width = shown ? v + "%" : "0%";
+        });
+      }
+      btns.forEach(b => b.addEventListener("click", () => {
+        base = b.dataset.base;
+        btns.forEach(x => x.classList.toggle("is-on", x === b));
+        paint();
+      }));
+      bars.forEach(b => {
+        const row = b.querySelector(".dp-bar__row");
+        row.addEventListener("click", () => {
+          const open = b.classList.toggle("is-open");
+          row.setAttribute("aria-expanded", open ? "true" : "false");
+        });
+      });
+
+      paint();
+      if ("IntersectionObserver" in window) {
+        const io = new IntersectionObserver(es => {
+          es.forEach(e => { if (e.isIntersecting) { shown = true; paint(); io.disconnect(); } });
+        }, { threshold: 0.25 });
+        io.observe(root);
+      } else { shown = true; paint(); }
     })();
 
     // worst-morning simulator
