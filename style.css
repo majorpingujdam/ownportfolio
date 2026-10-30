@@ -275,9 +275,11 @@ em { font-style: italic; }
   padding-top: 0.5rem;
 }
 .intro__text p { color: var(--ink); }
+/* key terms, same treatment as the hero */
 .intro__text em {
-  font-style: italic;
+  font-style: normal;
   color: var(--ink);
+  border-bottom: 2px solid var(--green);
 }
 .intro__lede {
   font-size: 1.25rem;
