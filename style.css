@@ -311,6 +311,22 @@ em { font-style: italic; }
 }
 .intro__meta dd a:hover { opacity: 0.7; }
 
+/* ---------- Dosage-Pal: opening hook ---------- */
+.dp-hook__lead {
+  margin: 0.4rem 0 1.25rem;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  max-width: 24ch;
+}
+.dp-hook .cs__prose p:last-child {
+  font-size: 1.15rem;
+  color: var(--ink);
+}
+
 /* ---------- Dosage-Pal: interactive research bars ---------- */
 .dp-bars {
   margin-top: 1.5rem;
