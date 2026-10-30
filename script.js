@@ -131,7 +131,7 @@ const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)
 
 if (!prefersReducedMotion && "IntersectionObserver" in window) {
   const revealTargets = document.querySelectorAll(
-    ".hero__media, .hero__hello, .hero__intro, .page-band, .intro__image, .intro__text > *, .home-intro, .work__head, .card, .skills__group, .contact__big, .contact__links, .contact-page > *, .resume__head, .resume__section, .project__head, .project__hero, .cs"
+    ".hero__media, .hero__hello, .hero__intro, .page-band, .intro__image, .intro__text > *, .home-intro, .work__head, .card, .pov, .vig, .skills__group, .contact__big, .contact__links, .contact-page > *, .resume__head, .resume__section, .project__head, .project__hero, .cs"
   );
   revealTargets.forEach(el => el.classList.add("reveal"));
 
