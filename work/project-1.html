@@ -267,39 +267,96 @@
           </div>
         </div>
 
-        <!-- Dispensing steps -->
-        <p class="cs__subtitle" style="margin-top:2.5rem;">Dispensing process · 7 steps</p>
-        <p style="font-size:0.875rem; color:var(--ink-2); margin:0.5rem 0 1rem;">Works identically for capsule and tablet variants.</p>
+        <!-- Dispensing walkthrough -->
+        <p class="cs__subtitle" style="margin-top:2.5rem;">Dispensing process &middot; 7 steps</p>
+        <p style="font-size:0.875rem; color:var(--ink-2); margin:0.5rem 0 1.25rem;">
+          Works identically for capsule and tablet variants. Step through the mechanism below.
+        </p>
 
-        <div style="display:grid; grid-template-columns:repeat(7,1fr); gap:0.5rem;">
-          <div style="background:var(--bg-soft); border-radius:8px; padding:0.85rem 0.5rem; text-align:center; display:flex; flex-direction:column; gap:0.4rem;">
-            <p style="font-family:'JetBrains Mono',monospace; font-size:0.62rem; color:#e07040; margin:0; font-weight:500; letter-spacing:0.5px;">STEP 1</p>
-            <p style="font-size:0.75rem; color:var(--ink-2); margin:0; line-height:1.4;">Capsule falls into funnel channel</p>
+        <div class="dp-demo" id="dp-dispense">
+          <div class="dp-demo__stage">
+            <svg viewBox="0 0 220 320" class="dp-demo__svg" role="img"
+                 aria-label="Cross-section of the Dosage-Pal cap dispensing one capsule">
+              <path d="M45 45 H175 L136 114 H84 Z" class="dp-part" />
+              <rect x="84" y="122" width="52" height="78" rx="5" class="dp-part" />
+              <rect id="dp-rod" x="101" y="84" width="18" height="36" rx="4" class="dp-rod" />
+              <path d="M84 200 H99 M121 200 H136" class="dp-part" />
+              <circle id="dp-btn" cx="190" cy="82" r="9" class="dp-btn" />
+              <circle id="dp-sig" cx="190" cy="82" r="9" class="dp-sig" />
+              <path d="M62 284 q48 32 96 0" class="dp-hand" />
+              <g id="dp-pill" transform="translate(110 70)">
+                <ellipse rx="12" ry="7.5" class="dp-pill" />
+              </g>
+            </svg>
           </div>
-          <div style="background:var(--bg-soft); border-radius:8px; padding:0.85rem 0.5rem; text-align:center; display:flex; flex-direction:column; gap:0.4rem;">
-            <p style="font-family:'JetBrains Mono',monospace; font-size:0.62rem; color:#e07040; margin:0; font-weight:500; letter-spacing:0.5px;">STEP 2</p>
-            <p style="font-size:0.75rem; color:var(--ink-2); margin:0; line-height:1.4;">User presses button</p>
+
+          <div class="dp-demo__panel">
+            <p class="dp-demo__count"><span id="dp-n">1</span> / 7</p>
+            <p class="dp-demo__text" id="dp-text">Capsule falls into funnel channel</p>
+            <div class="dp-demo__ctrls">
+              <button type="button" id="dp-prev" aria-label="Previous step">&larr;</button>
+              <button type="button" id="dp-play">play</button>
+              <button type="button" id="dp-next" aria-label="Next step">&rarr;</button>
+            </div>
+            <ol class="dp-demo__dots" id="dp-dots"></ol>
           </div>
-          <div style="background:var(--bg-soft); border-radius:8px; padding:0.85rem 0.5rem; text-align:center; display:flex; flex-direction:column; gap:0.4rem;">
-            <p style="font-family:'JetBrains Mono',monospace; font-size:0.62rem; color:#e07040; margin:0; font-weight:500; letter-spacing:0.5px;">STEP 3</p>
-            <p style="font-size:0.75rem; color:var(--ink-2); margin:0; line-height:1.4;">Signal received</p>
+        </div>
+      </section>
+
+      <!-- 6. INTERFACE -->
+      <section class="cs">
+        <header class="cs__head">
+          <span class="cs__label">Interface</span>
+        </header>
+
+        <p class="cs__subtitle">The app the cap talks to</p>
+
+        <figure class="project__hero" style="margin-top:1.25rem;">
+          <img loading="lazy" decoding="async" src="../Photos/Dosage-Pal/app-screens.jpg"
+               alt="Dosage-Pal app screens: sign-in, schedule, reminders and medication history" />
+        </figure>
+
+        <p class="cs__subtitle" style="margin-top:2.75rem;">Designed for the worst morning</p>
+        <p style="font-size:0.875rem; color:var(--ink-2); margin:0.5rem 0 1.25rem; max-width:62ch;">
+          The person reaching for this is often tired, shaky, or squinting before their first
+          coffee. Switch a condition on and compare a typical reminder with the Dosage-Pal card.
+        </p>
+
+        <div class="dp-sim" id="dp-sim">
+          <div class="dp-sim__ctrls" role="group" aria-label="Simulate a condition">
+            <button type="button" class="is-on" data-cond="clear">clear</button>
+            <button type="button" data-cond="lowvision">low vision</button>
+            <button type="button" data-cond="tremor">tremor</button>
+            <button type="button" data-cond="glare">glare</button>
           </div>
-          <div style="background:var(--bg-soft); border-radius:8px; padding:0.85rem 0.5rem; text-align:center; display:flex; flex-direction:column; gap:0.4rem;">
-            <p style="font-family:'JetBrains Mono',monospace; font-size:0.62rem; color:#e07040; margin:0; font-weight:500; letter-spacing:0.5px;">STEP 4</p>
-            <p style="font-size:0.75rem; color:var(--ink-2); margin:0; line-height:1.4;">Medication drops into middle compartment</p>
+
+          <div class="dp-sim__pair" id="dp-sim-pair">
+            <figure class="dp-sim__col">
+              <figcaption>a typical reminder</figcaption>
+              <div class="dp-card dp-card--typical">
+                <p class="dp-card__t">Metformin 500mg</p>
+                <p class="dp-card__s">8:00 AM &middot; take with food</p>
+                <a class="dp-card__a" href="#dp-sim" onclick="return false;">Mark as taken</a>
+              </div>
+            </figure>
+            <figure class="dp-sim__col">
+              <figcaption>Dosage-Pal</figcaption>
+              <div class="dp-card dp-card--ours">
+                <p class="dp-card__t">Metformin</p>
+                <p class="dp-card__dose">500 mg</p>
+                <p class="dp-card__s">8:00 AM &middot; with breakfast</p>
+                <button type="button" class="dp-card__btn">TAKEN</button>
+              </div>
+            </figure>
           </div>
-          <div style="background:var(--bg-soft); border-radius:8px; padding:0.85rem 0.5rem; text-align:center; display:flex; flex-direction:column; gap:0.4rem;">
-            <p style="font-family:'JetBrains Mono',monospace; font-size:0.62rem; color:#e07040; margin:0; font-weight:500; letter-spacing:0.5px;">STEP 5</p>
-            <p style="font-size:0.75rem; color:var(--ink-2); margin:0; line-height:1.4;">Rod pushes medicine down</p>
-          </div>
-          <div style="background:var(--bg-soft); border-radius:8px; padding:0.85rem 0.5rem; text-align:center; display:flex; flex-direction:column; gap:0.4rem;">
-            <p style="font-family:'JetBrains Mono',monospace; font-size:0.62rem; color:#e07040; margin:0; font-weight:500; letter-spacing:0.5px;">STEP 6</p>
-            <p style="font-size:0.75rem; color:var(--ink-2); margin:0; line-height:1.4;">Falls out of dropping hole</p>
-          </div>
-          <div style="background:var(--bg-soft); border-radius:8px; padding:0.85rem 0.5rem; text-align:center; display:flex; flex-direction:column; gap:0.4rem;">
-            <p style="font-family:'JetBrains Mono',monospace; font-size:0.62rem; color:#e07040; margin:0; font-weight:500; letter-spacing:0.5px;">STEP 7</p>
-            <p style="font-size:0.75rem; color:var(--ink-2); margin:0; line-height:1.4;">Medicine in user's hand</p>
-          </div>
+
+          <p class="dp-sim__note" id="dp-sim-note">
+            Both work when nothing is wrong. That is the demo, not the morning.
+          </p>
+          <p class="dp-sim__disc">
+            A demonstration of the design principle &mdash; an illustration of why the choices
+            were made, not measured test data.
+          </p>
         </div>
       </section>
 
@@ -348,5 +405,84 @@
   </footer>
 
   <script src="../script.js"></script>
+
+  <script>
+    // dispensing walkthrough
+    (function () {
+      const root = document.getElementById("dp-dispense");
+      if (!root) return;
+      const STEPS = [
+        { t: "Capsule falls into funnel channel",            p: [110, 70] },
+        { t: "User presses the button",                      p: [110, 70], btn: 1 },
+        { t: "Signal received",                              p: [110, 70], btn: 1, sig: 1 },
+        { t: "Medication drops into the middle compartment", p: [110, 162] },
+        { t: "Rod pushes the medicine down",                 p: [110, 190], rod: 1 },
+        { t: "Falls out of the dropping hole",               p: [110, 238] },
+        { t: "Medicine in the user's hand",                  p: [110, 272] }
+      ];
+      const pill = document.getElementById("dp-pill"),
+            rod  = document.getElementById("dp-rod"),
+            btn  = document.getElementById("dp-btn"),
+            sig  = document.getElementById("dp-sig"),
+            nEl  = document.getElementById("dp-n"),
+            tEl  = document.getElementById("dp-text"),
+            dots = document.getElementById("dp-dots"),
+            play = document.getElementById("dp-play");
+      let i = 0, timer = null;
+
+      STEPS.forEach((_, k) => {
+        const li = document.createElement("li");
+        const b = document.createElement("button");
+        b.type = "button";
+        b.setAttribute("aria-label", "Step " + (k + 1));
+        b.addEventListener("click", () => { stop(); go(k); });
+        li.appendChild(b); dots.appendChild(li);
+      });
+      const dotBtns = [...dots.querySelectorAll("button")];
+
+      function go(k) {
+        i = (k + STEPS.length) % STEPS.length;
+        const s = STEPS[i];
+        pill.setAttribute("transform", "translate(" + s.p[0] + " " + s.p[1] + ")");
+        rod.classList.toggle("is-down", !!s.rod);
+        btn.classList.toggle("is-on", !!s.btn);
+        sig.classList.toggle("is-on", !!s.sig);
+        nEl.textContent = i + 1;
+        tEl.textContent = s.t;
+        dotBtns.forEach((b, k2) => b.classList.toggle("is-on", k2 === i));
+      }
+      function stop() { clearInterval(timer); timer = null; play.textContent = "play"; }
+      document.getElementById("dp-next").addEventListener("click", () => { stop(); go(i + 1); });
+      document.getElementById("dp-prev").addEventListener("click", () => { stop(); go(i - 1); });
+      play.addEventListener("click", () => {
+        if (timer) return stop();
+        play.textContent = "pause";
+        timer = setInterval(() => go(i + 1), 1100);
+      });
+      go(0);
+    })();
+
+    // worst-morning simulator
+    (function () {
+      const sim = document.getElementById("dp-sim");
+      if (!sim) return;
+      const pair = document.getElementById("dp-sim-pair"),
+            note = document.getElementById("dp-sim-note"),
+            btns = [...sim.querySelectorAll(".dp-sim__ctrls button")];
+      const NOTES = {
+        clear:     "Both work when nothing is wrong. That is the demo, not the morning.",
+        lowvision: "The typical card's 13px grey type dissolves first. Large type at full contrast survives the same blur.",
+        tremor:    "A 48px target stays hittable with an unsteady hand. A text link the size of a word does not.",
+        glare:     "Grey-on-white is the first thing to go in bright light. Near-black on white holds."
+      };
+      btns.forEach(b => b.addEventListener("click", () => {
+        const c = b.dataset.cond;
+        btns.forEach(x => x.classList.toggle("is-on", x === b));
+        pair.className = "dp-sim__pair" + (c === "clear" ? "" : " is-" + c);
+        note.textContent = NOTES[c];
+      }));
+    })();
+  </script>
+
 </body>
 </html>
