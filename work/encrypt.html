@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex" />
+  <title>Encrypt a protected case study</title>
+  <style>
+    :root { --ink:#1a1a1a; --ink2:#6b6b6b; --ink3:#b3b3b3; --bg:#fafaf8;
+            --rule:#e6e6e3; --green:#1b6e2e; --red:#d8451d;
+            --mono:"JetBrains Mono",Consolas,ui-monospace,monospace;
+            --sans:"Inter","Segoe UI",system-ui,sans-serif; }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    body { background:var(--bg); color:var(--ink); font-family:var(--sans);
+           line-height:1.55; padding:3rem 1.5rem 5rem; }
+    .wrap { max-width:860px; margin:0 auto; }
+    h1 { font-size:1.9rem; font-weight:600; letter-spacing:-0.02em; }
+    .eyebrow { font-family:var(--mono); font-size:0.72rem; text-transform:uppercase;
+               letter-spacing:0.08em; color:var(--green); margin-bottom:0.4rem; }
+    p.lede { color:var(--ink2); margin-top:0.6rem; max-width:62ch; }
+    .warn { margin-top:1.5rem; padding:1rem 1.15rem; border:1px solid var(--rule);
+            border-left:3px solid var(--red); border-radius:8px; background:#fff;
+            font-size:0.9rem; color:var(--ink); max-width:70ch; }
+    label { display:block; font-family:var(--mono); font-size:0.72rem;
+            text-transform:uppercase; letter-spacing:0.08em; color:var(--green);
+            margin:2rem 0 0.5rem; }
+    textarea, input { width:100%; font-family:var(--mono); font-size:0.85rem;
+      color:var(--ink); background:#fff; border:1px solid var(--rule);
+      border-radius:8px; padding:0.8rem 0.9rem; }
+    textarea { min-height:12rem; resize:vertical; line-height:1.5; }
+    button { margin-top:1.5rem; font-family:var(--mono); font-size:0.85rem;
+      padding:0.7rem 1.3rem; color:#fff; background:var(--ink); border:none;
+      border-radius:999px; cursor:pointer; }
+    button:hover { background:var(--green); }
+    .out { margin-top:1.5rem; }
+    .msg { font-family:var(--mono); font-size:0.8rem; color:var(--ink2); margin-top:0.75rem; }
+    .msg.ok { color:var(--green); }
+    .msg.err { color:var(--red); }
+    ol { margin:0.75rem 0 0 1.2rem; color:var(--ink2); font-size:0.92rem; }
+    ol li { margin-bottom:0.3rem; }
+    code { font-family:var(--mono); font-size:0.85em; background:#fff;
+           border:1px solid var(--rule); border-radius:4px; padding:0.1rem 0.3rem; }
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <p class="eyebrow">internal tool · not linked from the site</p>
+  <h1>Encrypt a protected case study</h1>
+  <p class="lede">
+    Paste the HTML for the protected part of a case study, choose a passcode, and
+    this produces the encrypted block to drop into the page. Everything happens in
+    this browser tab — nothing is uploaded, and the text never leaves your machine.
+  </p>
+
+  <div class="warn">
+    <strong>Two things that matter.</strong>
+    Only the encrypted block goes into git, never the plain text — so don't paste
+    confidential content anywhere else in the repo. And pick a real passphrase: the
+    ciphertext is public, so a short or guessable passcode can be attacked offline.
+    Four or more unrelated words is plenty.
+  </div>
+
+  <label for="content">Protected HTML</label>
+  <textarea id="content" spellcheck="false" placeholder="&lt;p&gt;The findings, the concepts, the client detail…&lt;/p&gt;"></textarea>
+
+  <label for="pass">Passcode</label>
+  <input id="pass" type="text" spellcheck="false" autocomplete="off" placeholder="four unrelated words work well" />
+
+  <button id="go" type="button">Encrypt</button>
+  <p class="msg" id="msg"></p>
+
+  <div class="out" id="out" hidden>
+    <label for="result">Paste this into <code>project-17.html</code>, replacing the contents of <code>&lt;script id="gate-payload"&gt;</code></label>
+    <textarea id="result" readonly spellcheck="false"></textarea>
+    <ol>
+      <li>Open <code>work/project-17.html</code>.</li>
+      <li>Find <code>&lt;script type="application/json" id="gate-payload"&gt;</code>.</li>
+      <li>Replace the single JSON line between the tags with the block above.</li>
+      <li>Commit and push. Test with the passcode before you send it to anyone.</li>
+    </ol>
+  </div>
+</div>
+
+<script>
+  const $ = id => document.getElementById(id);
+  const b64 = buf => btoa(String.fromCharCode(...new Uint8Array(buf)));
+
+  $("go").addEventListener("click", async () => {
+    const html = $("content").value.trim();
+    const pass = $("pass").value;
+    const msg = $("msg");
+
+    if (!html) { msg.textContent = "Add the content first."; msg.className = "msg err"; return; }
+    if (pass.length < 8) { msg.textContent = "Use a longer passcode — at least 8 characters, ideally a few words."; msg.className = "msg err"; return; }
+
+    msg.textContent = "encrypting…"; msg.className = "msg";
+    try {
+      const enc = new TextEncoder();
+      const salt = crypto.getRandomValues(new Uint8Array(16));
+      const iv   = crypto.getRandomValues(new Uint8Array(12));
+      const iter = 250000;
+
+      const base = await crypto.subtle.importKey("raw", enc.encode(pass), "PBKDF2", false, ["deriveKey"]);
+      const key  = await crypto.subtle.deriveKey(
+        { name:"PBKDF2", salt, iterations:iter, hash:"SHA-256" },
+        base, { name:"AES-GCM", length:256 }, false, ["encrypt"]);
+      const ct = await crypto.subtle.encrypt({ name:"AES-GCM", iv }, key, enc.encode(html));
+
+      const payload = { v:1, alg:"AES-GCM", kdf:"PBKDF2-SHA256", iter,
+                        salt:b64(salt), iv:b64(iv), ct:b64(ct) };
+      $("result").value = JSON.stringify(payload);
+      $("result").style.minHeight = "9rem";
+      $("out").hidden = false;
+      msg.textContent = "Done. " + html.length + " characters encrypted.";
+      msg.className = "msg ok";
+    } catch (e) {
+      msg.textContent = "Failed: " + e.message;
+      msg.className = "msg err";
+    }
+  });
+</script>
+</body>
+</html>

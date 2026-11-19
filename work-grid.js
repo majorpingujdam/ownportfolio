@@ -15,6 +15,9 @@ const WORK_FILTERS = [
 // w / h are the media's intrinsic pixel size — they reserve space so lazy
 // images don't shift the masonry layout while loading.
 const WORK_PROJECTS = [
+  { href: "work/project-17.html", category: "product", title: "Procter & Gamble",
+    desc: "Behavioral design for a household air-care product. Protected — NDA.",
+    locked: true, label: "Protected project", w: 800, h: 800 },
   { href: "work/project-2.html",  category: "internship", title: "AiWalker",
     desc: "Full-cycle healthcare service — hospital to home rehab.",
     video: "Photos/Ai-robotics/ai-new.mp4", label: "AiWalker exoskeleton rendering", w: 800, h: 550 },
@@ -77,6 +80,14 @@ const WORK_PROJECTS = [
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   const media = p => {
+    // a protected project ships no imagery — a plain panel stands in
+    if (p.locked && !p.img && !p.video) {
+      return `<div class="card__locked" aria-hidden="true">`
+           + `<svg viewBox="0 0 24 24" width="34" height="34">`
+           + `<path d="M7 10V7a5 5 0 0 1 10 0v3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>`
+           + `<rect x="4.5" y="10" width="15" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/>`
+           + `</svg></div>`;
+    }
     if (p.video) {
       const poster = p.poster ? ` poster="${esc(p.poster)}"` : "";
       return `<video src="${esc(p.video)}"${poster} width="${p.w}" height="${p.h}"${reduceMotion ? ' preload="metadata"' : " autoplay"} muted loop playsinline aria-label="${esc(p.label || p.title)}"></video>`;
@@ -109,9 +120,10 @@ const WORK_PROJECTS = [
 
   // projects aren't public yet — lock the cards so clicks don't open them
   const LOCKED = false;
-  const lockBadge = `<span class="card__lock" aria-hidden="true">`
+  const badge = label => `<span class="card__lock" aria-hidden="true">`
     + `<svg viewBox="0 0 24 24" width="13" height="13"><path d="M7 10V7a5 5 0 0 1 10 0v3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><rect x="4.5" y="10" width="15" height="10" rx="2" fill="currentColor"/></svg>`
-    + `in progress</span>`;
+    + `${label}</span>`;
+  const lockBadge = badge("in progress");
 
   const gridHtml = `
     <ol class="grid">
@@ -124,7 +136,7 @@ const WORK_PROJECTS = [
             <div class="card__inner">
               <div class="card__date">${esc(CAT_LABEL[p.category] || p.category)}</div>
               <h3 class="card__title">${esc(p.title)}</h3>
-              <div class="card__panel">${media(p)}${LOCKED ? lockBadge + `<span class="card__soon">in progress</span>` : ""}</div>
+              <div class="card__panel">${media(p)}${LOCKED ? lockBadge + `<span class="card__soon">in progress</span>` : (p.locked ? badge("passcode") : "")}</div>
               <div class="card__foot">${esc(p.desc)}</div>
             </div>
           ${LOCKED ? `</div>` : `</a>`}

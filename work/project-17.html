@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex" />
+  <title>Procter &amp; Gamble — Owen Chen</title>
+  <meta name="description" content="Behavioral design for a household air-care product, with Procter &amp; Gamble. Protected case study — passcode required." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body data-page="project">
+  <header class="nav">
+    <a href="../index.html" class="nav__home">main</a>
+    <nav class="nav__links">
+      <a href="../index.html#work">projects</a>
+      <a href="../index.html#about">bio</a>
+      <a href="../index.html#resume">resume</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <article class="project" style="--red: #1b6e2e;">
+      <a href="../index.html#work" class="project__back">← back to projects</a>
+
+      <header class="project__head">
+        <div>
+          <p class="cs__eyebrow">behavioral design · global consumer goods</p>
+          <h1 class="project__title">Procter &amp; Gamble</h1>
+        </div>
+        <dl class="project__meta">
+          <div><dt>work as</dt><dd>Design Researcher · studio team</dd></div>
+          <div><dt>time</dt><dd>2026</dd></div>
+          <div><dt>status</dt><dd>Under NDA</dd></div>
+        </dl>
+      </header>
+
+      <!-- PUBLIC: safe to show anyone -->
+      <section class="cs">
+        <p class="cs__eyebrow">what I can say publicly</p>
+        <h2 class="cs__display">Shifting a household habit from reactive to proactive</h2>
+
+        <div class="cs__prose">
+          <p>
+            A sponsored studio project with Procter &amp; Gamble, reframing a household
+            air-care product around <strong>when people actually notice their home</strong> —
+            moving use from reactive (something already smells) to proactive.
+          </p>
+          <p>
+            My part is the research end: usage-journey mapping to find the behavioural
+            triggers and barriers, and translating what we find into concept prototypes
+            the team can put in front of people.
+          </p>
+        </div>
+
+        <ul class="cs__legend" aria-label="Methods">
+          <li><span class="cs__sw cs__sw--green"></span>Usage-journey mapping</li>
+          <li><span class="cs__sw cs__sw--blue"></span>Behavioural triggers &amp; barriers</li>
+          <li><span class="cs__sw cs__sw--dashed"></span>Concept prototyping</li>
+        </ul>
+
+        <p class="cs__note" style="margin-top:1.75rem;">
+          <em>Note:</em> the findings, concepts and any client material stay behind the
+          passcode. Everything above is deliberately generic.
+        </p>
+      </section>
+
+      <!-- GATE -->
+      <section class="cs" id="gate-section">
+        <p class="cs__eyebrow">protected</p>
+        <h2 class="cs__display">The rest needs a passcode</h2>
+
+        <div class="gate" id="gate">
+          <div class="gate__lock" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="30" height="30">
+              <path d="M7 10V7a5 5 0 0 1 10 0v3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+              <rect x="4.5" y="10" width="15" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/>
+            </svg>
+          </div>
+
+          <p class="gate__copy">
+            This case study is covered by an NDA. If you're hiring or reviewing my work,
+            email me and I'll send the passcode.
+          </p>
+
+          <form class="gate__form" id="gate-form" autocomplete="off">
+            <label class="gate__label" for="gate-input">passcode</label>
+            <input class="gate__input" id="gate-input" type="password" name="passcode"
+                   inputmode="text" autocomplete="off" spellcheck="false"
+                   aria-describedby="gate-msg" />
+            <button class="gate__btn" type="submit">unlock</button>
+          </form>
+
+          <p class="gate__msg" id="gate-msg" role="status" aria-live="polite"></p>
+
+          <a class="gate__ask" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=owenchisan@gmail.com&amp;su=Passcode%20request%20%E2%80%94%20P%26G%20case%20study"
+             target="_blank" rel="noopener">request the passcode ↗</a>
+        </div>
+
+        <!-- AES-GCM ciphertext. Useless without the passcode; nothing readable here. -->
+        <script type="application/json" id="gate-payload">
+{"v":1,"alg":"AES-GCM","kdf":"PBKDF2-SHA256","iter":250000,"salt":"","iv":"","ct":""}
+        </script>
+
+        <div class="cs__prose" id="gate-content" hidden></div>
+      </section>
+
+    </article>
+  </main>
+
+  <footer class="foot">
+    <a href="../contact.html" class="foot__contact">contact ↗</a>
+    <a href="#top" class="foot__top">top ↑</a>
+  </footer>
+
+  <script src="../script.js"></script>
+  <script>
+    // Passcode gate. The page only ever carries ciphertext: the content is
+    // AES-GCM encrypted with a key derived from the passcode (PBKDF2), so
+    // view-source gives away nothing. Encrypt new content with encrypt.html.
+    (function () {
+      const form = document.getElementById("gate-form");
+      if (!form) return;
+      const input = document.getElementById("gate-input");
+      const msg   = document.getElementById("gate-msg");
+      const out   = document.getElementById("gate-content");
+      const gate  = document.getElementById("gate");
+      const raw   = document.getElementById("gate-payload").textContent.trim();
+
+      let payload = null;
+      try { payload = JSON.parse(raw); } catch (e) { /* handled below */ }
+
+      const b64 = s => Uint8Array.from(atob(s), c => c.charCodeAt(0));
+
+      async function unlock(pass) {
+        const enc = new TextEncoder();
+        const base = await crypto.subtle.importKey(
+          "raw", enc.encode(pass), "PBKDF2", false, ["deriveKey"]);
+        const key = await crypto.subtle.deriveKey(
+          { name: "PBKDF2", salt: b64(payload.salt),
+            iterations: payload.iter || 250000, hash: "SHA-256" },
+          base, { name: "AES-GCM", length: 256 }, false, ["decrypt"]);
+        const plain = await crypto.subtle.decrypt(
+          { name: "AES-GCM", iv: b64(payload.iv) }, key, b64(payload.ct));
+        return new TextDecoder().decode(plain);
+      }
+
+      form.addEventListener("submit", async e => {
+        e.preventDefault();
+        const pass = input.value;
+        if (!pass) return;
+
+        if (!payload || !payload.ct) {
+          msg.textContent = "No protected content has been published yet.";
+          msg.className = "gate__msg is-err";
+          return;
+        }
+        msg.textContent = "checking…";
+        msg.className = "gate__msg";
+        try {
+          const html = await unlock(pass);
+          out.innerHTML = html;      // authored by me, encrypted by me
+          out.hidden = false;
+          gate.hidden = true;
+          msg.textContent = "";
+          out.scrollIntoView({ behavior: "smooth", block: "start" });
+        } catch (err) {
+          msg.textContent = "That passcode didn't work.";
+          msg.className = "gate__msg is-err";
+          input.select();
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

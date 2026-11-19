@@ -313,6 +313,90 @@ em { font-style: italic; }
 }
 .intro__meta dd a:hover { opacity: 0.7; }
 
+/* ---------- Protected project: card panel + passcode gate ---------- */
+.card__locked {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  color: var(--ink-3);
+  background: var(--bg-soft);
+}
+
+.gate {
+  max-width: 34rem;
+  padding: 2rem 1.9rem 1.8rem;
+  background: var(--bg);
+  border: 1px solid var(--rule);
+  border-radius: 14px;
+}
+.gate__lock { color: var(--red); margin-bottom: 0.9rem; }
+.gate__copy {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--ink-2);
+  max-width: 44ch;
+}
+.gate__form {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 0.6rem;
+  margin-top: 1.4rem;
+}
+.gate__label {
+  width: 100%;
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--red);
+}
+.gate__input {
+  flex: 1 1 14rem;
+  font-family: var(--mono);
+  font-size: 0.95rem;
+  color: var(--ink);
+  background: #fff;
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  padding: 0.65rem 0.8rem;
+}
+.gate__input:focus {
+  outline: none;
+  border-color: var(--red);
+}
+.gate__btn {
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  padding: 0.68rem 1.3rem;
+  color: #fff;
+  background: var(--ink);
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background .25s var(--ease);
+}
+.gate__btn:hover { background: var(--red); }
+.gate__msg {
+  margin-top: 0.75rem;
+  min-height: 1.2rem;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: var(--ink-2);
+}
+.gate__msg.is-err { color: var(--red); }
+.gate__ask {
+  display: inline-block;
+  margin-top: 0.9rem;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: var(--ink-2);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.gate__ask:hover { color: var(--red); }
+
 /* ---------- Dosage-Pal: opening hook ---------- */
 .dp-hook__lead {
   margin: 0.4rem 0 1.25rem;
