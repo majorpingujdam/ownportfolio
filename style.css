@@ -322,6 +322,19 @@ em { font-style: italic; }
   color: var(--ink-3);
   background: var(--bg-soft);
 }
+/* client mark, kept faint: it marks the engagement, it isn't the work.
+   needs .card__panel in the selector to beat the generic .card__panel img rule */
+.card__panel img.card__logoimg {
+  width: 58%;
+  height: auto;
+  object-fit: contain;
+  opacity: 0.17;
+  transition: opacity .5s var(--ease), transform .5s var(--ease);
+}
+.card__link:hover .card__panel img.card__logoimg {
+  opacity: 0.26;
+  transform: none;
+}
 
 .gate {
   max-width: 34rem;

@@ -17,7 +17,8 @@ const WORK_FILTERS = [
 const WORK_PROJECTS = [
   { href: "work/project-17.html", category: "product", title: "Procter & Gamble",
     desc: "Behavioral design for a household air-care product. Protected — NDA.",
-    locked: true, label: "Protected project", w: 800, h: 800 },
+    locked: true, img: "Photos/PG/pg-logo.png", alt: "Procter & Gamble",
+    label: "Protected project", w: 600, h: 600 },
   { href: "work/project-2.html",  category: "internship", title: "AiWalker",
     desc: "Full-cycle healthcare service — hospital to home rehab.",
     video: "Photos/Ai-robotics/ai-new.mp4", label: "AiWalker exoskeleton rendering", w: 800, h: 550 },
@@ -80,7 +81,13 @@ const WORK_PROJECTS = [
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   const media = p => {
-    // a protected project ships no imagery — a plain panel stands in
+    // a protected project shows its client mark faintly, never the work itself
+    if (p.locked && p.img) {
+      return `<div class="card__locked">`
+           + `<img class="card__logoimg" src="${esc(p.img)}" alt="${esc(p.alt || p.title)}" `
+           + `width="${p.w}" height="${p.h}" loading="lazy" decoding="async" />`
+           + `</div>`;
+    }
     if (p.locked && !p.img && !p.video) {
       return `<div class="card__locked" aria-hidden="true">`
            + `<svg viewBox="0 0 24 24" width="34" height="34">`
