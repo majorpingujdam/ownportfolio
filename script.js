@@ -67,13 +67,8 @@ if (navEl) {
 // and the work section scrolls up under the fixed nav.
 let currentFilter = "all";
 const applyFilter = val => {
-  document.querySelectorAll(".grid .card, .spot__slide").forEach(card => {
+  document.querySelectorAll(".grid .card").forEach(card => {
     card.hidden = val !== "all" && card.dataset.category !== val;
-  });
-  if (window.__spotSync) window.__spotSync();   // carousel re-measures
-  // a tier with nothing left in it drops out, so no stray heading or gap
-  document.querySelectorAll("[data-featured], [data-rest]").forEach(sec => {
-    sec.hidden = ![...sec.querySelectorAll(".card")].some(c => !c.hidden);
   });
   document.querySelectorAll(".work__cat").forEach(b =>
     b.classList.toggle("is-active", b.dataset.val === val));
@@ -384,69 +379,6 @@ if (logoAnim) {
     frames[idx].classList.add("is-shown");
   }, { passive: true });
 }
-
-
-// ── Spotlight carousel (featured work) ────────────────────────
-// Native scroll-snap does the moving; the arrows just nudge it one
-// slide, so swipe, trackpad and keyboard all keep working.
-(function () {
-  const vp = document.querySelector("[data-spot-vp]");
-  if (!vp) return;
-  const prev  = document.querySelector('[data-spot="prev"]');
-  const next  = document.querySelector('[data-spot="next"]');
-  const count = document.querySelector("[data-spot-count]");
-  const pad = n => String(n).padStart(2, "0");
-
-  const slides = () => [...vp.querySelectorAll(".spot__slide")].filter(s => !s.hidden);
-
-  // rect-based: offsetLeft is relative to the offset parent, not the scroller
-  const index = () => {
-    const list = slides();
-    if (!list.length) return 0;
-    const base = vp.getBoundingClientRect().left;
-    let best = 0, dist = Infinity;
-    list.forEach((s, i) => {
-      const d = Math.abs(s.getBoundingClientRect().left - base);
-      if (d < dist) { dist = d; best = i; }
-    });
-    return best;
-  };
-
-  function sync() {
-    const list = slides();
-    const i = index();
-    if (count) count.textContent = pad(list.length ? i + 1 : 0) + " / " + pad(list.length);
-    const atStart = vp.scrollLeft <= 2;
-    const atEnd = vp.scrollLeft >= vp.scrollWidth - vp.clientWidth - 2;
-    if (prev) prev.disabled = atStart;
-    if (next) next.disabled = atEnd || list.length <= 1;
-  }
-  window.__spotSync = () => { vp.scrollLeft = 0; sync(); };
-
-  const step = dir => {
-    const list = slides();
-    if (!list.length) return;
-    const target = list[Math.min(Math.max(index() + dir, 0), list.length - 1)];
-    if (!target) return;
-    const delta = target.getBoundingClientRect().left - vp.getBoundingClientRect().left;
-    vp.scrollTo({ left: vp.scrollLeft + delta, behavior: "smooth" });
-  };
-  prev && prev.addEventListener("click", () => step(-1));
-  next && next.addEventListener("click", () => step(1));
-
-  vp.addEventListener("keydown", e => {
-    if (e.key === "ArrowRight") { e.preventDefault(); step(1); }
-    if (e.key === "ArrowLeft")  { e.preventDefault(); step(-1); }
-  });
-
-  let t = null;
-  vp.addEventListener("scroll", () => {
-    clearTimeout(t);
-    t = setTimeout(sync, 90);
-  }, { passive: true });
-  window.addEventListener("resize", sync);
-  sync();
-})();
 
 
 // ── Nav scroll-spy (single page: light up the current section) ──
