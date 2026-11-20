@@ -70,6 +70,10 @@ const applyFilter = val => {
   document.querySelectorAll(".grid .card").forEach(card => {
     card.hidden = val !== "all" && card.dataset.category !== val;
   });
+  // a tier with nothing left in it drops out, so no stray heading or gap
+  document.querySelectorAll("[data-featured], [data-rest]").forEach(sec => {
+    sec.hidden = ![...sec.querySelectorAll(".card")].some(c => !c.hidden);
+  });
   document.querySelectorAll(".work__cat").forEach(b =>
     b.classList.toggle("is-active", b.dataset.val === val));
   document.querySelector(".work__head-title")

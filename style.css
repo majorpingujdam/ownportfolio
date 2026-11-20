@@ -313,6 +313,82 @@ em { font-style: italic; }
 }
 .intro__meta dd a:hover { opacity: 0.7; }
 
+/* ---------- Work: spotlight tier, then the archive ---------- */
+/* two classes so this beats the base .grid rule, which sits later in the file */
+.grid.grid--featured {
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3.25rem 2.5rem;
+  padding-bottom: 0;
+}
+@media (max-width: 880px) {
+  .grid.grid--featured { grid-template-columns: 1fr; }
+}
+
+.card--big .card__date {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.75rem 1.1rem;
+  font-size: 0.8rem;
+}
+.card--big .card__role {
+  color: var(--ink-2);
+  text-align: right;
+}
+@media (max-width: 520px) { .card--big .card__role { display: none; } }
+
+.card--big .card__title {
+  padding: 0.85rem 1.1rem 0.95rem;
+  font-size: clamp(1.9rem, 3vw, 2.6rem);
+  letter-spacing: -0.03em;
+}
+.card--big .card__panel { aspect-ratio: 4 / 3; }
+.card--big .card__foot {
+  padding: 1.1rem 1.1rem 1.2rem;
+  font-family: var(--sans);
+  font-size: 1rem;
+}
+.card--big .card__blurb {
+  line-height: 1.6;
+  color: var(--ink);
+}
+.card--big .card__cta {
+  display: inline-block;
+  margin-top: 0.9rem;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--ink-2);
+  transition: color .25s var(--ease);
+}
+.card--big .card__link:hover .card__cta { color: var(--green); }
+.card--big .card__shadow { transform: translate(-13px, -13px); }
+.card--big .card__link:hover .card__shadow { transform: translate(-18px, -18px); }
+
+/* divider between the spotlight and the rest */
+.work__more {
+  max-width: 1920px;
+  margin: 0 auto;
+  padding: 0 var(--pad);
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.work__more::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--rule);
+}
+.work__rest { margin-top: clamp(3rem, 6vw, 5rem); }
+.work__rest .grid { padding-top: 1.75rem; }
+.work__featured[hidden], .work__rest[hidden] { display: none; }
+
 /* ---------- Protected project: card panel + passcode gate ---------- */
 .card__locked {
   display: grid;

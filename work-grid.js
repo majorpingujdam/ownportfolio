@@ -18,16 +18,24 @@ const WORK_PROJECTS = [
   { href: "work/project-17.html", category: "product", title: "Procter & Gamble",
     desc: "Behavioral design for a household air-care product. Protected — NDA.",
     locked: true, img: "Photos/PG/pg-logo.png", alt: "Procter & Gamble",
-    label: "Protected project", w: 600, h: 600 },
+    label: "Protected project", w: 600, h: 600,
+    role: "Design researcher · sponsored studio · 2026",
+    blurb: "Reframing a household air-care product around when people actually notice their home — moving use from reactive to proactive. Usage-journey mapping into concept prototypes." },
   { href: "work/project-2.html",  category: "internship", title: "AiWalker",
     desc: "Full-cycle healthcare service — hospital to home rehab.",
-    video: "Photos/Ai-robotics/ai-new.mp4", label: "AiWalker exoskeleton rendering", w: 800, h: 550 },
+    video: "Photos/Ai-robotics/ai-new.mp4", label: "AiWalker exoskeleton rendering", w: 800, h: 550,
+    role: "Product service design · Beijing Ai-Robotics · 2025",
+    blurb: "Surveyed 103 rehabilitation patients expecting complaints about the hardware. The hardware was fine — what broke was the handoff home. Mapped the service and proposed four interventions at the break point." },
   { href: "work/project-3.html",  category: "internship", title: "Vignette",
     desc: "Kitchen room-set design at IKEA China.",
-    img: "work-3.jpg", alt: "IKEA Visual Merchandising", w: 1440, h: 1080 },
+    img: "work-3.jpg", alt: "IKEA Visual Merchandising", w: 1440, h: 1080,
+    role: "Visual merchandising · IKEA China · 2024",
+    blurb: "Kitchen room-set design for vignette exhibitions: 15+ Nordic-style layouts modelled in SketchUp, built from 120+ pieces of reference material." },
   { href: "work/project-1.html",  category: "product", title: "Dosage-Pal",
     desc: "Elder care medication management app.",
-    img: "work-1.jpg", alt: "Dosage-Pal", w: 2304, h: 1728, pos: "35% 50%" },
+    img: "work-1.jpg", alt: "Dosage-Pal", w: 2304, h: 1728, pos: "35% 50%",
+    role: "Product design · Parsons",
+    blurb: "A smart prescription cap that logs every dose. It started at my mother’s kitchen counter; 43% of the 96 people I surveyed forget a dose, and what they do next is the design problem." },
   { href: "work/project-4.html",  category: "product", title: "Sky Harvest",
     desc: "Rooftop farm + drone delivery shortening farm to table.",
     img: "work-4.jpg", alt: "Sky Harvest", w: 1440, h: 1080 },
@@ -132,23 +140,66 @@ const WORK_PROJECTS = [
     + `${label}</span>`;
   const lockBadge = badge("in progress");
 
+  const FEATURED = 4;   // first N projects get the spotlight treatment
+
+  const panel = (p, i) =>
+    `<div class="card__panel">${media(p)}`
+    + (LOCKED ? lockBadge + `<span class="card__soon">in progress</span>`
+              : (p.locked ? badge("passcode") : ""))
+    + `</div>`;
+
+  const openTag = p => LOCKED
+    ? `<div class="card__link is-locked" role="link" aria-disabled="true" aria-label="${esc(p.title)} — in progress">`
+    : `<a href="${esc(p.href)}" class="card__link">`;
+  const closeTag = () => LOCKED ? `</div>` : `</a>`;
+
+  const bigCard = (p, i) => `
+    <li class="card card--big" data-category="${p.category}" style="--card-accent:${PALETTE[i % PALETTE.length]}">
+      ${openTag(p)}
+        <span class="card__shadow" aria-hidden="true"></span>
+        <div class="card__inner">
+          <div class="card__date">
+            <span>${esc(CAT_LABEL[p.category] || p.category)}</span>
+            ${p.role ? `<span class="card__role">${esc(p.role)}</span>` : ""}
+          </div>
+          <h3 class="card__title">${esc(p.title)}</h3>
+          ${panel(p, i)}
+          <div class="card__foot">
+            <p class="card__blurb">${esc(p.blurb || p.desc)}</p>
+            <span class="card__cta">${p.locked ? "request access" : "read the case study"} →</span>
+          </div>
+        </div>
+      ${closeTag()}
+    </li>`;
+
+  const smallCard = (p, i) => `
+    <li class="card" data-category="${p.category}" style="--card-accent:${PALETTE[i % PALETTE.length]}">
+      ${openTag(p)}
+        <span class="card__shadow" aria-hidden="true"></span>
+        <div class="card__inner">
+          <div class="card__date">${esc(CAT_LABEL[p.category] || p.category)}</div>
+          <h3 class="card__title">${esc(p.title)}</h3>
+          ${panel(p, i)}
+          <div class="card__foot">${esc(p.desc)}</div>
+        </div>
+      ${closeTag()}
+    </li>`;
+
+  const featured = WORK_PROJECTS.slice(0, FEATURED);
+  const rest     = WORK_PROJECTS.slice(FEATURED);
+
   const gridHtml = `
-    <ol class="grid">
-      ${WORK_PROJECTS.map((p, i) => `
-        <li class="card" data-category="${p.category}" style="--card-accent:${PALETTE[i % PALETTE.length]}">
-          ${LOCKED
-            ? `<div class="card__link is-locked" role="link" aria-disabled="true" aria-label="${esc(p.title)} — in progress">`
-            : `<a href="${esc(p.href)}" class="card__link">`}
-            <span class="card__shadow" aria-hidden="true"></span>
-            <div class="card__inner">
-              <div class="card__date">${esc(CAT_LABEL[p.category] || p.category)}</div>
-              <h3 class="card__title">${esc(p.title)}</h3>
-              <div class="card__panel">${media(p)}${LOCKED ? lockBadge + `<span class="card__soon">in progress</span>` : (p.locked ? badge("passcode") : "")}</div>
-              <div class="card__foot">${esc(p.desc)}</div>
-            </div>
-          ${LOCKED ? `</div>` : `</a>`}
-        </li>`).join("")}
-    </ol>`;
+    <div class="work__featured" data-featured>
+      <ol class="grid grid--featured">
+        ${featured.map((p, i) => bigCard(p, i)).join("")}
+      </ol>
+    </div>
+    <div class="work__rest" data-rest>
+      <p class="work__more"><span>more projects</span></p>
+      <ol class="grid">
+        ${rest.map((p, i) => smallCard(p, i + FEATURED)).join("")}
+      </ol>
+    </div>`;
 
   mounts.forEach(m => { m.innerHTML = filterHtml + gridHtml; });
 })();
