@@ -313,57 +313,140 @@ em { font-style: italic; }
 }
 .intro__meta dd a:hover { opacity: 0.7; }
 
-/* ---------- Work: spotlight tier, then the archive ---------- */
-/* two classes so this beats the base .grid rule, which sits later in the file */
-.grid.grid--featured {
-  grid-template-columns: repeat(2, 1fr);
-  gap: 3.25rem 2.5rem;
-  padding-bottom: 0;
+/* ---------- Work: spotlight carousel, then the archive ---------- */
+.spot {
+  max-width: 1920px;
+  margin: 0 auto;
+  padding: 0.5rem var(--pad) 0;
 }
-@media (max-width: 880px) {
-  .grid.grid--featured { grid-template-columns: 1fr; }
+.spot__viewport {
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding-bottom: 4px;
 }
+/* the offset colour block would be clipped by the scroller, and the
+   slides already carry a border plus a hover lift */
+.spot__slide .card__shadow { display: none; }
+.spot__viewport::-webkit-scrollbar { display: none; }
+.spot__viewport:focus-visible { outline: 2px solid var(--green); outline-offset: 4px; }
 
-.card--big .card__date {
+.spot__track {
+  list-style: none;
   display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 1rem;
-  padding: 0.75rem 1.1rem;
-  font-size: 0.8rem;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
 }
-.card--big .card__role {
-  color: var(--ink-2);
-  text-align: right;
+.spot__slide {
+  flex: 0 0 100%;
+  scroll-snap-align: start;
+  margin: 0;
 }
-@media (max-width: 520px) { .card--big .card__role { display: none; } }
+.spot__slide[hidden] { display: none; }
 
-.card--big .card__title {
-  padding: 0.85rem 1.1rem 0.95rem;
-  font-size: clamp(1.9rem, 3vw, 2.6rem);
-  letter-spacing: -0.03em;
+/* slides stretch to the tallest in the row, so the card fills its slide
+   and every panel lines up instead of leaving dead space underneath */
+.spot__link { position: relative; display: block; isolation: isolate; height: 100%; }
+.spot__inner {
+  height: 100%;
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  min-height: 24rem;
+  background: var(--bg);
+  border: 1.5px solid var(--ink);
+  border-radius: 2px;
+  overflow: hidden;
+  transition: transform .5s var(--ease), box-shadow .5s var(--ease);
 }
-.card--big .card__panel { aspect-ratio: 4 / 3; }
-.card--big .card__foot {
-  padding: 1.1rem 1.1rem 1.2rem;
+.spot__link:hover .spot__inner {
+  transform: translateY(-4px);
+  box-shadow: 0 22px 48px -22px rgba(26, 26, 26, 0.3);
+}
+.spot__media.card__panel {
+  aspect-ratio: auto;
+  height: 100%;
+  border-bottom: none;
+  border-right: 1.5px solid var(--ink);
+}
+.spot__body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(1.5rem, 3vw, 2.75rem);
+}
+.spot__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem 0.9rem;
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  color: var(--ink-2);
+}
+.spot__role { color: var(--ink-3); }
+.spot__title {
+  margin-top: 0.8rem;
   font-family: var(--sans);
-  font-size: 1rem;
-}
-.card--big .card__blurb {
-  line-height: 1.6;
+  font-weight: 600;
+  font-size: clamp(1.9rem, 3.4vw, 3rem);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
   color: var(--ink);
 }
-.card--big .card__cta {
-  display: inline-block;
-  margin-top: 0.9rem;
-  font-family: var(--mono);
-  font-size: 0.8rem;
+.spot__blurb {
+  margin-top: 1rem;
+  font-size: clamp(0.98rem, 1.1vw, 1.1rem);
+  line-height: 1.6;
   color: var(--ink-2);
+  max-width: 48ch;
+}
+.spot__cta {
+  margin-top: 1.4rem;
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  color: var(--ink);
   transition: color .25s var(--ease);
 }
-.card--big .card__link:hover .card__cta { color: var(--green); }
-.card--big .card__shadow { transform: translate(-13px, -13px); }
-.card--big .card__link:hover .card__shadow { transform: translate(-18px, -18px); }
+.spot__link:hover .spot__cta { color: var(--green); }
+
+.spot__nav {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1.4rem;
+}
+.spot__arrow {
+  width: 2.6rem;
+  height: 2.6rem;
+  font-size: 1rem;
+  color: var(--ink);
+  background: var(--bg);
+  border: 1.5px solid var(--ink);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background .25s var(--ease), color .25s var(--ease), opacity .25s var(--ease);
+}
+.spot__arrow:hover:not(:disabled) { background: var(--ink); color: var(--bg); }
+.spot__arrow:disabled { opacity: 0.28; cursor: default; }
+.spot__count {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  color: var(--ink-2);
+}
+
+@media (max-width: 860px) {
+  .spot__inner { grid-template-columns: 1fr; min-height: 0; }
+  .spot__media.card__panel {
+    aspect-ratio: 4 / 3;
+    border-right: none;
+    border-bottom: 1.5px solid var(--ink);
+  }
+}
 
 /* divider between the spotlight and the rest */
 .work__more {
@@ -387,7 +470,7 @@ em { font-style: italic; }
 }
 .work__rest { margin-top: clamp(3rem, 6vw, 5rem); }
 .work__rest .grid { padding-top: 1.75rem; }
-.work__featured[hidden], .work__rest[hidden] { display: none; }
+.spot[hidden], .work__rest[hidden] { display: none; }
 
 /* ---------- Protected project: card panel + passcode gate ---------- */
 .card__locked {

@@ -154,22 +154,25 @@ const WORK_PROJECTS = [
   const closeTag = () => LOCKED ? `</div>` : `</a>`;
 
   const bigCard = (p, i) => `
-    <li class="card card--big" data-category="${p.category}" style="--card-accent:${PALETTE[i % PALETTE.length]}">
-      ${openTag(p)}
+    <li class="spot__slide" data-category="${p.category}" style="--card-accent:${PALETTE[i % PALETTE.length]}">
+      ${LOCKED
+        ? `<div class="spot__link is-locked" role="link" aria-disabled="true">`
+        : `<a href="${esc(p.href)}" class="spot__link">`}
         <span class="card__shadow" aria-hidden="true"></span>
-        <div class="card__inner">
-          <div class="card__date">
-            <span>${esc(CAT_LABEL[p.category] || p.category)}</span>
-            ${p.role ? `<span class="card__role">${esc(p.role)}</span>` : ""}
-          </div>
-          <h3 class="card__title">${esc(p.title)}</h3>
-          ${panel(p, i)}
-          <div class="card__foot">
-            <p class="card__blurb">${esc(p.blurb || p.desc)}</p>
-            <span class="card__cta">${p.locked ? "request access" : "read the case study"} →</span>
+        <div class="spot__inner">
+          <div class="spot__media card__panel">${media(p)}${
+            LOCKED ? lockBadge : (p.locked ? badge("passcode") : "")}</div>
+          <div class="spot__body">
+            <p class="spot__meta">
+              <span>${esc(CAT_LABEL[p.category] || p.category)}</span>
+              ${p.role ? `<span class="spot__role">${esc(p.role)}</span>` : ""}
+            </p>
+            <h3 class="spot__title">${esc(p.title)}</h3>
+            <p class="spot__blurb">${esc(p.blurb || p.desc)}</p>
+            <span class="spot__cta">${p.locked ? "request access" : "read the case study"} →</span>
           </div>
         </div>
-      ${closeTag()}
+      ${LOCKED ? `</div>` : `</a>`}
     </li>`;
 
   const smallCard = (p, i) => `
@@ -189,10 +192,17 @@ const WORK_PROJECTS = [
   const rest     = WORK_PROJECTS.slice(FEATURED);
 
   const gridHtml = `
-    <div class="work__featured" data-featured>
-      <ol class="grid grid--featured">
-        ${featured.map((p, i) => bigCard(p, i)).join("")}
-      </ol>
+    <div class="spot" data-featured>
+      <div class="spot__viewport" data-spot-vp tabindex="0" aria-label="Featured projects">
+        <ol class="spot__track">
+          ${featured.map((p, i) => bigCard(p, i)).join("")}
+        </ol>
+      </div>
+      <div class="spot__nav">
+        <button type="button" class="spot__arrow" data-spot="prev" aria-label="Previous project">←</button>
+        <span class="spot__count" data-spot-count>01 / 0${featured.length}</span>
+        <button type="button" class="spot__arrow" data-spot="next" aria-label="Next project">→</button>
+      </div>
     </div>
     <div class="work__rest" data-rest>
       <p class="work__more"><span>more projects</span></p>
